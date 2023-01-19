@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ScPoProgramming",
+    "section": "",
+    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the deparment of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming."
+  },
+  {
+    "objectID": "index.html#windows-and-mac-specific-instructions",
+    "href": "index.html#windows-and-mac-specific-instructions",
+    "title": "ScPoProgramming",
+    "section": "Windows and Mac Specific Instructions",
+    "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\nSoftware Carpentry Windows Installer\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications > Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
