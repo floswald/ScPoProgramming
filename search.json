@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "ScPoProgramming",
     "section": "",
-    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the deparment of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming."
+    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2023"
   },
   {
     "objectID": "index.html#windows-and-mac-specific-instructions",
@@ -18,6 +18,6 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "About this site\n\n\n\n© Florian Oswald, 2023"
   }
 ]
