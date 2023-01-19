@@ -6,10 +6,10 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 
 # Welcome to *Introduction to Programming*
 
-* This website is the home of the course _Introduction to Programming_ taught to first year PhD students (M1) in the doctoral program of the deparment of economics at Sciences Po Paris.
+* This website is the home of the course _Introduction to Programming_ taught to first year PhD students (M1) in the doctoral program of the [department of economics](https://www.sciencespo.fr/department-economics/) at Sciences Po Paris.
 * This course assumes **no prior programming** experience.
 * Below you will find setup instructions and a syllabus.
-* You can obtain all material for this course from the associated github repository at [link](asdfasdf)
+* You can obtain all material for this course from the associated github repository at [link]([asdfasdf](https://github.com/floswald/ScPoProgramming/))
 
 ## Objectives of this Course
 
