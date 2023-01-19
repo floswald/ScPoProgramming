@@ -1,0 +1,77 @@
+---
+title: ScPoProgramming
+author: "[Florian Oswald](https://floswald.github.io)"
+substitle: "SciencesPo Paris, Ecole Doctorale 2023"
+---
+
+# Welcome to *Introduction to Programming*
+
+* This website is the home of the course _Introduction to Programming_ taught to first year PhD students (M1) in the doctoral program of the deparment of economics at Sciences Po Paris.
+* This course assumes **no prior programming** experience.
+* Below you will find setup instructions and a syllabus.
+* You can obtain all material for this course from the associated github repository at [link](asdfasdf)
+
+## Objectives of this Course
+
+* After this course, we want to be able to participate or conduct your own research project in an efficient way. *Research* nowadays means data sciencey stuff in most cases, certainly in Economics. 
+* We want you to have a basic understanding of how an operating system (in particular, *your* OS) works.
+* We want to be able to achieve a basic level of automation in repetitive tasks.
+* We want you to know what Version Control is and how to use it in a research project.
+* We will introduce some (hopefully) useful `R` programming.
+
+# Syllabus
+
+| Topic Number |  Topic      |  Author |
+|:------------:|:-----------:|:-------:|
+| 1            | [The Unix Shell](https://swcarpentry.github.io/shell-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) |
+| 2            | [Git Version Control](https://swcarpentry.github.io/git-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
+| 3            | [Programming with `R`](https://swcarpentry.github.io/r-novice-inflammation/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
+| 4            | [Geospatial Programming with `R`](https://datacarpentry.org/geospatial-workshop/) |  [The Data Carpentry Project](https://datacarpentry.org/) + Florian Oswald|
+|
+
+
+# Setup Instructions
+
+* You must bring your own laptop to each class.
+* Please make sure you have an up to date operating system, i.e. run a software update before we start.
+* Everybody should [install R](https://cran.r-project.org/) or make sure they have a recent version installed.
+* Everybody should [install RStudio](https://posit.co/download/rstudio-desktop/) or run an update on the installed program.
+
+
+## Windows and Mac Specific Instructions
+
+There are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.
+
+### Windows
+
+We need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install 
+
+1. [GitForWindows](https://gitforwindows.org/)
+2. [Software Carpentry Windows Installer](https://github.com/swcarpentry/windows-installer/releases/tag/v0.3)
+
+
+### Mac
+
+You should be all set. To make sure we have really everything we need, open `Terminal.app` (in *Applications > Utilities* or do `Cmd + Space` to get spotlight search and type `terminal`). Then paste this code and hit enter:
+
+```
+xcode-select --install
+```
+
+click on *install* (don't click on `get Xcode`)
+
+
+### Unix
+
+Same, all set. Maybe open a terminal and type
+
+```
+git --version
+```
+
+if that throws an error, install it with your package manager, e.g.
+
+```
+sudo apt install git-all
+```
+
