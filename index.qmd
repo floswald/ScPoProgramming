@@ -9,7 +9,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 * This website is the home of the course _Introduction to Programming_ taught to first year PhD students (M1) in the doctoral program of the [department of economics](https://www.sciencespo.fr/department-economics/) at Sciences Po Paris.
 * This course assumes **no prior programming** experience.
 * Below you will find setup instructions and a syllabus.
-* You can obtain all material for this course from the associated github repository at [link]([asdfasdf](https://github.com/floswald/ScPoProgramming/))
+* You can obtain all material for this course from the associated github repository at [link](https://github.com/floswald/ScPoProgramming/)
 
 ## Objectives of this Course
 
@@ -22,7 +22,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 # Syllabus
 
 | Topic Number |  Topic      |  Author |
-|:------------:|:-----------:|:-------:|
+|:------------:|:-----------|-------:|
 | 1            | [The Unix Shell](https://swcarpentry.github.io/shell-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) |
 | 2            | [Git Version Control](https://swcarpentry.github.io/git-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
 | 3            | [Programming with `R`](https://swcarpentry.github.io/r-novice-inflammation/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
@@ -54,7 +54,7 @@ We need to install some things that make your windows computer a resemble a bit 
 
 You should be all set. To make sure we have really everything we need, open `Terminal.app` (in *Applications > Utilities* or do `Cmd + Space` to get spotlight search and type `terminal`). Then paste this code and hit enter:
 
-```
+```bash
 xcode-select --install
 ```
 
@@ -65,13 +65,13 @@ click on *install* (don't click on `get Xcode`)
 
 Same, all set. Maybe open a terminal and type
 
-```
+```bash
 git --version
 ```
 
 if that throws an error, install it with your package manager, e.g.
 
-```
+```bash
 sudo apt install git-all
 ```
 

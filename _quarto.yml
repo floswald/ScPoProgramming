@@ -22,6 +22,10 @@ format:
     linkcolor: "#ba0202"
     css: styles.css
     toc: true
+    highlight-style: github
+
+
+
 
 
 
