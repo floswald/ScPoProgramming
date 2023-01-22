@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Florian Oswald">
 
-<title>ScPoProgramming</title>
+<title>ScPoProgramming - Introducing the Shell</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,8 +134,8 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
-<meta name="twitter:title" content="ScPoProgramming">
-<meta name="twitter:description" content="© Florian Oswald, 2023">
+<meta name="twitter:title" content="ScPoProgramming - Introducing the Shell">
+<meta name="twitter:description" content="(https://carpentries.github.io/sandpaper-docs/introduction.html)">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -160,7 +159,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -182,20 +181,9 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-introduction-to-programming" id="toc-welcome-to-introduction-to-programming" class="nav-link active" data-scroll-target="#welcome-to-introduction-to-programming">Welcome to <em>Introduction to Programming</em></a>
-  <ul class="collapse">
-  <li><a href="#objectives-of-this-course" id="toc-objectives-of-this-course" class="nav-link" data-scroll-target="#objectives-of-this-course">Objectives of this Course</a></li>
-  </ul></li>
-  <li><a href="#syllabus" id="toc-syllabus" class="nav-link" data-scroll-target="#syllabus">Syllabus</a></li>
-  <li><a href="#setup-instructions" id="toc-setup-instructions" class="nav-link" data-scroll-target="#setup-instructions">Setup Instructions</a>
-  <ul class="collapse">
-  <li><a href="#windows-and-mac-specific-instructions" id="toc-windows-and-mac-specific-instructions" class="nav-link" data-scroll-target="#windows-and-mac-specific-instructions">Windows and Mac Specific Instructions</a>
-  <ul class="collapse">
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac">Mac</a></li>
-  <li><a href="#unix" id="toc-unix" class="nav-link" data-scroll-target="#unix">Unix</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#the-shell" id="toc-the-shell" class="nav-link" data-scroll-target="#the-shell">The Shell</a></li>
+  <li><a href="#nelles-pipeline-a-typical-problem" id="toc-nelles-pipeline-a-typical-problem" class="nav-link" data-scroll-target="#nelles-pipeline-a-typical-problem">Nelle’s Pipeline: A Typical Problem</a></li>
   </ul>
 </nav>
     </div>
@@ -204,19 +192,13 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ScPoProgramming</h1>
+<h1 class="title">Introducing the Shell</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p><a href="https://floswald.github.io">Florian Oswald</a> </p>
-          </div>
-  </div>
     
   
     
@@ -225,103 +207,104 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 </header>
 
-<section id="welcome-to-introduction-to-programming" class="level1">
-<h1>Welcome to <em>Introduction to Programming</em></h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>This website is the home of the course <em>Introduction to Programming</em> taught to first year PhD students (M1) in the doctoral program of the <a href="https://www.sciencespo.fr/department-economics/">department of economics</a> at Sciences Po Paris.</li>
-<li>This course assumes <strong>no prior programming</strong> experience.</li>
-<li>Below you will find setup instructions and a syllabus.</li>
-<li>You can obtain all material for this course from the associated github repository at <a href="https://github.com/floswald/ScPoProgramming/">link</a></li>
+<li>What is a command shell and why would I use one?</li>
 </ul>
-<section id="objectives-of-this-course" class="level2">
-<h2 class="anchored" data-anchor-id="objectives-of-this-course">Objectives of this Course</h2>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>After this course, we want to be able to participate or conduct your own research project in an efficient way. <em>Research</em> nowadays means data sciencey stuff in most cases, certainly in Economics.</li>
-<li>We want you to have a basic understanding of how an operating system (in particular, <em>your</em> OS) works.</li>
-<li>We want to be able to achieve a basic level of automation in repetitive tasks.</li>
-<li>We want you to know what Version Control is and how to use it in a research project.</li>
-<li>We will introduce some (hopefully) useful <code>R</code> programming.</li>
+<li>Explain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.</li>
+<li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
 </ul>
+</div>
+</div>
+<section id="background" class="level3">
+<h3 class="anchored" data-anchor-id="background">Background</h3>
+<p>(https://carpentries.github.io/sandpaper-docs/introduction.html)</p>
+<p>Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. The most widely used way to interact with personal computers is called a <strong>graphical user interface</strong> (GUI). With a GUI, we give instructions by clicking a mouse and using menu-driven interactions.</p>
+<p>While the visual aid of a GUI makes it intuitive to learn, this way of delivering instructions to a computer scales very poorly. Imagine the following task: for a literature search, you have to copy the third line of one thousand text files in one thousand different directories and paste it into a single file. Using a GUI, you would not only be clicking at your desk for several hours, but you could potentially also commit an error in the process of completing this repetitive task. This is where we take advantage of the Unix shell. The Unix shell is both a <strong>command-line interface</strong> (CLI) and a scripting language, allowing such repetitive tasks to be done automatically and fast. With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. Using the shell, the task in the literature example can be accomplished in seconds.</p>
 </section>
+<section id="the-shell" class="level3">
+<h3 class="anchored" data-anchor-id="the-shell">The Shell</h3>
+<p>The shell is a program where users can type commands. With the shell, it’s possible to invoke complicated programs like climate modeling software or simple commands that create an empty directory with only one line of code. The most popular Unix shell is Bash (the Bourne Again SHell — so-called because it’s derived from a shell written by Stephen Bourne). Bash is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows.</p>
+<p>Using the shell will take some effort and some time to learn. While a GUI presents you with choices to select, CLI choices are not automatically presented to you, so you must learn a few commands like new vocabulary in a language you’re studying. However, unlike a spoken language, a small number of “words” (i.e.&nbsp;commands) gets you a long way, and we’ll cover those essential few today.</p>
+<p>The grammar of a shell allows you to combine existing tools into powerful pipelines and handle large volumes of data automatically. Sequences of commands can be written into a <em>script</em>, improving the reproducibility of workflows.</p>
+<p>In addition, the command line is often the easiest way to interact with remote machines and supercomputers. Familiarity with the shell is near essential to run a variety of specialized tools and resources including high-performance computing systems. As clusters and cloud computing systems become more popular for scientific data crunching, being able to interact with the shell is becoming a necessary skill. We can build on the command-line skills covered here to tackle a wide range of scientific questions and computational challenges.</p>
+<p>Let’s get started.</p>
+<p>When the shell is first opened, you are presented with a <strong>prompt</strong>, indicating that the shell is waiting for input.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The shell typically uses <code>$</code> as the prompt, but may use a different symbol. In the examples for this lesson, we’ll show the prompt as <code>$</code>. Most importantly: when typing commands, either from these lessons or from other sources, <em>do not type the prompt</em>, only the commands that follow it. Also note that after you type a command, you have to press the <code>Enter</code> key to execute it.</p>
+<p>The prompt is followed by a <strong>text cursor</strong>, a character that indicates the position where your typing will appear. The cursor is usually a flashing or solid block, but it can also be an underscore or a pipe. You may have seen it in a text editor program, for example.</p>
+<p>So let’s try our first command, <code>ls</code> which is short for listing. This command will list the contents of the current directory:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span>     Downloads   Movies      Pictures</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Documents</span>   Library     Music       Public</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Command not found
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the shell can’t find a program whose name is the command you typed, it will print an error message. For example if you typed</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>it would return:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ks:</span> command not found</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This might happen if the command was mis-typed or if the pogram corresponding to that command is not installed.</p>
+</div>
+</div>
 </section>
-<section id="syllabus" class="level1">
-<h1>Syllabus</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Topic Number</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: right;">Author</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;"><a href="https://swcarpentry.github.io/shell-novice/">The Unix Shell</a></td>
-<td style="text-align: right;"><a href="https://software-carpentry.org/">The Software Carpentry Project</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;"><a href="https://swcarpentry.github.io/git-novice/">Git Version Control</a></td>
-<td style="text-align: right;"><a href="https://software-carpentry.org/">The Software Carpentry Project</a> + Florian Oswald</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;"><a href="https://swcarpentry.github.io/r-novice-inflammation/">Programming with <code>R</code></a></td>
-<td style="text-align: right;"><a href="https://software-carpentry.org/">The Software Carpentry Project</a> + Florian Oswald</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;"><a href="https://datacarpentry.org/geospatial-workshop/">Geospatial Programming with <code>R</code></a></td>
-<td style="text-align: right;"><a href="https://datacarpentry.org/">The Data Carpentry Project</a> + Florian Oswald</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;"></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="setup-instructions" class="level1">
-<h1>Setup Instructions</h1>
+<section id="nelles-pipeline-a-typical-problem" class="level2">
+<h2 class="anchored" data-anchor-id="nelles-pipeline-a-typical-problem">Nelle’s Pipeline: A Typical Problem</h2>
+<p>Nelle Nemo, a marine biologist, has just returned from a six-month survey of the <a href="http://en.wikipedia.org/wiki/North_Pacific_Gyre">North Pacific Gyre</a>, where she has been sampling gelatinous marine life in the <a href="http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>. She has 1520 samples that she’s run through an assay machine to measure the relative abundance of 300 proteins. She needs to run these 1520 files through an imaginary program called <code>goostats.sh</code> she inherited. On top of this huge task, she has to write up results by the end of the month so her paper can appear in a special issue of <em>Aquatic Goo Letters</em>.</p>
+<p>The bad news is that if she has to run <code>goostats.sh</code> by hand using a GUI, she’ll have to select and open a file 1520 times. If <code>goostats.sh</code> takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.</p>
+<p>The next few lessons will explore the ways Nelle can achieve this. More specifically, they explain how she can use a command shell to run the <code>goostats.sh</code> program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.</p>
+<p>As a bonus, once she has put a processing pipeline together, she will be able to use it again whenever she collects more data.</p>
+<p>In order to achieve her task, Nelle needs to know how to: - navigate to a file/directory - create a file/directory - check the length of a file - chain commands together - retrieve a set of files - iterate over files - run a shell script containing her pipeline</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Key Points
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>You must bring your own laptop to each class.</li>
-<li>Please make sure you have an up to date operating system, i.e.&nbsp;run a software update before we start.</li>
-<li>Everybody should <a href="https://cran.r-project.org/">install R</a> or make sure they have a recent version installed.</li>
-<li>Everybody should <a href="https://posit.co/download/rstudio-desktop/">install RStudio</a> or run an update on the installed program.</li>
+<li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
+<li>This lesson uses Bash, the default shell in many implementations of Unix.</li>
+<li>Programs can be run in Bash by entering commands at the command-line prompt.</li>
+<li>The shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.</li>
+<li>The shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.</li>
 </ul>
-<section id="windows-and-mac-specific-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="windows-and-mac-specific-instructions">Windows and Mac Specific Instructions</h2>
-<p>There are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.</p>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
-<p>We need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install</p>
-<ul>
-<li><a href="https://gitforwindows.org/">GitForWindows</a></li>
-</ul>
-<p><em>Specifics:</em></p>
-<ol type="1">
-<li>During the installation process, choose all default settings.</li>
-<li>At one point, you are offered a choice for a default editor being used for <code>git</code>. If you know <code>vim</code> already, why not (I use <code>vim</code>), otherwise I recommend <code>nano</code>, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e.&nbsp;don’t choose notepad and other standalone editors).</li>
-</ol>
-</section>
-<section id="mac" class="level3">
-<h3 class="anchored" data-anchor-id="mac">Mac</h3>
-<p>You should be all set. To make sure we have really everything we need, open <code>Terminal.app</code> (in <em>Applications &gt; Utilities</em> or do <code>Cmd + Space</code> to get spotlight search and type <code>terminal</code>). Then paste this code and hit enter:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>click on <em>install</em> (don’t click on <code>get Xcode</code>)</p>
-</section>
-<section id="unix" class="level3">
-<h3 class="anchored" data-anchor-id="unix">Unix</h3>
-<p>Same, all set. Maybe open a terminal and type</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>if that throws an error, install it with your package manager, e.g.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install git-all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
-</section>
-</section>
 </section>
 
 <p>© Florian Oswald, 2023</p></main> <!-- /main -->

@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "01-shell-intro.html",
+    "href": "01-shell-intro.html",
+    "title": "Introducing the Shell",
+    "section": "",
+    "text": "Question\n\n\n\n\nWhat is a command shell and why would I use one?\n© Florian Oswald, 2023"
+  },
+  {
+    "objectID": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
+    "href": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
+    "title": "Introducing the Shell",
+    "section": "Nelle’s Pipeline: A Typical Problem",
+    "text": "Nelle’s Pipeline: A Typical Problem\nNelle Nemo, a marine biologist, has just returned from a six-month survey of the North Pacific Gyre, where she has been sampling gelatinous marine life in the Great Pacific Garbage Patch. She has 1520 samples that she’s run through an assay machine to measure the relative abundance of 300 proteins. She needs to run these 1520 files through an imaginary program called goostats.sh she inherited. On top of this huge task, she has to write up results by the end of the month so her paper can appear in a special issue of Aquatic Goo Letters.\nThe bad news is that if she has to run goostats.sh by hand using a GUI, she’ll have to select and open a file 1520 times. If goostats.sh takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.\nThe next few lessons will explore the ways Nelle can achieve this. More specifically, they explain how she can use a command shell to run the goostats.sh program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.\nAs a bonus, once she has put a processing pipeline together, she will be able to use it again whenever she collects more data.\nIn order to achieve her task, Nelle needs to know how to: - navigate to a file/directory - create a file/directory - check the length of a file - chain commands together - retrieve a set of files - iterate over files - run a shell script containing her pipeline\n\n\n\n\n\n\nKey Points\n\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ScPoProgramming",
@@ -11,7 +25,7 @@
     "href": "index.html#windows-and-mac-specific-instructions",
     "title": "ScPoProgramming",
     "section": "Windows and Mac Specific Instructions",
-    "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\nSoftware Carpentry Windows Installer\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications > Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
+    "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\n\nSpecifics:\n\nDuring the installation process, choose all default settings.\nAt one point, you are offered a choice for a default editor being used for git. If you know vim already, why not (I use vim), otherwise I recommend nano, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don’t choose notepad and other standalone editors).\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications > Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
   },
   {
     "objectID": "about.html",
@@ -19,5 +33,47 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n\n\n© Florian Oswald, 2023"
+  },
+  {
+    "objectID": "01-shell-slides.html#intro",
+    "href": "01-shell-slides.html#intro",
+    "title": "The Unix Shell",
+    "section": "Intro",
+    "text": "Intro\n\n\n\n\n\n\nQuestion\n\n\n\nWhat is a command shell and why would I use one?\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nExplain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.\nExplain when and why command-line interfaces should be used instead of graphical interfaces."
+  },
+  {
+    "objectID": "01-shell-slides.html#do-you-gui",
+    "href": "01-shell-slides.html#do-you-gui",
+    "title": "The Unix Shell",
+    "section": "Do You GUI?",
+    "text": "Do You GUI?\n\n\n\n\n\n\nWhat’s a GUI\n\n\nA Graphical User Interface (GUI) lets the user interact by clicking with a mouse and using menus.\n\n\n\n\n\nI love 😍 a good Graphical User Interface (GUI)\n\n\n\n\nBut."
+  },
+  {
+    "objectID": "01-shell-slides.html#bad-things-can-happen",
+    "href": "01-shell-slides.html#bad-things-can-happen",
+    "title": "The Unix Shell",
+    "section": "Bad Things Can Happen",
+    "text": "Bad Things Can Happen"
+  },
+  {
+    "objectID": "01-shell-slides.html#bad.",
+    "href": "01-shell-slides.html#bad.",
+    "title": "The Unix Shell",
+    "section": "Bad.",
+    "text": "Bad.\n\n\n\n\n\n\n\n\nNo More than 65,536 Rows\n\n\n\nPublic Health England missed 14.000 covid cases\nThey used .xls document to collect data.\n\n\n\n\n\n\n\n\n\n\n\nNo Growth with High Debt?\n\n\n\nReinhardt and Rogoff controversy.1\nInadvertently did not select all relevant countries on spreadsheet.\n\n\n\n\n\n\nBoth are eminent researchers and we do not imply misconduct."
+  },
+  {
+    "objectID": "01-shell-slides.html#or-do-you-cli",
+    "href": "01-shell-slides.html#or-do-you-cli",
+    "title": "The Unix Shell",
+    "section": "Or Do you CLI?",
+    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing."
+  },
+  {
+    "objectID": "01-shell-slides.html#the-shell",
+    "href": "01-shell-slides.html#the-shell",
+    "title": "The Unix Shell",
+    "section": "The Shell",
+    "text": "The Shell\n\nThe shell is a program where we can type in commands and get output.\nWe often use very simple programs - good for just one thing.\nThere is tremendous power in combining those little programs.\nIt’s a platform approach to an Operating System.\n\n\n\n\n\n\n\nUnix is a Platform\n\n\nA protocol and many small program who interact according to the rules with each other\n\n\n\n\n\n\nlewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons\n\n\n\n\n\nScPo Intro To Programming 2023"
   }
 ]
