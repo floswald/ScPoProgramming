@@ -10,8 +10,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.313">
 
-  <meta name="author" content="Florian Oswald">
-  <title>ScPoProgramming - The Unix Shell</title>
+  <meta name="author" content="Florian Oswald and The Software Carpentry">
+  <title>ScPoProgramming - Navigating Files and Directories</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -55,44 +55,44 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
-        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
+      { color: #24292e;  }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
@@ -394,7 +394,7 @@
       margin-right: 0; 
     }
   </style>
-<meta name="twitter:title" content="ScPoProgramming - The Unix Shell">
+<meta name="twitter:title" content="ScPoProgramming - Navigating Files and Directories">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -402,12 +402,12 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The Unix Shell</h1>
+  <h1 class="title">Navigating Files and Directories</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Florian Oswald 
+Florian Oswald and The Software Carpentry 
 </div>
 </div>
 </div>
@@ -421,11 +421,13 @@ Florian Oswald
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Question</strong></p>
+<p><strong>Questions</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li>What is a command shell and why would I use one?</li>
+<li>How can I move around on my computer?</li>
+<li>How can I see what files and directories I have?</li>
+<li>How can I specify the location of a file or directory on my computer?</li>
 </ul>
 </div>
 </div>
@@ -440,221 +442,493 @@ Florian Oswald
 </div>
 <div class="callout-content">
 <ul>
-<li>Explain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.</li>
-<li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
+<li>Explain the similarities and differences between a file and a directory.</li>
+<li>Translate an absolute path into a relative path and vice versa.</li>
+<li>Construct absolute and relative paths that identify specific files and directories.</li>
+<li>Use options and arguments to change the behaviour of a shell command.</li>
+<li>Demonstrate the use of tab completion and explain its advantages.</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="do-you-gui" class="slide level2">
-<h2>Do You GUI?</h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<section id="the-file-system" class="slide level2 smaller">
+<h2>The File System</h2>
+<ul>
+<li>The file system organizes data into files and directories on your computer.</li>
+<li>let’s start finding out where we are by running the <code>pwd</code> command - <em>present working directory</em>.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>with output:</p>
+<pre><code>/Users/nelle</code></pre>
+<div class="callout callout-note callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>What’s a GUI</strong></p>
+<p><strong>Home Directory Variations</strong></p>
 </div>
 <div class="callout-content">
-<p>A <em>Graphical User Interface</em> (GUI) lets the user interact by clicking with a mouse and using menus.</p>
-</div>
-</div>
-</div>
-<div class="fragment">
 <ul>
-<li>I love 😍 a good Graphical User Interface (GUI)</li>
+<li>Linux: <code>/home/nelle</code></li>
+<li>Windows: <code>C:\Documents and Settings\nelle</code></li>
 </ul>
+<p>if <code>pwd</code> does not return your home directory, may need to navigate there first with <code>cd</code>.</p>
 </div>
-<div class="fragment">
-<ul>
-<li>But. Bad things can happen.</li>
-</ul>
 </div>
-<div class="fragment">
-<ul>
-<li>☠️</li>
-</ul>
 </div>
 </section>
-<section id="section" class="slide level2" data-background-image="./images/bad.gif" data-background-size="cover">
-<h2></h2>
-</section>
-<section id="bad." class="slide level2">
-<h2>Bad.</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="callout callout-warning callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>No More than 65,536 Rows</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Public Health England <a href="https://www.influentialsoftware.com/how-an-nhs-test-and-trace-excel-error-lost-16000-covid-19-cases/">missed 14.000 covid cases</a></li>
-<li>They used <code>.xls</code> document to collect data.</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="callout callout-warning callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>No Growth with High Debt?</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><a href="https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646">Reinhardt and Rogoff controversy</a>.<sup>1</sup></li>
-<li>Inadvertently did not select all relevant countries on spreadsheet.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Both are eminent researchers and we do <em>not</em> imply misconduct.</p></li></ol></aside></section>
-<section id="or-do-you-cli" class="slide level2">
-<h2>Or Do you CLI?</h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What’s a CLI</strong></p>
-</div>
-<div class="callout-content">
-<p>A <em>Command Line Interface</em> (CLI) allows interaction via (text) commands.</p>
-</div>
-</div>
-</div>
-<ul>
-<li>CLIs can collect commands somewhere - <em>reproducible</em></li>
-<li>But one has to learn a <em>language</em>.</li>
-<li>They are great for <em>long, repetitive tasks</em>.</li>
-<li>It’s often the <strong>only</strong> way to interact with high-performance computing. –&gt; Show!</li>
-</ul>
-</section>
-<section id="the-shell" class="slide level2 smaller">
-<h2>The Shell</h2>
-<ul>
-<li>The <em>shell</em> is a program where we can type in commands and get output.</li>
-<li>We often use very simple programs - good for just one thing.</li>
-<li>There is tremendous power in <em>combining</em> those little programs.</li>
-<li>It’s a <em>platform</em> approach to an Operating System.</li>
-</ul>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Unix is a Platform</strong></p>
-</div>
-<div class="callout-content">
-<p>A protocol and many small program who interact according to the rules with each other</p>
-</div>
-</div>
-</div>
+<section id="nelles-home-directory" class="slide level2">
+<h2>Nelle’s Home Directory</h2>
+<p>Nelle’s file system looks like this:</p>
 
-<img data-src="./images/Tux.png" class="r-stretch quarto-figure-center"><p class="caption">lewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons</p></section>
-<section id="go" class="slide level2">
-<h2>Go! 🚀</h2>
-<ol type="1">
-<li>Open your terminal! (<code>GitBash</code> on Windows)</li>
-<li>You should see something like</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which is called the <strong>prompt</strong>.</p>
-<ol start="3" type="1">
-<li>You <strong>don’t have to type</strong> the <code>$</code>!</li>
-<li>next to it, you see a cursor.</li>
-</ol>
-</section>
-<section id="first-command-ls" class="slide level2">
-<h2>First command: <code>ls</code></h2>
-<ul>
-<li>type <code>ls</code> and hit enter</li>
-<li>you see something like this as output:</li>
-</ul>
-<pre><code>Desktop     Downloads   Movies      Pictures
-Documents   Library     Music       Public</code></pre>
-<ul>
-<li>By default, the terminal opens in your home directory.</li>
-<li><code>ls</code> <em>lists</em> the content of that directory.</li>
+<img data-src="./images/filesystem.svg" class="r-stretch quarto-figure-center"><p class="caption">The file system is made up of a root directory that contains sub-directories titled bin, data, users, and tmp</p><ul>
+<li><code>/</code> is the <em>root</em> of the system</li>
+<li>all other locations can be reached from there via a <em>path</em></li>
+<li>path to homedir is from <code>/</code> to directory <code>Users</code>, which contains folder <code>Nelle</code></li>
+<li>We know exactly where the home is stored by looking at this path.</li>
+<li>Notice that <em>inside</em> a path, <code>/</code> is a <em>separator</em>. (It’s <code>\</code> on Windows!)</li>
 </ul>
 </section>
-<section id="first-error" class="slide level2">
-<h2>First Error!</h2>
+<section id="working-with-ls" class="slide level2">
+<h2>Working with <code>ls</code></h2>
+<ul>
+<li>type <code>ls -F</code>. This adds <em>option</em> <code>F</code> (for <em>full</em>) to the command.</li>
+<li>now you get also</li>
+<li>a trailing <code>/</code> indicates that this is a directory</li>
+<li><code>@</code> indicates a link</li>
+<li><code>*</code> indicates an executable</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Applications/ Documents/    Library/      Music/        Public/
+Desktop/      Downloads/    Movies/       Pictures/</code></pre>
 <div class="callout callout-caution callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Danger</strong></p>
+<p><strong>question</strong></p>
+</div>
+<div class="callout-content">
+<p>What kind of objects does Nelle’s home directory contain?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="help" class="slide level2">
+<h2>Help</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Clear Terminal</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li>If you mistype a command, or look for a program that is not installed, you get an error. Like:</li>
+<li>Use the <code>clear</code> command to clear terminal.</li>
+<li>you can use your <code>↑</code> and <code>↓</code> keys to see previous commands, or just scroll up.</li>
 </ul>
-<pre><code>bash-3.2$ ks</code></pre>
-<pre><code>bash: ks: command not found</code></pre>
 </div>
 </div>
 </div>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Getting Help</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>pass the <code>--help</code> option to a command:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">--Help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Read the manual entry with <code>man</code> (MacOS and Linux only)</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> ls </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Search internet for <code>unix man ls</code></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="more-ls-flags" class="slide level2">
+<h2>More <code>ls</code> Flags</h2>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>You can also use two options at the same time. What does the command <code>ls</code> do when used with the <code>-l</code> option? What about if you use both the <code>-l</code> and the <code>-h</code> option?</p>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>-l</code> option makes <code>ls</code> use a <strong>l</strong>ong listing format, showing not only the file/directory names but also additional information, such as the file size and the time of its last modification. If you use both the <code>-h</code> option and the <code>-l</code> option, this makes the file size ‘<strong>h</strong>uman readable’, i.e.&nbsp;displaying something like <code>5.3K</code> instead of <code>5369</code>.</p>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="more-ls-challenges" class="title-slide slide level1 center">
+<h1>More <code>ls</code> Challenges</h1>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Listing in Reverse Chronological Order</strong></p>
+</div>
+<div class="callout-content">
+<p>By default, <code>ls</code> lists the contents of a directory in alphabetical order by name. The command <code>ls -t</code> lists items by time of last change instead of alphabetically. The command <code>ls -r</code> lists the contents of a directory in reverse order. Which file is displayed last when you combine the <code>-t</code> and <code>-r</code> options? Hint: You may need to use the <code>-l</code> option to see the last changed dates.</p>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<p>The most recently changed file is listed last when using <code>-rt</code>. This can be very useful for finding your most recent edits or checking to see if a new output file was written.</p>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section id="getting-data" class="slide level2">
+<h2>Getting Data</h2>
+<ol type="1">
+<li>Let’s <a href="./data/shell-lesson-data.zip">download some data</a></li>
+<li>unzip it and and move it to your <code>Desktop</code></li>
+</ol>
+</section>
+<section id="exploring-more-directories" class="slide level2 smaller">
+<h2>Exploring More Directories</h2>
 <ul>
-<li>Look for a spelling mistake (it’s <code>ls</code> not <code>ks</code>)</li>
-<li>Or install the required program.</li>
+<li><code>ls</code> can search other than only the <em>current</em> directories.</li>
+<li>Let’s see what is on our <code>Desktop</code>:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> Desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>shows for Nelle only the data we just downloaded:</p>
+<pre><code>shell-lesson-data/</code></pre>
+<ul>
+<li>We can also look <em>inside</em> that data from where we are:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> Desktop/shell-less-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>exercise-data/  north-pacific-gyre/</code></pre>
+<ul>
+<li>looks intriguing 🧐. Let’s try and go there!</li>
 </ul>
 </section>
-<section id="nelles-pipeline-a-typical-problem" class="slide level2 smaller">
-<h2>Nelle’s Pipeline: A Typical Problem</h2>
+<section id="going-into-subdirectories" class="slide level2">
+<h2>Going into Subdirectories</h2>
 <ul>
-<li>Nelle Nemo is a marine biologist. 🌊 🐡</li>
-<li>Just sampled gelatinous marine life in the <a href="http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>.</li>
-<li>From 1520 samples she obtained measures of the relative abundance of 300 proteins.</li>
-<li>Her supervisor, <em>Professor Jones</em>, handed down to hear a program called <code>goostats.sh</code>.</li>
-<li><code>goostats.sh</code> needs to be run on each of the 1520 samples.</li>
-<li>Paper needs to be ready by the end of the month.</li>
+<li><code>cd</code> is for <em>change directory</em>. Moves the shell to a different location in the file system.</li>
+<li>Let’s go to our data folder:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd Desktop</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="va">$$$$$$</span>cd exercise-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Notice that the <code>cd</code> command does not print any output by default.</li>
+<li>Run <code>ls -F</code> again to see what’s in this directory!</li>
+<li>Run <code>pwd</code> to see where we are!</li>
 </ul>
 </section>
-<section id="section-1" class="slide level2" data-background-image="./images/PHD.png" data-background-size="50%" data-background-position="center">
-<h2></h2>
-</section>
-<section id="battle-plan" class="slide level2">
-<h2>Battle Plan</h2>
+<section id="coming-back-from-subdirectories" class="slide level2">
+<h2>Coming Back from Subdirectories</h2>
 <ul>
-<li>Using a GUI to run <code>goostats.sh</code>, Nelle will have to use her mouse to select and open a file 1520 times.</li>
-<li>If <code>goostats.sh</code> takes 30 secs to run, this will take more than 12 hours of Nelle’s <em>active time</em>.</li>
-<li>With the help of the shell, Nelle could make her computer go through that list of files instead.</li>
-<li><strong>Bonus</strong> : she will have a working pipeline, that can be re-run each time need be.</li>
+<li>Now we want to go back up one level.</li>
+<li>It’s tempting to say <code>cd shell-lesson-data</code></li>
+<li>But <code>cd</code> can only go into <em>its own subdirectories</em>.</li>
+<li>It has a special one: <code>..</code> is its <em>parent</em> directory, so goes one up.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>puts Nelle back into</p>
+<pre><code>/Users/nelle/Desktop/shell-lesson-data</code></pre>
+<ul>
+<li>Notice how <code>..</code> is listed if you flag <code>-a</code> on the <code>ls</code> command.</li>
 </ul>
 </section>
-<section id="what-does-nelle-need" class="slide level2 smaller">
-<h2>What Does Nelle Need</h2>
-<p>Nelle has needs to learn the following things:</p>
+<section id="hidden-files" class="slide level2">
+<h2>Hidden Files</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hidden Files</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>navigate to a file/directory</li>
-<li>create a file/directory</li>
-<li>check the length of a file</li>
-<li>chain commands together</li>
-<li>retrieve a set of files</li>
-<li>iterate over files</li>
-<li>run a shell script containing her pipeline</li>
+<li>Typing <code>cd</code> without any arguments puts you back into your Home directory. Do it.</li>
+<li>Let’s use <code>ls -F -a</code> or <code>ls -Fa</code> to list <em>all</em> files. Also <strong>hidden</strong> ones!</li>
 </ul>
-<p>And we will be right next to her. 🙂</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Relative and Absolute Paths</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Up until now, we used <em>relative paths</em>. <code>cd</code> and <code>ls</code> operated <strong>from our current position</strong> in the file sytem.</li>
+<li>We can also specify the <em>absolute path</em>, i.e.&nbsp;starting at the root <code>/</code>. This allows to go anywhere from anywhere.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="section-2" class="slide level2">
-<h2></h2>
+<section id="more-shortcuts" class="slide level2">
+<h2>More Shortcuts</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tilde (<code>~</code>) and dash (<code>-</code>)</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>The tilde <code>~</code> in first position means <em>current user’s home</em></li>
+<li>The dash in <code>cd -</code> means <em>go into the directory I was previously in</em>.</li>
+<li>So:</li>
+</ul>
+<ol type="1">
+<li><code>cd ..</code> brings you <em>up</em> one level</li>
+<li><code>cd -</code> takes you <em>back</em> to wherever you’ve come from.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="challenges" class="slide level2">
+<h2>Challenges</h2>
+<div class="callout callout-caution callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Starting from <code>/Users/amanda/data</code>, which of the following commands could Amanda use to navigate to her home directory, which is <code>/Users/amanda</code>?</p>
+<ol type="1">
+<li><code>cd .</code></li>
+<li><code>cd /</code></li>
+<li><code>cd /home/amanda</code></li>
+<li><code>cd ../..</code></li>
+<li><code>cd ~</code></li>
+<li><code>cd home</code></li>
+<li><code>cd ~/data/..</code></li>
+<li><code>cd</code></li>
+<li><code>cd ..</code></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-2" class="slide level2">
+<h2>Solution</h2>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>No: <code>.</code> stands for the current directory.</li>
+<li>No: <code>/</code> stands for the root directory.</li>
+<li>No: Amanda’s home directory is <code>/Users/amanda</code>.</li>
+<li>No: this command goes up two levels, i.e.&nbsp;ends in <code>/Users</code>.</li>
+<li>Yes: <code>~</code> stands for the user’s home directory, in this case <code>/Users/amanda</code>.</li>
+<li>No: this command would navigate into a directory <code>home</code> in the current directory if it exists.</li>
+<li>Yes: unnecessarily complicated, but correct.</li>
+<li>Yes: shortcut to go back to the user’s home directory.</li>
+<li>Yes: goes up one level.</li>
+</ol>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section class="slide level2">
+
+<p><img data-src="./images/filesystem-challenge.svg" class="absolute" style="top: 200px; right: 30px; width: 550px; height: 500px; "></p>
+<div class="callout callout-caution callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Using the filesystem diagram , if <code>pwd</code> displays <code>/Users/thing</code>, what will <code>ls -F ../backup</code> display?</p>
+<ol type="1">
+<li><code>../backup: No such file or directory</code></li>
+<li><code>2012-12-01 2013-01-08 2013-01-27</code></li>
+<li><code>2012-12-01/ 2013-01-08/ 2013-01-27/</code></li>
+<li><code>original/ pnas_final/ pnas_sub/</code></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-4" class="slide level2">
+<h2>Solution</h2>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>No: there <em>is</em> a directory <code>backup</code> in <code>/Users</code>.</li>
+<li>No: this is the content of <code>Users/thing/backup</code>, but with <code>..</code>, we asked for one level further up.</li>
+<li>No: see previous explanation.</li>
+<li>Yes: <code>../backup/</code> refers to <code>/Users/backup/</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section class="slide level2">
+
+<p><img data-src="./images/filesystem-challenge.svg" class="absolute" style="top: 200px; right: 60px; width: 550px; height: 500px; "></p>
+<div class="callout callout-caution callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Using the filesystem diagram below, if <code>pwd</code> displays <code>/Users/backup</code>,and <code>-r</code> tells <code>ls</code> to display things in reverse order, what command(s) will result in the following output:</p>
+<pre><code>pnas_sub/ pnas_final/ original/</code></pre>
+<p>is it:</p>
+<ol type="1">
+<li><code>ls pwd</code>?</li>
+<li><code>ls -r -F</code>?</li>
+<li><code>ls -r -F /Users/backup</code>?</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-6" class="slide level2">
+<h2>Solution</h2>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>No: <code>pwd</code> is not the name of a directory.</li>
+<li>Yes: <code>ls</code> without directory argument lists files and directories in the current directory.</li>
+<li>Yes: uses the absolute path explicitly.</li>
+</ol>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section id="general-syntax-of-shell-commands" class="slide level2 smaller">
+<h2>General Syntax of Shell Commands</h2>
+<p>Let’s take as example this command:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> /</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="./images/shell_command_syntax.svg" class="r-stretch quarto-figure-center"><p class="caption">General syntax of a shell command</p><ul>
+<li>The space between <code>ls</code> and whatever options you put is important.</li>
+<li>Capitalization is important. <code>ls -s</code> is not the same as <code>ls -S</code>:</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop/shell-lesson-data</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-s</span> exercise-data  <span class="co"># size</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-S</span> exercise-data  <span class="co"># sort by size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nelles-pipeline-and-tab-completion" class="slide level2">
+<h2>Nelle’s Pipeline and Tab Completion</h2>
+<ol type="1">
+<li>Nelle organized the output of the assay machine into <code>north-pacific-gyre/</code>. let’s go there.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop/shell-lesson-data/</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd north-pacific-gyre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Now <code>north-pacific-gyre</code> is a mouthful to write. try instead to type <code>cd n</code> and hit the TAB key.</li>
+<li>hitting TAB twice without any leading character, gives you a list of files in <code>pwd</code>.</li>
+</ol>
+</section>
+<section class="slide level2">
+
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -665,11 +939,18 @@ Documents   Library     Music       Public</code></pre>
 </div>
 <div class="callout-content">
 <ul>
-<li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
-<li>This lesson uses Bash, the default shell in many implementations of Unix.</li>
-<li>Programs can be run in Bash by entering commands at the command-line prompt.</li>
-<li>The shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.</li>
-<li>The shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.</li>
+<li>The file system is responsible for managing information on the disk.</li>
+<li>Information is stored in files, which are stored in directories (folders).</li>
+<li>Directories can also store other directories, which then form a directory tree.</li>
+<li><code>pwd</code> prints the user’s current working directory.</li>
+<li><code>ls [path]</code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
+<li><code>cd [path]</code> changes the current working directory.</li>
+<li>Most commands take options that begin with a single <code>-</code>.</li>
+<li>Directory names in a path are separated with <code>/</code> on Unix, but <code>\\</code> on Windows.</li>
+<li><code>/</code> on its own is the root directory of the whole file system.</li>
+<li>An absolute path specifies a location from the root of the file system.</li>
+<li>A relative path specifies a location starting from the current location.</li>
+<li><code>.</code> on its own means ‘the current directory’; <code>..</code> means ‘the directory above the current one’.</li>
 </ul>
 </div>
 </div>
@@ -679,8 +960,7 @@ Documents   Library     Music       Public</code></pre>
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>ScPo Intro To Programming 2023</p>
 </div>
-</section>
-
+</section></section>
     </div>
   </div>
 

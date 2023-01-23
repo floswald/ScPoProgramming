@@ -1,17 +1,115 @@
 [
   {
-    "objectID": "01-shell-intro.html",
-    "href": "01-shell-intro.html",
-    "title": "Introducing the Shell",
-    "section": "",
-    "text": "Question\n\n\n\n\nWhat is a command shell and why would I use one?\n© Florian Oswald, 2023"
+    "objectID": "01-shell-intro.html#intro",
+    "href": "01-shell-intro.html#intro",
+    "title": "The Unix Shell",
+    "section": "Intro",
+    "text": "Intro\n\n\n\n\n\n\nQuestion\n\n\n\nWhat is a command shell and why would I use one?\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nExplain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.\nExplain when and why command-line interfaces should be used instead of graphical interfaces."
+  },
+  {
+    "objectID": "01-shell-intro.html#do-you-gui",
+    "href": "01-shell-intro.html#do-you-gui",
+    "title": "The Unix Shell",
+    "section": "Do You GUI?",
+    "text": "Do You GUI?\n\n\n\n\n\n\nWhat’s a GUI\n\n\nA Graphical User Interface (GUI) lets the user interact by clicking with a mouse and using menus.\n\n\n\n\n\nI love 😍 a good Graphical User Interface (GUI)\n\n\n\n\nBut. Bad things can happen.\n\n\n\n\n☠️"
+  },
+  {
+    "objectID": "01-shell-intro.html#bad.",
+    "href": "01-shell-intro.html#bad.",
+    "title": "The Unix Shell",
+    "section": "Bad.",
+    "text": "Bad.\n\n\n\n\n\n\n\n\nNo More than 65,536 Rows\n\n\n\nPublic Health England missed 14.000 covid cases\nThey used .xls document to collect data.\n\n\n\n\n\n\n\n\n\n\n\nNo Growth with High Debt?\n\n\n\nReinhardt and Rogoff controversy.1\nInadvertently did not select all relevant countries on spreadsheet.\n\n\n\n\n\n\nBoth are eminent researchers and we do not imply misconduct."
+  },
+  {
+    "objectID": "01-shell-intro.html#or-do-you-cli",
+    "href": "01-shell-intro.html#or-do-you-cli",
+    "title": "The Unix Shell",
+    "section": "Or Do you CLI?",
+    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing. –> Show!"
+  },
+  {
+    "objectID": "01-shell-intro.html#the-shell",
+    "href": "01-shell-intro.html#the-shell",
+    "title": "The Unix Shell",
+    "section": "The Shell",
+    "text": "The Shell\n\nThe shell is a program where we can type in commands and get output.\nWe often use very simple programs - good for just one thing.\nThere is tremendous power in combining those little programs.\nIt’s a platform approach to an Operating System.\n\n\n\n\n\n\n\nUnix is a Platform\n\n\nA protocol and many small program who interact according to the rules with each other\n\n\n\n\nlewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons"
+  },
+  {
+    "objectID": "01-shell-intro.html#go",
+    "href": "01-shell-intro.html#go",
+    "title": "The Unix Shell",
+    "section": "Go! 🚀",
+    "text": "Go! 🚀\n\nOpen your terminal! (GitBash on Windows)\nYou should see something like\n\n$\nwhich is called the prompt.\n\nYou don’t have to type the $!\nnext to it, you see a cursor."
+  },
+  {
+    "objectID": "01-shell-intro.html#first-command-ls",
+    "href": "01-shell-intro.html#first-command-ls",
+    "title": "The Unix Shell",
+    "section": "First command: ls",
+    "text": "First command: ls\n\ntype ls and hit enter\nyou see something like this as output:\n\nDesktop     Downloads   Movies      Pictures\nDocuments   Library     Music       Public\n\nBy default, the terminal opens in your home directory.\nls lists the content of that directory."
+  },
+  {
+    "objectID": "01-shell-intro.html#first-error",
+    "href": "01-shell-intro.html#first-error",
+    "title": "The Unix Shell",
+    "section": "First Error!",
+    "text": "First Error!\n\n\n\n\n\n\nDanger\n\n\n\nIf you mistype a command, or look for a program that is not installed, you get an error. Like:\n\nbash-3.2$ ks\nbash: ks: command not found\n\n\n\n\nLook for a spelling mistake (it’s ls not ks)\nOr install the required program."
   },
   {
     "objectID": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
     "href": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
-    "title": "Introducing the Shell",
+    "title": "The Unix Shell",
     "section": "Nelle’s Pipeline: A Typical Problem",
-    "text": "Nelle’s Pipeline: A Typical Problem\nNelle Nemo, a marine biologist, has just returned from a six-month survey of the North Pacific Gyre, where she has been sampling gelatinous marine life in the Great Pacific Garbage Patch. She has 1520 samples that she’s run through an assay machine to measure the relative abundance of 300 proteins. She needs to run these 1520 files through an imaginary program called goostats.sh she inherited. On top of this huge task, she has to write up results by the end of the month so her paper can appear in a special issue of Aquatic Goo Letters.\nThe bad news is that if she has to run goostats.sh by hand using a GUI, she’ll have to select and open a file 1520 times. If goostats.sh takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.\nThe next few lessons will explore the ways Nelle can achieve this. More specifically, they explain how she can use a command shell to run the goostats.sh program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.\nAs a bonus, once she has put a processing pipeline together, she will be able to use it again whenever she collects more data.\nIn order to achieve her task, Nelle needs to know how to: - navigate to a file/directory - create a file/directory - check the length of a file - chain commands together - retrieve a set of files - iterate over files - run a shell script containing her pipeline\n\n\n\n\n\n\nKey Points\n\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be."
+    "text": "Nelle’s Pipeline: A Typical Problem\n\nNelle Nemo is a marine biologist. 🌊 🐡\nJust sampled gelatinous marine life in the Great Pacific Garbage Patch.\nFrom 1520 samples she obtained measures of the relative abundance of 300 proteins.\nHer supervisor, Professor Jones, handed down to hear a program called goostats.sh.\ngoostats.sh needs to be run on each of the 1520 samples.\nPaper needs to be ready by the end of the month."
+  },
+  {
+    "objectID": "01-shell-intro.html#battle-plan",
+    "href": "01-shell-intro.html#battle-plan",
+    "title": "The Unix Shell",
+    "section": "Battle Plan",
+    "text": "Battle Plan\n\nUsing a GUI to run goostats.sh, Nelle will have to use her mouse to select and open a file 1520 times.\nIf goostats.sh takes 30 secs to run, this will take more than 12 hours of Nelle’s active time.\nWith the help of the shell, Nelle could make her computer go through that list of files instead.\nBonus : she will have a working pipeline, that can be re-run each time need be."
+  },
+  {
+    "objectID": "01-shell-intro.html#what-does-nelle-need",
+    "href": "01-shell-intro.html#what-does-nelle-need",
+    "title": "The Unix Shell",
+    "section": "What Does Nelle Need",
+    "text": "What Does Nelle Need\nNelle has needs to learn the following things:\n\nnavigate to a file/directory\ncreate a file/directory\ncheck the length of a file\nchain commands together\nretrieve a set of files\niterate over files\nrun a shell script containing her pipeline\n\nAnd we will be right next to her. 🙂"
+  },
+  {
+    "objectID": "01-shell-intro.html#section-2",
+    "href": "01-shell-intro.html#section-2",
+    "title": "The Unix Shell",
+    "section": "",
+    "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+  },
+  {
+    "objectID": "03-filework.html#intro",
+    "href": "03-filework.html#intro",
+    "title": "Working with Files and Directories",
+    "section": "Intro",
+    "text": "Intro\n\n\n\n\n\n\nQuestions\n\n\n\nHow can I create, copy, and delete files and directories?\nHow can I edit files?\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nCreate a directory hierarchy that matches a given diagram.\nCreate files in that hierarchy using an editor or by copying and renaming existing files.\nDelete, copy and move specified files and/or directories."
+  },
+  {
+    "objectID": "03-filework.html#creating-directories",
+    "href": "03-filework.html#creating-directories",
+    "title": "Working with Files and Directories",
+    "section": "Creating Directories",
+    "text": "Creating Directories\n\nLet’s create a directory thesis here:\n\n$ cd ~/Desktop/shell-lesson-data/exercise-data/writing\n$ ls -F\nthis outputs:\nhaiku.txt  LittleWomen.txt\n\nUse mkdir to create:\n\n$ mkdir thesis\nused like this, thesis is created in the current directory. While with the -p flag we created nested subdirectories:\n$ mkdir -p ../project/data ../project/results"
+  },
+  {
+    "objectID": "03-filework.html#good-file-names",
+    "href": "03-filework.html#good-file-names",
+    "title": "Working with Files and Directories",
+    "section": "Good File Names",
+    "text": "Good File Names\n\n\n\n\n\n\nBad File Names\n\n\n\nDon’t use spaces. north pacific gyre is not a good one. Use north-pacific-gyre instead.\nDon’t begin with -.\nStick with letters, numbers, ., -, and _"
+  },
+  {
+    "objectID": "03-filework.html#creating-a-text-file",
+    "href": "03-filework.html#creating-a-text-file",
+    "title": "Working with Files and Directories",
+    "section": "Creating a Text File",
+    "text": "Creating a Text File\n\nLet’s go into the thesis directory and create a text file called draft.txt.\n\n$ cd thesis\n$ nano draft.txt\n\n\n\n\n\n\nTEXT Editor\n\n\nnano is a super simple editor, and you can use it only to edit text files (That’s normal for text editors 😉). You will probably switch to a more powerful editor later on (I recommend VSCode), but nano is a good starting point.\n\n\n\n\n\n\nScPo Intro To Programming 2023"
   },
   {
     "objectID": "index.html",
@@ -35,45 +133,129 @@
     "text": "About this site\n\n\n\n© Florian Oswald, 2023"
   },
   {
-    "objectID": "01-shell-slides.html#intro",
-    "href": "01-shell-slides.html#intro",
-    "title": "The Unix Shell",
+    "objectID": "02-filedir.html#intro",
+    "href": "02-filedir.html#intro",
+    "title": "Navigating Files and Directories",
     "section": "Intro",
-    "text": "Intro\n\n\n\n\n\n\nQuestion\n\n\n\nWhat is a command shell and why would I use one?\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nExplain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.\nExplain when and why command-line interfaces should be used instead of graphical interfaces."
+    "text": "Intro\n\n\n\n\n\n\nQuestions\n\n\n\nHow can I move around on my computer?\nHow can I see what files and directories I have?\nHow can I specify the location of a file or directory on my computer?\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nExplain the similarities and differences between a file and a directory.\nTranslate an absolute path into a relative path and vice versa.\nConstruct absolute and relative paths that identify specific files and directories.\nUse options and arguments to change the behaviour of a shell command.\nDemonstrate the use of tab completion and explain its advantages."
   },
   {
-    "objectID": "01-shell-slides.html#do-you-gui",
-    "href": "01-shell-slides.html#do-you-gui",
-    "title": "The Unix Shell",
-    "section": "Do You GUI?",
-    "text": "Do You GUI?\n\n\n\n\n\n\nWhat’s a GUI\n\n\nA Graphical User Interface (GUI) lets the user interact by clicking with a mouse and using menus.\n\n\n\n\n\nI love 😍 a good Graphical User Interface (GUI)\n\n\n\n\nBut."
+    "objectID": "02-filedir.html#the-file-system",
+    "href": "02-filedir.html#the-file-system",
+    "title": "Navigating Files and Directories",
+    "section": "The File System",
+    "text": "The File System\n\nThe file system organizes data into files and directories on your computer.\nlet’s start finding out where we are by running the pwd command - present working directory.\n\n$ pwd\nwith output:\n/Users/nelle\n\n\n\n\n\n\nHome Directory Variations\n\n\n\nLinux: /home/nelle\nWindows: C:\\Documents and Settings\\nelle\n\nif pwd does not return your home directory, may need to navigate there first with cd."
   },
   {
-    "objectID": "01-shell-slides.html#bad-things-can-happen",
-    "href": "01-shell-slides.html#bad-things-can-happen",
-    "title": "The Unix Shell",
-    "section": "Bad Things Can Happen",
-    "text": "Bad Things Can Happen"
+    "objectID": "02-filedir.html#nelles-home-directory",
+    "href": "02-filedir.html#nelles-home-directory",
+    "title": "Navigating Files and Directories",
+    "section": "Nelle’s Home Directory",
+    "text": "Nelle’s Home Directory\nNelle’s file system looks like this:\n\nThe file system is made up of a root directory that contains sub-directories titled bin, data, users, and tmp\n/ is the root of the system\nall other locations can be reached from there via a path\npath to homedir is from / to directory Users, which contains folder Nelle\nWe know exactly where the home is stored by looking at this path.\nNotice that inside a path, / is a separator. (It’s \\ on Windows!)"
   },
   {
-    "objectID": "01-shell-slides.html#bad.",
-    "href": "01-shell-slides.html#bad.",
-    "title": "The Unix Shell",
-    "section": "Bad.",
-    "text": "Bad.\n\n\n\n\n\n\n\n\nNo More than 65,536 Rows\n\n\n\nPublic Health England missed 14.000 covid cases\nThey used .xls document to collect data.\n\n\n\n\n\n\n\n\n\n\n\nNo Growth with High Debt?\n\n\n\nReinhardt and Rogoff controversy.1\nInadvertently did not select all relevant countries on spreadsheet.\n\n\n\n\n\n\nBoth are eminent researchers and we do not imply misconduct."
+    "objectID": "02-filedir.html#working-with-ls",
+    "href": "02-filedir.html#working-with-ls",
+    "title": "Navigating Files and Directories",
+    "section": "Working with ls",
+    "text": "Working with ls\n\ntype ls -F. This adds option F (for full) to the command.\nnow you get also\na trailing / indicates that this is a directory\n@ indicates a link\n* indicates an executable\n\n$ ls -F\nApplications/ Documents/    Library/      Music/        Public/\nDesktop/      Downloads/    Movies/       Pictures/\n\n\n\n\n\n\nquestion\n\n\nWhat kind of objects does Nelle’s home directory contain?"
   },
   {
-    "objectID": "01-shell-slides.html#or-do-you-cli",
-    "href": "01-shell-slides.html#or-do-you-cli",
-    "title": "The Unix Shell",
-    "section": "Or Do you CLI?",
-    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing."
+    "objectID": "02-filedir.html#help",
+    "href": "02-filedir.html#help",
+    "title": "Navigating Files and Directories",
+    "section": "Help",
+    "text": "Help\n\n\n\n\n\n\nClear Terminal\n\n\n\nUse the clear command to clear terminal.\nyou can use your ↑ and ↓ keys to see previous commands, or just scroll up.\n\n\n\n\n\n\n\n\n\n\nGetting Help\n\n\n\npass the --help option to a command:\n\n$ ls --Help\n\nRead the manual entry with man (MacOS and Linux only)\n\nman ls \n\nSearch internet for unix man ls"
   },
   {
-    "objectID": "01-shell-slides.html#the-shell",
-    "href": "01-shell-slides.html#the-shell",
-    "title": "The Unix Shell",
-    "section": "The Shell",
-    "text": "The Shell\n\nThe shell is a program where we can type in commands and get output.\nWe often use very simple programs - good for just one thing.\nThere is tremendous power in combining those little programs.\nIt’s a platform approach to an Operating System.\n\n\n\n\n\n\n\nUnix is a Platform\n\n\nA protocol and many small program who interact according to the rules with each other\n\n\n\n\n\n\nlewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons\n\n\n\n\n\nScPo Intro To Programming 2023"
+    "objectID": "02-filedir.html#more-ls-flags",
+    "href": "02-filedir.html#more-ls-flags",
+    "title": "Navigating Files and Directories",
+    "section": "More ls Flags",
+    "text": "More ls Flags\n\n\n\n\n\n\nChallenge\n\n\nYou can also use two options at the same time. What does the command ls do when used with the -l option? What about if you use both the -l and the -h option?\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nThe -l option makes ls use a long listing format, showing not only the file/directory names but also additional information, such as the file size and the time of its last modification. If you use both the -h option and the -l option, this makes the file size ‘human readable’, i.e. displaying something like 5.3K instead of 5369."
+  },
+  {
+    "objectID": "02-filedir.html#getting-data",
+    "href": "02-filedir.html#getting-data",
+    "title": "Navigating Files and Directories",
+    "section": "Getting Data",
+    "text": "Getting Data\n\nLet’s download some data\nunzip it and and move it to your Desktop"
+  },
+  {
+    "objectID": "02-filedir.html#exploring-more-directories",
+    "href": "02-filedir.html#exploring-more-directories",
+    "title": "Navigating Files and Directories",
+    "section": "Exploring More Directories",
+    "text": "Exploring More Directories\n\nls can search other than only the current directories.\nLet’s see what is on our Desktop:\n\n$ ls -F Desktop\nshows for Nelle only the data we just downloaded:\nshell-lesson-data/\n\nWe can also look inside that data from where we are:\n\n$ ls -F Desktop/shell-less-data\nexercise-data/  north-pacific-gyre/\n\nlooks intriguing 🧐. Let’s try and go there!"
+  },
+  {
+    "objectID": "02-filedir.html#going-into-subdirectories",
+    "href": "02-filedir.html#going-into-subdirectories",
+    "title": "Navigating Files and Directories",
+    "section": "Going into Subdirectories",
+    "text": "Going into Subdirectories\n\ncd is for change directory. Moves the shell to a different location in the file system.\nLet’s go to our data folder:\n\n$ cd Desktop\n$ cd shell-lesson-data \n$ $$$$$$cd exercise-data\n\nNotice that the cd command does not print any output by default.\nRun ls -F again to see what’s in this directory!\nRun pwd to see where we are!"
+  },
+  {
+    "objectID": "02-filedir.html#coming-back-from-subdirectories",
+    "href": "02-filedir.html#coming-back-from-subdirectories",
+    "title": "Navigating Files and Directories",
+    "section": "Coming Back from Subdirectories",
+    "text": "Coming Back from Subdirectories\n\nNow we want to go back up one level.\nIt’s tempting to say cd shell-lesson-data\nBut cd can only go into its own subdirectories.\nIt has a special one: .. is its parent directory, so goes one up.\n\n$ cd ..\n$ pwd\nputs Nelle back into\n/Users/nelle/Desktop/shell-lesson-data\n\nNotice how .. is listed if you flag -a on the ls command."
+  },
+  {
+    "objectID": "02-filedir.html#hidden-files",
+    "href": "02-filedir.html#hidden-files",
+    "title": "Navigating Files and Directories",
+    "section": "Hidden Files",
+    "text": "Hidden Files\n\n\n\n\n\n\nHidden Files\n\n\n\nTyping cd without any arguments puts you back into your Home directory. Do it.\nLet’s use ls -F -a or ls -Fa to list all files. Also hidden ones!\n\n\n\n\n\n\n\n\n\n\nRelative and Absolute Paths\n\n\n\nUp until now, we used relative paths. cd and ls operated from our current position in the file sytem.\nWe can also specify the absolute path, i.e. starting at the root /. This allows to go anywhere from anywhere."
+  },
+  {
+    "objectID": "02-filedir.html#more-shortcuts",
+    "href": "02-filedir.html#more-shortcuts",
+    "title": "Navigating Files and Directories",
+    "section": "More Shortcuts",
+    "text": "More Shortcuts\n\n\n\n\n\n\nTilde (~) and dash (-)\n\n\n\nThe tilde ~ in first position means current user’s home\nThe dash in cd - means go into the directory I was previously in.\nSo:\n\n\ncd .. brings you up one level\ncd - takes you back to wherever you’ve come from."
+  },
+  {
+    "objectID": "02-filedir.html#challenges",
+    "href": "02-filedir.html#challenges",
+    "title": "Navigating Files and Directories",
+    "section": "Challenges",
+    "text": "Challenges\n\n\n\n\n\n\nChallenge\n\n\nStarting from /Users/amanda/data, which of the following commands could Amanda use to navigate to her home directory, which is /Users/amanda?\n\ncd .\ncd /\ncd /home/amanda\ncd ../..\ncd ~\ncd home\ncd ~/data/..\ncd\ncd .."
+  },
+  {
+    "objectID": "02-filedir.html#solution-2",
+    "href": "02-filedir.html#solution-2",
+    "title": "Navigating Files and Directories",
+    "section": "Solution",
+    "text": "Solution\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nNo: . stands for the current directory.\nNo: / stands for the root directory.\nNo: Amanda’s home directory is /Users/amanda.\nNo: this command goes up two levels, i.e. ends in /Users.\nYes: ~ stands for the user’s home directory, in this case /Users/amanda.\nNo: this command would navigate into a directory home in the current directory if it exists.\nYes: unnecessarily complicated, but correct.\nYes: shortcut to go back to the user’s home directory.\nYes: goes up one level."
+  },
+  {
+    "objectID": "02-filedir.html#solution-4",
+    "href": "02-filedir.html#solution-4",
+    "title": "Navigating Files and Directories",
+    "section": "Solution",
+    "text": "Solution\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nNo: there is a directory backup in /Users.\nNo: this is the content of Users/thing/backup, but with .., we asked for one level further up.\nNo: see previous explanation.\nYes: ../backup/ refers to /Users/backup/."
+  },
+  {
+    "objectID": "02-filedir.html#solution-6",
+    "href": "02-filedir.html#solution-6",
+    "title": "Navigating Files and Directories",
+    "section": "Solution",
+    "text": "Solution\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nNo: pwd is not the name of a directory.\nYes: ls without directory argument lists files and directories in the current directory.\nYes: uses the absolute path explicitly."
+  },
+  {
+    "objectID": "02-filedir.html#general-syntax-of-shell-commands",
+    "href": "02-filedir.html#general-syntax-of-shell-commands",
+    "title": "Navigating Files and Directories",
+    "section": "General Syntax of Shell Commands",
+    "text": "General Syntax of Shell Commands\nLet’s take as example this command:\n$ ls -F /\n\nGeneral syntax of a shell command\nThe space between ls and whatever options you put is important.\nCapitalization is important. ls -s is not the same as ls -S:\n\n$ cd ~/Desktop/shell-lesson-data\n$ ls -s exercise-data  # size\n$ ls -S exercise-data  # sort by size"
+  },
+  {
+    "objectID": "02-filedir.html#nelles-pipeline-and-tab-completion",
+    "href": "02-filedir.html#nelles-pipeline-and-tab-completion",
+    "title": "Navigating Files and Directories",
+    "section": "Nelle’s Pipeline and Tab Completion",
+    "text": "Nelle’s Pipeline and Tab Completion\n\nNelle organized the output of the assay machine into north-pacific-gyre/. let’s go there.\n\n$ cd ~/Desktop/shell-lesson-data/\n$ cd north-pacific-gyre\n\nNow north-pacific-gyre is a mouthful to write. try instead to type cd n and hit the TAB key.\nhitting TAB twice without any leading character, gives you a list of files in pwd."
   }
 ]

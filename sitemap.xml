@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/01-shell-intro.html</loc>
-    <lastmod>2023-01-22T09:34:07.924Z</lastmod>
+    <lastmod>2023-01-23T16:40:01.595Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/03-filework.html</loc>
+    <lastmod>2023-01-23T16:40:01.922Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/index.html</loc>
-    <lastmod>2023-01-22T09:34:08.364Z</lastmod>
+    <lastmod>2023-01-23T16:40:02.278Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/about.html</loc>
-    <lastmod>2023-01-22T09:34:08.716Z</lastmod>
+    <lastmod>2023-01-23T16:40:02.573Z</lastmod>
   </url>
   <url>
-    <loc>https://floswald.github.io/ScPoProgramming/01-shell-slides.html</loc>
-    <lastmod>2023-01-22T09:34:10.444Z</lastmod>
+    <loc>https://floswald.github.io/ScPoProgramming/02-filedir.html</loc>
+    <lastmod>2023-01-23T16:40:03.028Z</lastmod>
   </url>
 </urlset>

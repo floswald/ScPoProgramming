@@ -136,11 +136,11 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="ScPoProgramming">
-<meta name="twitter:description" content="© Florian Oswald, 2023">
+<meta name="twitter:description" content="All lectures of this course are derived from the work of the Software Carpentry. Their material is licensed under creative commons license 4.">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -163,19 +163,49 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
     <a class="nav-link active" href="./index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About</span></a>
-  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">ScPoProgramming</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Lessons:</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-shell-intro.html" class="sidebar-item-text sidebar-link">1. Shell Intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-filedir.html" class="sidebar-item-text sidebar-link">2. Files and Directories</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -196,6 +226,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
   <li><a href="#unix" id="toc-unix" class="nav-link" data-scroll-target="#unix">Unix</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +235,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ScPoProgramming</h1>
+<h1 class="title d-none d-lg-block">ScPoProgramming</h1>
 </div>
 
 
@@ -257,8 +288,8 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: left;"><a href="https://swcarpentry.github.io/shell-novice/">The Unix Shell</a></td>
-<td style="text-align: right;"><a href="https://software-carpentry.org/">The Software Carpentry Project</a></td>
+<td style="text-align: left;"><a href="./01-shell-intro.html">The Unix Shell</a></td>
+<td style="text-align: right;"><a href="https://software-carpentry.org/">The Software Carpentry Project</a> + Florian Oswald</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
@@ -318,10 +349,15 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>if that throws an error, install it with your package manager, e.g.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install git-all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
 </section>
+</section>
+<section id="license" class="level1">
+<h1>License</h1>
+<p>All lectures of this course are derived from the work of the <a href="https://software-carpentry.org/license/">Software Carpentry</a>. Their material is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">creative commons license 4.0</a>, whereby I am allowd to share and remix the content, if appropriate attribution is given.</p>
+<p>Those terms apply to anyone wanting use material on this website as well. Thank you.</p>
+
+
 </section>
 
 <p>© Florian Oswald, 2023</p></main> <!-- /main -->
