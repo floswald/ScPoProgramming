@@ -7,15 +7,22 @@ website:
   twitter-card: true
   google-analytics: "G-TQGG8QBSRH"
   body-footer: © Florian Oswald, 2023
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "Lessons:"
+        contents:
+          - href: 01-shell-intro.qmd
+            text: 1. Shell Intro
+          - href: 02-filedir.qmd
+            text: 2. Files and Directories
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
     logo: /images/ScPo-logo.png
     background: "#ba0202"
     foreground: "#faf7f7"
-
 format:
   html:
     theme: journal

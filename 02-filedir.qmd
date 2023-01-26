@@ -1,0 +1,486 @@
+---
+title: "Navigating Files and Directories"
+format: 
+  revealjs:
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald and The Software Carpentry
+---
+
+
+## Intro
+
+::::: {.callout-note}
+# Questions
+
+- How can I move around on my computer?
+- How can I see what files and directories I have?
+- How can I specify the location of a file or directory on my computer?
+:::::
+
+::::: {.callout-tip}
+# Objectives
+- Explain the similarities and differences between a file and a directory.
+- Translate an absolute path into a relative path and vice versa.
+- Construct absolute and relative paths that identify specific files and directories.
+- Use options and arguments to change the behaviour of a shell command.
+- Demonstrate the use of tab completion and explain its advantages.
+::::::
+
+
+---
+
+## The File System {.smaller}
+
+* The file system organizes data into files and directories on your computer.
+* let's start finding out where we are by running the `pwd` command - *present working directory*.
+
+```bash
+$ pwd
+```
+
+with output:
+
+```
+/Users/nelle
+```
+
+::: {.callout-note}
+
+# Home Directory Variations
+
+* Linux: `/home/nelle`
+* Windows: `C:\Documents and Settings\nelle`
+
+if `pwd` does not return your home directory, may need to navigate there first with `cd`.
+:::
+
+---
+
+## Nelle's Home Directory
+
+Nelle's file system looks like this:
+
+![The file system is made up of a root directory that contains sub-directories
+titled bin, data, users, and tmp](/images/filesystem.svg)
+
+* `/` is the *root* of the system
+* all other locations can be reached from there via a *path*
+* path to homedir is from `/` to directory `Users`, which contains folder `Nelle`
+* We know exactly where the home is stored by looking at this path.
+* Notice that *inside* a path, `/` is a *separator*. (It's `\` on Windows!)
+
+---
+
+## Working with `ls`
+
+* type `ls -F`. This adds *option* `F` (for *full*) to the command.
+* now you get also 
+- a trailing `/` indicates that this is a directory
+- `@` indicates a link
+- `*` indicates an executable
+
+```bash
+$ ls -F
+```
+
+```
+Applications/ Documents/    Library/      Music/        Public/
+Desktop/      Downloads/    Movies/       Pictures/
+```
+
+::: {.callout-caution}
+
+# question
+
+What kind of objects does Nelle's home directory contain? 
+:::
+
+
+---
+
+## Help
+
+::: {.callout-note}
+
+# Clear Terminal
+
+* Use the `clear` command to clear terminal.
+* you can use your `↑` and `↓` keys to see previous commands, or just scroll up.
+
+:::
+
+
+::: {.callout-tip}
+
+# Getting Help
+
+1. pass the `--help` option to a command:
+```bash
+$ ls --Help
+```
+
+2. Read the manual entry with `man` (MacOS and Linux only)
+```bash
+man ls 
+```
+
+3. Search internet for `unix man ls`
+
+
+:::
+
+
+## More `ls` Flags
+
+::: {.callout-warning}
+
+# Challenge
+
+You can also use two options at the same time. What does the command `ls` do when used
+with the `-l` option? What about if you use both the `-l` and the `-h` option?
+:::
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+The `-l` option makes `ls` use a **l**ong listing format, showing not only the file/directory names but also additional information, such as the file size and the time of its last modification. If you use both the `-h` option and the `-l` option,
+this makes the file size '**h**uman readable', i.e. displaying something like `5.3K` instead of `5369`.
+:::
+</details>
+
+
+---
+
+# More `ls` Challenges
+
+::: {.callout-warning}
+
+# Listing in Reverse Chronological Order
+
+By default, `ls` lists the contents of a directory in alphabetical
+order by name. The command `ls -t` lists items by time of last
+change instead of alphabetically. The command `ls -r` lists the
+contents of a directory in reverse order.
+Which file is displayed last when you combine the `-t` and `-r` options?
+Hint: You may need to use the `-l` option to see the
+last changed dates.
+:::
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+The most recently changed file is listed last when using `-rt`. This
+can be very useful for finding your most recent edits or checking to
+see if a new output file was written.
+:::
+</details>
+
+
+---
+
+## Getting Data
+
+1. Let's [download some data](/data/shell-lesson-data.zip)
+2. unzip it and and move it to your `Desktop`
+
+---
+
+## Exploring More Directories {.smaller}
+
+* `ls` can search other than only the *current* directories.
+* Let's see what is on our `Desktop`:
+
+```bash
+$ ls -F Desktop
+```
+
+shows for Nelle only the data we just downloaded:
+
+```
+shell-lesson-data/
+```
+
+* We can also look *inside* that data from where we are:
+
+```bash
+$ ls -F Desktop/shell-less-data
+```
+
+```
+exercise-data/  north-pacific-gyre/
+```
+
+* looks intriguing 🧐. Let's try and go there!
+
+---
+
+## Going into Subdirectories
+
+* `cd` is for *change directory*. Moves the shell to a different location in the file system.
+* Let's go to our data folder:
+
+```bash
+$ cd Desktop
+$ cd shell-lesson-data 
+$ cd exercise-data
+```
+
+* Notice that the `cd` command does not print any output by default.
+* Run `ls -F` again to see what's in this directory!
+* Run `pwd` to see where we are!
+
+---
+
+## Coming Back from Subdirectories
+
+* Now we want to go back up one level.
+* It's tempting to say `cd shell-lesson-data`
+* But `cd` can only go into *its own subdirectories*.
+* It has a special one: `..` is its *parent* directory, so goes one up.
+
+```bash
+$ cd ..
+$ pwd
+```
+
+puts Nelle back into 
+
+```
+/Users/nelle/Desktop/shell-lesson-data
+```
+
+* Notice how `..` is listed if you flag `-a` on the `ls` command.
+
+
+---
+
+## Hidden Files
+
+::: {.callout-tip}
+
+# Hidden Files
+
+* Typing `cd` without any arguments puts you back into your Home directory. Do it.
+* Let's use `ls -F -a` or `ls -Fa` to list *all* files. Also **hidden** ones!
+
+:::
+
+::: {.callout-note}
+
+# Relative and Absolute Paths
+
+* Up until now, we used *relative paths*. `cd` and `ls` operated **from our current position** in the file sytem.
+* We can also specify the *absolute path*, i.e. starting at the root `/`. This allows to go anywhere from anywhere.
+
+:::
+
+
+---
+
+## More Shortcuts
+
+::: {.callout-note}
+
+# Tilde (`~`) and dash (`-`)
+
+* The tilde `~` in first position means *current user's home*
+* The dash in `cd -` means *go into the directory I was previously in*.
+* So: 
+
+1. `cd ..` brings you *up* one level
+2. `cd -` takes you *back* to wherever you've come from.
+:::
+
+---
+
+## Challenges
+
+::: {.callout-caution}
+
+# Challenge
+
+Starting from `/Users/amanda/data`,
+which of the following commands could Amanda use to navigate to her home directory,
+which is `/Users/amanda`?
+
+1. `cd .`
+2. `cd /`
+3. `cd /home/amanda`
+4. `cd ../..`
+5. `cd ~`
+6. `cd home`
+7. `cd ~/data/..`
+8. `cd`
+9. `cd ..`
+
+:::
+
+---
+
+## Solution
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+
+1. No: `.` stands for the current directory.
+2. No: `/` stands for the root directory.
+3. No: Amanda's home directory is `/Users/amanda`.
+4. No: this command goes up two levels, i.e. ends in `/Users`.
+5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.
+6. No: this command would navigate into a directory `home` in the current directory
+    if it exists.
+7. Yes: unnecessarily complicated, but correct.
+8. Yes: shortcut to go back to the user's home directory.
+9. Yes: goes up one level.
+
+
+:::
+</details>
+
+---
+
+
+![](/images/filesystem-challenge.svg){.absolute top=200 right=30 width="550" height="500"}
+
+::: {.callout-caution}
+
+# Challenge
+Using the filesystem diagram , if `pwd` displays `/Users/thing`,
+what will `ls -F ../backup` display?
+
+1.  `../backup: No such file or directory`
+2.  `2012-12-01 2013-01-08 2013-01-27`
+3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
+4.  `original/ pnas_final/ pnas_sub/`
+
+
+
+:::
+
+
+---
+
+## Solution
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+
+1. No: there *is* a directory `backup` in `/Users`.
+2. No: this is the content of `Users/thing/backup`, but with `..`, we asked for one level further up.
+3. No: see previous explanation.
+4. Yes: `../backup/` refers to `/Users/backup/`.
+
+:::
+</details>
+
+---
+
+![](/images/filesystem-challenge.svg){.absolute top=200 right=60 width="550" height="500"}
+
+::: {.callout-caution}
+
+# Challenge
+Using the filesystem diagram below, if `pwd` displays `/Users/backup`,and `-r` tells `ls` to display things in reverse order,
+what command(s) will result in the following output:
+
+```
+pnas_sub/ pnas_final/ original/
+```
+
+is it:
+
+1. `ls pwd`?
+2. `ls -r -F`?
+3. `ls -r -F /Users/backup`?
+
+
+:::
+
+---
+
+## Solution
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+
+1. No: `pwd` is not the name of a directory.
+2. Yes: `ls` without directory argument lists files and directories
+   in the current directory.
+3. Yes: uses the absolute path explicitly.
+
+:::
+</details>
+
+
+---
+
+## General Syntax of Shell Commands {.smaller}
+
+Let's take as example this command:
+
+```bash
+$ ls -F /
+```
+
+![General syntax of a shell command](/images/shell_command_syntax.svg)
+
+* The space between `ls` and whatever options you put is important.
+* Capitalization is important. `ls -s` is not the same as `ls -S`:
+
+```bash
+$ cd ~/Desktop/shell-lesson-data
+$ ls -s exercise-data  # size
+$ ls -S exercise-data  # sort by size
+```
+
+---
+
+## Nelle's Pipeline and Tab Completion
+
+1. Nelle organized the output of the assay machine into `north-pacific-gyre/`. let's go there.
+```bash
+$ cd ~/Desktop/shell-lesson-data/
+$ cd north-pacific-gyre
+```
+2. Now `north-pacific-gyre` is a mouthful to write. try instead to type `cd n` and hit the TAB key.
+3. hitting TAB twice without any leading character, gives you a list of files in `pwd`.
+
+
+---
+
+::: {.callout-tip}
+
+# Key Points
+
+- The file system is responsible for managing information on the disk.
+- Information is stored in files, which are stored in directories (folders).
+- Directories can also store other directories, which then form a directory tree.
+- `pwd` prints the user's current working directory.
+- `ls [path]` prints a listing of a specific file or directory; `ls` on its own lists the current working directory.
+- `cd [path]` changes the current working directory.
+- Most commands take options that begin with a single `-`.
+- Directory names in a path are separated with `/` on Unix, but `\\` on Windows.
+- `/` on its own is the root directory of the whole file system.
+- An absolute path specifies a location from the root of the file system.
+- A relative path specifies a location starting from the current location.
+- `.` on its own means 'the current directory'; `..` means 'the directory above the current one'.
+
+:::

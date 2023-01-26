@@ -1,0 +1,269 @@
+---
+title: "Working with Files and Directories"
+format: 
+  revealjs:
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald and The Software Carpentry
+---
+
+
+## Intro
+
+::: {.callout-note}
+
+# Questions
+
+- How can I create, copy, and delete files and directories?
+- How can I edit files?
+
+:::
+
+::: {.callout-tip}
+
+# Objectives
+
+- Create a directory hierarchy that matches a given diagram.
+- Create files in that hierarchy using an editor or by copying and renaming existing files.
+- Delete, copy and move specified files and/or directories.
+
+:::
+
+---
+
+## Creating Directories
+
+* Let's create a directory `thesis` here:
+```bash
+$ cd ~/shell-lesson-data/exercise-data/writing
+$ ls -F
+```
+this outputs:
+
+```
+haiku.txt  LittleWomen.txt
+```
+
+* Use `mkdir` to create:
+```bash
+$ mkdir thesis
+```
+
+used like this, `thesis` is created in the current directory. While with the `-p` flag we created nested subdirectories:
+
+```bash
+$ mkdir -p ../project/data ../project/results
+```
+
+---
+
+## Good File Names
+
+
+::: {.callout-warning}
+
+# Bad File Names
+
+1. Don't use spaces. `north pacific gyre` is not a good one. Use `north-pacific-gyre` instead.
+2. Don't begin with `-`.
+3. Stick with letters, numbers, `.`, `-`, and `_`
+
+:::
+
+---
+
+## Creating a Text File
+
+* Let's go into the `thesis` directory and create a text file called `draft.txt`.
+
+```bash
+$ cd thesis
+$ nano draft.txt
+```
+
+::: {.callout-note}
+
+# TEXT Editor
+
+`nano` is a super simple editor, and you can use it *only* to edit text files (That's normal for *text editors* 😉). You will probably switch to a more powerful editor later on (I recommend `VSCode`), but `nano` is a good starting point.
+Notice that `^` key is the `Ctrl` key, so `^X` means `Ctrl + X`.
+:::
+
+
+---
+
+## Filename Extensions
+
+::: {.callout-caution}
+
+# Task
+
+1. Go to your home directory: `cd`
+2. create an *empty* file with the `touch` command:
+
+```bash
+$ # this is a comment, by the way 
+$ cd  # so, going home.
+$ touch new_doc.pdf  # creating an empty file.
+```
+
+3. Open your file browser and double click on `new_doc.pdf`. What is going to happen?
+:::
+
+---
+
+* Ok, let's get rid of that file now.
+* use the `rm` command (more later)
+```bash
+$ rm new_doc.pdf
+```
+* Caution: `rm` is forever gone.
+* You can add `-i` *interactive* to be safe(r).
+
+
+---
+
+## Moving Files and Directories
+
+* Let's go back to the `writing` directory
+```bash
+$ cd ~/shell-lesson-data/exercise-data/writing
+```
+* Let's *rename* `draft.txt` to `quotes.txt` with `mv`.
+```bash
+$ mv thesis/draft.txt thesis/quotes.txt
+```
+* Now let's actually *move* it into the current dir:
+```bash
+$ mv thesis/quotes.txt .
+```
+* Notice: `mv x y` means `x` is gone afterwards!
+
+---
+
+::: {.callout-caution}
+
+# Challenge
+
+Jamie placed `maltose.dat` and `sucrose.datfiles` in the `analyzed` folder by mistake. He wants to move those back to the `raw` folder now:
+
+```bash
+$ ls -F  
+ analyzed/ raw/
+$ ls -F analyzed
+fructose.dat glucose.dat maltose.dat sucrose.dat
+$ cd analyzed
+```
+What has to go in the blanks to achieve this?
+
+```bash
+$ mv sucrose.dat maltose.dat ____/____
+```
+:::
+
+---
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+
+```bash
+$ mv sucrose.dat maltose.dat ../raw
+```
+
+:::
+</details>
+
+
+--- 
+
+## Copying Files and Directories
+
+* `cp x y` is similar to `mv x y`, but you keep `x`.
+```bash
+$ cp quotes.txt thesis/quotations.txt
+$ ls quotes.txt thesis/quotations.txt
+```
+
+* the `-r` option means *recursively* and copies entire folders:
+```bash
+$ cp -r thesis thesis_backup
+$ ls thesis thesis_backup
+```
+
+* Notice that `rm -r mydir` will delete everything inside that folder!
+
+
+---
+
+## Using *Wildcards*
+
+* the `*` character is a *wildcard*, i.e it matches all characters:
+```bash
+$ cd shell-lesson-data/exercise-data/
+$ ls proteins/p*
+proteins/pentane.pdb	proteins/propane.pdb
+```
+
+
+---
+
+## Reproducing a Folder Structure
+
+Suppose we want to create the following structure on our computer:
+
+```bash
+2016-05-20/
+└── data
+   ├── processed
+   └── raw
+```
+
+::: {.callout-important}
+
+```
+1.
+$ mkdir 2016-05-20
+$ mkdir 2016-05-20/data
+$ mkdir 2016-05-20/data/processed
+$ mkdir 2016-05-20/data/raw
+```
+
+```
+2.
+$ mkdir 2016-05-20/data/raw
+$ mkdir 2016-05-20/data/processed
+```
+
+```
+3.
+$ mkdir -p 2016-05-20/data/raw
+$ mkdir -p 2016-05-20/data/processed
+```
+
+:::
+
+---
+
+::: {.callout-tip}
+
+- `cp [old] [new]` copies a file.
+- `mkdir [path]` creates a new directory.
+- `mv [old] [new]` moves (renames) a file or directory.
+- `rm [path]` removes (deletes) a file.
+- `*` matches zero or more characters in a filename, so `*.txt` matches all files ending in `.txt`.
+- `?` matches any single character in a filename, so `?.txt` matches `a.txt` but not `any.txt`.
+- Use of the Control key may be described in many ways, including `Ctrl-X`, `Control-X`, and `^X`.
+- The shell does not have a trash bin: once something is deleted, it's really gone.
+- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, but is normally used to indicate the type of data in the file.
+- Depending on the type of work you do, you may need a more powerful text editor than Nano.
+
+:::
+

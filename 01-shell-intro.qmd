@@ -1,0 +1,229 @@
+---
+title: "The Unix Shell"
+format: 
+  revealjs:
+    chalkboard: false
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald and Software Carpentry
+---
+
+## Intro
+
+::::: {.callout-note}
+# Question
+
+* What is a command shell and why would I use one?
+:::::
+
+::::: {.callout-tip}
+# Objectives
+- Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.
+- Explain when and why command-line interfaces should be used instead of graphical interfaces.
+::::::
+
+---
+
+
+## Do You GUI?
+
+::: {.callout-tip}
+
+# What's a GUI
+A *Graphical User Interface* (GUI) lets the user interact by clicking with a mouse and using menus.
+:::
+
+. . .
+
+* I love 😍 a good Graphical User Interface (GUI)
+
+. . .
+
+* But. Bad things can happen.
+
+. . .
+
+* ☠️
+
+---
+
+##  {background-image="/images/bad.gif" background-size="cover"}
+
+---
+
+## Bad.
+
+::::: {.columns}
+::::: {.column width="50%"}
+::: {.callout-warning}
+
+# No More than 65,536 Rows
+
+* Public Health England [missed 14.000 covid cases](https://www.influentialsoftware.com/how-an-nhs-test-and-trace-excel-error-lost-16000-covid-19-cases/)
+* They used `.xls` document to collect data.
+:::
+:::::
+
+
+::::: {.column width="50%"}
+::: {.callout-warning}
+
+# No Growth with High Debt?
+
+* [Reinhardt and Rogoff controversy](https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646).^[Both are eminent researchers and we do *not* imply misconduct.]
+* Inadvertently did not select all relevant countries on spreadsheet.
+:::
+:::::
+
+:::::
+
+
+---
+
+## Or Do you CLI?
+
+::: {.callout-tip}
+
+# What's a CLI
+A *Command Line Interface* (CLI) allows interaction via (text) commands.
+:::
+
+
+* CLIs can collect commands somewhere - *reproducible*
+* But one has to learn a *language*.
+* They are great for *long, repetitive tasks*.
+* It's often the **only** way to interact with high-performance computing. --> Show!
+
+
+---
+
+## The Shell {.smaller}
+
+* The *shell* is a program where we can type in commands and get output.
+* We often use very simple programs - good for just one thing.
+* There is tremendous power in *combining* those little programs.
+* It's a *platform* approach to an Operating System. 
+
+::: {.callout-tip}
+# Unix is a Platform
+
+A protocol and many small program who interact according to the rules with each other
+:::
+
+![lewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons](/images/Tux.png)
+
+
+---
+
+## Go! 🚀
+
+1. Open your terminal! (`GitBash` on Windows)
+2. You should see something like
+```bash
+$
+```
+which is called the **prompt**. 
+
+3. You **don't have to type** the `$`!
+3. next to it, you see a cursor.
+
+
+---
+
+## First command: `ls`
+
+* type `ls` and hit enter
+* you see something like this as output:
+
+```
+Desktop     Downloads   Movies      Pictures
+Documents   Library     Music       Public
+```
+
+* By default, the terminal opens in your home directory.
+* `ls` *lists* the content of that directory.
+
+---
+
+## First Error!
+
+::: {.callout-caution}
+* If you mistype a command, or look for a program that is not installed, you get an error. Like:
+
+```
+bash-3.2$ ks
+```
+
+```
+bash: ks: command not found
+```
+:::
+
+* Look for a spelling mistake (it's `ls` not `ks`)
+* Or install the required program.
+
+
+## Nelle's Pipeline: A Typical Problem {.smaller}
+
+* Nelle Nemo is a marine biologist. 🌊 🐡
+* Just sampled gelatinous marine life in the
+[Great Pacific Garbage Patch](http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
+* From 1520 samples she obtained measures of the relative abundance of 300 proteins.
+* Her supervisor, *Professor Jones*, handed down to hear a program called `goostats.sh`.
+* `goostats.sh` needs to be run on each of the 1520 samples.
+* Paper needs to be ready by the end of the month.
+
+---
+
+## {background-image="/images/PHD.png" background-size="50%" background-position="center"}
+
+
+---
+
+## Battle Plan
+
+* Using a GUI to run `goostats.sh`, Nelle will have to use her mouse to select and open a file 1520 times.
+* If `goostats.sh` takes 30 secs to run, this will take more than 12 hours of Nelle's *active time*.
+* With the help of the shell, Nelle could make her computer go through that list of files instead.
+* **Bonus** : she will have a working pipeline, that can be re-run each time need be.
+
+---
+
+## What Does Nelle Need  {.smaller}
+
+Nelle has needs to learn the following things:
+
+- navigate to a file/directory
+- create a file/directory
+- check the length of a file
+- chain commands together
+- retrieve a set of files
+- iterate over files
+- run a shell script containing her pipeline
+
+And we will be right next to her. 🙂
+
+
+---
+
+## 
+
+::: {.callout-tip}
+
+# Key Points
+
+- A shell is a program whose primary purpose is to read commands and run other programs.
+-  This lesson uses Bash, the default shell in many implementations of Unix.
+-  Programs can be run in Bash by entering commands at the command-line prompt.
+- The shell's main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.
+- The shell's main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.
+
+:::
+
+
+
+
+

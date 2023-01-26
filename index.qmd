@@ -23,7 +23,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 
 | Topic Number |  Topic      |  Author |
 |:------------:|:-----------|-------:|
-| 1            | [The Unix Shell](https://swcarpentry.github.io/shell-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) |
+| 1            | [The Unix Shell](01-shell-intro.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
 | 2            | [Git Version Control](https://swcarpentry.github.io/git-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
 | 3            | [Programming with `R`](https://swcarpentry.github.io/r-novice-inflammation/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
 | 4            | [Geospatial Programming with `R`](https://datacarpentry.org/geospatial-workshop/) |  [The Data Carpentry Project](https://datacarpentry.org/) + Florian Oswald|
@@ -46,8 +46,12 @@ There are different instructions depending on whether you have a Mac or a Window
 
 We need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install 
 
-1. [GitForWindows](https://gitforwindows.org/)
-2. [Software Carpentry Windows Installer](https://github.com/swcarpentry/windows-installer/releases/tag/v0.3)
+* [GitForWindows](https://gitforwindows.org/)
+
+*Specifics:*
+
+1. During the installation process, choose all default settings.
+2. At one point, you are offered a choice for a default editor being used for `git`. If you know `vim` already, why not (I use `vim`), otherwise I recommend `nano`, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don't choose notepad and other standalone editors).
 
 
 ### Mac
@@ -75,3 +79,8 @@ if that throws an error, install it with your package manager, e.g.
 sudo apt install git-all
 ```
 
+# License
+
+All lectures of this course are derived from the work of the [Software Carpentry](https://software-carpentry.org/license/). Their material is licensed under [creative commons license 4.0](https://creativecommons.org/licenses/by/4.0/), whereby I am allowd to share and remix the content, if appropriate attribution is given. 
+
+Those terms apply to anyone wanting use material on this website as well. Thank you.
