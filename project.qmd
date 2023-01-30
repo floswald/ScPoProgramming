@@ -1,0 +1,23 @@
+---
+title: "Term Project"
+format: html
+---
+
+## Setup
+
+1. download data from somewhere
+1. create folder structure
+1. use shell to do some cleaning task
+1. use R to do further cleaning task
+1. create R package
+1. create github repo from it
+1. (use julia to make a plot)
+1. write an Rmd for anal
+1. publish results via rpubs and share results
+
+
+## Data
+
+1. police data from julia data analysis
+1. something from opendata.fr
+1. 
