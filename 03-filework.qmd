@@ -2,6 +2,7 @@
 title: "Working with Files and Directories"
 format: 
   revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
     chalkboard: true
     logo: /images/ScPo-logo.png
     footer: ScPo Intro To Programming 2023
@@ -98,9 +99,8 @@ Notice that `^` key is the `Ctrl` key, so `^X` means `Ctrl + X`.
 
 ## Filename Extensions
 
-::: {.callout-caution}
 
-# Task
+### Task
 
 1. Go to your home directory: `cd`
 2. create an *empty* file with the `touch` command:
@@ -112,7 +112,7 @@ $ touch new_doc.pdf  # creating an empty file.
 ```
 
 3. Open your file browser and double click on `new_doc.pdf`. What is going to happen?
-:::
+
 
 ---
 
@@ -165,9 +165,6 @@ $ mv sucrose.dat maltose.dat ____/____
 ```
 :::
 
----
-
-
 <details>
 <summary>Show Solution</summary>
 
@@ -198,7 +195,7 @@ $ cp -r thesis thesis_backup
 $ ls thesis thesis_backup
 ```
 
-* Notice that `rm -r mydir` will delete everything inside that folder!
+* Notice that `rm -r mydir` will delete everything inside the `mydir` folder!
 
 
 ---
@@ -226,7 +223,10 @@ Suppose we want to create the following structure on our computer:
    └── raw
 ```
 
-::: {.callout-important}
+::: {.callout-caution}
+# Challenge
+
+Which sequence will achieve this result?
 
 ```
 1.
@@ -249,6 +249,20 @@ $ mkdir -p 2016-05-20/data/processed
 ```
 
 :::
+
+
+---
+
+# Nice Trick
+
+* Oh by the way.
+* If you are on MacOS, try to this on the command line
+
+```
+$ open .
+```
+
+* Pretty handy!
 
 ---
 

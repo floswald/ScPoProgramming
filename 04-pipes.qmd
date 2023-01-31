@@ -1,0 +1,151 @@
+---
+title: "Pipes and Filters"
+format: 
+  revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald and The Software Carpentry
+---
+
+
+## Combining Commands
+
+* We are now ready to combine some of the commands we learned.
+
+* You will see that here is where the real power lies.
+
+* Let's navigate into our exercise data folder first.
+
+```bash
+$ cd ~/shell-lesson-data/exercise-data/proteins
+$ ls
+cubane.pdb   ethane.pdb   methane.pdb  octane.pdb   pentane.pdb  propane.pdb
+```
+
+* Those are *protein data bank* files.
+
+---
+
+## Capturing Output
+
+* Introducing the `wc` word count command. 
+
+```bash
+wc cubane.pdb
+20     156    1158 cubane.pdb
+```
+29 lines, 156 words, 1158 characters.
+
+* Let's **redirect** the output of `wc` to a file instead of our screen:
+
+```bash
+wc -l *.pdb > lengths.txt
+```
+
+* no ouput on screen, you see? but now there is a new file: `lengths.txt`.
+* Let's *concatenate* (i.e. join together) and print to screen:
+```bash
+$ cat lengths.txt 
+      20 cubane.pdb
+      12 ethane.pdb
+       9 methane.pdb
+      30 octane.pdb
+      21 pentane.pdb
+      15 propane.pdb
+     107 total
+```
+
+---
+
+## Reading Text Files
+
+* `cat` prints the entire thing to screen.
+* `tail` only the end
+* `head` only the beginning
+* `less` lets you scroll and read (arrows up/down or `j` (up) and `k` (down), `q` exits.)
+
+```bash
+$ head -n 3 ../animal-counts/animals.csv
+$ tail -n 2 ../animal-counts/animals.csv
+$ less ../../north-pacific-gyre/NENE01729A.txt
+```
+
+
+---
+
+## Printing Text with `echo`
+
+* The `echo` function prints text - by default to screen:
+```bash
+$ echo hi
+hi
+```
+
+* But you can redirect it to a file as well:
+```bash
+$ echo I said hi! > echofile1.txt
+```
+
+::: {.callout-important}
+
+# Challenge
+
+Do 2 times in a row:
+```bash
+$ echo I said hi! > echofile1.txt
+```
+
+Now do twice (notice `>>`!)
+```bash
+$ echo I said hi! >> echofile2.txt
+```
+* What's happening?
+:::
+
+
+---
+
+## Appending to Files
+
+::: {.callout-important}
+
+# Challenge
+
+Consider the file `shell-lesson-data/exercise-data/animal-counts/animals.csv`. What is result of this:
+
+```bash
+$ head -n 3 animals.csv > animals-subset.csv
+$ tail -n 2 animals.csv >> animals-subset.csv
+```
+
+1. The first three lines of animals.csv
+2. The last two lines of animals.csv
+3. The first three lines and the last two lines of animals.csv
+4. The second and third lines of animals.csv
+:::
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+Option 3 is correct.
+:::
+</details>
+
+
+---
+
+## Passing Output to another Command: the *Pipe*
+
+* We call `|` the pipe. It takes output from a command and gives it to another command.
+* Modern languages use their own version of this (R has a package and now also a native pipe, julia has of course a pipe etc. Stata not sure 😜)
+* Now 
+
+
