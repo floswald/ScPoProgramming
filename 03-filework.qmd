@@ -253,12 +253,12 @@ $ mkdir -p 2016-05-20/data/processed
 
 ---
 
-# Nice Trick
+## Nice Trick
 
 * Oh by the way.
 * If you are on MacOS, try to this on the command line
 
-```
+```bash
 $ open .
 ```
 

@@ -41,14 +41,14 @@ wc cubane.pdb
 ```
 29 lines, 156 words, 1158 characters.
 
-* Let's **redirect** the output of `wc` to a file instead of our screen:
+* Let's **redirect** the output of `wc` to a file instead with `>`:
 
 ```bash
 wc -l *.pdb > lengths.txt
 ```
 
 * no ouput on screen, you see? but now there is a new file: `lengths.txt`.
-* Let's *concatenate* (i.e. join together) and print to screen:
+* Let's *concatenate* its content (i.e. join together) and print to screen:
 ```bash
 $ cat lengths.txt 
       20 cubane.pdb
@@ -123,10 +123,10 @@ $ head -n 3 animals.csv > animals-subset.csv
 $ tail -n 2 animals.csv >> animals-subset.csv
 ```
 
-1. The first three lines of animals.csv
-2. The last two lines of animals.csv
-3. The first three lines and the last two lines of animals.csv
-4. The second and third lines of animals.csv
+1. The first three lines of animals.csv?
+2. The last two lines of animals.csv?
+3. The first three lines and the last two lines of animals.csv?
+4. The second and third lines of animals.csv?
 :::
 
 
@@ -142,10 +142,171 @@ Option 3 is correct.
 
 ---
 
-## Passing Output to another Command: the *Pipe*
+## Filtering Files with `sort`
+
+* `sort` reads a file and *sorts* it's content to screen
+* it does not change the file.
+
+```bash
+$ sort -n lengths.txt 
+```
+
+```
+   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total
+```
+
+---
+
+## Filtering Files and using the result
+
+* Cool 😎 but now we want to use this list.
+* Could save it to a new file?
+
+```bash
+$ sort -n lengths.txt > sorted_lengths.txt
+$ head -n 2 sorted_lengths.txt
+```
+
+```
+   9 methane.pdb
+  12 ethane.pdb
+```
+
+## Filtering Files and **the pipe**
 
 * We call `|` the pipe. It takes output from a command and gives it to another command.
 * Modern languages use their own version of this (R has a package and now also a native pipe, julia has of course a pipe etc. Stata not sure 😜)
-* Now 
+* The **pipe** allows us to do this *without* storing intermediate results.
+
+```bash
+$ sort -n lengths.txt | head -n 1
+```
+
+```
+ 9 methane.pdb
+```    
+
+* But, wait 🤔. Then we don't even need `lengths.txt`:
+
+```bash
+$ wc -l *.pdb | sort -n | head -n 1
+```
+
+```
+ 9 methane.pdb
+```    
+
+* That's a *pipeline*. 🤯
+
+
+---
+
+
+## Piping Away
+
+* Make sure we are still in `~/shell-lesson-data/exercise-data/proteins`
+
+
+:::{.callout-important}
+
+# Pipe Dreams
+
+Which of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!
+
+1. `wc -l * > sort -n > head -n 3`
+2. `wc -l * | sort -n | head -n 1-3`
+3. `wc -l * | sort -n | tail -n 4 | head -n 3`
+4. `wc -l * | sort -n | head -n 3`
+
+:::
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+Option 4 is correct. Option 3 finds the ones with *most* lines.
+:::
+</details>
+
+
+---
+
+## Cutting and Piping
+
+* We have a `.csv` file here: `shell-lesson-data/exercise-data/animal-counts`
+* Let's use the `cut` command to get parts of it.
+
+```bash
+$ cd ~/shell-lesson-data/exercise-data/animal-counts
+$ cut -d , -f 2 animals.csv
+```
+
+::: {.callout-important}
+
+# Building a Pipe
+
+* `uniq` filters **adjacent** matching lines in a file.
+* Can you extend the above command with `uniq` (and another command?) such that we get the list of unique animal names?
+* Add the `-c` flag to `uniq` to get a contingency table.
+
+:::
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+1. `cut -d , -f 2 animals.csv | sort | uniq`
+1. `cut -d , -f 2 animals.csv | sort | uniq -c`
+:::
+</details>
+
+
+---
+
+## Real Data
+
+* The shell is very efficient for big data sets.
+* You can do stuff *very* quickly without loading anything into RAM of `R` or else:
+
+::: {.callout-tip}
+
+# Prix des carburants en France
+
+Using the shell:
+
+1. Use `wget` to download data to [from here](https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09) to your downloads folder as `carburants.csv`: `wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv`
+2. use `wc -l` to count how many rows (*lines*) there are
+3. use `head -n 1` to see the first row (the *header*)
+4. Use the above solution to build a contingency table that tells us the number of gas stations per *ville*.
+
+:::
+
+---
+
+## Real Data
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+1. `wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv`
+1. `cd Downloads`
+1. `wc -l carburants.csv`
+1. `cut -d ';' -f 5 carburants.csv | sort | uniq -c | sort`
+1. `cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort`
+:::
+</details>
+
+
 
 

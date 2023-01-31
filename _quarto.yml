@@ -16,6 +16,10 @@ website:
             text: 1. Shell Intro
           - href: 02-filedir.qmd
             text: 2. Files and Directories
+          - href: 03-filework.qmd
+            text: 3. Working with Files
+          - href: 04-pipes.qmd
+            text: 4. Filters and Pipes
   navbar:
     left:
       - href: index.qmd

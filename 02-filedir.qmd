@@ -191,17 +191,18 @@ see if a new output file was written.
 ## Getting Data
 
 1. Let's [download some data](/data/shell-lesson-data.zip)
-2. unzip it and and move it to your `Desktop`
+2. unzip it and and move it to your `home` directory. (`~`, not `Desktop`!)
 
 ---
 
 ## Exploring More Directories
 
 * `ls` can search other than only the *current* directories.
-* Let's see what is on our `Desktop`:
+* Let's see what is on our `home`:
 
 ```bash
-$ ls -F Desktop
+$ cd    # goes HOME
+$ ls -F .
 ```
 
 shows for Nelle only the data we just downloaded:
@@ -213,7 +214,7 @@ shell-lesson-data/
 * We can also look *inside* that data from where we are:
 
 ```bash
-$ ls -F Desktop/shell-less-data
+$ ls -F shell-less-data
 ```
 
 ```
@@ -230,7 +231,6 @@ exercise-data/  north-pacific-gyre/
 * Let's go to our data folder:
 
 ```bash
-$ cd Desktop
 $ cd shell-lesson-data 
 $ cd exercise-data
 ```
@@ -256,7 +256,7 @@ $ pwd
 puts Nelle back into 
 
 ```
-/Users/nelle/Desktop/shell-lesson-data
+/Users/nelle/shell-lesson-data
 ```
 
 * Notice how `..` is listed if you flag `-a` on the `ls` command.
@@ -447,7 +447,7 @@ $ ls -F /
 * Capitalization is important. `ls -s` is not the same as `ls -S`:
 
 ```bash
-$ cd ~/Desktop/shell-lesson-data
+$ cd ~/shell-lesson-data
 $ ls -s exercise-data  # size
 $ ls -S exercise-data  # sort by size
 ```
@@ -458,7 +458,7 @@ $ ls -S exercise-data  # sort by size
 
 1. Nelle organized the output of the assay machine into `north-pacific-gyre/`. let's go there.
 ```bash
-$ cd ~/Desktop/shell-lesson-data/
+$ cd ~/shell-lesson-data/
 $ cd north-pacific-gyre
 ```
 2. Now `north-pacific-gyre` is a mouthful to write. try instead to type `cd n` and hit the TAB key.
