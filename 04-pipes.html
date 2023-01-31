@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.2.313">
 
   <meta name="author" content="Florian Oswald and The Software Carpentry">
-  <title>ScPoProgramming - Working with Files and Directories</title>
+  <title>ScPoProgramming - Pipes and Filters</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -394,7 +394,7 @@
       margin-right: 0; 
     }
   </style>
-<meta name="twitter:title" content="ScPoProgramming - Working with Files and Directories">
+<meta name="twitter:title" content="ScPoProgramming - Pipes and Filters">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -402,7 +402,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Working with Files and Directories</h1>
+  <h1 class="title">Pipes and Filters</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -413,146 +413,69 @@ Florian Oswald and The Software Carpentry
 </div>
 
 </section>
-<section id="intro" class="slide level2">
-<h2>Intro</h2>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Questions</strong></p>
-</div>
-<div class="callout-content">
+<section id="combining-commands" class="slide level2">
+<h2>Combining Commands</h2>
 <ul>
-<li>How can I create, copy, and delete files and directories?</li>
-<li>How can I edit files?</li>
+<li><p>We are now ready to combine some of the commands we learned.</p></li>
+<li><p>You will see that here is where the real power lies.</p></li>
+<li><p>Let’s navigate into our exercise data folder first.</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Objectives</strong></p>
-</div>
-<div class="callout-content">
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/proteins</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cubane.pdb</span>   ethane.pdb   methane.pdb  octane.pdb   pentane.pdb  propane.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Create a directory hierarchy that matches a given diagram.</li>
-<li>Create files in that hierarchy using an editor or by copying and renaming existing files.</li>
-<li>Delete, copy and move specified files and/or directories.</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="creating-directories" class="slide level2">
-<h2>Creating Directories</h2>
-<ul>
-<li>Let’s create a directory <code>thesis</code> here:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>this outputs:</p>
-<pre><code>haiku.txt  LittleWomen.txt</code></pre>
-<ul>
-<li>Use <code>mkdir</code> to create:</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir thesis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>used like this, <code>thesis</code> is created in the current directory. While with the <code>-p</code> flag we created nested subdirectories:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ../project/data ../project/results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="good-file-names" class="slide level2">
-<h2>Good File Names</h2>
-<div class="callout callout-warning callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bad File Names</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li>Don’t use spaces. <code>north pacific gyre</code> is not a good one. Use <code>north-pacific-gyre</code> instead.</li>
-<li>Don’t begin with <code>-</code>.</li>
-<li>Stick with letters, numbers, <code>.</code>, <code>-</code>, and <code>_</code></li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="creating-a-text-file" class="slide level2">
-<h2>Creating a Text File</h2>
-<ul>
-<li>Let’s go into the <code>thesis</code> directory and create a text file called <code>draft.txt</code>.</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd thesis</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano draft.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>TEXT Editor</strong></p>
-</div>
-<div class="callout-content">
-<p><code>nano</code> is a super simple editor, and you can use it <em>only</em> to edit text files (That’s normal for <em>text editors</em> 😉). You will probably switch to a more powerful editor later on (I recommend <code>VSCode</code>), but <code>nano</code> is a good starting point. Notice that <code>^</code> key is the <code>Ctrl</code> key, so <code>^X</code> means <code>Ctrl + X</code>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="filename-extensions" class="slide level2">
-<h2>Filename Extensions</h2>
-<h3 id="task">Task</h3>
-<ol type="1">
-<li>Go to your home directory: <code>cd</code></li>
-<li>create an <em>empty</em> file with the <code>touch</code> command:</li>
-</ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="co"># this is a comment, by the way </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd  <span class="co"># so, going home.</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch new_doc.pdf  <span class="co"># creating an empty file.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>Open your file browser and double click on <code>new_doc.pdf</code>. What is going to happen?</li>
-</ol>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>Ok, let’s get rid of that file now.</li>
-<li>use the <code>rm</code> command (more later)</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm new_doc.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Caution: <code>rm</code> is forever gone.</li>
-<li>You can add <code>-i</code> <em>interactive</em> to be safe(r).</li>
+<li>Those are <em>protein data bank</em> files.</li>
 </ul>
 </section>
-<section id="moving-files-and-directories" class="slide level2">
-<h2>Moving Files and Directories</h2>
+<section id="capturing-output" class="slide level2">
+<h2>Capturing Output</h2>
 <ul>
-<li>Let’s go back to the <code>writing</code> directory</li>
+<li>Introducing the <code>wc</code> word count command.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> cubane.pdb</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span>     156    1158 cubane.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>29 lines, 156 words, 1158 characters.</p>
 <ul>
-<li>Let’s <em>rename</em> <code>draft.txt</code> to <code>quotes.txt</code> with <code>mv</code>.</li>
+<li>Let’s <strong>redirect</strong> the output of <code>wc</code> to a file instead with <code>&gt;</code>:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/draft.txt thesis/quotes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="op">&gt;</span> lengths.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Now let’s actually <em>move</em> it into the current dir:</li>
+<li>no ouput on screen, you see? but now there is a new file: <code>lengths.txt</code>.</li>
+<li>Let’s <em>concatenate</em> its content (i.e.&nbsp;join together) and print to screen:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/quotes.txt .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Notice: <code>mv x y</code> means <code>x</code> is gone afterwards!</li>
-</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat lengths.txt </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="ex">20</span> cubane.pdb</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="ex">12</span> ethane.pdb</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">9</span> methane.pdb</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="ex">30</span> octane.pdb</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="ex">21</span> pentane.pdb</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">15</span> propane.pdb</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>     <span class="ex">107</span> total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section class="slide level2">
-
-<div class="callout callout-caution callout-captioned callout-style-default">
+<section id="reading-text-files" class="slide level2">
+<h2>Reading Text Files</h2>
+<ul>
+<li><code>cat</code> prints the entire thing to screen.</li>
+<li><code>tail</code> only the end</li>
+<li><code>head</code> only the beginning</li>
+<li><code>less</code> lets you scroll and read (arrows up/down or <code>j</code> (up) and <code>k</code> (down), <code>q</code> exits.)</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 ../animal-counts/animals.csv</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 ../animal-counts/animals.csv</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> less ../../north-pacific-gyre/NENE01729A.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="printing-text-with-echo" class="slide level2">
+<h2>Printing Text with <code>echo</code></h2>
+<ul>
+<li>The <code>echo</code> function prints text - by default to screen:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo hi</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>But you can redirect it to a file as well:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo I said hi! <span class="op">&gt;</span> echofile1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
@@ -561,14 +484,37 @@ Florian Oswald and The Software Carpentry
 <p><strong>Challenge</strong></p>
 </div>
 <div class="callout-content">
-<p>Jamie placed <code>maltose.dat</code> and <code>sucrose.datfiles</code> in the <code>analyzed</code> folder by mistake. He wants to move those back to the <code>raw</code> folder now:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span>  </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">analyzed/</span> raw/</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> analyzed</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fructose.dat</span> glucose.dat maltose.dat sucrose.dat</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd analyzed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What has to go in the blanks to achieve this?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ____/____</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do 2 times in a row:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo I said hi! <span class="op">&gt;</span> echofile1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now do twice (notice <code>&gt;&gt;</code>!)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo I said hi! <span class="op">&gt;&gt;</span> echofile2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>What’s happening?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="appending-to-files" class="slide level2">
+<h2>Appending to Files</h2>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Consider the file <code>shell-lesson-data/exercise-data/animal-counts/animals.csv</code>. What is result of this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 animals.csv <span class="op">&gt;</span> animals-subset.csv</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 animals.csv <span class="op">&gt;&gt;</span> animals-subset.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>The first three lines of animals.csv?</li>
+<li>The last two lines of animals.csv?</li>
+<li>The first three lines and the last two lines of animals.csv?</li>
+<li>The second and third lines of animals.csv?</li>
+</ol>
 </div>
 </div>
 </div>
@@ -585,106 +531,198 @@ Show Solution
 <p><strong>Solution</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ../raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Option 3 is correct.</p>
 </div>
 </div>
 </div>
 </details>
 </section>
-<section id="copying-files-and-directories" class="slide level2">
-<h2>Copying Files and Directories</h2>
+<section id="filtering-files-with-sort" class="slide level2">
+<h2>Filtering Files with <code>sort</code></h2>
 <ul>
-<li><code>cp x y</code> is similar to <code>mv x y</code>, but you keep <code>x</code>.</li>
+<li><code>sort</code> reads a file and <em>sorts</em> it’s content to screen</li>
+<li>it does not change the file.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp quotes.txt thesis/quotations.txt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls quotes.txt thesis/quotations.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lengths.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total</code></pre>
+</section>
+<section id="filtering-files-and-using-the-result" class="slide level2">
+<h2>Filtering Files and using the result</h2>
 <ul>
-<li>the <code>-r</code> option means <em>recursively</em> and copies entire folders:</li>
+<li>Cool 😎 but now we want to use this list.</li>
+<li>Could save it to a new file?</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> thesis thesis_backup</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls thesis thesis_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lengths.txt <span class="op">&gt;</span> sorted_lengths.txt</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 2 sorted_lengths.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>   9 methane.pdb
+  12 ethane.pdb</code></pre>
+</section>
+<section id="filtering-files-and-the-pipe" class="slide level2">
+<h2>Filtering Files and <strong>the pipe</strong></h2>
 <ul>
-<li>Notice that <code>rm -r mydir</code> will delete everything inside the <code>mydir</code> folder!</li>
+<li>We call <code>|</code> the pipe. It takes output from a command and gives it to another command.</li>
+<li>Modern languages use their own version of this (R has a package and now also a native pipe, julia has of course a pipe etc. Stata not sure 😜)</li>
+<li>The <strong>pipe</strong> allows us to do this <em>without</em> storing intermediate results.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lengths.txt <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code> 9 methane.pdb</code></pre>
+<ul>
+<li>But, wait 🤔. Then we don’t even need <code>lengths.txt</code>:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code> 9 methane.pdb</code></pre>
+<ul>
+<li>That’s a <em>pipeline</em>. 🤯</li>
 </ul>
 </section>
-<section id="using-wildcards" class="slide level2">
-<h2>Using <em>Wildcards</em></h2>
+<section id="piping-away" class="slide level2">
+<h2>Piping Away</h2>
 <ul>
-<li>the <code>*</code> character is a <em>wildcard</em>, i.e it matches all characters:</li>
+<li>Make sure we are still in <code>~/shell-lesson-data/exercise-data/proteins</code></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data/exercise-data/</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls proteins/p<span class="pp">*</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">proteins/pentane.pdb</span>    proteins/propane.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="reproducing-a-folder-structure" class="slide level2">
-<h2>Reproducing a Folder Structure</h2>
-<p>Suppose we want to create the following structure on our computer:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2016-05-20/</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> data</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> processed</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>   <span class="ex">└──</span> raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-caution callout-captioned callout-style-default">
+<div class="callout callout-important callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Challenge</strong></p>
+<p><strong>Pipe Dreams</strong></p>
 </div>
 <div class="callout-content">
-<p>Which sequence will achieve this result?</p>
-<pre><code>1.
-$ mkdir 2016-05-20
-$ mkdir 2016-05-20/data
-$ mkdir 2016-05-20/data/processed
-$ mkdir 2016-05-20/data/raw</code></pre>
-<pre><code>2.
-$ mkdir 2016-05-20/data/raw
-$ mkdir 2016-05-20/data/processed</code></pre>
-<pre><code>3.
-$ mkdir -p 2016-05-20/data/raw
-$ mkdir -p 2016-05-20/data/processed</code></pre>
+<p>Which of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!</p>
+<ol type="1">
+<li><code>wc -l * &gt; sort -n &gt; head -n 3</code></li>
+<li><code>wc -l * | sort -n | head -n 1-3</code></li>
+<li><code>wc -l * | sort -n | tail -n 4 | head -n 3</code></li>
+<li><code>wc -l * | sort -n | head -n 3</code></li>
+</ol>
 </div>
 </div>
 </div>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<p>Option 4 is correct. Option 3 finds the ones with <em>most</em> lines.</p>
+</div>
+</div>
+</div>
+</details>
 </section>
-<section id="nice-trick" class="slide level2">
-<h2>Nice Trick</h2>
+<section id="cutting-and-piping" class="slide level2">
+<h2>Cutting and Piping</h2>
 <ul>
-<li>Oh by the way.</li>
-<li>If you are on MacOS, try to this on the command line</li>
+<li>We have a <code>.csv</code> file here: <code>shell-lesson-data/exercise-data/animal-counts</code></li>
+<li>Let’s use the <code>cut</code> command to get parts of it.</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> open .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/animal-counts</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Building a Pipe</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>Pretty handy!</li>
+<li><code>uniq</code> filters <strong>adjacent</strong> matching lines in a file.</li>
+<li>Can you extend the above command with <code>uniq</code> (and another command?) such that we get the list of unique animal names?</li>
+<li>Add the <code>-c</code> flag to <code>uniq</code> to get a contingency table.</li>
 </ul>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><code>cut -d , -f 2 animals.csv | sort | uniq</code></li>
+<li><code>cut -d , -f 2 animals.csv | sort | uniq -c</code></li>
+</ol>
+</div>
+</div>
+</div>
+</details>
 </section>
-<section class="slide level2">
-
+<section id="real-data" class="slide level2">
+<h2>Real Data</h2>
+<ul>
+<li>The shell is very efficient for big data sets.</li>
+<li>You can do stuff <em>very</em> quickly without loading anything into RAM of <code>R</code> or else:</li>
+</ul>
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Prix des carburants en France</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li><code>cp [old] [new]</code> copies a file.</li>
-<li><code>mkdir [path]</code> creates a new directory.</li>
-<li><code>mv [old] [new]</code> moves (renames) a file or directory.</li>
-<li><code>rm [path]</code> removes (deletes) a file.</li>
-<li><code>*</code> matches zero or more characters in a filename, so <code>*.txt</code> matches all files ending in <code>.txt</code>.</li>
-<li><code>?</code> matches any single character in a filename, so <code>?.txt</code> matches <code>a.txt</code> but not <code>any.txt</code>.</li>
-<li>Use of the Control key may be described in many ways, including <code>Ctrl-X</code>, <code>Control-X</code>, and <code>^X</code>.</li>
-<li>The shell does not have a trash bin: once something is deleted, it’s really gone.</li>
-<li>Most files’ names are <code>something.extension</code>. The extension isn’t required, and doesn’t guarantee anything, but is normally used to indicate the type of data in the file.</li>
-<li>Depending on the type of work you do, you may need a more powerful text editor than Nano.</li>
-</ul>
+<p>Using the shell:</p>
+<ol type="1">
+<li>Use <code>wget</code> to download data to <a href="https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09">from here</a> to your downloads folder as <code>carburants.csv</code>: <code>wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv</code></li>
+<li>use <code>wc -l</code> to count how many rows (<em>lines</em>) there are</li>
+<li>use <code>head -n 1</code> to see the first row (the <em>header</em>)</li>
+<li>Use the above solution to build a contingency table that tells us the number of gas stations per <em>ville</em>.</li>
+</ol>
 </div>
 </div>
 </div>
+</section>
+<section id="real-data-1" class="slide level2">
+<h2>Real Data</h2>
+<details>
+<summary>
+Show Solution
+</summary>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><code>wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv</code></li>
+<li><code>cd Downloads</code></li>
+<li><code>wc -l carburants.csv</code></li>
+<li><code>cut -d ';' -f 5 carburants.csv | sort | uniq -c | sort</code></li>
+<li><code>cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort</code></li>
+</ol>
+</div>
+</div>
+</div>
+</details>
 
 
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">

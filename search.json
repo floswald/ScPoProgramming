@@ -95,7 +95,7 @@
     "href": "03-filework.html#creating-directories",
     "title": "Working with Files and Directories",
     "section": "Creating Directories",
-    "text": "Creating Directories\n\nLet’s create a directory thesis here:\n\n$ cd ~/Desktop/shell-lesson-data/exercise-data/writing\n$ ls -F\nthis outputs:\nhaiku.txt  LittleWomen.txt\n\nUse mkdir to create:\n\n$ mkdir thesis\nused like this, thesis is created in the current directory. While with the -p flag we created nested subdirectories:\n$ mkdir -p ../project/data ../project/results"
+    "text": "Creating Directories\n\nLet’s create a directory thesis here:\n\n$ cd ~/shell-lesson-data/exercise-data/writing\n$ ls -F\nthis outputs:\nhaiku.txt  LittleWomen.txt\n\nUse mkdir to create:\n\n$ mkdir thesis\nused like this, thesis is created in the current directory. While with the -p flag we created nested subdirectories:\n$ mkdir -p ../project/data ../project/results"
   },
   {
     "objectID": "03-filework.html#good-file-names",
@@ -109,7 +109,49 @@
     "href": "03-filework.html#creating-a-text-file",
     "title": "Working with Files and Directories",
     "section": "Creating a Text File",
-    "text": "Creating a Text File\n\nLet’s go into the thesis directory and create a text file called draft.txt.\n\n$ cd thesis\n$ nano draft.txt\n\n\n\n\n\n\nTEXT Editor\n\n\nnano is a super simple editor, and you can use it only to edit text files (That’s normal for text editors 😉). You will probably switch to a more powerful editor later on (I recommend VSCode), but nano is a good starting point.\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Creating a Text File\n\nLet’s go into the thesis directory and create a text file called draft.txt.\n\n$ cd thesis\n$ nano draft.txt\n\n\n\n\n\n\nTEXT Editor\n\n\nnano is a super simple editor, and you can use it only to edit text files (That’s normal for text editors 😉). You will probably switch to a more powerful editor later on (I recommend VSCode), but nano is a good starting point. Notice that ^ key is the Ctrl key, so ^X means Ctrl + X."
+  },
+  {
+    "objectID": "03-filework.html#filename-extensions",
+    "href": "03-filework.html#filename-extensions",
+    "title": "Working with Files and Directories",
+    "section": "Filename Extensions",
+    "text": "Filename Extensions\nTask\n\nGo to your home directory: cd\ncreate an empty file with the touch command:\n\n$ # this is a comment, by the way \n$ cd  # so, going home.\n$ touch new_doc.pdf  # creating an empty file.\n\nOpen your file browser and double click on new_doc.pdf. What is going to happen?"
+  },
+  {
+    "objectID": "03-filework.html#moving-files-and-directories",
+    "href": "03-filework.html#moving-files-and-directories",
+    "title": "Working with Files and Directories",
+    "section": "Moving Files and Directories",
+    "text": "Moving Files and Directories\n\nLet’s go back to the writing directory\n\n$ cd ~/shell-lesson-data/exercise-data/writing\n\nLet’s rename draft.txt to quotes.txt with mv.\n\n$ mv thesis/draft.txt thesis/quotes.txt\n\nNow let’s actually move it into the current dir:\n\n$ mv thesis/quotes.txt .\n\nNotice: mv x y means x is gone afterwards!"
+  },
+  {
+    "objectID": "03-filework.html#copying-files-and-directories",
+    "href": "03-filework.html#copying-files-and-directories",
+    "title": "Working with Files and Directories",
+    "section": "Copying Files and Directories",
+    "text": "Copying Files and Directories\n\ncp x y is similar to mv x y, but you keep x.\n\n$ cp quotes.txt thesis/quotations.txt\n$ ls quotes.txt thesis/quotations.txt\n\nthe -r option means recursively and copies entire folders:\n\n$ cp -r thesis thesis_backup\n$ ls thesis thesis_backup\n\nNotice that rm -r mydir will delete everything inside the mydir folder!"
+  },
+  {
+    "objectID": "03-filework.html#using-wildcards",
+    "href": "03-filework.html#using-wildcards",
+    "title": "Working with Files and Directories",
+    "section": "Using Wildcards",
+    "text": "Using Wildcards\n\nthe * character is a wildcard, i.e it matches all characters:\n\n$ cd shell-lesson-data/exercise-data/\n$ ls proteins/p*\nproteins/pentane.pdb    proteins/propane.pdb"
+  },
+  {
+    "objectID": "03-filework.html#reproducing-a-folder-structure",
+    "href": "03-filework.html#reproducing-a-folder-structure",
+    "title": "Working with Files and Directories",
+    "section": "Reproducing a Folder Structure",
+    "text": "Reproducing a Folder Structure\nSuppose we want to create the following structure on our computer:\n2016-05-20/\n└── data\n   ├── processed\n   └── raw\n\n\n\n\n\n\nChallenge\n\n\nWhich sequence will achieve this result?\n1.\n$ mkdir 2016-05-20\n$ mkdir 2016-05-20/data\n$ mkdir 2016-05-20/data/processed\n$ mkdir 2016-05-20/data/raw\n2.\n$ mkdir 2016-05-20/data/raw\n$ mkdir 2016-05-20/data/processed\n3.\n$ mkdir -p 2016-05-20/data/raw\n$ mkdir -p 2016-05-20/data/processed"
+  },
+  {
+    "objectID": "03-filework.html#nice-trick",
+    "href": "03-filework.html#nice-trick",
+    "title": "Working with Files and Directories",
+    "section": "Nice Trick",
+    "text": "Nice Trick\n\nOh by the way.\nIf you are on MacOS, try to this on the command line\n\n$ open .\n\nPretty handy!"
   },
   {
     "objectID": "index.html",
@@ -131,6 +173,90 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n\n\n© Florian Oswald, 2023"
+  },
+  {
+    "objectID": "04-pipes.html#combining-commands",
+    "href": "04-pipes.html#combining-commands",
+    "title": "Pipes and Filters",
+    "section": "Combining Commands",
+    "text": "Combining Commands\n\nWe are now ready to combine some of the commands we learned.\nYou will see that here is where the real power lies.\nLet’s navigate into our exercise data folder first.\n\n$ cd ~/shell-lesson-data/exercise-data/proteins\n$ ls\ncubane.pdb   ethane.pdb   methane.pdb  octane.pdb   pentane.pdb  propane.pdb\n\nThose are protein data bank files."
+  },
+  {
+    "objectID": "04-pipes.html#capturing-output",
+    "href": "04-pipes.html#capturing-output",
+    "title": "Pipes and Filters",
+    "section": "Capturing Output",
+    "text": "Capturing Output\n\nIntroducing the wc word count command.\n\nwc cubane.pdb\n20     156    1158 cubane.pdb\n29 lines, 156 words, 1158 characters.\n\nLet’s redirect the output of wc to a file instead with >:\n\nwc -l *.pdb > lengths.txt\n\nno ouput on screen, you see? but now there is a new file: lengths.txt.\nLet’s concatenate its content (i.e. join together) and print to screen:\n\n$ cat lengths.txt \n      20 cubane.pdb\n      12 ethane.pdb\n       9 methane.pdb\n      30 octane.pdb\n      21 pentane.pdb\n      15 propane.pdb\n     107 total"
+  },
+  {
+    "objectID": "04-pipes.html#reading-text-files",
+    "href": "04-pipes.html#reading-text-files",
+    "title": "Pipes and Filters",
+    "section": "Reading Text Files",
+    "text": "Reading Text Files\n\ncat prints the entire thing to screen.\ntail only the end\nhead only the beginning\nless lets you scroll and read (arrows up/down or j (up) and k (down), q exits.)\n\n$ head -n 3 ../animal-counts/animals.csv\n$ tail -n 2 ../animal-counts/animals.csv\n$ less ../../north-pacific-gyre/NENE01729A.txt"
+  },
+  {
+    "objectID": "04-pipes.html#printing-text-with-echo",
+    "href": "04-pipes.html#printing-text-with-echo",
+    "title": "Pipes and Filters",
+    "section": "Printing Text with echo",
+    "text": "Printing Text with echo\n\nThe echo function prints text - by default to screen:\n\n$ echo hi\nhi\n\nBut you can redirect it to a file as well:\n\n$ echo I said hi! > echofile1.txt\n\n\n\n\n\n\nChallenge\n\n\nDo 2 times in a row:\n$ echo I said hi! > echofile1.txt\nNow do twice (notice >>!)\n$ echo I said hi! >> echofile2.txt\n\nWhat’s happening?"
+  },
+  {
+    "objectID": "04-pipes.html#appending-to-files",
+    "href": "04-pipes.html#appending-to-files",
+    "title": "Pipes and Filters",
+    "section": "Appending to Files",
+    "text": "Appending to Files\n\n\n\n\n\n\nChallenge\n\n\nConsider the file shell-lesson-data/exercise-data/animal-counts/animals.csv. What is result of this:\n$ head -n 3 animals.csv > animals-subset.csv\n$ tail -n 2 animals.csv >> animals-subset.csv\n\nThe first three lines of animals.csv?\nThe last two lines of animals.csv?\nThe first three lines and the last two lines of animals.csv?\nThe second and third lines of animals.csv?\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 3 is correct."
+  },
+  {
+    "objectID": "04-pipes.html#filtering-files-with-sort",
+    "href": "04-pipes.html#filtering-files-with-sort",
+    "title": "Pipes and Filters",
+    "section": "Filtering Files with sort",
+    "text": "Filtering Files with sort\n\nsort reads a file and sorts it’s content to screen\nit does not change the file.\n\n$ sort -n lengths.txt \n   9 methane.pdb\n  12 ethane.pdb\n  15 propane.pdb\n  20 cubane.pdb\n  21 pentane.pdb\n  30 octane.pdb\n 107 total"
+  },
+  {
+    "objectID": "04-pipes.html#filtering-files-and-using-the-result",
+    "href": "04-pipes.html#filtering-files-and-using-the-result",
+    "title": "Pipes and Filters",
+    "section": "Filtering Files and using the result",
+    "text": "Filtering Files and using the result\n\nCool 😎 but now we want to use this list.\nCould save it to a new file?\n\n$ sort -n lengths.txt > sorted_lengths.txt\n$ head -n 2 sorted_lengths.txt\n   9 methane.pdb\n  12 ethane.pdb"
+  },
+  {
+    "objectID": "04-pipes.html#filtering-files-and-the-pipe",
+    "href": "04-pipes.html#filtering-files-and-the-pipe",
+    "title": "Pipes and Filters",
+    "section": "Filtering Files and the pipe",
+    "text": "Filtering Files and the pipe\n\nWe call | the pipe. It takes output from a command and gives it to another command.\nModern languages use their own version of this (R has a package and now also a native pipe, julia has of course a pipe etc. Stata not sure 😜)\nThe pipe allows us to do this without storing intermediate results.\n\n$ sort -n lengths.txt | head -n 1\n 9 methane.pdb\n\nBut, wait 🤔. Then we don’t even need lengths.txt:\n\n$ wc -l *.pdb | sort -n | head -n 1\n 9 methane.pdb\n\nThat’s a pipeline. 🤯"
+  },
+  {
+    "objectID": "04-pipes.html#piping-away",
+    "href": "04-pipes.html#piping-away",
+    "title": "Pipes and Filters",
+    "section": "Piping Away",
+    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\n\n\n\n\nPipe Dreams\n\n\nWhich of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!\n\nwc -l * > sort -n > head -n 3\nwc -l * | sort -n | head -n 1-3\nwc -l * | sort -n | tail -n 4 | head -n 3\nwc -l * | sort -n | head -n 3\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 4 is correct. Option 3 finds the ones with most lines."
+  },
+  {
+    "objectID": "04-pipes.html#cutting-and-piping",
+    "href": "04-pipes.html#cutting-and-piping",
+    "title": "Pipes and Filters",
+    "section": "Cutting and Piping",
+    "text": "Cutting and Piping\n\nWe have a .csv file here: shell-lesson-data/exercise-data/animal-counts\nLet’s use the cut command to get parts of it.\n\n$ cd ~/shell-lesson-data/exercise-data/animal-counts\n$ cut -d , -f 2 animals.csv\n\n\n\n\n\n\nBuilding a Pipe\n\n\n\nuniq filters adjacent matching lines in a file.\nCan you extend the above command with uniq (and another command?) such that we get the list of unique animal names?\nAdd the -c flag to uniq to get a contingency table.\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\ncut -d , -f 2 animals.csv | sort | uniq\ncut -d , -f 2 animals.csv | sort | uniq -c"
+  },
+  {
+    "objectID": "04-pipes.html#real-data",
+    "href": "04-pipes.html#real-data",
+    "title": "Pipes and Filters",
+    "section": "Real Data",
+    "text": "Real Data\n\nThe shell is very efficient for big data sets.\nYou can do stuff very quickly without loading anything into RAM of R or else:\n\n\n\n\n\n\n\nPrix des carburants en France\n\n\nUsing the shell:\n\nUse wget to download data to from here to your downloads folder as carburants.csv: wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\nuse wc -l to count how many rows (lines) there are\nuse head -n 1 to see the first row (the header)\nUse the above solution to build a contingency table that tells us the number of gas stations per ville."
+  },
+  {
+    "objectID": "04-pipes.html#real-data-1",
+    "href": "04-pipes.html#real-data-1",
+    "title": "Pipes and Filters",
+    "section": "Real Data",
+    "text": "Real Data\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\ncd Downloads\nwc -l carburants.csv\ncut -d ';' -f 5 carburants.csv | sort | uniq -c | sort\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
   },
   {
     "objectID": "02-filedir.html#intro",
@@ -175,32 +301,39 @@
     "text": "More ls Flags\n\n\n\n\n\n\nChallenge\n\n\nYou can also use two options at the same time. What does the command ls do when used with the -l option? What about if you use both the -l and the -h option?\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nThe -l option makes ls use a long listing format, showing not only the file/directory names but also additional information, such as the file size and the time of its last modification. If you use both the -h option and the -l option, this makes the file size ‘human readable’, i.e. displaying something like 5.3K instead of 5369."
   },
   {
+    "objectID": "02-filedir.html#more-ls-challenges",
+    "href": "02-filedir.html#more-ls-challenges",
+    "title": "Navigating Files and Directories",
+    "section": "More ls Challenges",
+    "text": "More ls Challenges\n\n\n\n\n\n\nListing in Reverse Chronological Order\n\n\nBy default, ls lists the contents of a directory in alphabetical order by name. The command ls -t lists items by time of last change instead of alphabetically. The command ls -r lists the contents of a directory in reverse order. Which file is displayed last when you combine the -t and -r options? Hint: You may need to use the -l option to see the last changed dates.\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nThe most recently changed file is listed last when using -rt. This can be very useful for finding your most recent edits or checking to see if a new output file was written."
+  },
+  {
     "objectID": "02-filedir.html#getting-data",
     "href": "02-filedir.html#getting-data",
     "title": "Navigating Files and Directories",
     "section": "Getting Data",
-    "text": "Getting Data\n\nLet’s download some data\nunzip it and and move it to your Desktop"
+    "text": "Getting Data\n\nLet’s download some data\nunzip it and and move it to your home directory. (~, not Desktop!)"
   },
   {
     "objectID": "02-filedir.html#exploring-more-directories",
     "href": "02-filedir.html#exploring-more-directories",
     "title": "Navigating Files and Directories",
     "section": "Exploring More Directories",
-    "text": "Exploring More Directories\n\nls can search other than only the current directories.\nLet’s see what is on our Desktop:\n\n$ ls -F Desktop\nshows for Nelle only the data we just downloaded:\nshell-lesson-data/\n\nWe can also look inside that data from where we are:\n\n$ ls -F Desktop/shell-less-data\nexercise-data/  north-pacific-gyre/\n\nlooks intriguing 🧐. Let’s try and go there!"
+    "text": "Exploring More Directories\n\nls can search other than only the current directories.\nLet’s see what is on our home:\n\n$ cd    # goes HOME\n$ ls -F .\nshows for Nelle only the data we just downloaded:\nshell-lesson-data/\n\nWe can also look inside that data from where we are:\n\n$ ls -F shell-less-data\nexercise-data/  north-pacific-gyre/\n\nlooks intriguing 🧐. Let’s try and go there!"
   },
   {
     "objectID": "02-filedir.html#going-into-subdirectories",
     "href": "02-filedir.html#going-into-subdirectories",
     "title": "Navigating Files and Directories",
     "section": "Going into Subdirectories",
-    "text": "Going into Subdirectories\n\ncd is for change directory. Moves the shell to a different location in the file system.\nLet’s go to our data folder:\n\n$ cd Desktop\n$ cd shell-lesson-data \n$ $$$$$$cd exercise-data\n\nNotice that the cd command does not print any output by default.\nRun ls -F again to see what’s in this directory!\nRun pwd to see where we are!"
+    "text": "Going into Subdirectories\n\ncd is for change directory. Moves the shell to a different location in the file system.\nLet’s go to our data folder:\n\n$ cd shell-lesson-data \n$ cd exercise-data\n\nNotice that the cd command does not print any output by default.\nRun ls -F again to see what’s in this directory!\nRun pwd to see where we are!"
   },
   {
     "objectID": "02-filedir.html#coming-back-from-subdirectories",
     "href": "02-filedir.html#coming-back-from-subdirectories",
     "title": "Navigating Files and Directories",
     "section": "Coming Back from Subdirectories",
-    "text": "Coming Back from Subdirectories\n\nNow we want to go back up one level.\nIt’s tempting to say cd shell-lesson-data\nBut cd can only go into its own subdirectories.\nIt has a special one: .. is its parent directory, so goes one up.\n\n$ cd ..\n$ pwd\nputs Nelle back into\n/Users/nelle/Desktop/shell-lesson-data\n\nNotice how .. is listed if you flag -a on the ls command."
+    "text": "Coming Back from Subdirectories\n\nNow we want to go back up one level.\nIt’s tempting to say cd shell-lesson-data\nBut cd can only go into its own subdirectories.\nIt has a special one: .. is its parent directory, so goes one up.\n\n$ cd ..\n$ pwd\nputs Nelle back into\n/Users/nelle/shell-lesson-data\n\nNotice how .. is listed if you flag -a on the ls command."
   },
   {
     "objectID": "02-filedir.html#hidden-files",
@@ -249,13 +382,13 @@
     "href": "02-filedir.html#general-syntax-of-shell-commands",
     "title": "Navigating Files and Directories",
     "section": "General Syntax of Shell Commands",
-    "text": "General Syntax of Shell Commands\nLet’s take as example this command:\n$ ls -F /\n\nGeneral syntax of a shell command\nThe space between ls and whatever options you put is important.\nCapitalization is important. ls -s is not the same as ls -S:\n\n$ cd ~/Desktop/shell-lesson-data\n$ ls -s exercise-data  # size\n$ ls -S exercise-data  # sort by size"
+    "text": "General Syntax of Shell Commands\nLet’s take as example this command:\n$ ls -F /\n\nGeneral syntax of a shell command\nThe space between ls and whatever options you put is important.\nCapitalization is important. ls -s is not the same as ls -S:\n\n$ cd ~/shell-lesson-data\n$ ls -s exercise-data  # size\n$ ls -S exercise-data  # sort by size"
   },
   {
     "objectID": "02-filedir.html#nelles-pipeline-and-tab-completion",
     "href": "02-filedir.html#nelles-pipeline-and-tab-completion",
     "title": "Navigating Files and Directories",
     "section": "Nelle’s Pipeline and Tab Completion",
-    "text": "Nelle’s Pipeline and Tab Completion\n\nNelle organized the output of the assay machine into north-pacific-gyre/. let’s go there.\n\n$ cd ~/Desktop/shell-lesson-data/\n$ cd north-pacific-gyre\n\nNow north-pacific-gyre is a mouthful to write. try instead to type cd n and hit the TAB key.\nhitting TAB twice without any leading character, gives you a list of files in pwd."
+    "text": "Nelle’s Pipeline and Tab Completion\n\nNelle organized the output of the assay machine into north-pacific-gyre/. let’s go there.\n\n$ cd ~/shell-lesson-data/\n$ cd north-pacific-gyre\n\nNow north-pacific-gyre is a mouthful to write. try instead to type cd n and hit the TAB key.\nhitting TAB twice without any leading character, gives you a list of files in pwd."
   }
 ]

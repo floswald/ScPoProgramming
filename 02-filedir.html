@@ -593,12 +593,8 @@ Show Solution
 </div>
 </details>
 </section>
-<section class="slide level2">
-
-</section>
-<section>
-<section id="more-ls-challenges" class="title-slide slide level1 center">
-<h1>More <code>ls</code> Challenges</h1>
+<section id="more-ls-challenges" class="slide level2">
+<h2>More <code>ls</code> Challenges</h2>
 <div class="callout callout-warning callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -635,22 +631,23 @@ Show Solution
 <h2>Getting Data</h2>
 <ol type="1">
 <li>Let’s <a href="./data/shell-lesson-data.zip">download some data</a></li>
-<li>unzip it and and move it to your <code>Desktop</code></li>
+<li>unzip it and and move it to your <code>home</code> directory. (<code>~</code>, not <code>Desktop</code>!)</li>
 </ol>
 </section>
-<section id="exploring-more-directories" class="slide level2 smaller">
+<section id="exploring-more-directories" class="slide level2">
 <h2>Exploring More Directories</h2>
 <ul>
 <li><code>ls</code> can search other than only the <em>current</em> directories.</li>
-<li>Let’s see what is on our <code>Desktop</code>:</li>
+<li>Let’s see what is on our <code>home</code>:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> Desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># goes HOME</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>shows for Nelle only the data we just downloaded:</p>
 <pre><code>shell-lesson-data/</code></pre>
 <ul>
 <li>We can also look <em>inside</em> that data from where we are:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> Desktop/shell-less-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> shell-less-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>exercise-data/  north-pacific-gyre/</code></pre>
 <ul>
 <li>looks intriguing 🧐. Let’s try and go there!</li>
@@ -662,9 +659,8 @@ Show Solution
 <li><code>cd</code> is for <em>change directory</em>. Moves the shell to a different location in the file system.</li>
 <li>Let’s go to our data folder:</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd Desktop</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="va">$$$$$$</span>cd exercise-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd exercise-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that the <code>cd</code> command does not print any output by default.</li>
 <li>Run <code>ls -F</code> again to see what’s in this directory!</li>
@@ -682,7 +678,7 @@ Show Solution
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>puts Nelle back into</p>
-<pre><code>/Users/nelle/Desktop/shell-lesson-data</code></pre>
+<pre><code>/Users/nelle/shell-lesson-data</code></pre>
 <ul>
 <li>Notice how <code>..</code> is listed if you flag <code>-a</code> on the <code>ls</code> command.</li>
 </ul>
@@ -911,7 +907,7 @@ Show Solution
 <li>The space between <code>ls</code> and whatever options you put is important.</li>
 <li>Capitalization is important. <code>ls -s</code> is not the same as <code>ls -S</code>:</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop/shell-lesson-data</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-s</span> exercise-data  <span class="co"># size</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-S</span> exercise-data  <span class="co"># sort by size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -920,7 +916,7 @@ Show Solution
 <ol type="1">
 <li>Nelle organized the output of the assay machine into <code>north-pacific-gyre/</code>. let’s go there.</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop/shell-lesson-data/</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd north-pacific-gyre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Now <code>north-pacific-gyre</code> is a mouthful to write. try instead to type <code>cd n</code> and hit the TAB key.</li>
@@ -960,7 +956,7 @@ Show Solution
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>ScPo Intro To Programming 2023</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
