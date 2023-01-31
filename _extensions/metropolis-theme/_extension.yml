@@ -1,0 +1,7 @@
+title: Quarto Metropolis Theme
+author: Patrick Schratz
+version: 1.0.0
+contributes:
+  formats:
+    revealjs:
+      theme: metropolis.scss
