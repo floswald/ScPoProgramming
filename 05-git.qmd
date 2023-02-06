@@ -12,6 +12,7 @@ format:
 author: Florian Oswald and The Software Carpentry
 ---
 
+## Version What?
 
 
 ::::: {.callout-note}
@@ -32,78 +33,104 @@ author: Florian Oswald and The Software Carpentry
 
 !["Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com](/images/phd101212s.png)
 
+
+
 ---
 
 ## Undo
 
-* "track changes" in MS word
-* if you accepted the propsed changes of a collaborator, can you go back (if you change your mind?)
-* What about Dropbox?
+* The *latest version* is often best for text documents. 
+* However, sometimes our view of *best* evolves. Then, we want to *undo*.
+* *Undo* means going back in history.
+
+. . .
+
+* MS Word etc have *track changes* features.
+* Once you accepted the proposed changes of a collaborator, can you go back?
+* What about Dropbox-like solutions? (What *is* dropbox actually?)
+
+---
+
+## Which Version: 20210611_draft.tex
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Hey, fixed that thing last week.
+* In `20220629-paper.tex`?
+* Erm. Yes. No. I think `20211203-paper.tex` - messed up the file name.
+* Ok, can you copy it into the latest version?
+* Sure. Damn, can't find it anymore. I'll just write it again. All in my head.  🤯
+:::
+
+::: {.column width="40%"}
+!["True Story" by Florian Oswald](/images/which-version.png)
+:::
+
+::::
 
 
 ---
 
-## Versions
+## Which Version 2: **Why is the sample size so small suddenly**?
 
-* PRA prices case study
-* something is different today than yesterday but i don't know why
-* how to figure out?
-* git diff across version/branches
-* 
 
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+* We had 800 observations, now 733. Why?
+* Erm...😱 No clue!
+* Well you must have changed the code.
+* Yes, I *improved* the code in several parts.
+* Well you have to find out what happened.
+* But that was weeks ago - I don't remember! 😢
+::::
+:::: {.column width="50%"}
+
+
+### Hard Bugs
+
+* The hard bugs 🐛 are the ones see only after a while.
+* See result today, error was introduced long ago.
+* You can rewind dropbox 30 days. What if... ?
+* Also, throw away 30 days of work?
+* 😱 😱 😱 😱 
+
+::::
+:::::
+
+
+---
+
+## {background-image="./images/removed-that.png" background-size=100%}
 
 
 
 ---
 
 
-## installation and invocation
+## Setting Up Git
 
-* setup with user name etc
+* We all installed `git`. 
+* Let's setup our name
 
----
+```bash
+$ git config --global user.name "Your Name"
+$ git config --global user.email "your@mail.com"
+```
 
-## create repo
+* Line Endings on Windows:
 
----
-
-## workflow definitions
-
-* add, commit, checkout, reset
-
----
-
-## clone
-
-* make changes
-* view in diff
+```bash
+git config --global core.autocrlf false
+```
 
 ---
 
-## add stuff and view
 
-* diff
-* add to staging area but then reset
-* add to staging area and then commit
-* git diff
-* git diff across commits
-* git log
-* collaborating on github
-* define github
-* everybody get a user account on github
-* everybody create a new repo
-* create local text file, commit
-* add remote
-* push
-* look on github
-* introduce vscode 
-* 
-
-
-
----
-
-## create repo
+## Creating a Git **Repository**
 
 
 ::::: {.callout-note}
@@ -123,6 +150,8 @@ author: Florian Oswald and The Software Carpentry
 ---
 
 ## Gas Prices Project
+
+* Let's create a project folder in our home to look at the gas prices from last week.
 
 ```bash
 $ cd    # going to home dir 
@@ -153,6 +182,7 @@ $ ls -a
 # Danger Zone
 
 * If you _delete_ that folder, the entire version control is GONE. 
+* Be very careful that you really want to do that.
 
 :::
 
@@ -160,12 +190,7 @@ $ ls -a
 ---
 
 
-
-
-
----
-
-# Tracking Changes with Git
+## Tracking Changes with Git
 
 
 
@@ -190,32 +215,49 @@ $ ls -a
 
 ## Adding Code and Text
 
-* Notice: Code **is** text.
+::: {.callout-note}
+
+* Notice: Code we produce **is** text.
+* Remember what we learned about **file endings**.
+
+:::
+
 * Let's add a shell script where we add our pipeline from last week.
 
 1. run to get the raw data again:
 ```bash
-wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/gasprices/carburants.csv`
+wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/gasprices/carburants.csv
 ```
+
+---
+
+## Adding Code and Text
+
 
 2. create a script
 
 ```bash
 nano maketable.sh  # open nano
-# typd this
+# type this:
 cd ~/gasprices   # make sure we are in the right place
 cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort
 # save and exit 
 ```
 
-3. Does it work?
+3. (Does it work?)
 ```bash
-ls .
-./maketable.sh 
+ls .  # check the new file is there
+./maketable.sh   # run it!
 ```
 
+. . .
 
-
+4. No, it doesn't. 😖
+```bash
+chmod +x ./maketable.sh  # add executable mode
+ls -a
+./maketable.sh
+```
 
 
 
@@ -223,4 +265,27 @@ ls .
 
 ## Viewing Changes
 
-* Let's 
+* Ok, now let's see what `git` makes of our additions to this directory.
+
+```tcl
+floswald@PTL11077 ~/gasprices (main)> git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        carburants.csv
+        maketable.sh
+```
+
+* It is actually helpful **not** to use `bash` as a shell...
+* Customizing your shell is an extremely effective procrastination device.
+* You must know what [*shaving a Yak*](https://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html) means before you walk out of my class.
+
+
+---
+
+## Modify-Add-Commit
+
+https://swcarpentry.github.io/git-novice/04-changes/index.html
