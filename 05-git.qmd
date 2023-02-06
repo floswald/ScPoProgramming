@@ -203,6 +203,24 @@ wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09
 ```bash
 nano maketable.sh  # open nano
 # typd this
+cd ~/gasprices   # make sure we are in the right place
 cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort
 # save and exit 
 ```
+
+3. Does it work?
+```bash
+ls .
+./maketable.sh 
+```
+
+
+
+
+
+
+---
+
+## Viewing Changes
+
+* Let's 
