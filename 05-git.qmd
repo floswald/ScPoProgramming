@@ -92,7 +92,7 @@ author: Florian Oswald and The Software Carpentry
 
 ### Hard Bugs
 
-* The hard bugs 🐛 are the ones see only after a while.
+* The hard bugs 🐛 are the ones you see only after a while.
 * See result today, error was introduced long ago.
 * You can rewind dropbox 30 days. What if... ?
 * Also, throw away 30 days of work?
@@ -217,7 +217,7 @@ $ ls -a
 
 ::: {.callout-note}
 
-* Notice: Code we produce **is** text.
+* Notice: The code we produce **is** text.
 * Remember what we learned about **file endings**.
 
 :::
@@ -286,6 +286,396 @@ Untracked files:
 
 ---
 
-## Modify-Add-Commit
+## Seeing the Difference
 
-https://swcarpentry.github.io/git-novice/04-changes/index.html
+* the command `git diff` shows you what changed between versions.
+* lets see what it shows now:
+
+```bash
+$ git diff
+```
+
+* It shows nothing, i.e. an _empty_ diff, because _there are no commits yet_ to compare with.
+* Ok, let's change that.
+
+
+---
+
+## Modify-Add-Commit 1
+
+* git reports about _untracked files_. We need to decide *what to track*.
+
+1. Move files to *staging area*:
+```bash
+git add maketable.sh 
+git status
+```
+
+* Notice that I did *not* want to track the `csv` file.
+
+```bash
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   maketable.sh
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        carburants.csv
+```
+
+
+---
+
+## Modify-Add-Commit 2
+
+* Now, let's *record* what is in the staging area. 
+
+```bash
+$ git commit -m 'added the maketable script'
+
+[main (root-commit) 9956506] added the maketable script
+ 1 file changed, 2 insertions(+)
+ create mode 100644 maketable.sh
+```
+
+* check status:
+
+```bash
+$ git status
+
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        carburants.csv
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  gasprices git:(main) ✗ 
+```
+
+---
+
+## Modify-Add-Commit 3
+
+* Let's check what's in the log.
+
+```bash
+$ git log 
+
+commit 9956506dc3159403b87aea3b04654c293e82c680 (HEAD -> main)
+Author: Florian Oswald <florian.oswald@gmail.com>
+Date:   Tue Feb 7 10:50:51 2023 +0100
+
+    added the maketable script
+```
+
+---
+
+## Modify-Add-Commit 4
+
+* Now let's _modify_ the script finally.
+
+```bash
+$ nano maketable.sh
+
+# add this line on top 
+echo hello user, will make a contigency table now.
+# save and exit
+```
+
+* now - what's the difference in the repo?
+
+---
+
+## Diffing
+
+* there are still the same files here:
+
+```bash
+$ ls 
+carburants.csv  maketable.sh
+```
+
+* But we can now _compare_ versions:
+
+```bash
+$ git diff 
+
+diff --git a/maketable.sh b/maketable.sh
+index 7e01058..3b7007e 100644
+--- a/maketable.sh
++++ b/maketable.sh
+@@ -1,2 +1,3 @@
++echo hello user, will make a contigency table now.
+ cd ~/gasprices   # make sure we are in the right place
+ cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort
+```
+
+
+---
+
+## Commiting Changes Again
+
+* let's first check everything runs
+
+```bash
+$ ./maketable.sh
+```
+
+* good. commit!
+```bash
+$ git add maketable.sh 
+$ git commit -m 'added message to user'
+```
+
+
+---
+
+## Adding a README
+
+* Good. Now let's add a `README` file.
+* It's customary to write this in [markdown](https://carpentries-incubator.github.io/markdown-intro/)
+
+```bash
+$ nano README.md 
+```
+write this in nano and save when done.
+
+```md
+# Gas Prices
+
+This repo contains code to analyse gas prices at French gas stations.
+```
+
+* add to staging area, so we can take a snapshot
+
+```bash
+$ git add README.md 
+$ git commit -m 'added readme'
+```
+
+---
+
+## What is this Staging Area
+
+* git is like a foto camera.
+* before you take a picture of your friends, you need to arrange them somehow, so that all fit, and all 😁.
+* You put them _on stage_. Same for files in your repo.
+
+![figure from [software carpentry]()](/images/git-staging-area.svg)
+
+
+---
+
+## Looking at History
+
+
+
+
+::::: {.callout-note}
+# Question
+* How can I identify old versions of files?
+* How do I review my changes?
+* How can I recover old versions of files?
+
+:::::
+
+::::: {.callout-tip}
+# Objectives
+
+
+* Explain what the HEAD of a repository is and how to use it.
+* Identify and use Git commit numbers.
+* Compare various versions of tracked files.
+* Restore old versions of files.
+::::::
+
+
+---
+
+## The most recent version: HEAD
+
+* Let's change the `maketable.sh` script again:
+```bash
+$ nano maketable.sh
+echo program run successfully
+# save exit
+
+$ git add maketable.sh 
+```
+
+* The most recent version of our repo is called `HEAD`.
+```bash
+$ git diff # compares entire repo to HEAD 
+$ git diff HEAD maketable.sh  
+```
+
+---
+
+## Whoops, typo
+
+* Oh no, we wrote _program run successfully_. That should be _ran_ not _run_. 
+* What now?
+
+ . . .
+
+* we have not committed this yet! 
+* we can just get back the version in HEAD, and edit again:
+
+```bash
+$ git restore maketable.sh
+$ git checkout maketable.sh # also works
+```
+
+* edit the script, add and commit.
+
+---
+
+## How to get a *specific* version
+
+* What if you want something else than `HEAD`?
+* like, the first version of `maketable.sh`?
+* look at history:
+
+```bash
+$ git log --oneline --graph
+
+* a6f023b (HEAD -> main) added readme
+* 9956506 added the maketable script
+```
+
+* The `9956506` is the unique identifier of that version.
+* We can go back to that version:
+
+```bash
+$ git checkout 9956506 maketable.sh 
+```
+
+
+---
+
+
+::: {.callout-tip}
+
+# Key Points
+
+* `git diff` displays differences between commits.
+* `git checkout` recovers old versions of files.
+:::
+
+---
+
+## So, how does this thing work?
+
+![software carpentry image.](/images/git_staging.svg)
+
+
+---
+
+## Version Control with VScode
+
+* Download [Visual Studio Code](https://code.visualstudio.com/)
+* Start
+* Open folder `~/gasprices`
+* check version control tab on the left.
+
+
+
+---
+
+## Version Control with RStudio
+
+* top right click on *new project*
+* Select *existing directory*
+* Select `~/gasprices`
+* checkout out the `git` tab in Rstudio!
+
+
+---
+
+## Collaborating with Git on GitHub
+
+* Create repo
+* copy ssh remote URL
+* connect local to remote repo
+
+---
+
+## SSH connections
+
+* Secure Shell Protocol
+* Private-Public key pair. It's like a lock, and you have the only key.
+* Let's check if you have one already!
+
+```bash
+ls -la ~/.ssh 
+```
+ 
+if error, create one:
+
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+```
+press enter (no passphrase)
+
+check
+```bash
+ls -la ~/.ssh 
+```
+
+---
+
+## Communicate with GitHub Remote
+
+* Let's ping the remote server at GitHub now.
+
+```bash
+ssh -T git@github.com
+```
+
+* right, of course Github doesn't have our public key yet (the _lock_ for our key!)
+
+* copy from your terminal
+```bash
+cat ~/.ssh/id_ed25519.pub  # or your *.pub 
+```
+
+* Go to github.com, click top right corner, settings, SSH keys.
+
+
+---
+
+## Adding a Remote to your local Repo
+
+* Now that we can talk to Github.com, let's add the remote to our local repo.
+* We `add` a remote by getting the `SSH` url from the repository (green button) online.
+
+```bash
+$ git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git
+```
+* `origin` is the _name_ of the remote server. your choice, but _origin_ is common.
+* this should set that remote both for sending and retrieving stuff from the repo. _pull_ and _push_, in git language:
+
+```bash
+$ git remote --v
+```
+
+
+
+---
+
+## Pushing It
+
+* Now we can _push_ our local repository to the remote repo.
+* There will be a full copy of what is in `.git` (i.e., the entire history of the repo) on that remote machine.
+* You will be able to use it like a central backup location for your work.
+
+
+```bash
+$ git push -u origin main
+```
+
+* the `-u` flag sets the _main_ branch as default _upstream_ branch to track.
