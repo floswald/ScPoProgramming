@@ -20,6 +20,8 @@ website:
             text: 3. Working with Files
           - href: 04-pipes.qmd
             text: 4. Filters and Pipes
+          - href: https://raw.githack.com/floswald/lectures/master/04-rlang/04-rlang.html
+            text: 6. R intro
 
   navbar:
     left:
