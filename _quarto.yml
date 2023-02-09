@@ -21,11 +21,13 @@ website:
           - href: 04-pipes.qmd
             text: 4. Filters and Pipes
           - href: 05-git.qmd
-            text: 5. Git Version Control         
-          - href: https://raw.githack.com/floswald/lectures/master/04-rlang/04-rlang.html
-            text: 6. R intro
-          - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy/chapter_tidy.html#1
-            text: 7. R Tidyverse
+            text: 5. `Git` Version Control         
+          - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html
+            text: 6. `R` intro
+          - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html
+            text: 7. `R Tidyverse`
+          - href: https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html
+            text: 8. `R data.table`
   navbar:
     left:
       - href: index.qmd

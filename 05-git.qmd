@@ -679,3 +679,46 @@ $ git push -u origin main
 ```
 
 * the `-u` flag sets the _main_ branch as default _upstream_ branch to track.
+
+
+---
+
+## Branching It
+
+* Next to different _versions_ of a file/directory _over time_, we can have versions evolving in parallel.
+* Imagine development history _branching_ off into 2 separate directions at one point.
+* They may converge at some point again, but maybe one of them will turn out a failure and we drop it.
+* Branches are hugely useful to organize team work.
+
+```bash
+$ git checkout -b testing # checkout repo on new branch `testing`
+Switched to a new branch 'testing'
+```
+
+* Now can develop stuff on the `testing` branch.
+* Later on, we can `merge` it back into `main` if we like it.
+
+
+---
+
+## The Full Picture(s)
+
+![picture from [@MarkLodato](https://marklodato.github.io/visual-git-guide/index-en.html) - click for more!](/images/git-images/full.png)
+
+
+---
+
+## Pushing Branches to GitHub
+
+* Once you created a local branch you can of course copy (_push_) it to your remote to share with others.
+* you would amend the push command:
+
+```bash
+# make sure you are on the desired branch 
+$ git branch 
+  main
+* testing
+
+$ git push origin testing
+```
+

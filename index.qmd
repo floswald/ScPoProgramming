@@ -21,13 +21,16 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 
 # Syllabus
 
-| Topic Number |  Topic      |  Author |
+| Session Number |  Topic      |  Author |
 |:------------:|:-----------|-------:|
 | 1            | [The Unix Shell](01-shell-intro.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-| 2            | [Git Version Control](https://swcarpentry.github.io/git-novice/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
-| 3            | [Programming with `R`](https://swcarpentry.github.io/r-novice-inflammation/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald|
-| 4            | [Geospatial Programming with `R`](https://datacarpentry.org/geospatial-workshop/) |  [The Data Carpentry Project](https://datacarpentry.org/) + Florian Oswald|
-|
+| 2            | [Shell: Files and Directories](02-filedir.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| 3            | [Shell: Working with Files and Directories](03-filework.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| 4            | [Shell: Pipes and Filters](04-pipes.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| 5            | [`Git` Version Control](05-git.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| 6            | [`R` Intro](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html) |  Florian Oswald|
+| 7            | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
+| 8            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
 
 
 # Setup Instructions
