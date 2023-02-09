@@ -20,6 +20,8 @@ website:
             text: 3. Working with Files
           - href: 04-pipes.qmd
             text: 4. Filters and Pipes
+          - href: 05-git.qmd
+            text: 5. Git Version Control         
   navbar:
     left:
       - href: index.qmd
