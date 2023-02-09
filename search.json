@@ -410,7 +410,28 @@
     "href": "05-git.html#pushing-it",
     "title": "Version Control with Git",
     "section": "Pushing It",
-    "text": "Pushing It\n\nNow we can push our local repository to the remote repo.\nThere will be a full copy of what is in .git (i.e., the entire history of the repo) on that remote machine.\nYou will be able to use it like a central backup location for your work.\n\n$ git push -u origin main\n\nthe -u flag sets the main branch as default upstream branch to track.\n\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Pushing It\n\nNow we can push our local repository to the remote repo.\nThere will be a full copy of what is in .git (i.e., the entire history of the repo) on that remote machine.\nYou will be able to use it like a central backup location for your work.\n\n$ git push -u origin main\n\nthe -u flag sets the main branch as default upstream branch to track."
+  },
+  {
+    "objectID": "05-git.html#branching-it",
+    "href": "05-git.html#branching-it",
+    "title": "Version Control with Git",
+    "section": "Branching It",
+    "text": "Branching It\n\nNext to different versions of a file/directory over time, we can have versions evolving in parallel.\nImagine development history branching off into 2 separate directions at one point.\nThey may converge at some point again, but maybe one of them will turn out a failure and we drop it.\nBranches are hugely useful to organize team work.\n\n$ git checkout -b testing # checkout repo on new branch `testing`\nSwitched to a new branch 'testing'\n\nNow can develop stuff on the testing branch.\nLater on, we can merge it back into main if we like it."
+  },
+  {
+    "objectID": "05-git.html#the-full-pictures",
+    "href": "05-git.html#the-full-pictures",
+    "title": "Version Control with Git",
+    "section": "The Full Picture(s)",
+    "text": "The Full Picture(s)\n\npicture from @MarkLodato - click for more!"
+  },
+  {
+    "objectID": "05-git.html#pushing-branches-to-github",
+    "href": "05-git.html#pushing-branches-to-github",
+    "title": "Version Control with Git",
+    "section": "Pushing Branches to GitHub",
+    "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nScPo Intro To Programming 2023"
   },
   {
     "objectID": "04-pipes.html#combining-commands",

@@ -1045,6 +1045,38 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>the <code>-u</code> flag sets the <em>main</em> branch as default <em>upstream</em> branch to track.</li>
 </ul>
+</section>
+<section id="branching-it" class="slide level2">
+<h2>Branching It</h2>
+<ul>
+<li>Next to different <em>versions</em> of a file/directory <em>over time</em>, we can have versions evolving in parallel.</li>
+<li>Imagine development history <em>branching</em> off into 2 separate directions at one point.</li>
+<li>They may converge at some point again, but maybe one of them will turn out a failure and we drop it.</li>
+<li>Branches are hugely useful to organize team work.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> testing <span class="co"># checkout repo on new branch `testing`</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Switched</span> to a new branch <span class="st">'testing'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Now can develop stuff on the <code>testing</code> branch.</li>
+<li>Later on, we can <code>merge</code> it back into <code>main</code> if we like it.</li>
+</ul>
+</section>
+<section id="the-full-pictures" class="slide level2">
+<h2>The Full Picture(s)</h2>
+
+<img data-src="./images/git-images/full.png" class="r-stretch quarto-figure-center"><p class="caption">picture from <a href="https://marklodato.github.io/visual-git-guide/index-en.html"><span class="citation" data-cites="MarkLodato">@MarkLodato</span></a> - click for more!</p></section>
+<section id="pushing-branches-to-github" class="slide level2">
+<h2>Pushing Branches to GitHub</h2>
+<ul>
+<li>Once you created a local branch you can of course copy (<em>push</em>) it to your remote to share with others.</li>
+<li>you would amend the push command:</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure you are on the desired branch </span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> testing</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push origin testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
