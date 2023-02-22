@@ -13,7 +13,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 
 ## Objectives of this Course
 
-* After this course, we want to be able to participate or conduct your own research project in an efficient way. *Research* nowadays means data sciencey stuff in most cases, certainly in Economics. 
+* After this course, we want you to be able to participate or conduct your own research project in an efficient way. *Research* nowadays means data sciencey stuff in most cases, certainly in Economics. 
 * We want you to have a basic understanding of how an operating system (in particular, *your* OS) works.
 * We want to be able to achieve a basic level of automation in repetitive tasks.
 * We want you to know what Version Control is and how to use it in a research project.
