@@ -1,0 +1,399 @@
+---
+title: "Building `R` Packages"
+format: 
+  revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald
+---
+
+## R and Packages
+
+* We have been using `R` packages all the time.
+
+* Each time we say `library(xyz)` we are using *external* code provided in the `xyz` package.
+
+* You can write **your own** packages.
+
+. . .
+
+::: {.callout-tip}
+
+# What's the point of Packages?
+
+1. Extend `R` functionality.
+2. **for researchers**: key tool to ensure _reproducibilty_ of findings
+3. **for researchers**: key tool to _organize_ code in team work
+
+:::
+
+* Let's go through some material from the [`r-pkgs`](https://r-pkgs.org) book!
+
+
+
+---
+
+
+## Building a Toy Package
+
+::: {.columns}
+
+::: {.column width=45%}
+### `RStudio` for the win
+
+* We do this in `RStudio`
+
+* we use the `devtools` package
+
+* check you have a recent version:
+
+```{r}
+#| echo: true
+packageVersion("devtools")
+```
+
+* if not - reinstall.
+
+:::
+
+::: {.column width=45%}
+
+### Let's Do it!
+
+```{r}
+#| echo: true
+#| eval: true
+
+library(devtools)
+
+# create a package `here`
+create_package("~/toypackage")
+```
+
+
+* You see Rstudio jumps to that location
+
+* ready to go!
+:::
+
+:::
+
+
+---
+
+## Adding Git
+
+* Of course we want to track our package with `git`.
+* We use functions from the `usethis` package. This is loaded by default when attaching the `devtools` package (`use_git` is part of `usethis`...)
+
+```{r}
+#| eval: true
+#| echo: true
+#| 
+library(devtools)
+use_git()
+```
+
+* Say `Yes` to everything ✌️
+
+---
+
+## Adding Code
+
+* We add `R` _source_ code in the `R/` folder.
+* Create as many `.R` files as you want.
+* It's good practice to organize tests accompanying source files.
+
+```{r}
+#| eval: true
+#| echo: true
+#| message: true
+use_r("sayhello")
+```
+
+* What's with that test thing? Let's try this out - we'll use it later:
+
+```{r}
+#| eval: true
+#| echo: true
+#| message: true
+use_test("sayhello")
+```
+
+---
+
+## Ok, but...Adding Code??
+
+* Let's add a function to the file `R/sayhello.R`:
+
+```r
+# Notice I'm using = instead of < - because 
+# the font of those slides prints it weirdly
+hello = function(who){
+    paste("hello,",who)
+}
+```
+
+* Now, if this were a simple `R` script, we could `source` the `R/sayhello.R` file into global space and try this out. 
+* We _don't_ want to do that here though. 🤨
+* Instead, we want to _load_ the **package**, which _contains_ our function.
+* do `load_all()`:
+```r
+load_all()
+ℹ Loading toypackage
+```
+
+---
+
+## Trying out Code
+
+::: {.callout-note}
+
+# `load_all()`
+
+The `load_all()` function simulates the process of building, installing, and attaching the `toypackage` package.
+:::
+
+* Call the function with your name!
+
+```r
+hello("Peter")
+[1] "hello, Peter"
+```
+
+* Great!
+
+---
+
+## Checking the Package
+
+* `R` has a rigid set of rules for what a package needs to look like. 
+* What files should be where, their names and permissions, such that the structure is nicely uniform across all R packages.
+* Particularly relevant for _official_ packages on [CRAN](https://cran.r-project.org/)
+* Do that often:
+
+```r
+check()
+```
+
+* This outputs a bunch of things:
+	1. It actually _builds_ our package in a separate process - immune from our current workspace
+	2. It runs a battery of checks and returns a report:
+
+```r
+0 errors ✔ | 1 warning ✖ | 1 note ✖
+```
+
+---
+
+## Editing DESCRIPTION
+
+* Open the `DESCRIPTION` file (type `Ctrl + .` and start typing `desc`)
+* Fill in the obviously missing contents.
+
+### Adding a LICENSE
+
+> [Use a license, any license (Jeff Atwood)](https://blog.codinghorror.com/pick-a-license-any-license/)
+
+Let's 
+```r
+use_mit_license()
+```
+
+---
+
+## Documenting with Roxygen
+
+* Go back to the `hello` function, place the cursor inside the function body, and do `Code > Insert Roxygen Skeleton`. 
+* You'll see something like this:
+
+```r
+#' Title
+#'
+#' @param who 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+hello <- function(who){
+  paste("hello,",who)
+}
+```
+
+* Each line starting with `#'` is part of the **docstring**.
+* The `roxygen` package can _separate_ those blocks from our code, and produce valid `R` documentation for us! 🤯
+
+---
+
+## Building Documentation
+
+* Let's modify the docstring accordingly.
+* execute the `document()` function.
+* After that, the documentation is visible to us:
+
+```r
+?hello
+ℹ Rendering development documentation for "hello"
+```
+* Look in the _Help_ pane in RStudio!
+
+
+---
+
+## NAMESPACE
+
+* Did you notice the `@export` tag in the docstring?
+* when we ran `document()`, roxygen changed the `NAMESPACE` file based upon that tag. 
+* Go and look at that file!
+* The contents of `NAMESPACE` specify what is _visible_ to a user who does `library(toypackage)`.
+* Try removing the `@export` tag, and `document()` again. Look back at `NAMESPACE`!
+
+### `check()` again!
+
+```r
+check()
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+```
+
+---
+
+## Time to INSTALL the package
+
+* Ok, great. Now we have a minimal package that _works_ somewhat.
+* We must _install_ it into our package library, in order to be able to use it like any other package (same as when we did `install.packages("ggplot2")`)
+* Notice that `R` installs your packages here:
+```{r}
+#| echo: true
+
+.libPaths()
+```
+
+* We _install_ our package into that location with `install()`
+* Look out for the final 
+```r
+* DONE (toypackage)
+```
+👏
+
+---
+
+## New Session - Try it Out!
+
+* Restart Rstudio
+* type into the console
+```r
+library(toypackage)
+```
+
+* and then let's see our cool 😎 function:
+
+```r
+hello("John Spencer Blues Explosion")
+[1] "hello, John Spencer Blues Explosion"
+```
+
+* Bingo! 🎉
+
+---
+
+## Automatically Testing Our Code
+
+* We verified ourselves that this _works_.
+* As your package grows, you will find it hard to come back to all components repeatedly, making sure they all _still_ work as intended.
+* There may be dependencies between parts of your code that are not totally obvious, and unexpected bugs might be introduced.
+* Enter **Unit Testing**.
+
+```r
+library(devtools)
+use_testthat()
+```
+
+* then
+```r
+use_test("sayhello")
+• Modify 'tests/testthat/test-sayhello.R'
+```
+
+---
+
+## Writing Unit Tests
+
+* Ideally, each function in our `R/` folder is _covered_ by a corresponding test.
+
+::: {.callout-important}
+
+# What Is a Test?
+
+The purpose of a **test** is to verify that some part of your code, a function in most cases, works **as intended**. 
+:::
+
+* Modify `'tests/testthat/test-sayhello.R'` like so
+```r
+test_that("hello function works", {
+  who = "James T. Kirk"
+  expect_equal(hello(who), paste("hello,",who))
+})
+``` 
+
+* Ready for 🚀 takeoff?
+
+---
+
+## Running all unit tests
+
+* You can run each test file separately to try it out (you must do `library(testthat)` first)
+* It's better practice to test the entire package though:
+
+```r
+> test()
+ℹ Testing toypackage
+
+Attaching package: ‘testthat’
+
+The following object is masked from ‘package:devtools’:
+
+    test_file
+
+✔ | F W S  OK | Context
+✔ |         1 | sayhello                                         
+
+══ Results ══════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+```
+
+* Celebrate! 🎉 🥳 🎊
+
+## Using _other_ packages
+
+* Most likely our package would depend some _other_ package as well.
+* Like we could choose the `export` some of our functions, we now may want to `import` some functions from elsewhere.
+* Suppose we want to use the `dplyr` package:
+```r
+> use_package("dplyr")
+✔ Adding 'dplyr' to Imports field in DESCRIPTION
+• Refer to functions with `dplyr::fun()`
+```
+
+* Let's check the `DESCRIPTION` file to see what happened.
+
+---
+
+## Hook it up to GitHub!
+
+* It's fairly easy to publish our new package to a github repo.
+* Let's `use_github()`
+```r
+use_github()
+```
+
+* answer all the prompts and end up here!
+
+![](/images/toypackage.png)
+
+
