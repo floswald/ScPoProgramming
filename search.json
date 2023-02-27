@@ -116,7 +116,7 @@
     "href": "09-R-packages.html#adding-code",
     "title": "Building R Packages",
     "section": "Adding Code",
-    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n✔ Creating 'R/'\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
+    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
   },
   {
     "objectID": "09-R-packages.html#ok-butadding-code",
