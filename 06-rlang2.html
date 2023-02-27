@@ -10,8 +10,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.313">
 
-  <meta name="author" content="Florian Oswald">
-  <title>ScPoProgramming - The Unix Shell</title>
+  <meta name="author" content="Florian Oswald and The Software Carpentry">
+  <title>ScPoProgramming - Pipes and Filters</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,70 +29,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
@@ -394,7 +330,7 @@
       margin-right: 0; 
     }
   </style>
-<meta name="twitter:title" content="ScPoProgramming - The Unix Shell">
+<meta name="twitter:title" content="ScPoProgramming - Pipes and Filters">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -402,285 +338,25 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The Unix Shell</h1>
+  <h1 class="title">Pipes and Filters</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Florian Oswald 
+Florian Oswald and The Software Carpentry 
 </div>
 </div>
 </div>
 
 </section>
-<section id="intro" class="slide level2">
-<h2>Intro</h2>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Question</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>What is a command shell and why would I use one?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Objectives</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Explain how the shell relates to the keyboard, the screen, the operating system, and users’ programs.</li>
-<li>Explain when and why command-line interfaces should be used instead of graphical interfaces.</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="do-you-gui" class="slide level2">
-<h2>Do You GUI?</h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What’s a GUI</strong></p>
-</div>
-<div class="callout-content">
-<p>A <em>Graphical User Interface</em> (GUI) lets the user interact by clicking with a mouse and using menus.</p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<ul>
-<li>I love 😍 a good Graphical User Interface (GUI)</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>But. Bad things can happen.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>☠️</li>
-</ul>
-</div>
-</section>
-<section id="section" class="slide level2" data-background-image="./images/bad.gif" data-background-size="cover">
-<h2></h2>
-</section>
-<section id="bad." class="slide level2">
-<h2>Bad.</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="callout callout-warning callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>No More than 65,536 Rows</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Public Health England <a href="https://www.influentialsoftware.com/how-an-nhs-test-and-trace-excel-error-lost-16000-covid-19-cases/">missed 14.000 covid cases</a></li>
-<li>They used <code>.xls</code> document to collect data.</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="callout callout-warning callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>No Growth with High Debt?</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><a href="https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646">Reinhardt and Rogoff controversy</a>.<sup>1</sup></li>
-<li>Inadvertently did not select all relevant countries on spreadsheet.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Both are eminent researchers and we do <em>not</em> imply misconduct.</p></li></ol></aside></section>
-<section id="or-do-you-cli" class="slide level2">
-<h2>Or Do you CLI?</h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What’s a CLI</strong></p>
-</div>
-<div class="callout-content">
-<p>A <em>Command Line Interface</em> (CLI) allows interaction via (text) commands.</p>
-</div>
-</div>
-</div>
-<ul>
-<li>CLIs can collect commands somewhere - <em>reproducible</em></li>
-<li>But one has to learn a <em>language</em>.</li>
-<li>They are great for <em>long, repetitive tasks</em>.</li>
-<li>It’s often the <strong>only</strong> way to interact with high-performance computing. –&gt; Show!</li>
-</ul>
-</section>
-<section id="the-shell" class="slide level2 smaller">
-<h2>The Shell</h2>
-<ul>
-<li>The <em>shell</em> is a program where we can type in commands and get output.</li>
-<li>We often use very simple programs - good for just one thing.</li>
-<li>There is tremendous power in <em>combining</em> those little programs.</li>
-<li>It’s a <em>platform</em> approach to an Operating System.</li>
-</ul>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Unix is a Platform</strong></p>
-</div>
-<div class="callout-content">
-<p>A protocol and many small program who interact according to the rules with each other</p>
-</div>
-</div>
-</div>
+<section class="slide level2">
 
-<img data-src="./images/Tux.png" class="r-stretch quarto-figure-center"><p class="caption">lewing@isc.tamu.edu Larry Ewing and The GIMP, Attribution, via Wikimedia Commons</p></section>
-<section id="go" class="slide level2">
-<h2>Go! 🚀</h2>
-<ol type="1">
-<li>Open your terminal! (<code>GitBash</code> on Windows)</li>
-<li>You should see something like</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which is called the <strong>prompt</strong>.</p>
-<ol start="3" type="1">
-<li>You <strong>don’t have to type</strong> the <code>$</code>!</li>
-<li>next to it, you see a cursor.</li>
-</ol>
-</section>
-<section id="first-command-ls" class="slide level2">
-<h2>First command: <code>ls</code></h2>
-<ul>
-<li>type <code>ls</code> and hit enter</li>
-<li>you see something like this as output:</li>
-</ul>
-<pre><code>Desktop     Downloads   Movies      Pictures
-Documents   Library     Music       Public</code></pre>
-<ul>
-<li>By default, the terminal opens in your home directory.</li>
-<li><code>ls</code> <em>lists</em> the content of that directory.</li>
-</ul>
-</section>
-<section id="first-error" class="slide level2">
-<h2>First Error!</h2>
-<div class="callout callout-caution callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Danger</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>If you mistype a command, or look for a program that is not installed, you get an error. Like:</li>
-</ul>
-<pre><code>bash-3.2$ ks</code></pre>
-<pre><code>bash: ks: command not found</code></pre>
-</div>
-</div>
-</div>
-<ul>
-<li>Look for a spelling mistake (it’s <code>ls</code> not <code>ks</code>)</li>
-<li>Or install the required program.</li>
-</ul>
-</section>
-<section id="nelles-pipeline-a-typical-problem" class="slide level2 smaller">
-<h2>Nelle’s Pipeline: A Typical Problem</h2>
-<ul>
-<li>Nelle Nemo is a marine biologist. 🌊 🐡</li>
-<li>Just sampled gelatinous marine life in the <a href="http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>.</li>
-<li>From 1520 samples she obtained measures of the relative abundance of 300 proteins.</li>
-<li>Her supervisor, <em>Professor Jones</em>, handed down to hear a program called <code>goostats.sh</code>.</li>
-<li><code>goostats.sh</code> needs to be run on each of the 1520 samples.</li>
-<li>Paper needs to be ready by the end of the month.</li>
-</ul>
-</section>
-<section id="section-1" class="slide level2" data-background-image="./images/PHD.png" data-background-size="50%" data-background-position="center">
-<h2></h2>
-</section>
-<section id="battle-plan" class="slide level2">
-<h2>Battle Plan</h2>
-<ul>
-<li>Using a GUI to run <code>goostats.sh</code>, Nelle will have to use her mouse to select and open a file 1520 times.</li>
-<li>If <code>goostats.sh</code> takes 30 secs to run, this will take more than 12 hours of Nelle’s <em>active time</em>.</li>
-<li>With the help of the shell, Nelle could make her computer go through that list of files instead.</li>
-<li><strong>Bonus</strong> : she will have a working pipeline, that can be re-run each time need be.</li>
-</ul>
-</section>
-<section id="what-does-nelle-need" class="slide level2 smaller">
-<h2>What Does Nelle Need</h2>
-<p>Nelle has needs to learn the following things:</p>
-<ul>
-<li>navigate to a file/directory</li>
-<li>create a file/directory</li>
-<li>check the length of a file</li>
-<li>chain commands together</li>
-<li>retrieve a set of files</li>
-<li>iterate over files</li>
-<li>run a shell script containing her pipeline</li>
-</ul>
-<p>And we will be right next to her. 🙂</p>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Key Points</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>A shell is a program whose primary purpose is to read commands and run other programs.</li>
-<li>This lesson uses Bash, the default shell in many implementations of Unix.</li>
-<li>Programs can be run in Bash by entering commands at the command-line prompt.</li>
-<li>The shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.</li>
-<li>The shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.</li>
-</ul>
-</div>
-</div>
-</div>
 
 
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>ScPo Intro To Programming 2023</p>
 </div>
 </section>
-
     </div>
   </div>
 
@@ -894,6 +570,44 @@ Documents   Library     Music       Public</code></pre>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

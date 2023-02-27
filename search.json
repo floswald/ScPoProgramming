@@ -84,6 +84,188 @@
     "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
   },
   {
+    "objectID": "09-R-packages.html#r-and-packages",
+    "href": "09-R-packages.html#r-and-packages",
+    "title": "Building R Packages",
+    "section": "R and Packages",
+    "text": "R and Packages\n\n\n\n\n\n\n\n\nQuestions\n\n\n\nWhy write our own R package?\nHow to create an R package?\nWhat are unit tests?\n\n\n\n\n\n\n\n\n\n\n\nObjectives\n\n\n\nLearn the RStudio-powered package development workflow.\nCreate a package, and test it.\nPublish the package to github.\nPublish the package docs as a self-contained website."
+  },
+  {
+    "objectID": "09-R-packages.html#r-and-packages-1",
+    "href": "09-R-packages.html#r-and-packages-1",
+    "title": "Building R Packages",
+    "section": "R and Packages",
+    "text": "R and Packages\n\nWe have been using R packages all the time.\nEach time we say library(xyz) we are using external code provided in the xyz package.\nYou can write your own packages.\n\n\n\n\n\n\n\n\nWhat’s the point of Packages?\n\n\n\nExtend R functionality.\nfor researchers: key tool to ensure reproducibilty of findings\nfor researchers: key tool to organize code in team work\n\n\n\n\n\nLet’s go through some material from the r-pkgs book!"
+  },
+  {
+    "objectID": "09-R-packages.html#building-a-toy-package",
+    "href": "09-R-packages.html#building-a-toy-package",
+    "title": "Building R Packages",
+    "section": "Building a Toy Package",
+    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location\nready to go!"
+  },
+  {
+    "objectID": "09-R-packages.html#adding-git",
+    "href": "09-R-packages.html#adding-git",
+    "title": "Building R Packages",
+    "section": "Adding Git",
+    "text": "Adding Git\n\nOf course we want to track our package with git.\nWe use functions from the usethis package. This is loaded by default when attaching the devtools package (use_git is part of usethis…)\n\n\nlibrary(devtools)\nuse_git()\n\n\nSay Yes to everything ✌️"
+  },
+  {
+    "objectID": "09-R-packages.html#adding-code",
+    "href": "09-R-packages.html#adding-code",
+    "title": "Building R Packages",
+    "section": "Adding Code",
+    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n✔ Creating 'R/'\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
+  },
+  {
+    "objectID": "09-R-packages.html#ok-butadding-code",
+    "href": "09-R-packages.html#ok-butadding-code",
+    "title": "Building R Packages",
+    "section": "Ok, but…Adding Code??",
+    "text": "Ok, but…Adding Code??\n\nLet’s add a function to the file R/sayhello.R:\n\n# Notice I'm using = instead of < - because \n# the font of those slides prints it weirdly\nhello = function(who){\n    paste(\"hello,\",who)\n}\n\nNow, if this were a simple R script, we could source the R/sayhello.R file into global space and try this out.\nWe don’t want to do that here though. 🤨\nInstead, we want to load the package, which contains our function.\ndo load_all():\n\nload_all()\nℹ Loading toypackage"
+  },
+  {
+    "objectID": "09-R-packages.html#trying-out-code",
+    "href": "09-R-packages.html#trying-out-code",
+    "title": "Building R Packages",
+    "section": "Trying out Code",
+    "text": "Trying out Code\n\n\n\n\n\n\nload_all()\n\n\n\nThe load_all() function simulates the process of building, installing, and attaching the toypackage package.\nThis means that all the functions you included in the package will become visible in the global scope (in your console)\nThis is not in general the case: Later on we will fine-tune which functions are visible to the user, and which ones are not!\n\n\n\n\n\nCall the function with your name!\n\nhello(\"Peter\")\n[1] \"hello, Peter\"\n\nGreat!"
+  },
+  {
+    "objectID": "09-R-packages.html#checking-the-package",
+    "href": "09-R-packages.html#checking-the-package",
+    "title": "Building R Packages",
+    "section": "Checking the Package",
+    "text": "Checking the Package\n\nR has a rigid set of rules for what a package needs to look like.\nWhat files should be where, their names and permissions, such that the structure is nicely uniform across all R packages.\nParticularly relevant for official packages on CRAN\nDo this here often:\n\ncheck()\n\nThis outputs a bunch of things:\n\nIt actually builds our package in a separate process - immune from our current workspace\nIt runs a battery of checks and returns a report:\n\n\n0 errors ✔ | 1 warning ✖ | 1 note ✖"
+  },
+  {
+    "objectID": "09-R-packages.html#editing-description",
+    "href": "09-R-packages.html#editing-description",
+    "title": "Building R Packages",
+    "section": "Editing DESCRIPTION",
+    "text": "Editing DESCRIPTION\n\nOpen the DESCRIPTION file (or type Ctrl + . and start typing desc)\nFill in the obviously missing contents.\n\nAdding a LICENSE\n\nUse a license, any license (Jeff Atwood)\n\nLet’s\nuse_mit_license()"
+  },
+  {
+    "objectID": "09-R-packages.html#documenting-with-roxygen",
+    "href": "09-R-packages.html#documenting-with-roxygen",
+    "title": "Building R Packages",
+    "section": "Documenting with Roxygen",
+    "text": "Documenting with Roxygen\n\nGo back to the hello function, place the cursor inside the function body, and do Code > Insert Roxygen Skeleton.\nYou’ll see something like this:\n\n#' Title\n#'\n#' @param who \n#'\n#' @return\n#' @export\n#'\n#' @examples\nhello <- function(who){\n  paste(\"hello,\",who)\n}\n\nEach line starting with #' is part of the docstring.\nThe roxygen package can separate those blocks from our code, and produce valid R documentation for us! 🤯"
+  },
+  {
+    "objectID": "09-R-packages.html#building-documentation",
+    "href": "09-R-packages.html#building-documentation",
+    "title": "Building R Packages",
+    "section": "Building Documentation",
+    "text": "Building Documentation\n\nLet’s modify the docstring accordingly.\nexecute the document() function.\nAfter that, the documentation is visible to us:\n\n?hello\nℹ Rendering development documentation for \"hello\"\n\nLook in the Help pane in RStudio!"
+  },
+  {
+    "objectID": "09-R-packages.html#namespace",
+    "href": "09-R-packages.html#namespace",
+    "title": "Building R Packages",
+    "section": "NAMESPACE",
+    "text": "NAMESPACE\n\nDid you notice the @export tag in the docstring?\nwhen we ran document(), roxygen changed the NAMESPACE file based upon that tag.\nGo and look at that file!\nThe contents of NAMESPACE specify what is visible to a user who does library(toypackage).\nTry removing the @export tag, and document() again. Look back at NAMESPACE!\n\ncheck() again!\ncheck()\n0 errors ✔ | 0 warnings ✔ | 0 notes ✔"
+  },
+  {
+    "objectID": "09-R-packages.html#time-to-install-the-package",
+    "href": "09-R-packages.html#time-to-install-the-package",
+    "title": "Building R Packages",
+    "section": "Time to INSTALL the package",
+    "text": "Time to INSTALL the package\n\nOk, great. Now we have a minimal package that works to a certain extent 🙂.\nWe must install it into our package library, in order to be able to use it like any other package (same as when we did install.packages(\"ggplot2\"))\nNotice that R installs your packages here:\n\n\n.libPaths()\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library\"\n\n\n\nWe install our package into that location with install()\nLook out for the final message:\n\n* DONE (toypackage)\n👏"
+  },
+  {
+    "objectID": "09-R-packages.html#new-session---try-it-out",
+    "href": "09-R-packages.html#new-session---try-it-out",
+    "title": "Building R Packages",
+    "section": "New Session - Try it Out!",
+    "text": "New Session - Try it Out!\n\nRestart Rstudio\ntype into the console\n\nlibrary(toypackage)\n\nand then let’s see our cool 😎 function:\n\nhello(\"John Spencer Blues Explosion\")\n[1] \"hello, John Spencer Blues Explosion\"\n\nWorks! Bingo! 🎉"
+  },
+  {
+    "objectID": "09-R-packages.html#automatically-testing-our-code",
+    "href": "09-R-packages.html#automatically-testing-our-code",
+    "title": "Building R Packages",
+    "section": "Automatically Testing Our Code",
+    "text": "Automatically Testing Our Code\n\nWe verified ourselves that this works.\nWe had our own, informal, way to convince ourselves that it works.\nWe knew which steps we had to follow until we would conclude that “yes, this works”.\n\n\n\n\n\n\n\n\n\n\nThe Time Factor\n\n\nIf you come back to this in 2 months time you probably\n\nwon’t remember all the steps you have taken (above)\nwon’t be able to reproduce what you tested today!\n\n\n\n\n\n\n\n\n\n\n\nThe Scale Factor\n\n\nAs your package grows, you will find it hard to come back to all components repeatedly, making sure they all still work as intended (now that they may depend on other parts of your code)"
+  },
+  {
+    "objectID": "09-R-packages.html#enter-unit-testing",
+    "href": "09-R-packages.html#enter-unit-testing",
+    "title": "Building R Packages",
+    "section": "Enter Unit Testing",
+    "text": "Enter Unit Testing\n\nAutomatic Unit Testing or Continuous Integration (CI) is our best response to this.\nWe still have to design and write the tests, but we can offload the work to run the tasks repeatedly, and automatically, to a helpful infrastructure.\n\nlibrary(devtools)\nuse_testthat()\n\nthen\n\nuse_test(\"sayhello\")\n• Modify 'tests/testthat/test-sayhello.R'"
+  },
+  {
+    "objectID": "09-R-packages.html#writing-unit-tests",
+    "href": "09-R-packages.html#writing-unit-tests",
+    "title": "Building R Packages",
+    "section": "Writing Unit Tests",
+    "text": "Writing Unit Tests\n\nIdeally, each function in our R/ folder is covered by a corresponding test.\n\n\n\n\n\n\n\nWhat Is a Test?\n\n\nThe purpose of a test is to verify that some part of your code, a function in most cases, works as intended.\n\n\n\n\nModify 'tests/testthat/test-sayhello.R' like so\n\ntest_that(\"hello function works\", {\n  who = \"James T. Kirk\"\n  expect_equal(hello(who), paste(\"hello,\",who))\n})\n\nReady for 🚀 takeoff?"
+  },
+  {
+    "objectID": "09-R-packages.html#running-all-unit-tests",
+    "href": "09-R-packages.html#running-all-unit-tests",
+    "title": "Building R Packages",
+    "section": "Running all unit tests",
+    "text": "Running all unit tests\n\nYou can run each test file separately to try it out (you must do library(testthat) first)\nIt’s better practice to test the entire package though:\n\n> test()\nℹ Testing toypackage\n\nAttaching package: ‘testthat’\n\nThe following object is masked from ‘package:devtools’:\n\n    test_file\n\n✔ | F W S  OK | Context\n✔ |         1 | sayhello                                         \n\n══ Results ══════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]\n\nCelebrate! 🎉 🥳 🎊"
+  },
+  {
+    "objectID": "09-R-packages.html#using-other-packages",
+    "href": "09-R-packages.html#using-other-packages",
+    "title": "Building R Packages",
+    "section": "Using other packages",
+    "text": "Using other packages\n\nMost likely our package would depend some other package as well.\nLike we could choose the export some of our functions, we now may want to import some functions from elsewhere.\nSuppose we want to use the dplyr package:\n\n> use_package(\"dplyr\")\n✔ Adding 'dplyr' to Imports field in DESCRIPTION\n• Refer to functions with `dplyr::fun()`\n\nLet’s check the DESCRIPTION file to see what happened."
+  },
+  {
+    "objectID": "09-R-packages.html#hook-it-up-to-github",
+    "href": "09-R-packages.html#hook-it-up-to-github",
+    "title": "Building R Packages",
+    "section": "Hook it up to GitHub!",
+    "text": "Hook it up to GitHub!\n\nIt’s fairly easy to publish our new package to a github repo.\nLet’s use_github()\n\nuse_github()\n\nanswer all the prompts and end up here!"
+  },
+  {
+    "objectID": "09-R-packages.html#adding-a-readme-file",
+    "href": "09-R-packages.html#adding-a-readme-file",
+    "title": "Building R Packages",
+    "section": "Adding a Readme file",
+    "text": "Adding a Readme file\n\nWe know by now that readme files are very important on any git repo.\nLet’s add one here as well!\nthe usethis::use_readme_rmd() function is perfect for this:\n\nusethis::use_readme_rmd()\n\nIf we want to automatically run our tests on a remote server called github actions, we can call this function as well to set this up:\n\nuse_github_actions()\n\nlet’s re-build the package now. (look for rstudio button install in build tab)"
+  },
+  {
+    "objectID": "09-R-packages.html#adding-a-vignette",
+    "href": "09-R-packages.html#adding-a-vignette",
+    "title": "Building R Packages",
+    "section": "Adding a Vignette",
+    "text": "Adding a Vignette\n\nVignette’s are a great feature of R packages. They are full text introductions of the package to a first time user.\nA tutorial for your package.\nThis is going to be much more verbose and spiked with example input and ouput than the standard documentation.\nOften it features the main use case of your package.\nThere is an entire chapter on r-pkgs dedicated to this!\n\nAdding the Vignette(s)\nusethis::use_vignette(\"vignette-toypackage-1\")"
+  },
+  {
+    "objectID": "09-R-packages.html#deploy-package-documention-on-a-website",
+    "href": "09-R-packages.html#deploy-package-documention-on-a-website",
+    "title": "Building R Packages",
+    "section": "Deploy package documention on a website",
+    "text": "Deploy package documention on a website\n\n🚨 Now we are entering the seriously cool zone of R package development 😎\nWouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were available on a (free to host!) website which is always up to date?"
+  },
+  {
+    "objectID": "09-R-packages.html#deploy-package-documention-on-a-website-2",
+    "href": "09-R-packages.html#deploy-package-documention-on-a-website-2",
+    "title": "Building R Packages",
+    "section": "Deploy package documention on a website 2",
+    "text": "Deploy package documention on a website 2\n\n🚨 Now we are entering the seriously cool zone of R package development 😎\nWouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were available on a (free to host!) website which is always up to date?"
+  },
+  {
+    "objectID": "09-R-packages.html#deploy-package-documention-on-a-website-3",
+    "href": "09-R-packages.html#deploy-package-documention-on-a-website-3",
+    "title": "Building R Packages",
+    "section": "Deploy package documention on a website 3",
+    "text": "Deploy package documention on a website 3\n\nReady?\n\n\nusethis::use_pkgdown()\n\npkgdown is a package for website and docs building.\n\n\n\n\nLet’s build that site!\n\npkdown::build_site()"
+  },
+  {
+    "objectID": "09-R-packages.html#summary",
+    "href": "09-R-packages.html#summary",
+    "title": "Building R Packages",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+  },
+  {
     "objectID": "03-filework.html#intro",
     "href": "03-filework.html#intro",
     "title": "Working with Files and Directories",
@@ -158,7 +340,7 @@
     "href": "index.html",
     "title": "ScPoProgramming",
     "section": "",
-    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2023"
+    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2023"
   },
   {
     "objectID": "index.html#windows-and-mac-specific-instructions",

@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/01-shell-intro.html</loc>
-    <lastmod>2023-02-09T13:37:04.347Z</lastmod>
+    <lastmod>2023-02-27T13:50:12.327Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/09-R-packages.html</loc>
+    <lastmod>2023-02-27T13:50:15.386Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/03-filework.html</loc>
-    <lastmod>2023-02-09T13:37:04.784Z</lastmod>
+    <lastmod>2023-02-27T13:50:15.876Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/index.html</loc>
-    <lastmod>2023-02-09T13:37:05.259Z</lastmod>
+    <lastmod>2023-02-27T13:50:16.381Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/about.html</loc>
-    <lastmod>2023-02-09T13:37:05.547Z</lastmod>
+    <lastmod>2023-02-27T13:50:16.745Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/05-git.html</loc>
-    <lastmod>2023-02-09T13:37:06.342Z</lastmod>
+    <lastmod>2023-02-27T13:50:17.618Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/04-pipes.html</loc>
-    <lastmod>2023-02-09T13:37:06.719Z</lastmod>
+    <lastmod>2023-02-27T13:50:18.110Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/02-filedir.html</loc>
-    <lastmod>2023-02-09T13:37:07.187Z</lastmod>
+    <lastmod>2023-02-27T13:50:18.686Z</lastmod>
   </url>
 </urlset>
