@@ -28,6 +28,8 @@ website:
             text: 7. `R Tidyverse`
           - href: https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html
             text: 8. `R data.table`
+          - href: 09-R-packages.qmd
+            text: 9. Building `R` packages
   navbar:
     left:
       - href: index.qmd

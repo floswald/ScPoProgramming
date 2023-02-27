@@ -14,6 +14,51 @@ author: Florian Oswald
 
 ## R and Packages
 
+
+::: {.columns}
+
+::: {.column width=45%}
+
+::: {.callout-tip}
+
+# Questions
+
+1. Why write our _own_ `R` package?
+2. How to create an `R` package?
+3. What are _unit tests_?
+
+:::
+
+:::
+
+::: {.column width=45%}
+
+
+::: {.callout-note}
+
+# Objectives
+
+* Learn the `RStudio`-powered package development workflow.
+* Create a package, and test it.
+* Publish the package to github.
+* Publish the package docs as a self-contained website.
+
+:::
+
+
+:::
+
+:::
+
+
+
+
+
+
+---
+
+## R and Packages
+
 * We have been using `R` packages all the time.
 
 * Each time we say `library(xyz)` we are using *external* code provided in the `xyz` package.
@@ -116,14 +161,8 @@ use_git()
 use_r("sayhello")
 ```
 
-* What's with that test thing? Let's try this out - we'll use it later:
+* What's with that `use_test()` thing? 🤔 Let's worry about this later.
 
-```{r}
-#| eval: true
-#| echo: true
-#| message: true
-use_test("sayhello")
-```
 
 ---
 
@@ -156,7 +195,9 @@ load_all()
 
 # `load_all()`
 
-The `load_all()` function simulates the process of building, installing, and attaching the `toypackage` package.
+* The `load_all()` function simulates the process of building, installing, and attaching the `toypackage` package.
+* This means that **all** the functions you included in the package will become _visible_ in the global scope (in your console)
+* This is _not_ in general the case: Later on we will fine-tune which functions are visible to the user, and which ones are not!
 :::
 
 * Call the function with your name!
@@ -175,7 +216,7 @@ hello("Peter")
 * `R` has a rigid set of rules for what a package needs to look like. 
 * What files should be where, their names and permissions, such that the structure is nicely uniform across all R packages.
 * Particularly relevant for _official_ packages on [CRAN](https://cran.r-project.org/)
-* Do that often:
+* Do this here often:
 
 ```r
 check()
@@ -193,7 +234,7 @@ check()
 
 ## Editing DESCRIPTION
 
-* Open the `DESCRIPTION` file (type `Ctrl + .` and start typing `desc`)
+* Open the `DESCRIPTION` file (or type `Ctrl + .` and start typing `desc`)
 * Fill in the obviously missing contents.
 
 ### Adding a LICENSE
@@ -265,7 +306,7 @@ check()
 
 ## Time to INSTALL the package
 
-* Ok, great. Now we have a minimal package that _works_ somewhat.
+* Ok, great. Now we have a minimal package that _works to a certain extent_ 🙂.
 * We must _install_ it into our package library, in order to be able to use it like any other package (same as when we did `install.packages("ggplot2")`)
 * Notice that `R` installs your packages here:
 ```{r}
@@ -275,7 +316,7 @@ check()
 ```
 
 * We _install_ our package into that location with `install()`
-* Look out for the final 
+* Look out for the final message:
 ```r
 * DONE (toypackage)
 ```
@@ -298,16 +339,57 @@ hello("John Spencer Blues Explosion")
 [1] "hello, John Spencer Blues Explosion"
 ```
 
-* Bingo! 🎉
+* Works! Bingo! 🎉
 
 ---
 
 ## Automatically Testing Our Code
 
 * We verified ourselves that this _works_.
-* As your package grows, you will find it hard to come back to all components repeatedly, making sure they all _still_ work as intended.
-* There may be dependencies between parts of your code that are not totally obvious, and unexpected bugs might be introduced.
-* Enter **Unit Testing**.
+* We had our own, informal, way to convince ourselves that it works. 
+* We knew which steps we had to follow until we would conclude that "yes, this works".
+
+. . .
+
+::: {.columns}
+
+::: {.column width=45%}
+::: {.callout-caution}
+
+# The Time Factor
+
+If you come back to this in 2 months time you probably 
+
+a. won't remember all the steps you have taken (above)
+b. won't be able to reproduce what you _tested_ today!
+
+:::
+:::
+
+::: {.column width=45%}
+
+::: {.callout-warning}
+
+# The Scale Factor
+
+As your package grows, you will find it hard to come back to all components repeatedly, making sure they all _still_ work as intended (now that they may depend on other parts of your code)
+
+:::
+:::
+
+
+
+:::
+
+
+
+
+---
+
+## Enter **Unit Testing**
+
+* Automatic Unit Testing or [_Continuous Integration_ (CI)](https://en.wikipedia.org/wiki/Continuous_integration) is our best response to this.
+* We still have to *design* and *write* the tests, but we can offload the work to **run** the tasks repeatedly, and automatically, to a helpful infrastructure.
 
 ```r
 library(devtools)
@@ -396,4 +478,98 @@ use_github()
 
 ![](/images/toypackage.png)
 
+
+---
+
+## Adding a Readme file
+
+* We know by now that readme files are very important on any git repo.
+* Let's add one here as well!
+* the `usethis::use_readme_rmd()` function is perfect for this:
+
+```r
+usethis::use_readme_rmd()
+```
+
+* If we want to automatically run our tests on a remote server called _github actions_, we can call this function as well to set this up:
+
+```r
+use_github_actions()
+```
+
+* let's re-build the package now. (look for rstudio button `install` in `build` tab)
+
+
+---
+
+## Adding a **Vignette**
+
+* Vignette's are a great feature of R packages. They are full text introductions of the package to  a first time user.
+* A _tutorial_ for your package.
+* This is going to be much more verbose and spiked with example input and ouput than the standard documentation.
+* Often it features the main use case of your package.
+* There is an [entire chapter](https://r-pkgs.org/vignettes.html) on `r-pkgs` dedicated to this!
+
+### Adding the Vignette(s)
+
+```r
+usethis::use_vignette("vignette-toypackage-1")
+```
+
+---
+
+## Deploy package documention on a website
+
+* 🚨 Now we are entering the seriously cool zone of R package development 😎
+* Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**?
+
+
+
+
+---
+
+## Deploy package documention on a website 2{background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" background-position="50% 60%" background-size="40% auto"}
+
+* 🚨 Now we are entering the seriously cool zone of R package development 😎
+* Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**?
+
+
+---
+
+## Deploy package documention on a website 3
+
+* Ready?
+
+. . .
+
+```r
+usethis::use_pkgdown()
+```
+
+* `pkgdown` is a package for website and docs building.
+
+. . .
+
+* Let's build that site!
+
+```r
+pkdown::build_site()
+```
+
+
+---
+
+## Summary
+
+::: {.callout-tip}
+
+# Key Points
+
+1. `RStudio` greatly facilitates `R` package development.
+2. `R` packages contain code, data and documentation in highly structured fashion.
+3. We are encouraged to run automated unit tests.
+3. It is relatively straightforward to publish the package to github for collaboration.
+4. It is equally straightforward to build and publish a full website with package documentation and vignettes, hosted _for free_ on github.com.
+
+:::
 

@@ -22,7 +22,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 # Syllabus
 
 | Session Number |  Topic      |  Author |
-|:------------:|:-----------|-------:|
+|:------------:|:-----------|:-------------:|
 | 1            | [The Unix Shell](01-shell-intro.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
 | 2            | [Shell: Files and Directories](02-filedir.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
 | 3            | [Shell: Working with Files and Directories](03-filework.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
@@ -31,6 +31,7 @@ substitle: "SciencesPo Paris, Ecole Doctorale 2023"
 | 6            | [`R` Intro](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html) |  Florian Oswald|
 | 7            | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
 | 8            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
+| 9            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
 
 
 # Setup Instructions
