@@ -395,6 +395,7 @@
     }
   </style>
 <meta name="twitter:title" content="ScPoProgramming - Building R Packages">
+<meta name="twitter:description" content="SciencesPo Intro To Programming 2023">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -403,6 +404,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Building <code>R</code> Packages</h1>
+  <p class="subtitle">SciencesPo Intro To Programming 2023</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -412,6 +414,7 @@ Florian Oswald
 </div>
 </div>
 
+  <p class="date">23 March, 2023</p>
 </section>
 <section id="r-and-packages" class="slide level2">
 <h2>R and Packages</h2>
@@ -527,8 +530,7 @@ RoxygenNote: 7.2.2</code></pre>
 </div>
 </div>
 <ul>
-<li><p>You see Rstudio jumps to that location</p></li>
-<li><p>ready to go!</p></li>
+<li>You see Rstudio jumps to that location</li>
 </ul>
 </div>
 </div>
@@ -557,7 +559,8 @@ RoxygenNote: 7.2.2</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">"sayhello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>• Edit 'R/sayhello.R'
+<pre><code>✔ Creating 'R/'
+• Edit 'R/sayhello.R'
 • Call `use_test()` to create a matching test file</code></pre>
 </div>
 </div>
@@ -772,6 +775,11 @@ RoxygenNote: 7.2.2</code></pre>
 </div>
 </div>
 </section>
+<section>
+<section id="unit-testing-and-continuous-integration-ci" class="title-slide slide level1 center">
+<h1>Unit Testing and Continuous Integration (CI)</h1>
+
+</section>
 <section id="enter-unit-testing" class="slide level2">
 <h2>Enter <strong>Unit Testing</strong></h2>
 <ul>
@@ -900,7 +908,7 @@ RoxygenNote: 7.2.2</code></pre>
 <li>Wouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were <strong>available on a (free to host!) website which is always up to date</strong>?</li>
 </ul>
 </section>
-<section id="deploy-package-documention-on-a-website-2" class="slide level2" data-background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" data-background-position="50% 60%" data-background-size="40% auto">
+<section id="deploy-package-documention-on-a-website-2" class="slide level2" data-background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" data-background-position="50% 75%" data-background-size="40% auto">
 <h2>Deploy package documention on a website 2</h2>
 <ul>
 <li>🚨 Now we are entering the seriously cool zone of R package development 😎</li>
@@ -923,6 +931,15 @@ RoxygenNote: 7.2.2</code></pre>
 <li>Let’s build that site!</li>
 </ul>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pkdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<ul>
+<li>Let’s get <code>gh-actions</code> going</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>commit everything and push to github!</li>
+</ul>
 </div>
 </section>
 <section id="summary" class="slide level2">
@@ -951,7 +968,7 @@ RoxygenNote: 7.2.2</code></pre>
 <img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>ScPo Intro To Programming 2023</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -1006,7 +1023,7 @@ RoxygenNote: 7.2.2</code></pre>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

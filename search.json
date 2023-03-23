@@ -102,7 +102,7 @@
     "href": "09-R-packages.html#building-a-toy-package",
     "title": "Building R Packages",
     "section": "Building a Toy Package",
-    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location\nready to go!"
+    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location"
   },
   {
     "objectID": "09-R-packages.html#adding-git",
@@ -116,7 +116,7 @@
     "href": "09-R-packages.html#adding-code",
     "title": "Building R Packages",
     "section": "Adding Code",
-    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
+    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n✔ Creating 'R/'\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
   },
   {
     "objectID": "09-R-packages.html#ok-butadding-code",
@@ -256,7 +256,7 @@
     "href": "09-R-packages.html#deploy-package-documention-on-a-website-3",
     "title": "Building R Packages",
     "section": "Deploy package documention on a website 3",
-    "text": "Deploy package documention on a website 3\n\nReady?\n\n\nusethis::use_pkgdown()\n\npkgdown is a package for website and docs building.\n\n\n\n\nLet’s build that site!\n\npkdown::build_site()"
+    "text": "Deploy package documention on a website 3\n\nReady?\n\n\nusethis::use_pkgdown()\n\npkgdown is a package for website and docs building.\n\n\n\n\nLet’s build that site!\n\npkdown::build_site()\n\n\n\nLet’s get gh-actions going\n\nusethis::use_pkgdown_github_pages()\n\ncommit everything and push to github!"
   },
   {
     "objectID": "09-R-packages.html#summary",
@@ -614,6 +614,174 @@
     "title": "Version Control with Git",
     "section": "Pushing Branches to GitHub",
     "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nScPo Intro To Programming 2023"
+  },
+  {
+    "objectID": "10-spatial-R.html#intro",
+    "href": "10-spatial-R.html#intro",
+    "title": "Spatial Data With R",
+    "section": "Intro",
+    "text": "Intro\nIn this lecture we will cover some basics about geospatial data and how to handle it with R. Spatial data is getting always more important, so we need a powerful tool to work with it.\n\n\n\n\n\n\ntl;dr\n\n\nYes, R is a fully fledged GIS. No, you don’t need an ArchGIS (or other) license to do real work with spatial data (I don’t have one, and I use it for real work 😉).\n\n\n\n\nResources\n\nGeocomputation with R is our main reference.\nThe sf package vignettes are outstanding."
+  },
+  {
+    "objectID": "10-spatial-R.html#spatial-data-basics",
+    "href": "10-spatial-R.html#spatial-data-basics",
+    "title": "Spatial Data With R",
+    "section": "Spatial Data Basics",
+    "text": "Spatial Data Basics\n\nOne prime example of spatial data are of course maps, providing an answer to the age-old question where is what.\nFundamentally, spatial data still provide an answer to the same question, it is just that the what part has gotten much richer over the years.\nThe attribute location may be only one of many other features of information on a certain observation.\nMultiple measurements imply that observations can be observed moving in space.\nThere are two fundamentally different ways in which to consider spatial data:"
+  },
+  {
+    "objectID": "10-spatial-R.html#spatial-data-types",
+    "href": "10-spatial-R.html#spatial-data-types",
+    "title": "Spatial Data With R",
+    "section": "Spatial Data Types",
+    "text": "Spatial Data Types\n\n\n\n\n\n\n\n\n1. Vector Data\n\n\nWe represent things with points, lines and polygons. We can scale and stretch and transform those easily with mathematical operations. Can increase precision to arbitrary levels (can always zoom in futher).\n\n\n\n\n\n\n\n\n\n\n\n2. Raster Data\n\n\nWe have fixed-size tiles or cells (like a mosaic, or like pixels), which form a grid. Fixed resolution.\n\n\n\n\n\n\n👉 This lecture deals only with Vector Data."
+  },
+  {
+    "objectID": "10-spatial-R.html#representation-of-vector-data",
+    "href": "10-spatial-R.html#representation-of-vector-data",
+    "title": "Spatial Data With R",
+    "section": "Representation of Vector Data",
+    "text": "Representation of Vector Data\n\n\nBasically, we concentrate on a 2-dimensional space, even though three-dimensional spaces can be useful as well (any ideas for examples?)\n\n\n\n\nIn other words, we denote a location with a tuple of coordinates \\((x,y)\\), or \\((x,y,z)\\) as the case may be, where each coordinate gives the distance from the origin in each direction. For example, we could represent Paris by the tuple c(2.34,48.85)\n\n\n\n\nOne key question in the context of spatial data concerning planet earth you should ask is: Where is the Origin?\n\n\n\n\nAnother question is, related to the well known fact that the earth is quasi-elipsoid (i.e. a bit like a squashed football and - just to be sure: not flat), how to represent locations in three dimensions on a 2-dimensional map?"
+  },
+  {
+    "objectID": "10-spatial-R.html#coordinate-reference-systems-crs",
+    "href": "10-spatial-R.html#coordinate-reference-systems-crs",
+    "title": "Spatial Data With R",
+    "section": "Coordinate Reference Systems (CRS)",
+    "text": "Coordinate Reference Systems (CRS)\n\n\nCRSs use longitude and latitude to identify locations.\n\n\n\n\nOne widely used CRS is the World Geodetic System 1984, or WGS84 (used on google maps). It measures angular distance in degrees in a geocentric datum (made for the entire planet).\n\n\n\n\nlongitude measures East-West distance from the Prime Meridian Plane. (left-to-right distance from a starting point)\n\n\n\n\nlatitude measures North-South distance of Equatorial Plane. (up-down distance from a starting point)"
+  },
+  {
+    "objectID": "10-spatial-R.html#one-standard-crs-wgs84",
+    "href": "10-spatial-R.html#one-standard-crs-wgs84",
+    "title": "Spatial Data With R",
+    "section": "One Standard CRS: WGS84",
+    "text": "One Standard CRS: WGS84\n\n\n\n\n\n\nThe dashed lines are the WGS84 elipsoid coordinate frame\nThe blue circle is the origin at \\((0,0)\\) :\n\n0 degrees longitude (x-direction): Prime Meridian through Greenwhich, London.\n0 degrees latitude (y-direction): Equator."
+  },
+  {
+    "objectID": "10-spatial-R.html#paris-in-different-crs",
+    "href": "10-spatial-R.html#paris-in-different-crs",
+    "title": "Spatial Data With R",
+    "section": "Paris in Different CRS",
+    "text": "Paris in Different CRS\n\n\n\n\n\nParis at c(2.34,48.85) in WGS64\n\n\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France"
+  },
+  {
+    "objectID": "10-spatial-R.html#paris-where",
+    "href": "10-spatial-R.html#paris-where",
+    "title": "Spatial Data With R",
+    "section": "Paris Where?",
+    "text": "Paris Where?\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France\n\n\n\n\n  \nTask\n\nSearch for NTF Lambert North France\nWhat does c(600256.4, 127726.4) actually mean?"
+  },
+  {
+    "objectID": "10-spatial-R.html#geocentric-vs-local-datum",
+    "href": "10-spatial-R.html#geocentric-vs-local-datum",
+    "title": "Spatial Data With R",
+    "section": "Geocentric vs Local Datum",
+    "text": "Geocentric vs Local Datum\n\nFigure from Geocomputation with R. Geocentric and local geodetic datums shown on top of a geoid (in false color and the vertical exaggeration by 10,000 scale factor). Image of the geoid is adapted from the work of Ince et al. (2019)"
+  },
+  {
+    "objectID": "10-spatial-R.html#working-with-vector-spatial-data-in-r",
+    "href": "10-spatial-R.html#working-with-vector-spatial-data-in-r",
+    "title": "Spatial Data With R",
+    "section": "Working with (Vector) Spatial Data in R",
+    "text": "Working with (Vector) Spatial Data in R\n\nWe rely on a few core libraries.\nsf being the main one. That itself relies on several other lower level libraries.\n\ninstall.packages(\"sf\")\n\nDon’t try to build from source unless you know why.\nFor problems, please consult the package readme.\nLet’s try to load the library:\n\n\nlibrary(sf)\n\nLinking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE\n\n\n\nI highly recommend the package vignettes!\n\nvignette(package = \"sf\") # see which vignettes are available\nvignette(\"sf1\")          # an introduction to the package"
+  },
+  {
+    "objectID": "10-spatial-R.html#working-with-sf-1",
+    "href": "10-spatial-R.html#working-with-sf-1",
+    "title": "Spatial Data With R",
+    "section": "Working with sf 1",
+    "text": "Working with sf 1\nLet’s read a shapefile from the sf package:\n\nnc = st_read(system.file(\"shape/nc.shp\", package=\"sf\"))\n\nReading layer `nc' from data source \n  `/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/sf/shape/nc.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 100 features and 14 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965\nGeodetic CRS:  NAD27\n\nhead(nc[,c(\"AREA\",\"NAME\",\"FIPS\",\"BIR79\")])\n\nSimple feature collection with 6 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -81.74107 ymin: 36.07282 xmax: -75.77316 ymax: 36.58965\nGeodetic CRS:  NAD27\n   AREA        NAME  FIPS BIR79                       geometry\n1 0.114        Ashe 37009  1364 MULTIPOLYGON (((-81.47276 3...\n2 0.061   Alleghany 37005   542 MULTIPOLYGON (((-81.23989 3...\n3 0.143       Surry 37171  3616 MULTIPOLYGON (((-80.45634 3...\n4 0.070   Currituck 37053   830 MULTIPOLYGON (((-76.00897 3...\n5 0.153 Northampton 37131  1606 MULTIPOLYGON (((-77.21767 3...\n6 0.097    Hertford 37091  1838 MULTIPOLYGON (((-76.74506 3..."
+  },
+  {
+    "objectID": "10-spatial-R.html#working-with-sf-2",
+    "href": "10-spatial-R.html#working-with-sf-2",
+    "title": "Spatial Data With R",
+    "section": "Working with sf 2",
+    "text": "Working with sf 2\n\nNotice the geometry column.\nThis is basically a geo-referenced data.frame.\n\n\nplot(nc[,\"AREA\"])  # plot feature \"AREA\" (i.e. column 1)"
+  },
+  {
+    "objectID": "10-spatial-R.html#working-with-sf-3",
+    "href": "10-spatial-R.html#working-with-sf-3",
+    "title": "Spatial Data With R",
+    "section": "Working with sf 3",
+    "text": "Working with sf 3\n\nWorks also with ggplot2\n\n\nlibrary(ggplot2)\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")"
+  },
+  {
+    "objectID": "10-spatial-R.html#working-with-sf-4-crs-transform",
+    "href": "10-spatial-R.html#working-with-sf-4-crs-transform",
+    "title": "Spatial Data With R",
+    "section": "Working with sf 4: CRS Transform",
+    "text": "Working with sf 4: CRS Transform\n\n\n\n\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")\n\n\n\n\n\n\n\nnc %>% \n    st_transform(\"+proj=moll\") %>%\n    ggplot() + geom_sf(aes(fill = AREA)) +\n        scale_fill_viridis_c(name = \"Area\") + \n        ggtitle(\"Mollweide Projection\")"
+  },
+  {
+    "objectID": "10-spatial-R.html#geometric-operations-with-sf-1",
+    "href": "10-spatial-R.html#geometric-operations-with-sf-1",
+    "title": "Spatial Data With R",
+    "section": "Geometric Operations with sf 1",
+    "text": "Geometric Operations with sf 1\n\nthe simple features standard specifies a series of operations.\nthe relevant functions start with st_ (for spatio-temporal)\nFor 2 geometries x,y we can compute things like st_distance(x,y), st_intersect(x,y), etc\nFor single geometries we can do things like st_area(x), st_union(x), st_buffer(x,dist) etc\n\n\nst_area(st_union(nc))\n\n127025870730 [m^2]\n\n\n\nOoof, how many square km is that now? 🤔\n\n\n\nst_area(st_union(nc)) %>% units::set_units(km2)\n\n127025.9 [km2]"
+  },
+  {
+    "objectID": "10-spatial-R.html#geometric-operations-with-sf-2",
+    "href": "10-spatial-R.html#geometric-operations-with-sf-2",
+    "title": "Spatial Data With R",
+    "section": "Geometric Operations with sf 2",
+    "text": "Geometric Operations with sf 2\n\n# copied from https://github.com/uo-ec607/lectures\nnc_centroid = st_centroid(nc)\n\nggplot(nc) +\n  geom_sf(fill = \"black\", alpha = 0.8, col = \"white\") +\n  geom_sf(data = nc_centroid, col = \"red\") + ## Notice how easy it is to combine different sf objects\n  labs(\n    title = \"Counties of North Carolina\",\n    subtitle = \"Centroids in red\"\n    )"
+  },
+  {
+    "objectID": "10-spatial-R.html#mapping-the-seine-1",
+    "href": "10-spatial-R.html#mapping-the-seine-1",
+    "title": "Spatial Data With R",
+    "section": "Mapping the Seine 1",
+    "text": "Mapping the Seine 1\n\n\n\n# copied from https://github.com/uo-ec607/lectures\n# install.packages(c(\"maps\",\"spData\"))\n## Get the data\nfrance = st_as_sf( \n    maps::map('france', \n            plot = FALSE, \n            fill = TRUE)\n            )\ndata(\"seine\", \n    package = \"spData\")\n\n## Make sure they have the same projection\nseine = st_transform(seine, \n        crs = st_crs(france))\n\n\n# now, make a base plot:\npseine = ggplot() + \n  geom_sf(data = france, \n          alpha = 0.8, \n          fill = \"black\", \n          col = \"gray50\") + \n  labs(\n    title = \"Administrative regions of France\"\n    )\nggsave(plot = pseine, \n    \"images/seine.png\", \n    width=6, height=6)"
+  },
+  {
+    "objectID": "10-spatial-R.html#mapping-the-seine-2",
+    "href": "10-spatial-R.html#mapping-the-seine-2",
+    "title": "Spatial Data With R",
+    "section": "Mapping the Seine 2",
+    "text": "Mapping the Seine 2\n\n\n\n# let's add the seine!\npseine2 = pseine +\n    geom_sf(data = seine, col = \"#05E9FF\", lwd = 1) + \n    labs(\n    title = \"Administrative regions of France\",\n    subtitle = \"Also showing the Seine, Marne and Yonne rivers\"\n    )\nggsave(plot = pseine2, \n    \"images/seine2.png\", \n    width=6, height=6)"
+  },
+  {
+    "objectID": "10-spatial-R.html#intersect-two-sf-objects",
+    "href": "10-spatial-R.html#intersect-two-sf-objects",
+    "title": "Spatial Data With R",
+    "section": "Intersect two sf objects",
+    "text": "Intersect two sf objects\n\n\n\nseine = st_transform(seine, crs = st_crs(france))\nsf_use_s2(FALSE)  # need to turn off because of invalid geometry\nfrance_intersected = st_intersection(france, seine)\nhead(france_intersected,2)\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: 3.254238 ymin: 48.63712 xmax: 4.872966 ymax: 49.09028\nGeodetic CRS:  WGS 84\n      ID  name                           geom\n6  Aisne Marne LINESTRING (3.608053 49.089...\n14 Marne Marne LINESTRING (4.872966 48.637...\n\n\n\npl3 = france_intersected %>%\n  ggplot() + \n  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + \n  labs(\n    title = \"Seine, Marne and Yonne rivers\",\n    caption = \"Colours depict French administrative regions\"\n    ) +\n  theme(legend.title = element_blank())\nggsave(plot = pl3,\"images/seine3.png\", \n    width=7, height=5)"
+  },
+  {
+    "objectID": "10-spatial-R.html#join-two-sf-objects",
+    "href": "10-spatial-R.html#join-two-sf-objects",
+    "title": "Spatial Data With R",
+    "section": "Join two sf objects",
+    "text": "Join two sf objects\n\n\n\npl4 = st_join(france, seine) %>% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %>% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T) %>% \n  ## pipe into ggplot\n  ggplot() + \n  geom_sf(alpha = 0.5, \n          fill = \"#01731f\",\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1) + \n  labs(title = \"Intersected regions only\") +\n  theme_bw()\nggsave(plot = pl4,\"images/seine4.png\", \n    width=7, height=5)"
+  },
+  {
+    "objectID": "10-spatial-R.html#joining-task",
+    "href": "10-spatial-R.html#joining-task",
+    "title": "Spatial Data With R",
+    "section": "Joining Task",
+    "text": "Joining Task\n\n\n\nModify the code chunk on the previous slide.\nWe want to have different colors for the shown departements, instead of all “#01731f”.\nI.e. make this for me 👉"
+  },
+  {
+    "objectID": "10-spatial-R.html#joining-task-solution",
+    "href": "10-spatial-R.html#joining-task-solution",
+    "title": "Spatial Data With R",
+    "section": "Joining Task Solution",
+    "text": "Joining Task Solution\n\nd5 = st_join(france, seine) %>% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %>% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T)\n\nmy_colors = palette.colors(nrow(d5), palette = \"Alphabet\")\nnames(my_colors) <- NULL\n\n  ## pipe into ggplot\npl5 = ggplot(data = d5) + \n  geom_sf(aes(fill = ID),\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1.5) + \n  labs(title = \"Intersected regions only\", fill = \"Departement\") +\n  theme_bw() +\n  scale_fill_manual(values = my_colors)\nggsave(plot = pl5,\"images/seine5.png\", \n    width=7, height=5)"
+  },
+  {
+    "objectID": "10-spatial-R.html#distances",
+    "href": "10-spatial-R.html#distances",
+    "title": "Spatial Data With R",
+    "section": "Distances",
+    "text": "Distances\n\nAnother typical question could be:\n\n\nWhat’s the distance between 2 points?"
+  },
+  {
+    "objectID": "10-spatial-R.html#other-resources",
+    "href": "10-spatial-R.html#other-resources",
+    "title": "Spatial Data With R",
+    "section": "Other Resources",
+    "text": "Other Resources\n\nmapview/ : great for interactive and quick mapping\ntmaps: same"
   },
   {
     "objectID": "04-pipes.html#combining-commands",
