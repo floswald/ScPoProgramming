@@ -523,7 +523,11 @@ usethis::use_vignette("vignette-toypackage-1")
 
 ## Deploy package documention on a website
 
+<br>
+<br>
+
 * 🚨 Now we are entering the seriously cool zone of R package development 😎
+
 * Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**?
 
 
@@ -531,10 +535,14 @@ usethis::use_vignette("vignette-toypackage-1")
 
 ---
 
-## Deploy package documention on a website 2{background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" background-position="50% 75%" background-size="40% auto"}
+## You Bet It's Cool 😎 {transition="zoom" transition-speed="slow"}
 
-* 🚨 Now we are entering the seriously cool zone of R package development 😎
-* Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**?
+<!-- ## Deploy package documention on a website 2{background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" background-position="50% 75%" background-size="40% auto"} -->
+
+<!-- * 🚨 Now we are entering the seriously cool zone of R package development 😎 -->
+<!-- * Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**? -->
+
+![](https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif)
 
 
 ---
