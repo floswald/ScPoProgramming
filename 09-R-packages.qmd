@@ -9,7 +9,11 @@ format:
     incremental: false
     code-line-numbers: false
     highlight-style: github
+    slide-number: true
 author: Florian Oswald
+subtitle: "SciencesPo Intro To Programming 2023"
+date: today
+date-format: "D MMMM, YYYY"
 ---
 
 ## R and Packages
@@ -122,8 +126,6 @@ create_package("~/toypackage")
 
 
 * You see Rstudio jumps to that location
-
-* ready to go!
 :::
 
 :::
@@ -382,6 +384,7 @@ As your package grows, you will find it hard to come back to all components repe
 :::
 
 
+# Unit Testing and Continuous Integration (CI)
 
 
 ---
@@ -528,7 +531,7 @@ usethis::use_vignette("vignette-toypackage-1")
 
 ---
 
-## Deploy package documention on a website 2{background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" background-position="50% 60%" background-size="40% auto"}
+## Deploy package documention on a website 2{background-image="https://media.giphy.com/media/8q92vsFOM9I2s/giphy-downsized-large.gif" background-position="50% 75%" background-size="40% auto"}
 
 * 🚨 Now we are entering the seriously cool zone of R package development 😎
 * Wouldn't it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were **available on a (free to host!) website which is always up to date**?
@@ -555,6 +558,16 @@ usethis::use_pkgdown()
 ```r
 pkdown::build_site()
 ```
+
+. . .
+
+* Let's get `gh-actions` going
+
+```r
+usethis::use_pkgdown_github_pages()
+```
+
+* commit everything and push to github!
 
 
 ---
