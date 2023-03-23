@@ -10,6 +10,9 @@ format:
     code-line-numbers: false
     highlight-style: github
 author: Florian Oswald and The Software Carpentry
+subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+date: today
+date-format: "D MMMM, YYYY"
 ---
 
 ## Version What?

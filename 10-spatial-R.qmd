@@ -11,7 +11,7 @@ format:
     highlight-style: github
     slide-number: true
 author: Florian Oswald
-subtitle: "SciencesPo Intro To Programming 2023"
+subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
 date: today
 date-format: "D MMMM, YYYY"
 ---
