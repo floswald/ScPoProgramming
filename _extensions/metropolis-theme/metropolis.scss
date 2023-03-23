@@ -8,7 +8,7 @@
 
 $font-family-sans-serif: "Roboto", "Fira Sans", "Droid Serif", serif !default;
 $font-family-monospace: "JetBrains Mono", "Fira Code", monospace;
-$presentation-font-size-root: 26px;
+$presentation-font-size-root: 30px;
 $presentation-line-height: 1.5em;
 $presentation-heading-font-weight: 400;
 
@@ -19,8 +19,7 @@ $body-color: #000 !default;
 $selection-bg: #26351c;
 
 // headings
-// $presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino,
-//   FreeSerif, serif !default;
+// $presentation-heading-font: $font-family-sans-serif, serif !default;
 // $presentation-heading-color: #383d3d !default;
 
 /*-- scss:rules --*/
@@ -160,12 +159,7 @@ h2::after.title {
 	padding-top: 15px;
 }
 
-.colored-column {
-	border: 2px solid red;
-	border-radius: 6px !important;
-	padding: 10px;
-	margin: 5px;
-}
+
 
 .column {
 	// #column;
@@ -174,13 +168,21 @@ h2::after.title {
 	padding: 10px;
 	margin: 5px;
 	// background-color: #ededed;
-	background-color: #ffffff;
+	// background-color: #ffffff;
 }
+
 
 .reveal h2 {
 	background-color: #23373b;
 	padding: 5px 0px 5px 10px;
 	color: #fafafa;
+	border-radius: 12px;
+}
+
+.inverse {
+	background-color: #fff3f2;
+	padding: 5px 0px 5px 10px;
+	color: #870000;
 	border-radius: 12px;
 }
 

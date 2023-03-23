@@ -30,6 +30,9 @@ website:
             text: 8. `R data.table`
           - href: 09-R-packages.qmd
             text: 9. Building `R` packages
+          - href: 10-spatial-R.qmd
+            text: 10. Spatial Data with `R`
+
   navbar:
     left:
       - href: index.qmd

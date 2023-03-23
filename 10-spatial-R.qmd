@@ -1,0 +1,549 @@
+---
+title: Spatial Data With `R`
+format: 
+  revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: ScPo Intro To Programming 2023
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+    slide-number: true
+author: Florian Oswald
+subtitle: "SciencesPo Intro To Programming 2023"
+date: today
+date-format: "D MMMM, YYYY"
+---
+
+## Intro
+
+
+In this lecture we will cover some basics about geospatial data and how to handle it with `R`. Spatial data is getting always more important, so we need a powerful tool to work with it.
+
+::: {.callout-note}
+
+# tl;dr
+
+Yes, `R` is a fully fledged GIS. No, you don't need an ArchGIS (or other) license to do real work with spatial data (I don't have one, and I use it for *real work* 😉).
+
+:::
+
+. . .
+
+### Resources
+
+1. [Geocomputation with `R`](https://r.geocompx.org/index.html) is our main reference.
+2. The [`sf` package vignettes](https://cran.r-project.org/web/packages/sf/vignettes/sf1.html) are *outstanding*.
+
+---
+
+## Spatial Data Basics
+
+* One prime example of spatial data are of course *maps*, providing an answer to the age-old question *where is what*. 
+* Fundamentally, spatial data still provide an answer to the same question, it is just that the *what* part has gotten much richer over the years. 
+* The attribute *location* may be only one of many other features of information on a certain observation.
+* Multiple measurements imply that observations can be observed *moving* in space.
+* There are two fundamentally different ways in which to consider spatial data:
+
+---
+
+## Spatial Data Types
+
+
+<br>
+
+::: {.fragment}
+::: {.callout-warning }
+
+# 1. Vector Data
+
+We represent things with *points, lines and polygons*. We can scale and stretch and transform those easily with mathematical operations. Can increase precision to arbitrary levels (can always zoom in futher).
+:::
+:::
+
+
+
+::: {.fragment}
+::: {.callout-warning .fragment}
+# 2. Raster Data
+
+We have fixed-size *tiles* or *cells* (like a mosaic, or like *pixels*), which form a **grid**. Fixed resolution.
+:::
+:::
+
+::: {.fragment}
+> 👉 This lecture deals only with *Vector* Data.
+:::
+
+# Vector Data and Coordinate Reference Systems
+
+---
+
+## Representation of Vector Data
+
+::: {.fragment}
+* Basically, we concentrate on a 2-dimensional space, even though three-dimensional spaces can be useful as well (any ideas for 
+examples?)
+:::
+::: {.fragment}
+* In other words, we denote a location with a tuple of coordinates $(x,y)$, or $(x,y,z)$ as the case may be, where each coordinate gives the *distance from the origin* in each direction. For example, we could represent Paris by the tuple `c(2.34,48.85)`
+:::
+::: {.fragment}
+* One key question in the context of spatial data concerning planet earth you should ask is: *Where is the Origin*?
+:::
+::: {.fragment}
+* Another question is, related to the well known fact that the earth is quasi-elipsoid (i.e. a bit like a squashed football and - just to be sure: **not flat**), *how to represent locations in three dimensions on a 2-dimensional map*?
+:::
+
+---
+
+## Coordinate Reference Systems (*CRS*)
+
+::: {.fragment}
+* CRSs use *longitude* and *latitude* to identify locations.
+:::
+::: {.fragment}
+* One widely used CRS is the *World Geodetic System 1984*, or WGS84 (used on google maps). It measures *angular distance* in degrees in a *geocentric datum* (made for the entire planet).
+:::
+::: {.fragment}
+* *longitude* measures East-West distance from the **Prime Meridian Plane**. (left-to-right distance from a starting point)
+:::
+::: {.fragment}
+* *latitude* measures North-South distance of **Equatorial Plane**. (up-down distance from a starting point)
+:::
+
+---
+
+## One Standard CRS: WGS84
+
+::: {columns}
+
+::: {.column width=50%}
+![](/images/vector_lonlatglobe.png)
+:::
+
+::: {.column width=40%}
+* The dashed lines are the WGS84 elipsoid coordinate frame
+* The blue circle is *the origin* at $(0,0)$ :
+    1. 0 degrees longitude (x-direction): Prime Meridian through Greenwhich, London.
+    1. 0 degrees latitude (y-direction): Equator.
+:::
+
+:::
+
+---
+
+## Paris in Different CRS
+
+::: {columns}
+
+::: {.column width=45%}
+![*Paris* at `c(2.34,48.85)` in WGS64](/images/vector_lonlatparis.png)
+:::
+
+::: {.column width=45%}
+![*Paris* at `c(600256.4, 127726.4)` in NTF Lambert North France](/images/vector_projectedparis.png)
+
+:::
+
+:::
+
+---
+
+
+## Paris Where? {.inverse}
+
+::: {columns}
+::: {.column width=45%}
+![*Paris* at `c(600256.4, 127726.4)` in NTF Lambert North France](/images/vector_projectedparis.png)
+
+:::
+::: {.column width=45%}
+<br>
+<br>
+<br>
+
+### Task
+
+1. Search for *NTF Lambert North France*
+2. What does `c(600256.4, 127726.4)` actually mean?
+
+:::
+:::
+
+
+
+
+
+---
+
+## Geocentric vs Local Datum
+
+![Figure from [Geocomputation with R](https://r.geocompx.org/spatial-class.html). Geocentric and local geodetic datums shown on top of a geoid (in false color and the vertical exaggeration by 10,000 scale factor). Image of the geoid is adapted from the work of Ince et al. (2019)](/images/02_datum_fig.png)
+
+
+# Vector Spatial Data in `R` 
+
+
+## Working with (Vector) Spatial Data in **R**
+
+* We rely on a few core libraries.
+* `sf` being the main one. That itself relies on several other lower level libraries.
+
+```r
+install.packages("sf")
+```
+
+* Don't try to build from `source` unless you know why.
+* For problems, please consult the [package readme](https://github.com/r-spatial/sf#installing).
+* Let's try to load the library:
+
+```{r}
+#| echo: true
+#| warning: true
+library(sf)
+```
+
+* I highly recommend the package vignettes!
+
+```r
+vignette(package = "sf") # see which vignettes are available
+vignette("sf1")          # an introduction to the package
+```
+
+---
+
+## Working with **sf** 1
+
+Let's read a *shapefile* from the `sf` package:
+
+```{r}
+#| echo: true
+nc = st_read(system.file("shape/nc.shp", package="sf"))
+head(nc[,c("AREA","NAME","FIPS","BIR79")])
+```
+
+---
+
+
+## Working with **sf** 2
+
+* Notice the `geometry` column. 
+* This is basically a geo-referenced `data.frame`.
+
+```{r}
+#| echo: true
+plot(nc[,"AREA"])  # plot feature "AREA" (i.e. column 1)
+```
+
+---
+
+
+## Working with **sf** 3
+
+* Works also with `ggplot2`
+
+```{r}
+#| echo: true
+library(ggplot2)
+ggplot(nc) + geom_sf(aes(fill = AREA)) +
+    scale_fill_viridis_c(name = "Area")
+```
+
+---
+
+
+## Working with **sf** 4: CRS Transform
+
+::: {columns}
+
+::: {.column width=45%}
+<br>
+
+
+```{r}
+#| echo: true
+ggplot(nc) + geom_sf(aes(fill = AREA)) +
+    scale_fill_viridis_c(name = "Area")
+```
+
+:::
+
+::: {.column width=45%}
+```{r}
+#| echo: true
+nc %>% 
+    st_transform("+proj=moll") %>%
+    ggplot() + geom_sf(aes(fill = AREA)) +
+        scale_fill_viridis_c(name = "Area") + 
+        ggtitle("Mollweide Projection")
+```
+
+:::
+
+:::
+
+
+## Geometric Operations with **sf** 1
+
+* the [simple features standard](https://en.wikipedia.org/wiki/Simple_Features) specifies a series of operations. 
+* the relevant functions start with `st_` (for *spatio-temporal*)
+* For 2 geometries `x,y` we can compute things like `st_distance(x,y)`, `st_intersect(x,y)`, etc
+* For single geometries we can do things like `st_area(x)`, `st_union(x)`, `st_buffer(x,dist)` etc
+
+```{r}
+#| echo: true
+
+st_area(st_union(nc))
+```
+
+* Ooof, how many square km is that now? 🤔
+
+. . .
+
+```{r}
+#| echo: true
+
+st_area(st_union(nc)) %>% units::set_units(km2)
+```
+
+---
+
+## Geometric Operations with **sf** 2
+
+```{r}
+#| echo: true
+# copied from https://github.com/uo-ec607/lectures
+nc_centroid = st_centroid(nc)
+
+ggplot(nc) +
+  geom_sf(fill = "black", alpha = 0.8, col = "white") +
+  geom_sf(data = nc_centroid, col = "red") + ## Notice how easy it is to combine different sf objects
+  labs(
+    title = "Counties of North Carolina",
+    subtitle = "Centroids in red"
+    )
+```
+
+---
+
+## Mapping the Seine 1 {background-image="/images/seine.png" background-position="75% 70%" background-size="40%"}
+
+::: {columns}
+::: {.column width=35%}
+```{r}
+#| echo: true
+# copied from https://github.com/uo-ec607/lectures
+# install.packages(c("maps","spData"))
+## Get the data
+france = st_as_sf( 
+    maps::map('france', 
+            plot = FALSE, 
+            fill = TRUE)
+            )
+data("seine", 
+    package = "spData")
+
+## Make sure they have the same projection
+seine = st_transform(seine, 
+        crs = st_crs(france))
+```
+```{r}
+#| echo: true
+# now, make a base plot:
+pseine = ggplot() + 
+  geom_sf(data = france, 
+          alpha = 0.8, 
+          fill = "black", 
+          col = "gray50") + 
+  labs(
+    title = "Administrative regions of France"
+    )
+ggsave(plot = pseine, 
+    "images/seine.png", 
+    width=6, height=6)
+```
+:::
+
+:::
+
+---
+
+## Mapping the Seine 2 {background-image="/images/seine2.png" background-position="75% 70%" background-size="40%"}
+
+::: {columns}
+::: {.column width=35%}
+
+```{r}
+#| echo: true
+#| eval: false
+# let's add the seine!
+pseine2 = pseine +
+    geom_sf(data = seine, col = "#05E9FF", lwd = 1) + 
+    labs(
+    title = "Administrative regions of France",
+    subtitle = "Also showing the Seine, Marne and Yonne rivers"
+    )
+ggsave(plot = pseine2, 
+    "images/seine2.png", 
+    width=6, height=6)
+```
+:::
+:::
+
+
+---
+
+
+## Intersect two **sf** objects {background-image="/images/seine3.png" background-position="95% 70%" background-size="45%"}
+
+
+::: {columns}
+::: {.column width=50%}
+```{r}
+#| echo: true
+seine = st_transform(seine, crs = st_crs(france))
+sf_use_s2(FALSE)  # need to turn off because of invalid geometry
+france_intersected = st_intersection(france, seine)
+head(france_intersected,2)
+```
+
+```{r}
+#| eval: true
+#| echo: true
+pl3 = france_intersected %>%
+  ggplot() + 
+  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + 
+  labs(
+    title = "Seine, Marne and Yonne rivers",
+    caption = "Colours depict French administrative regions"
+    ) +
+  theme(legend.title = element_blank())
+ggsave(plot = pl3,"images/seine3.png", 
+    width=7, height=5)
+```
+:::
+:::
+
+---
+
+## Join two **sf** objects {background-image="/images/seine4.png" background-position="85% 45%" background-size="45%"}
+
+
+::: {columns}
+::: {.column width=50%}
+```{r}
+#| eval: false
+#| echo: true
+pl4 = st_join(france, seine) %>% 
+  ## Get rid of regions with no overlap
+  dplyr::filter(!is.na(name)) %>% 
+  ## Some regions are duplicated b/c two 
+  ## branches of the river network flow through them 
+  dplyr::distinct(ID, .keep_all = T) %>% 
+  ## pipe into ggplot
+  ggplot() + 
+  geom_sf(alpha = 0.5, 
+          fill = "#01731f",
+          col = "#fcb4b3",  # of borders
+          linewidth = 0.5) + # of borders
+  geom_sf(data = seine, col = "#05E9FF", lwd = 1) + 
+  labs(title = "Intersected regions only") +
+  theme_bw()
+ggsave(plot = pl4,"images/seine4.png", 
+    width=7, height=5)
+```
+:::
+:::
+
+---
+
+## Joining Task { .inverse}
+
+
+::: {columns}
+::: {.column width=35%}
+* Modify the code chunk on the previous slide.
+* We want to have different colors for the shown departements, instead of all "#01731f".
+* I.e. make this for me 👉
+```{r}
+#| eval: false
+#| echo: false
+d5 = st_join(france, seine) %>% 
+  ## Get rid of regions with no overlap
+  dplyr::filter(!is.na(name)) %>% 
+  ## Some regions are duplicated b/c two 
+  ## branches of the river network flow through them 
+  dplyr::distinct(ID, .keep_all = T)
+
+my_colors = palette.colors(nrow(d5), palette = "Alphabet")
+names(my_colors) <- NULL
+
+  ## pipe into ggplot
+pl5 = ggplot(data = d5) + 
+  geom_sf(aes(fill = ID),
+          col = "#fcb4b3",  # of borders
+          linewidth = 0.5) + # of borders
+  geom_sf(data = seine, col = "#05E9FF", lwd = 1.5) + 
+  labs(title = "Intersected regions only", fill = "Departement") +
+  theme_bw() +
+  scale_fill_manual(values = my_colors)
+ggsave(plot = pl5,"images/seine5.png", 
+    width=7, height=5)
+```
+:::
+
+::: {.column width=55%}
+![](images/seine5.png)
+:::
+:::
+
+---
+
+## Joining Task Solution
+
+```{r}
+#| eval: false
+#| echo: true
+d5 = st_join(france, seine) %>% 
+  ## Get rid of regions with no overlap
+  dplyr::filter(!is.na(name)) %>% 
+  ## Some regions are duplicated b/c two 
+  ## branches of the river network flow through them 
+  dplyr::distinct(ID, .keep_all = T)
+
+my_colors = palette.colors(nrow(d5), palette = "Alphabet")
+names(my_colors) <- NULL
+
+  ## pipe into ggplot
+pl5 = ggplot(data = d5) + 
+  geom_sf(aes(fill = ID),
+          col = "#fcb4b3",  # of borders
+          linewidth = 0.5) + # of borders
+  geom_sf(data = seine, col = "#05E9FF", lwd = 1.5) + 
+  labs(title = "Intersected regions only", fill = "Departement") +
+  theme_bw() +
+  scale_fill_manual(values = my_colors)
+ggsave(plot = pl5,"images/seine5.png", 
+    width=7, height=5)
+```
+
+
+---
+
+## Distances
+
+* Another typical question could be: 
+
+> What's the distance between 2 points?
+
+---
+
+## Other Resources
+
+* [mapview/](https://r-spatial.github.io/mapview/) : great for interactive and quick mapping
+* [tmaps](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html): same
+
+
+# End
