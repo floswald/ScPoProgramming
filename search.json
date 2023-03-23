@@ -81,7 +81,7 @@
     "href": "01-shell-intro.html#section-2",
     "title": "The Unix Shell",
     "section": "",
-    "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
   },
   {
     "objectID": "09-R-packages.html#r-and-packages",
@@ -263,7 +263,7 @@
     "href": "09-R-packages.html#summary",
     "title": "Building R Packages",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
   },
   {
     "objectID": "03-filework.html#intro",
@@ -613,7 +613,7 @@
     "href": "05-git.html#pushing-branches-to-github",
     "title": "Version Control with Git",
     "section": "Pushing Branches to GitHub",
-    "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nSciencesPo Intro To Programming 2023"
   },
   {
     "objectID": "10-spatial-R.html#intro",
@@ -865,7 +865,7 @@
     "href": "04-pipes.html#real-data-1",
     "title": "Pipes and Filters",
     "section": "Real Data",
-    "text": "Real Data\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\ncd Downloads\nwc -l carburants.csv\ncut -d ';' -f 5 carburants.csv | sort | uniq -c | sort\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n\n\n\n\n\n\n\n\nScPo Intro To Programming 2023"
+    "text": "Real Data\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\ncd Downloads\nwc -l carburants.csv\ncut -d ';' -f 5 carburants.csv | sort | uniq -c | sort\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
   },
   {
     "objectID": "02-filedir.html#intro",
