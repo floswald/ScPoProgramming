@@ -116,7 +116,7 @@
     "href": "09-R-packages.html#adding-code",
     "title": "Building R Packages",
     "section": "Adding Code",
-    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n✔ Creating 'R/'\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
+    "text": "Adding Code\n\nWe add R source code in the R/ folder.\nCreate as many .R files as you want.\nIt’s good practice to organize tests accompanying source files.\n\n\nuse_r(\"sayhello\")\n\n• Edit 'R/sayhello.R'\n• Call `use_test()` to create a matching test file\n\n\n\nWhat’s with that use_test() thing? 🤔 Let’s worry about this later."
   },
   {
     "objectID": "09-R-packages.html#ok-butadding-code",
@@ -242,14 +242,14 @@
     "href": "09-R-packages.html#deploy-package-documention-on-a-website",
     "title": "Building R Packages",
     "section": "Deploy package documention on a website",
-    "text": "Deploy package documention on a website\n\n🚨 Now we are entering the seriously cool zone of R package development 😎\nWouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were available on a (free to host!) website which is always up to date?"
+    "text": "Deploy package documention on a website\n \n\n🚨 Now we are entering the seriously cool zone of R package development 😎\nWouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were available on a (free to host!) website which is always up to date?"
   },
   {
-    "objectID": "09-R-packages.html#deploy-package-documention-on-a-website-2",
-    "href": "09-R-packages.html#deploy-package-documention-on-a-website-2",
+    "objectID": "09-R-packages.html#you-bet-its-cool",
+    "href": "09-R-packages.html#you-bet-its-cool",
     "title": "Building R Packages",
-    "section": "Deploy package documention on a website 2",
-    "text": "Deploy package documention on a website 2\n\n🚨 Now we are entering the seriously cool zone of R package development 😎\nWouldn’t it be 🤩 amazing if all of our package documentation, the content of our readme, and any explanatory articles we might have written as vignettes, were available on a (free to host!) website which is always up to date?"
+    "section": "You Bet It’s Cool 😎",
+    "text": "You Bet It’s Cool 😎"
   },
   {
     "objectID": "09-R-packages.html#deploy-package-documention-on-a-website-3",
