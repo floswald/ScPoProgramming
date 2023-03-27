@@ -536,14 +536,106 @@ ggsave(plot = pl5,"images/seine5.png",
 
 * Another typical question could be: 
 
-> What's the distance between 2 points?
+> What's the (straight-line) distance between 2 points?
+
+As in
+
+>What's the distance between the centroids of the Seine-Maritime and Nievre Departements?
 
 ---
 
-## Other Resources
+## Task: Distances {.inverse}
 
+Modifying the plot from the previous task, produce 2 new plots
+
+1. One that colors only the concerned departments, and marks their respective centroids with a point.
+2. Another one with the same coloring, but where a straight solid line connects both centroids, and we print the distance in km into the table title.
+
+--- 
+
+## Task Desired Result: Distances {.inverse}
+
+**Hint:**
+
+```r
+# start from here
+p6 = ggplot(d5) + geom_sf()
+```
+
+::: {layout-ncol=2}
+
+![Figure 1](images/distance1.png)
+
+![Figure 2](images/distance2.png)
+
+Desired Outputs
+
+:::
+
+
+---
+
+## Task Solution
+
+```{r}
+#| echo: true
+#| eval: false
+cvec = rep(NA, length(unique(d5$ID)))
+names(cvec) <- unique(d5$ID)
+cvec["Seine-Maritime"] <- "purple"
+cvec["Nievre"] <- "brown"
+
+p6 = ggplot(d5) + geom_sf()
+p6 = ggplot(d5) + geom_sf(aes(fill = ID))
+p6 = p6 + scale_fill_manual(values = cvec, limits= c("Seine-Maritime","Nievre"))
+subdeps = d5 %>% dplyr::filter(ID %in% c("Seine-Maritime","Nievre"))
+p6 = p6 + geom_sf(data = st_centroid(subdeps))
+ggsave(plot = p6, "images/distance1.png", width = 5,height=4)
+
+dists = st_distance(subdeps) %>% units::set_units("km")
+coords = st_centroid(subdeps) %>% st_coordinates() 
+coords = data.frame(lon = coords[1,"X"],
+                    lat = coords[1,"Y"], 
+                    lon_end = coords[2,"X"],
+                    lat_end = coords[2,"Y"])
+p7 = p6 + geom_segment(data = coords, aes(lon, lat, xend = lon_end, yend = lat_end))
+p7 = p7 + ggtitle(paste("Distance between Centroids:",round(dists[1,2],0), "km"))
+ggsave(plot = p7, "images/distance2.png",width = 5,height=4)
+
+
+```
+
+
+# Raster Data
+
+---
+
+## What's Different?
+
+* We have a grid (*pixels*) where each cell contains one single data value - usually our measure of interest.
+* We can have multiple *layers* of measurements (e.g. temperature, humidity and elevation for a grid cell)
+* CRS considerations equally apply.
+* Remote Sensing Data (e.g. Satelitte images) are often in raster format.
+
+---
+
+## Raster Resources
+
+* [Chapter 6 of gecompr](https://r.geocompx.org/raster-vector.html) is a great starting point.
+* [R as GIS for Economists](https://tmieno2.github.io/R-as-GIS-for-Economists/index.html) is in general a great resource, [chapter 4](https://tmieno2.github.io/R-as-GIS-for-Economists/raster-basics.html) in particular so.
+* [`R` package `{raster}`](https://cran.r-project.org/web/packages/raster/index.html) is the very mature and traditional solution.
+* [`R` package `{star}`](https://cran.r-project.org/web/packages/stars/index.html) is a great recent development in this space.
+
+---
+
+## Other Spatial Resources
+
+* [Spatial Data Science](https://r-spatial.org/book/): Still WIP but looks like the ultimate authority amongst books.
 * [mapview/](https://r-spatial.github.io/mapview/) : great for interactive and quick mapping
 * [tmaps](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html): same
+* [Analyzing US Census Data](https://walker-data.com/census-r/) by Kyle Walker is a brilliant intro do his package [`{tidycensus}`](https://walker-data.com/tidycensus/).
+* Nice mapping [examples](https://ryanpeek.github.io/2017-11-05-mapping-with-sf-Part-2/)
+* [`sf` and `raster`](https://nceas.github.io/oss-lessons/spatial-data-gis-law/3-mon-intro-gis-in-r.html) intro by NCEAS
 
 
 # End
