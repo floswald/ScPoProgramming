@@ -414,7 +414,7 @@ Florian Oswald
 </div>
 </div>
 
-  <p class="date">23 March, 2023</p>
+  <p class="date">27 March, 2023</p>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
@@ -924,14 +924,110 @@ Geodetic CRS:  WGS 84
 <li>Another typical question could be:</li>
 </ul>
 <blockquote>
-<p>What’s the distance between 2 points?</p>
+<p>What’s the (straight-line) distance between 2 points?</p>
+</blockquote>
+<p>As in</p>
+<blockquote>
+<p>What’s the distance between the centroids of the Seine-Maritime and Nievre Departements?</p>
 </blockquote>
 </section>
-<section id="other-resources" class="slide level2">
-<h2>Other Resources</h2>
+<section id="task-distances" class="slide level2 inverse">
+<h2>Task: Distances</h2>
+<p>Modifying the plot from the previous task, produce 2 new plots</p>
+<ol type="1">
+<li>One that colors only the concerned departments, and marks their respective centroids with a point.</li>
+<li>Another one with the same coloring, but where a straight solid line connects both centroids, and we print the distance in km into the table title.</li>
+</ol>
+</section>
+<section id="task-desired-result-distances" class="slide level2 inverse">
+<h2>Task Desired Result: Distances</h2>
+<p><strong>Hint:</strong></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start from here</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/distance1.png"></p>
+<p></p><figcaption>Figure 1</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/distance2.png"></p>
+<p></p><figcaption>Figure 2</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>Desired Outputs</p>
+</div>
+</div>
+</div>
+</section>
+<section id="task-solution" class="slide level2">
+<h2>Task Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(<span class="fu">unique</span>(d5<span class="sc">$</span>ID)))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cvec) <span class="ot">&lt;-</span> <span class="fu">unique</span>(d5<span class="sc">$</span>ID)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Seine-Maritime"</span>] <span class="ot">&lt;-</span> <span class="st">"purple"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Nievre"</span>] <span class="ot">&lt;-</span> <span class="st">"brown"</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ID))</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cvec, <span class="at">limits=</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>subdeps <span class="ot">=</span> d5 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_centroid</span>(subdeps))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p6, <span class="st">"images/distance1.png"</span>, <span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>dists <span class="ot">=</span> <span class="fu">st_distance</span>(subdeps) <span class="sc">%&gt;%</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="st">"km"</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">st_centroid</span>(subdeps) <span class="sc">%&gt;%</span> <span class="fu">st_coordinates</span>() </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">lon =</span> coords[<span class="dv">1</span>,<span class="st">"X"</span>],</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat =</span> coords[<span class="dv">1</span>,<span class="st">"Y"</span>], </span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lon_end =</span> coords[<span class="dv">2</span>,<span class="st">"X"</span>],</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat_end =</span> coords[<span class="dv">2</span>,<span class="st">"Y"</span>])</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">data =</span> coords, <span class="fu">aes</span>(lon, lat, <span class="at">xend =</span> lon_end, <span class="at">yend =</span> lat_end))</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p7 <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Distance between Centroids:"</span>,<span class="fu">round</span>(dists[<span class="dv">1</span>,<span class="dv">2</span>],<span class="dv">0</span>), <span class="st">"km"</span>))</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p7, <span class="st">"images/distance2.png"</span>,<span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="raster-data-1" class="title-slide slide level1 center">
+<h1>Raster Data</h1>
+
+</section>
+<section id="whats-different" class="slide level2">
+<h2>What’s Different?</h2>
 <ul>
+<li>We have a grid (<em>pixels</em>) where each cell contains one single data value - usually our measure of interest.</li>
+<li>We can have multiple <em>layers</em> of measurements (e.g.&nbsp;temperature, humidity and elevation for a grid cell)</li>
+<li>CRS considerations equally apply.</li>
+<li>Remote Sensing Data (e.g.&nbsp;Satelitte images) are often in raster format.</li>
+</ul>
+</section>
+<section id="raster-resources" class="slide level2">
+<h2>Raster Resources</h2>
+<ul>
+<li><a href="https://r.geocompx.org/raster-vector.html">Chapter 6 of gecompr</a> is a great starting point.</li>
+<li><a href="https://tmieno2.github.io/R-as-GIS-for-Economists/index.html">R as GIS for Economists</a> is in general a great resource, <a href="https://tmieno2.github.io/R-as-GIS-for-Economists/raster-basics.html">chapter 4</a> in particular so.</li>
+<li><a href="https://cran.r-project.org/web/packages/raster/index.html"><code>R</code> package <code>{raster}</code></a> is the very mature and traditional solution.</li>
+<li><a href="https://cran.r-project.org/web/packages/stars/index.html"><code>R</code> package <code>{star}</code></a> is a great recent development in this space.</li>
+</ul>
+</section>
+<section id="other-spatial-resources" class="slide level2">
+<h2>Other Spatial Resources</h2>
+<ul>
+<li><a href="https://r-spatial.org/book/">Spatial Data Science</a>: Still WIP but looks like the ultimate authority amongst books.</li>
 <li><a href="https://r-spatial.github.io/mapview/">mapview/</a> : great for interactive and quick mapping</li>
 <li><a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">tmaps</a>: same</li>
+<li><a href="https://walker-data.com/census-r/">Analyzing US Census Data</a> by Kyle Walker is a brilliant intro do his package <a href="https://walker-data.com/tidycensus/"><code>{tidycensus}</code></a>.</li>
+<li>Nice mapping <a href="https://ryanpeek.github.io/2017-11-05-mapping-with-sf-Part-2/">examples</a></li>
+<li><a href="https://nceas.github.io/oss-lessons/spatial-data-gis-law/3-mon-intro-gis-in-r.html"><code>sf</code> and <code>raster</code></a> intro by NCEAS</li>
 </ul>
 </section></section>
 <section id="end" class="title-slide slide level1 center">

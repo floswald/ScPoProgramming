@@ -774,14 +774,49 @@
     "href": "10-spatial-R.html#distances",
     "title": "Spatial Data With R",
     "section": "Distances",
-    "text": "Distances\n\nAnother typical question could be:\n\n\nWhat’s the distance between 2 points?"
+    "text": "Distances\n\nAnother typical question could be:\n\n\nWhat’s the (straight-line) distance between 2 points?\n\nAs in\n\nWhat’s the distance between the centroids of the Seine-Maritime and Nievre Departements?"
   },
   {
-    "objectID": "10-spatial-R.html#other-resources",
-    "href": "10-spatial-R.html#other-resources",
+    "objectID": "10-spatial-R.html#task-distances",
+    "href": "10-spatial-R.html#task-distances",
     "title": "Spatial Data With R",
-    "section": "Other Resources",
-    "text": "Other Resources\n\nmapview/ : great for interactive and quick mapping\ntmaps: same"
+    "section": "Task: Distances",
+    "text": "Task: Distances\nModifying the plot from the previous task, produce 2 new plots\n\nOne that colors only the concerned departments, and marks their respective centroids with a point.\nAnother one with the same coloring, but where a straight solid line connects both centroids, and we print the distance in km into the table title."
+  },
+  {
+    "objectID": "10-spatial-R.html#task-desired-result-distances",
+    "href": "10-spatial-R.html#task-desired-result-distances",
+    "title": "Spatial Data With R",
+    "section": "Task Desired Result: Distances",
+    "text": "Task Desired Result: Distances\nHint:\n# start from here\np6 = ggplot(d5) + geom_sf()\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\nDesired Outputs"
+  },
+  {
+    "objectID": "10-spatial-R.html#task-solution",
+    "href": "10-spatial-R.html#task-solution",
+    "title": "Spatial Data With R",
+    "section": "Task Solution",
+    "text": "Task Solution\n\ncvec = rep(NA, length(unique(d5$ID)))\nnames(cvec) <- unique(d5$ID)\ncvec[\"Seine-Maritime\"] <- \"purple\"\ncvec[\"Nievre\"] <- \"brown\"\n\np6 = ggplot(d5) + geom_sf()\np6 = ggplot(d5) + geom_sf(aes(fill = ID))\np6 = p6 + scale_fill_manual(values = cvec, limits= c(\"Seine-Maritime\",\"Nievre\"))\nsubdeps = d5 %>% dplyr::filter(ID %in% c(\"Seine-Maritime\",\"Nievre\"))\np6 = p6 + geom_sf(data = st_centroid(subdeps))\nggsave(plot = p6, \"images/distance1.png\", width = 5,height=4)\n\ndists = st_distance(subdeps) %>% units::set_units(\"km\")\ncoords = st_centroid(subdeps) %>% st_coordinates() \ncoords = data.frame(lon = coords[1,\"X\"],\n                    lat = coords[1,\"Y\"], \n                    lon_end = coords[2,\"X\"],\n                    lat_end = coords[2,\"Y\"])\np7 = p6 + geom_segment(data = coords, aes(lon, lat, xend = lon_end, yend = lat_end))\np7 = p7 + ggtitle(paste(\"Distance between Centroids:\",round(dists[1,2],0), \"km\"))\nggsave(plot = p7, \"images/distance2.png\",width = 5,height=4)"
+  },
+  {
+    "objectID": "10-spatial-R.html#whats-different",
+    "href": "10-spatial-R.html#whats-different",
+    "title": "Spatial Data With R",
+    "section": "What’s Different?",
+    "text": "What’s Different?\n\nWe have a grid (pixels) where each cell contains one single data value - usually our measure of interest.\nWe can have multiple layers of measurements (e.g. temperature, humidity and elevation for a grid cell)\nCRS considerations equally apply.\nRemote Sensing Data (e.g. Satelitte images) are often in raster format."
+  },
+  {
+    "objectID": "10-spatial-R.html#raster-resources",
+    "href": "10-spatial-R.html#raster-resources",
+    "title": "Spatial Data With R",
+    "section": "Raster Resources",
+    "text": "Raster Resources\n\nChapter 6 of gecompr is a great starting point.\nR as GIS for Economists is in general a great resource, chapter 4 in particular so.\nR package {raster} is the very mature and traditional solution.\nR package {star} is a great recent development in this space."
+  },
+  {
+    "objectID": "10-spatial-R.html#other-spatial-resources",
+    "href": "10-spatial-R.html#other-spatial-resources",
+    "title": "Spatial Data With R",
+    "section": "Other Spatial Resources",
+    "text": "Other Spatial Resources\n\nSpatial Data Science: Still WIP but looks like the ultimate authority amongst books.\nmapview/ : great for interactive and quick mapping\ntmaps: same\nAnalyzing US Census Data by Kyle Walker is a brilliant intro do his package {tidycensus}.\nNice mapping examples\nsf and raster intro by NCEAS"
   },
   {
     "objectID": "04-pipes.html#combining-commands",
