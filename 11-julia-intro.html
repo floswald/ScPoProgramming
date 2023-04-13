@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Florian Oswald">
 
-<title>ScPoProgramming - About</title>
+<title>ScPoProgramming - Intro To Julia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,8 +72,8 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
-<meta name="twitter:title" content="ScPoProgramming - About">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="ScPoProgramming - Intro To Julia">
+<meta name="twitter:description" content="SciencesPo Intro To Programming 2023">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -112,7 +113,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">About</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Intro To Julia</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -193,18 +194,6 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
  <span class="menu-text">10. Spatial Data with <code>R</code></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://floswald.github.io/julia-bootcamp/01-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. <code>julia</code> intro 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://floswald.github.io/julia-bootcamp/02-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">12. <code>julia</code> intro 2</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -213,21 +202,40 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parametric-plots" id="toc-parametric-plots" class="nav-link active" data-scroll-target="#parametric-plots">Parametric Plots</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Intro To Julia</h1>
+<p class="subtitle lead"><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2023</a></p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Florian Oswald </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">7 April, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -235,9 +243,26 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 </header>
 
-<p>About this site</p>
+<pre class="{julia}"><code>#| echo: false
+import Pkg
+Pkg.activate("./julia-envs/julia-intro")</code></pre>
+<section id="parametric-plots" class="level2">
+<h2 class="anchored" data-anchor-id="parametric-plots">Parametric Plots</h2>
+<p>Plot function pair (x(u), y(u)). See <strong>?@fig-parametric</strong> for an example.</p>
+<pre class="{julia}"><code>#| label: fig-parametric
+#| fig-cap: "Parametric Plots"
+
+using Plots
+
+plot(sin, 
+     x-&gt;sin(2x), 
+     0, 
+     2π, 
+     leg=false, 
+     fill=(0,:lavender))</code></pre>
 
 
+</section>
 
 <p>© Florian Oswald, 2023</p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

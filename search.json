@@ -25,7 +25,7 @@
     "href": "01-shell-intro.html#or-do-you-cli",
     "title": "The Unix Shell",
     "section": "Or Do you CLI?",
-    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing. –> Show!"
+    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing. –&gt; Show!"
   },
   {
     "objectID": "01-shell-intro.html#the-shell",
@@ -53,7 +53,7 @@
     "href": "01-shell-intro.html#first-error",
     "title": "The Unix Shell",
     "section": "First Error!",
-    "text": "First Error!\n\n\n\n\n\n\nDanger\n\n\n\nIf you mistype a command, or look for a program that is not installed, you get an error. Like:\n\nbash-3.2$ ks\nbash: ks: command not found\n\n\n\n\nLook for a spelling mistake (it’s ls not ks)\nOr install the required program."
+    "text": "First Error!\n\n\n\n\n\n\nCaution\n\n\n\nIf you mistype a command, or look for a program that is not installed, you get an error. Like:\n\nbash-3.2$ ks\nbash: ks: command not found\n\n\n\n\nLook for a spelling mistake (it’s ls not ks)\nOr install the required program."
   },
   {
     "objectID": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
@@ -102,7 +102,7 @@
     "href": "09-R-packages.html#building-a-toy-package",
     "title": "Building R Packages",
     "section": "Building a Toy Package",
-    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location"
+    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location"
   },
   {
     "objectID": "09-R-packages.html#adding-git",
@@ -123,7 +123,7 @@
     "href": "09-R-packages.html#ok-butadding-code",
     "title": "Building R Packages",
     "section": "Ok, but…Adding Code??",
-    "text": "Ok, but…Adding Code??\n\nLet’s add a function to the file R/sayhello.R:\n\n# Notice I'm using = instead of < - because \n# the font of those slides prints it weirdly\nhello = function(who){\n    paste(\"hello,\",who)\n}\n\nNow, if this were a simple R script, we could source the R/sayhello.R file into global space and try this out.\nWe don’t want to do that here though. 🤨\nInstead, we want to load the package, which contains our function.\ndo load_all():\n\nload_all()\nℹ Loading toypackage"
+    "text": "Ok, but…Adding Code??\n\nLet’s add a function to the file R/sayhello.R:\n\n# Notice I'm using = instead of &lt; - because \n# the font of those slides prints it weirdly\nhello = function(who){\n    paste(\"hello,\",who)\n}\n\nNow, if this were a simple R script, we could source the R/sayhello.R file into global space and try this out.\nWe don’t want to do that here though. 🤨\nInstead, we want to load the package, which contains our function.\ndo load_all():\n\nload_all()\nℹ Loading toypackage"
   },
   {
     "objectID": "09-R-packages.html#trying-out-code",
@@ -151,7 +151,7 @@
     "href": "09-R-packages.html#documenting-with-roxygen",
     "title": "Building R Packages",
     "section": "Documenting with Roxygen",
-    "text": "Documenting with Roxygen\n\nGo back to the hello function, place the cursor inside the function body, and do Code > Insert Roxygen Skeleton.\nYou’ll see something like this:\n\n#' Title\n#'\n#' @param who \n#'\n#' @return\n#' @export\n#'\n#' @examples\nhello <- function(who){\n  paste(\"hello,\",who)\n}\n\nEach line starting with #' is part of the docstring.\nThe roxygen package can separate those blocks from our code, and produce valid R documentation for us! 🤯"
+    "text": "Documenting with Roxygen\n\nGo back to the hello function, place the cursor inside the function body, and do Code &gt; Insert Roxygen Skeleton.\nYou’ll see something like this:\n\n#' Title\n#'\n#' @param who \n#'\n#' @return\n#' @export\n#'\n#' @examples\nhello &lt;- function(who){\n  paste(\"hello,\",who)\n}\n\nEach line starting with #' is part of the docstring.\nThe roxygen package can separate those blocks from our code, and produce valid R documentation for us! 🤯"
   },
   {
     "objectID": "09-R-packages.html#building-documentation",
@@ -207,14 +207,14 @@
     "href": "09-R-packages.html#running-all-unit-tests",
     "title": "Building R Packages",
     "section": "Running all unit tests",
-    "text": "Running all unit tests\n\nYou can run each test file separately to try it out (you must do library(testthat) first)\nIt’s better practice to test the entire package though:\n\n> test()\nℹ Testing toypackage\n\nAttaching package: ‘testthat’\n\nThe following object is masked from ‘package:devtools’:\n\n    test_file\n\n✔ | F W S  OK | Context\n✔ |         1 | sayhello                                         \n\n══ Results ══════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]\n\nCelebrate! 🎉 🥳 🎊"
+    "text": "Running all unit tests\n\nYou can run each test file separately to try it out (you must do library(testthat) first)\nIt’s better practice to test the entire package though:\n\n&gt; test()\nℹ Testing toypackage\n\nAttaching package: ‘testthat’\n\nThe following object is masked from ‘package:devtools’:\n\n    test_file\n\n✔ | F W S  OK | Context\n✔ |         1 | sayhello                                         \n\n══ Results ══════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]\n\nCelebrate! 🎉 🥳 🎊"
   },
   {
     "objectID": "09-R-packages.html#using-other-packages",
     "href": "09-R-packages.html#using-other-packages",
     "title": "Building R Packages",
     "section": "Using other packages",
-    "text": "Using other packages\n\nMost likely our package would depend some other package as well.\nLike we could choose the export some of our functions, we now may want to import some functions from elsewhere.\nSuppose we want to use the dplyr package:\n\n> use_package(\"dplyr\")\n✔ Adding 'dplyr' to Imports field in DESCRIPTION\n• Refer to functions with `dplyr::fun()`\n\nLet’s check the DESCRIPTION file to see what happened."
+    "text": "Using other packages\n\nMost likely our package would depend some other package as well.\nLike we could choose the export some of our functions, we now may want to import some functions from elsewhere.\nSuppose we want to use the dplyr package:\n\n&gt; use_package(\"dplyr\")\n✔ Adding 'dplyr' to Imports field in DESCRIPTION\n• Refer to functions with `dplyr::fun()`\n\nLet’s check the DESCRIPTION file to see what happened."
   },
   {
     "objectID": "09-R-packages.html#hook-it-up-to-github",
@@ -264,6 +264,20 @@
     "title": "Building R Packages",
     "section": "Summary",
     "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
+  },
+  {
+    "objectID": "julia-envs/julia-intro/Untitled1.html",
+    "href": "julia-envs/julia-intro/Untitled1.html",
+    "title": "ScPoProgramming",
+    "section": "",
+    "text": "x = 1\n\n1\n\n\n\n%%javascript\nvar kernel = Jupyter.notebook.kernel\n\nThe analogue of IPython’s %%javascript ...code... in Julia can be constructed by first evaluating\nmacro javascript_str(s) display(\"text/javascript\", s); end\nto define the javascript\"....\" string macro in Julia. Subsequently, you can simply do:\njavascript\"\"\"\n...code...\n\"\"\"\nto execute the script in an IJulia notebook.\n\n\n\n\n\n© Florian Oswald, 2023"
+  },
+  {
+    "objectID": "julia-envs/julia-intro/Untitled.html",
+    "href": "julia-envs/julia-intro/Untitled.html",
+    "title": "ScPoProgramming",
+    "section": "",
+    "text": "© Florian Oswald, 2023"
   },
   {
     "objectID": "03-filework.html#intro",
@@ -343,11 +357,18 @@
     "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2023"
   },
   {
+    "objectID": "index.html#objectives-of-this-course",
+    "href": "index.html#objectives-of-this-course",
+    "title": "ScPoProgramming",
+    "section": "",
+    "text": "After this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming."
+  },
+  {
     "objectID": "index.html#windows-and-mac-specific-instructions",
     "href": "index.html#windows-and-mac-specific-instructions",
     "title": "ScPoProgramming",
     "section": "Windows and Mac Specific Instructions",
-    "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\n\nSpecifics:\n\nDuring the installation process, choose all default settings.\nAt one point, you are offered a choice for a default editor being used for git. If you know vim already, why not (I use vim), otherwise I recommend nano, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don’t choose notepad and other standalone editors).\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications > Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
+    "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\n\nSpecifics:\n\nDuring the installation process, choose all default settings.\nAt one point, you are offered a choice for a default editor being used for git. If you know vim already, why not (I use vim), otherwise I recommend nano, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don’t choose notepad and other standalone editors).\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications &gt; Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
   },
   {
     "objectID": "about.html",
@@ -445,7 +466,7 @@
     "href": "05-git.html#viewing-changes",
     "title": "Version Control with Git",
     "section": "Viewing Changes",
-    "text": "Viewing Changes\n\nOk, now let’s see what git makes of our additions to this directory.\n\nfloswald@PTL11077 ~/gasprices (main)> git status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n        carburants.csv\n        maketable.sh\n\nIt is actually helpful not to use bash as a shell…\nCustomizing your shell is an extremely effective procrastination device.\nYou must know what shaving a Yak means before you walk out of my class."
+    "text": "Viewing Changes\n\nOk, now let’s see what git makes of our additions to this directory.\n\nfloswald@PTL11077 ~/gasprices (main)&gt; git status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv\n        maketable.sh\n\nIt is actually helpful not to use bash as a shell…\nCustomizing your shell is an extremely effective procrastination device.\nYou must know what shaving a Yak means before you walk out of my class."
   },
   {
     "objectID": "05-git.html#seeing-the-difference",
@@ -459,21 +480,21 @@
     "href": "05-git.html#modify-add-commit-1",
     "title": "Version Control with Git",
     "section": "Modify-Add-Commit 1",
-    "text": "Modify-Add-Commit 1\n\ngit reports about untracked files. We need to decide what to track.\n\n\nMove files to staging area:\n\ngit add maketable.sh \ngit status\n\nNotice that I did not want to track the csv file.\n\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached <file>...\" to unstage)\n        new file:   maketable.sh\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n        carburants.csv"
+    "text": "Modify-Add-Commit 1\n\ngit reports about untracked files. We need to decide what to track.\n\n\nMove files to staging area:\n\ngit add maketable.sh \ngit status\n\nNotice that I did not want to track the csv file.\n\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   maketable.sh\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv"
   },
   {
     "objectID": "05-git.html#modify-add-commit-2",
     "href": "05-git.html#modify-add-commit-2",
     "title": "Version Control with Git",
     "section": "Modify-Add-Commit 2",
-    "text": "Modify-Add-Commit 2\n\nNow, let’s record what is in the staging area.\n\n$ git commit -m 'added the maketable script'\n\n[main (root-commit) 9956506] added the maketable script\n 1 file changed, 2 insertions(+)\n create mode 100644 maketable.sh\n\ncheck status:\n\n$ git status\n\nOn branch main\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n        carburants.csv\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n➜  gasprices git:(main) ✗"
+    "text": "Modify-Add-Commit 2\n\nNow, let’s record what is in the staging area.\n\n$ git commit -m 'added the maketable script'\n\n[main (root-commit) 9956506] added the maketable script\n 1 file changed, 2 insertions(+)\n create mode 100644 maketable.sh\n\ncheck status:\n\n$ git status\n\nOn branch main\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n➜  gasprices git:(main) ✗"
   },
   {
     "objectID": "05-git.html#modify-add-commit-3",
     "href": "05-git.html#modify-add-commit-3",
     "title": "Version Control with Git",
     "section": "Modify-Add-Commit 3",
-    "text": "Modify-Add-Commit 3\n\nLet’s check what’s in the log.\n\n$ git log \n\ncommit 9956506dc3159403b87aea3b04654c293e82c680 (HEAD -> main)\nAuthor: Florian Oswald <florian.oswald@gmail.com>\nDate:   Tue Feb 7 10:50:51 2023 +0100\n\n    added the maketable script"
+    "text": "Modify-Add-Commit 3\n\nLet’s check what’s in the log.\n\n$ git log \n\ncommit 9956506dc3159403b87aea3b04654c293e82c680 (HEAD -&gt; main)\nAuthor: Florian Oswald &lt;florian.oswald@gmail.com&gt;\nDate:   Tue Feb 7 10:50:51 2023 +0100\n\n    added the maketable script"
   },
   {
     "objectID": "05-git.html#modify-add-commit-4",
@@ -536,7 +557,7 @@
     "href": "05-git.html#how-to-get-a-specific-version",
     "title": "Version Control with Git",
     "section": "How to get a specific version",
-    "text": "How to get a specific version\n\nWhat if you want something else than HEAD?\nlike, the first version of maketable.sh?\nlook at history:\n\n$ git log --oneline --graph\n\n* a6f023b (HEAD -> main) added readme\n* 9956506 added the maketable script\n\nThe 9956506 is the unique identifier of that version.\nWe can go back to that version:\n\n$ git checkout 9956506 maketable.sh"
+    "text": "How to get a specific version\n\nWhat if you want something else than HEAD?\nlike, the first version of maketable.sh?\nlook at history:\n\n$ git log --oneline --graph\n\n* a6f023b (HEAD -&gt; main) added readme\n* 9956506 added the maketable script\n\nThe 9956506 is the unique identifier of that version.\nWe can go back to that version:\n\n$ git checkout 9956506 maketable.sh"
   },
   {
     "objectID": "05-git.html#so-how-does-this-thing-work",
@@ -711,14 +732,14 @@
     "href": "10-spatial-R.html#working-with-sf-4-crs-transform",
     "title": "Spatial Data With R",
     "section": "Working with sf 4: CRS Transform",
-    "text": "Working with sf 4: CRS Transform\n\n\n\n\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")\n\n\n\n\n\n\n\nnc %>% \n    st_transform(\"+proj=moll\") %>%\n    ggplot() + geom_sf(aes(fill = AREA)) +\n        scale_fill_viridis_c(name = \"Area\") + \n        ggtitle(\"Mollweide Projection\")"
+    "text": "Working with sf 4: CRS Transform\n\n\n\n\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")\n\n\n\n\n\n\n\nnc %&gt;% \n    st_transform(\"+proj=moll\") %&gt;%\n    ggplot() + geom_sf(aes(fill = AREA)) +\n        scale_fill_viridis_c(name = \"Area\") + \n        ggtitle(\"Mollweide Projection\")"
   },
   {
     "objectID": "10-spatial-R.html#geometric-operations-with-sf-1",
     "href": "10-spatial-R.html#geometric-operations-with-sf-1",
     "title": "Spatial Data With R",
     "section": "Geometric Operations with sf 1",
-    "text": "Geometric Operations with sf 1\n\nthe simple features standard specifies a series of operations.\nthe relevant functions start with st_ (for spatio-temporal)\nFor 2 geometries x,y we can compute things like st_distance(x,y), st_intersect(x,y), etc\nFor single geometries we can do things like st_area(x), st_union(x), st_buffer(x,dist) etc\n\n\nst_area(st_union(nc))\n\n127025870730 [m^2]\n\n\n\nOoof, how many square km is that now? 🤔\n\n\n\nst_area(st_union(nc)) %>% units::set_units(km2)\n\n127025.9 [km2]"
+    "text": "Geometric Operations with sf 1\n\nthe simple features standard specifies a series of operations.\nthe relevant functions start with st_ (for spatio-temporal)\nFor 2 geometries x,y we can compute things like st_distance(x,y), st_intersect(x,y), etc\nFor single geometries we can do things like st_area(x), st_union(x), st_buffer(x,dist) etc\n\n\nst_area(st_union(nc))\n\n127025870730 [m^2]\n\n\n\nOoof, how many square km is that now? 🤔\n\n\n\nst_area(st_union(nc)) %&gt;% units::set_units(km2)\n\n127025.9 [km2]"
   },
   {
     "objectID": "10-spatial-R.html#geometric-operations-with-sf-2",
@@ -746,14 +767,14 @@
     "href": "10-spatial-R.html#intersect-two-sf-objects",
     "title": "Spatial Data With R",
     "section": "Intersect two sf objects",
-    "text": "Intersect two sf objects\n\n\n\nseine = st_transform(seine, crs = st_crs(france))\nsf_use_s2(FALSE)  # need to turn off because of invalid geometry\nfrance_intersected = st_intersection(france, seine)\nhead(france_intersected,2)\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: 3.254238 ymin: 48.63712 xmax: 4.872966 ymax: 49.09028\nGeodetic CRS:  WGS 84\n      ID  name                           geom\n6  Aisne Marne LINESTRING (3.608053 49.089...\n14 Marne Marne LINESTRING (4.872966 48.637...\n\n\n\npl3 = france_intersected %>%\n  ggplot() + \n  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + \n  labs(\n    title = \"Seine, Marne and Yonne rivers\",\n    caption = \"Colours depict French administrative regions\"\n    ) +\n  theme(legend.title = element_blank())\nggsave(plot = pl3,\"images/seine3.png\", \n    width=7, height=5)"
+    "text": "Intersect two sf objects\n\n\n\nseine = st_transform(seine, crs = st_crs(france))\nsf_use_s2(FALSE)  # need to turn off because of invalid geometry\nfrance_intersected = st_intersection(france, seine)\nhead(france_intersected,2)\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: 3.254238 ymin: 48.63712 xmax: 4.872966 ymax: 49.09028\nGeodetic CRS:  WGS 84\n      ID  name                           geom\n6  Aisne Marne LINESTRING (3.608053 49.089...\n14 Marne Marne LINESTRING (4.872966 48.637...\n\n\n\npl3 = france_intersected %&gt;%\n  ggplot() + \n  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + \n  labs(\n    title = \"Seine, Marne and Yonne rivers\",\n    caption = \"Colours depict French administrative regions\"\n    ) +\n  theme(legend.title = element_blank())\nggsave(plot = pl3,\"images/seine3.png\", \n    width=7, height=5)"
   },
   {
     "objectID": "10-spatial-R.html#join-two-sf-objects",
     "href": "10-spatial-R.html#join-two-sf-objects",
     "title": "Spatial Data With R",
     "section": "Join two sf objects",
-    "text": "Join two sf objects\n\n\n\npl4 = st_join(france, seine) %>% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %>% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T) %>% \n  ## pipe into ggplot\n  ggplot() + \n  geom_sf(alpha = 0.5, \n          fill = \"#01731f\",\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1) + \n  labs(title = \"Intersected regions only\") +\n  theme_bw()\nggsave(plot = pl4,\"images/seine4.png\", \n    width=7, height=5)"
+    "text": "Join two sf objects\n\n\n\npl4 = st_join(france, seine) %&gt;% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %&gt;% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T) %&gt;% \n  ## pipe into ggplot\n  ggplot() + \n  geom_sf(alpha = 0.5, \n          fill = \"#01731f\",\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1) + \n  labs(title = \"Intersected regions only\") +\n  theme_bw()\nggsave(plot = pl4,\"images/seine4.png\", \n    width=7, height=5)"
   },
   {
     "objectID": "10-spatial-R.html#joining-task",
@@ -767,7 +788,7 @@
     "href": "10-spatial-R.html#joining-task-solution",
     "title": "Spatial Data With R",
     "section": "Joining Task Solution",
-    "text": "Joining Task Solution\n\nd5 = st_join(france, seine) %>% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %>% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T)\n\nmy_colors = palette.colors(nrow(d5), palette = \"Alphabet\")\nnames(my_colors) <- NULL\n\n  ## pipe into ggplot\npl5 = ggplot(data = d5) + \n  geom_sf(aes(fill = ID),\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1.5) + \n  labs(title = \"Intersected regions only\", fill = \"Departement\") +\n  theme_bw() +\n  scale_fill_manual(values = my_colors)\nggsave(plot = pl5,\"images/seine5.png\", \n    width=7, height=5)"
+    "text": "Joining Task Solution\n\nd5 = st_join(france, seine) %&gt;% \n  ## Get rid of regions with no overlap\n  dplyr::filter(!is.na(name)) %&gt;% \n  ## Some regions are duplicated b/c two \n  ## branches of the river network flow through them \n  dplyr::distinct(ID, .keep_all = T)\n\nmy_colors = palette.colors(nrow(d5), palette = \"Alphabet\")\nnames(my_colors) &lt;- NULL\n\n  ## pipe into ggplot\npl5 = ggplot(data = d5) + \n  geom_sf(aes(fill = ID),\n          col = \"#fcb4b3\",  # of borders\n          linewidth = 0.5) + # of borders\n  geom_sf(data = seine, col = \"#05E9FF\", lwd = 1.5) + \n  labs(title = \"Intersected regions only\", fill = \"Departement\") +\n  theme_bw() +\n  scale_fill_manual(values = my_colors)\nggsave(plot = pl5,\"images/seine5.png\", \n    width=7, height=5)"
   },
   {
     "objectID": "10-spatial-R.html#distances",
@@ -795,7 +816,7 @@
     "href": "10-spatial-R.html#task-solution",
     "title": "Spatial Data With R",
     "section": "Task Solution",
-    "text": "Task Solution\n\ncvec = rep(NA, length(unique(d5$ID)))\nnames(cvec) <- unique(d5$ID)\ncvec[\"Seine-Maritime\"] <- \"purple\"\ncvec[\"Nievre\"] <- \"brown\"\n\np6 = ggplot(d5) + geom_sf()\np6 = ggplot(d5) + geom_sf(aes(fill = ID))\np6 = p6 + scale_fill_manual(values = cvec, limits= c(\"Seine-Maritime\",\"Nievre\"))\nsubdeps = d5 %>% dplyr::filter(ID %in% c(\"Seine-Maritime\",\"Nievre\"))\np6 = p6 + geom_sf(data = st_centroid(subdeps))\nggsave(plot = p6, \"images/distance1.png\", width = 5,height=4)\n\ndists = st_distance(subdeps) %>% units::set_units(\"km\")\ncoords = st_centroid(subdeps) %>% st_coordinates() \ncoords = data.frame(lon = coords[1,\"X\"],\n                    lat = coords[1,\"Y\"], \n                    lon_end = coords[2,\"X\"],\n                    lat_end = coords[2,\"Y\"])\np7 = p6 + geom_segment(data = coords, aes(lon, lat, xend = lon_end, yend = lat_end))\np7 = p7 + ggtitle(paste(\"Distance between Centroids:\",round(dists[1,2],0), \"km\"))\nggsave(plot = p7, \"images/distance2.png\",width = 5,height=4)"
+    "text": "Task Solution\n\ncvec = rep(NA, length(unique(d5$ID)))\nnames(cvec) &lt;- unique(d5$ID)\ncvec[\"Seine-Maritime\"] &lt;- \"purple\"\ncvec[\"Nievre\"] &lt;- \"brown\"\n\np6 = ggplot(d5) + geom_sf()\np6 = ggplot(d5) + geom_sf(aes(fill = ID))\np6 = p6 + scale_fill_manual(values = cvec, limits= c(\"Seine-Maritime\",\"Nievre\"))\nsubdeps = d5 %&gt;% dplyr::filter(ID %in% c(\"Seine-Maritime\",\"Nievre\"))\np6 = p6 + geom_sf(data = st_centroid(subdeps))\nggsave(plot = p6, \"images/distance1.png\", width = 5,height=4)\n\ndists = st_distance(subdeps) %&gt;% units::set_units(\"km\")\ncoords = st_centroid(subdeps) %&gt;% st_coordinates() \ncoords = data.frame(lon = coords[1,\"X\"],\n                    lat = coords[1,\"Y\"], \n                    lon_end = coords[2,\"X\"],\n                    lat_end = coords[2,\"Y\"])\np7 = p6 + geom_segment(data = coords, aes(lon, lat, xend = lon_end, yend = lat_end))\np7 = p7 + ggtitle(paste(\"Distance between Centroids:\",round(dists[1,2],0), \"km\"))\nggsave(plot = p7, \"images/distance2.png\",width = 5,height=4)"
   },
   {
     "objectID": "10-spatial-R.html#whats-different",
@@ -830,7 +851,7 @@
     "href": "04-pipes.html#capturing-output",
     "title": "Pipes and Filters",
     "section": "Capturing Output",
-    "text": "Capturing Output\n\nIntroducing the wc word count command.\n\nwc cubane.pdb\n20     156    1158 cubane.pdb\n29 lines, 156 words, 1158 characters.\n\nLet’s redirect the output of wc to a file instead with >:\n\nwc -l *.pdb > lengths.txt\n\nno ouput on screen, you see? but now there is a new file: lengths.txt.\nLet’s concatenate its content (i.e. join together) and print to screen:\n\n$ cat lengths.txt \n      20 cubane.pdb\n      12 ethane.pdb\n       9 methane.pdb\n      30 octane.pdb\n      21 pentane.pdb\n      15 propane.pdb\n     107 total"
+    "text": "Capturing Output\n\nIntroducing the wc word count command.\n\nwc cubane.pdb\n20     156    1158 cubane.pdb\n29 lines, 156 words, 1158 characters.\n\nLet’s redirect the output of wc to a file instead with &gt;:\n\nwc -l *.pdb &gt; lengths.txt\n\nno ouput on screen, you see? but now there is a new file: lengths.txt.\nLet’s concatenate its content (i.e. join together) and print to screen:\n\n$ cat lengths.txt \n      20 cubane.pdb\n      12 ethane.pdb\n       9 methane.pdb\n      30 octane.pdb\n      21 pentane.pdb\n      15 propane.pdb\n     107 total"
   },
   {
     "objectID": "04-pipes.html#reading-text-files",
@@ -844,14 +865,14 @@
     "href": "04-pipes.html#printing-text-with-echo",
     "title": "Pipes and Filters",
     "section": "Printing Text with echo",
-    "text": "Printing Text with echo\n\nThe echo function prints text - by default to screen:\n\n$ echo hi\nhi\n\nBut you can redirect it to a file as well:\n\n$ echo I said hi! > echofile1.txt\n\n\n\n\n\n\nChallenge\n\n\nDo 2 times in a row:\n$ echo I said hi! > echofile1.txt\nNow do twice (notice >>!)\n$ echo I said hi! >> echofile2.txt\n\nWhat’s happening?"
+    "text": "Printing Text with echo\n\nThe echo function prints text - by default to screen:\n\n$ echo hi\nhi\n\nBut you can redirect it to a file as well:\n\n$ echo I said hi! &gt; echofile1.txt\n\n\n\n\n\n\nChallenge\n\n\nDo 2 times in a row:\n$ echo I said hi! &gt; echofile1.txt\nNow do twice (notice &gt;&gt;!)\n$ echo I said hi! &gt;&gt; echofile2.txt\n\nWhat’s happening?"
   },
   {
     "objectID": "04-pipes.html#appending-to-files",
     "href": "04-pipes.html#appending-to-files",
     "title": "Pipes and Filters",
     "section": "Appending to Files",
-    "text": "Appending to Files\n\n\n\n\n\n\nChallenge\n\n\nConsider the file shell-lesson-data/exercise-data/animal-counts/animals.csv. What is result of this:\n$ head -n 3 animals.csv > animals-subset.csv\n$ tail -n 2 animals.csv >> animals-subset.csv\n\nThe first three lines of animals.csv?\nThe last two lines of animals.csv?\nThe first three lines and the last two lines of animals.csv?\nThe second and third lines of animals.csv?\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 3 is correct."
+    "text": "Appending to Files\n\n\n\n\n\n\nChallenge\n\n\nConsider the file shell-lesson-data/exercise-data/animal-counts/animals.csv. What is result of this:\n$ head -n 3 animals.csv &gt; animals-subset.csv\n$ tail -n 2 animals.csv &gt;&gt; animals-subset.csv\n\nThe first three lines of animals.csv?\nThe last two lines of animals.csv?\nThe first three lines and the last two lines of animals.csv?\nThe second and third lines of animals.csv?\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 3 is correct."
   },
   {
     "objectID": "04-pipes.html#filtering-files-with-sort",
@@ -865,7 +886,7 @@
     "href": "04-pipes.html#filtering-files-and-using-the-result",
     "title": "Pipes and Filters",
     "section": "Filtering Files and using the result",
-    "text": "Filtering Files and using the result\n\nCool 😎 but now we want to use this list.\nCould save it to a new file?\n\n$ sort -n lengths.txt > sorted_lengths.txt\n$ head -n 2 sorted_lengths.txt\n   9 methane.pdb\n  12 ethane.pdb"
+    "text": "Filtering Files and using the result\n\nCool 😎 but now we want to use this list.\nCould save it to a new file?\n\n$ sort -n lengths.txt &gt; sorted_lengths.txt\n$ head -n 2 sorted_lengths.txt\n   9 methane.pdb\n  12 ethane.pdb"
   },
   {
     "objectID": "04-pipes.html#filtering-files-and-the-pipe",
@@ -879,7 +900,7 @@
     "href": "04-pipes.html#piping-away",
     "title": "Pipes and Filters",
     "section": "Piping Away",
-    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\n\n\n\n\nPipe Dreams\n\n\nWhich of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!\n\nwc -l * > sort -n > head -n 3\nwc -l * | sort -n | head -n 1-3\nwc -l * | sort -n | tail -n 4 | head -n 3\nwc -l * | sort -n | head -n 3\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 4 is correct. Option 3 finds the ones with most lines."
+    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\n\n\n\n\nPipe Dreams\n\n\nWhich of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!\n\nwc -l * &gt; sort -n &gt; head -n 3\nwc -l * | sort -n | head -n 1-3\nwc -l * | sort -n | tail -n 4 | head -n 3\nwc -l * | sort -n | head -n 3\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 4 is correct. Option 3 finds the ones with most lines."
   },
   {
     "objectID": "04-pipes.html#cutting-and-piping",
