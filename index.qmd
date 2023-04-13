@@ -33,6 +33,9 @@ subtitle: "SciencesPo Paris, Ecole Doctorale 2023"
 | 7            | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
 | 8            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
 | 9            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
+| 10            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
+| 11            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
+| 12            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
 
 
 # Setup Instructions

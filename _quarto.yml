@@ -32,6 +32,10 @@ website:
             text: 9. Building `R` packages
           - href: 10-spatial-R.qmd
             text: 10. Spatial Data with `R`
+          - href: https://floswald.github.io/julia-bootcamp/01-variables.html
+            text: 11. `julia` intro 1
+          - href: https://floswald.github.io/julia-bootcamp/02-functions.html
+            text: 12. `julia` intro 2
 
   navbar:
     left:
