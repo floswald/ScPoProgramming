@@ -25,7 +25,7 @@
     "href": "01-shell-intro.html#or-do-you-cli",
     "title": "The Unix Shell",
     "section": "Or Do you CLI?",
-    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing. –&gt; Show!"
+    "text": "Or Do you CLI?\n\n\n\n\n\n\nWhat’s a CLI\n\n\nA Command Line Interface (CLI) allows interaction via (text) commands.\n\n\n\n\nCLIs can collect commands somewhere - reproducible\nBut one has to learn a language.\nThey are great for long, repetitive tasks.\nIt’s often the only way to interact with high-performance computing. 👉 show DANTE"
   },
   {
     "objectID": "01-shell-intro.html#the-shell",
@@ -60,14 +60,14 @@
     "href": "01-shell-intro.html#nelles-pipeline-a-typical-problem",
     "title": "The Unix Shell",
     "section": "Nelle’s Pipeline: A Typical Problem",
-    "text": "Nelle’s Pipeline: A Typical Problem\n\nNelle Nemo is a marine biologist. 🌊 🐡\nJust sampled gelatinous marine life in the Great Pacific Garbage Patch.\nFrom 1520 samples she obtained measures of the relative abundance of 300 proteins.\nHer supervisor, Professor Jones, handed down to hear a program called goostats.sh.\ngoostats.sh needs to be run on each of the 1520 samples.\nPaper needs to be ready by the end of the month."
+    "text": "Nelle’s Pipeline: A Typical Problem\n\nNelle Nemo is a marine biologist. 🌊 🐡\nJust sampled gelatinous marine life in the Great Pacific Garbage Patch.\nFrom 1520 samples she obtained measures of the relative abundance of 300 proteins.\nHer supervisor, Professor Jones, handed over to her a program called goostats.sh.\ngoostats.sh needs to be run on each of the 1520 samples.\nPaper needs to be ready by the end of the month."
   },
   {
     "objectID": "01-shell-intro.html#battle-plan",
     "href": "01-shell-intro.html#battle-plan",
     "title": "The Unix Shell",
     "section": "Battle Plan",
-    "text": "Battle Plan\n\nUsing a GUI to run goostats.sh, Nelle will have to use her mouse to select and open a file 1520 times.\nIf goostats.sh takes 30 secs to run, this will take more than 12 hours of Nelle’s active time.\nWith the help of the shell, Nelle could make her computer go through that list of files instead.\nBonus : she will have a working pipeline, that can be re-run each time need be."
+    "text": "Battle Plan\n\nUsing a GUI to run goostats.sh, Nelle will have to use her mouse to select and open a file 1520 times.\nIf goostats.sh takes 30 secs to run, this will take more than 12 hours of Nelle’s active time.\nWith the help of the shell, Nelle could make her computer go through that list of files instead.\nBonus : she will have a working pipeline, that can be re-run each time she wants to add data or reproduce previous output."
   },
   {
     "objectID": "01-shell-intro.html#what-does-nelle-need",
@@ -81,7 +81,7 @@
     "href": "01-shell-intro.html#section-2",
     "title": "The Unix Shell",
     "section": "",
-    "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
+    "text": "Key Points\n\n\n\nA shell is a program whose primary purpose is to read commands and run other programs.\nThis lesson uses Bash, the default shell in many implementations of Unix.\nPrograms can be run in Bash by entering commands at the command-line prompt.\nThe shell’s main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.\nThe shell’s main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.\nChatGPT can help you write Bash scripts, still it is fundamental to know the basics.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2024"
   },
   {
     "objectID": "09-R-packages.html#r-and-packages",
@@ -102,7 +102,7 @@
     "href": "09-R-packages.html#building-a-toy-package",
     "title": "Building R Packages",
     "section": "Building a Toy Package",
-    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.2\n\n\n\nYou see Rstudio jumps to that location"
+    "text": "Building a Toy Package\n\n\nRStudio for the win\n\nWe do this in RStudio\nwe use the devtools package\ncheck you have a recent version:\n\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\n\n\nif not - reinstall.\n\n\nLet’s Do it!\n\nlibrary(devtools)\n\n# create a package `here`\ncreate_package(\"~/toypackage\")\n\nPackage: toypackage\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.3\n\n\n\nYou see Rstudio jumps to that location"
   },
   {
     "objectID": "09-R-packages.html#adding-git",
@@ -263,21 +263,7 @@
     "href": "09-R-packages.html#summary",
     "title": "Building R Packages",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
-  },
-  {
-    "objectID": "julia-envs/julia-intro/Untitled1.html",
-    "href": "julia-envs/julia-intro/Untitled1.html",
-    "title": "ScPoProgramming",
-    "section": "",
-    "text": "x = 1\n\n1\n\n\n\n%%javascript\nvar kernel = Jupyter.notebook.kernel\n\nThe analogue of IPython’s %%javascript ...code... in Julia can be constructed by first evaluating\nmacro javascript_str(s) display(\"text/javascript\", s); end\nto define the javascript\"....\" string macro in Julia. Subsequently, you can simply do:\njavascript\"\"\"\n...code...\n\"\"\"\nto execute the script in an IJulia notebook.\n\n\n\n\n\n© Florian Oswald, 2023"
-  },
-  {
-    "objectID": "julia-envs/julia-intro/Untitled.html",
-    "href": "julia-envs/julia-intro/Untitled.html",
-    "title": "ScPoProgramming",
-    "section": "",
-    "text": "© Florian Oswald, 2023"
+    "text": "Summary\n\n\n\n\n\n\nKey Points\n\n\n\nRStudio greatly facilitates R package development.\nR packages contain code, data and documentation in highly structured fashion.\nWe are encouraged to run automated unit tests.\nIt is relatively straightforward to publish the package to github for collaboration.\nIt is equally straightforward to build and publish a full website with package documentation and vignettes, hosted for free on github.com.\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2024"
   },
   {
     "objectID": "03-filework.html#intro",
@@ -298,7 +284,7 @@
     "href": "03-filework.html#good-file-names",
     "title": "Working with Files and Directories",
     "section": "Good File Names",
-    "text": "Good File Names\n\n\n\n\n\n\nBad File Names\n\n\n\nDon’t use spaces. north pacific gyre is not a good one. Use north-pacific-gyre instead.\nDon’t begin with -.\nStick with letters, numbers, ., -, and _"
+    "text": "Good File Names\n\n\n\n\n\n\nBad File Names\n\n\n\nDon’t use spaces. Spaces don’t work well on unix file names. north pacific gyre is not a good one. Use north-pacific-gyre instead.\nDon’t begin with -.\nStick with letters, numbers, ., -, and _"
   },
   {
     "objectID": "03-filework.html#creating-a-text-file",
@@ -354,7 +340,7 @@
     "href": "index.html",
     "title": "ScPoProgramming",
     "section": "",
-    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2023"
+    "text": "This website is the home of the course Introduction to Programming taught to first year PhD students (M1) in the doctoral program of the department of economics at Sciences Po Paris.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2024"
   },
   {
     "objectID": "index.html#objectives-of-this-course",
@@ -375,7 +361,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n\n\n© Florian Oswald, 2023"
+    "text": "About this site\n\n\n\n© Florian Oswald, 2024"
   },
   {
     "objectID": "05-git.html#version-what",
@@ -403,7 +389,7 @@
     "href": "05-git.html#which-version-20210611_draft.tex",
     "title": "Version Control with Git",
     "section": "Which Version: 20210611_draft.tex",
-    "text": "Which Version: 20210611_draft.tex\n\n\n\nHey, fixed that thing last week.\nIn 20220629-paper.tex?\nErm. Yes. No. I think 20211203-paper.tex - messed up the file name.\nOk, can you copy it into the latest version?\nSure. Damn, can’t find it anymore. I’ll just write it again. All in my head. 🤯\n\n\n\n\n\n“True Story” by Florian Oswald"
+    "text": "Which Version: 20210611_draft.tex\n\n\n\nResearch team 👇 orders files by YYYYMMDD.\n\n\nHey, fixed that thing last week.\nIn 20220629-paper.tex?\nErm. Yes. No. I think 20211203-paper.tex - messed up the file name.\nOk, can you copy it into the latest version?\nSure. Damn, can’t find it anymore. I’ll just write it again. All in my head. 🤯\n\n\n\n\n\n“True Story” by Florian Oswald"
   },
   {
     "objectID": "05-git.html#which-version-2-why-is-the-sample-size-so-small-suddenly",
@@ -528,8 +514,15 @@
     "objectID": "05-git.html#what-is-this-staging-area",
     "href": "05-git.html#what-is-this-staging-area",
     "title": "Version Control with Git",
-    "section": "What is this Staging Area",
-    "text": "What is this Staging Area\n\ngit is like a foto camera.\nbefore you take a picture of your friends, you need to arrange them somehow, so that all fit, and all 😁.\nYou put them on stage. Same for files in your repo.\n\n\nfigure from software carpentry"
+    "section": "What is this Staging Area?",
+    "text": "What is this Staging Area?\n\ngit is like a fotographic camera.\nbefore you take a picture of your friends, you need to arrange them somehow, so that all fit, and so that all 😁.\nYou put them on stage. Same for files in your repo.\n\n\nfigure from software carpentry"
+  },
+  {
+    "objectID": "05-git.html#what-is-this-staging-area-1",
+    "href": "05-git.html#what-is-this-staging-area-1",
+    "title": "Version Control with Git",
+    "section": "What is this Staging Area?",
+    "text": "What is this Staging Area?\n\nI took that picture at CDG airport"
   },
   {
     "objectID": "05-git.html#looking-at-history",
@@ -634,7 +627,7 @@
     "href": "05-git.html#pushing-branches-to-github",
     "title": "Version Control with Git",
     "section": "Pushing Branches to GitHub",
-    "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nSciencesPo Intro To Programming 2023"
+    "text": "Pushing Branches to GitHub\n\nOnce you created a local branch you can of course copy (push) it to your remote to share with others.\nyou would amend the push command:\n\n# make sure you are on the desired branch \n$ git branch \n  main\n* testing\n\n$ git push origin testing\n\n\n\nSciencesPo Intro To Programming 2024"
   },
   {
     "objectID": "10-spatial-R.html#intro",
@@ -767,7 +760,7 @@
     "href": "10-spatial-R.html#intersect-two-sf-objects",
     "title": "Spatial Data With R",
     "section": "Intersect two sf objects",
-    "text": "Intersect two sf objects\n\n\n\nseine = st_transform(seine, crs = st_crs(france))\nsf_use_s2(FALSE)  # need to turn off because of invalid geometry\nfrance_intersected = st_intersection(france, seine)\nhead(france_intersected,2)\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: 3.254238 ymin: 48.63712 xmax: 4.872966 ymax: 49.09028\nGeodetic CRS:  WGS 84\n      ID  name                           geom\n6  Aisne Marne LINESTRING (3.608053 49.089...\n14 Marne Marne LINESTRING (4.872966 48.637...\n\n\n\npl3 = france_intersected %&gt;%\n  ggplot() + \n  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + \n  labs(\n    title = \"Seine, Marne and Yonne rivers\",\n    caption = \"Colours depict French administrative regions\"\n    ) +\n  theme(legend.title = element_blank())\nggsave(plot = pl3,\"images/seine3.png\", \n    width=7, height=5)"
+    "text": "Intersect two sf objects\n\n\n\nseine = st_transform(seine, crs = st_crs(france))\nsf_use_s2(FALSE)  # need to turn off because of invalid geometry\nfrance_intersected = st_intersection(france, seine)\nhead(france_intersected,2)\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: 3.254238 ymin: 48.63712 xmax: 4.872966 ymax: 49.09028\nGeodetic CRS:  +proj=longlat +ellps=clrk66 +no_defs +type=crs\n         ID  name                           geom\nAisne Aisne Marne LINESTRING (3.608053 49.089...\nMarne Marne Marne LINESTRING (4.872966 48.637...\n\n\n\npl3 = france_intersected %&gt;%\n  ggplot() + \n  geom_sf(alpha = 0.8, aes(fill = ID, col = ID)) + \n  labs(\n    title = \"Seine, Marne and Yonne rivers\",\n    caption = \"Colours depict French administrative regions\"\n    ) +\n  theme(legend.title = element_blank())\nggsave(plot = pl3,\"images/seine3.png\", \n    width=7, height=5)"
   },
   {
     "objectID": "10-spatial-R.html#join-two-sf-objects",
@@ -900,14 +893,28 @@
     "href": "04-pipes.html#piping-away",
     "title": "Pipes and Filters",
     "section": "Piping Away",
-    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\n\n\n\n\nPipe Dreams\n\n\nWhich of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!\n\nwc -l * &gt; sort -n &gt; head -n 3\nwc -l * | sort -n | head -n 1-3\nwc -l * | sort -n | tail -n 4 | head -n 3\nwc -l * | sort -n | head -n 3\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 4 is correct. Option 3 finds the ones with most lines."
+    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\n\n\n\n\nPipe Dreams\n\n\nWhich of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!\n\nwc -l * &gt; sort -n &gt; head -n 3\nwc -l * | sort -n | head -n 1-3\nwc -l * | sort -n | tail -n 4 | head -n 3\nwc -l * | sort -n | head -n 3"
+  },
+  {
+    "objectID": "04-pipes.html#piping-away-1",
+    "href": "04-pipes.html#piping-away-1",
+    "title": "Pipes and Filters",
+    "section": "Piping Away",
+    "text": "Piping Away\n\nMake sure we are still in ~/shell-lesson-data/exercise-data/proteins\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\nOption 4 is correct. Option 3 finds the ones with most lines."
   },
   {
     "objectID": "04-pipes.html#cutting-and-piping",
     "href": "04-pipes.html#cutting-and-piping",
     "title": "Pipes and Filters",
     "section": "Cutting and Piping",
-    "text": "Cutting and Piping\n\nWe have a .csv file here: shell-lesson-data/exercise-data/animal-counts\nLet’s use the cut command to get parts of it.\n\n$ cd ~/shell-lesson-data/exercise-data/animal-counts\n$ cut -d , -f 2 animals.csv\n\n\n\n\n\n\nBuilding a Pipe\n\n\n\nuniq filters adjacent matching lines in a file.\nCan you extend the above command with uniq (and another command?) such that we get the list of unique animal names?\nAdd the -c flag to uniq to get a contingency table.\n\n\n\n\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\ncut -d , -f 2 animals.csv | sort | uniq\ncut -d , -f 2 animals.csv | sort | uniq -c"
+    "text": "Cutting and Piping\n\nWe have a .csv file here: shell-lesson-data/exercise-data/animal-counts\nLet’s use the cut command to get parts of it.\n\n$ cd ~/shell-lesson-data/exercise-data/animal-counts\n$ cut -d , -f 2 animals.csv\n\n\n\n\n\n\nBuilding a Pipe\n\n\n\nuniq filters adjacent matching lines in a file.\nCan you extend the above command with uniq (and another command?) such that we get the list of unique animal names?\nAdd the -c flag to uniq to get a contingency table."
+  },
+  {
+    "objectID": "04-pipes.html#building-a-pipe-1",
+    "href": "04-pipes.html#building-a-pipe-1",
+    "title": "Pipes and Filters",
+    "section": "Building a Pipe",
+    "text": "Building a Pipe\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\ncut -d , -f 2 animals.csv | sort | uniq\ncut -d , -f 2 animals.csv | sort | uniq -c"
   },
   {
     "objectID": "04-pipes.html#real-data",
@@ -921,7 +928,7 @@
     "href": "04-pipes.html#real-data-1",
     "title": "Pipes and Filters",
     "section": "Real Data",
-    "text": "Real Data\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\ncd Downloads\nwc -l carburants.csv\ncut -d ';' -f 5 carburants.csv | sort | uniq -c | sort\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2023"
+    "text": "Real Data\n\n\nShow Solution\n\n\n\n\n\n\n\nSolution\n\n\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv\ncd Downloads\nwc -l carburants.csv\ncut -d ';' -f 5 carburants.csv | sort | uniq -c | sort\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n\n\n\n\n\n\n\n\nSciencesPo Intro To Programming 2024"
   },
   {
     "objectID": "02-filedir.html#intro",

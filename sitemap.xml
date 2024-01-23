@@ -2,46 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/01-shell-intro.html</loc>
-    <lastmod>2023-04-13T12:11:11.173Z</lastmod>
+    <lastmod>2024-01-23T16:51:22.322Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/09-R-packages.html</loc>
-    <lastmod>2023-04-13T12:11:15.884Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/julia-envs/julia-intro/Untitled1.html</loc>
-    <lastmod>2023-04-13T12:11:16.264Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/julia-envs/julia-intro/Untitled.html</loc>
-    <lastmod>2023-04-13T12:11:16.605Z</lastmod>
+    <lastmod>2024-01-23T16:51:24.822Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/03-filework.html</loc>
-    <lastmod>2023-04-13T12:11:17.193Z</lastmod>
+    <lastmod>2024-01-23T16:51:25.432Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/index.html</loc>
-    <lastmod>2023-04-13T12:11:17.754Z</lastmod>
+    <lastmod>2024-01-23T16:51:26.452Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/about.html</loc>
-    <lastmod>2023-04-13T12:11:18.096Z</lastmod>
+    <lastmod>2024-01-23T16:51:26.778Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/05-git.html</loc>
-    <lastmod>2023-04-13T12:11:19.378Z</lastmod>
+    <lastmod>2024-01-23T16:51:28.065Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/10-spatial-R.html</loc>
-    <lastmod>2023-04-13T12:11:29.095Z</lastmod>
+    <lastmod>2024-01-23T16:51:37.923Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/04-pipes.html</loc>
-    <lastmod>2023-04-13T12:11:29.745Z</lastmod>
+    <lastmod>2024-01-23T16:51:38.562Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/02-filedir.html</loc>
-    <lastmod>2023-04-13T12:11:30.746Z</lastmod>
+    <lastmod>2024-01-23T16:51:39.552Z</lastmod>
   </url>
 </urlset>
