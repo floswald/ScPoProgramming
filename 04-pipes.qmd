@@ -5,12 +5,12 @@ format:
     theme: _extensions/metropolis-theme/metropolis.scss
     chalkboard: true
     logo: /images/ScPo-logo.png
-    footer: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
     incremental: false
     code-line-numbers: false
     highlight-style: github
 author: Florian Oswald and The Software Carpentry
-subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
 date: today
 date-format: "D MMMM, YYYY"
 ---
@@ -229,6 +229,13 @@ Which of the following commands shows us the 3 files with the least number of li
 
 :::
 
+---
+
+## Piping Away
+
+* Make sure we are still in `~/shell-lesson-data/exercise-data/proteins`
+
+
 
 <details>
 <summary>Show Solution</summary>
@@ -261,6 +268,11 @@ $ cut -d , -f 2 animals.csv
 * Add the `-c` flag to `uniq` to get a contingency table.
 
 :::
+
+---
+
+## Building a Pipe
+
 
 <details>
 <summary>Show Solution</summary>

@@ -4,12 +4,12 @@ format:
   revealjs:
     chalkboard: false
     logo: /images/ScPo-logo.png
-    footer: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
     incremental: false
     code-line-numbers: false
     highlight-style: github
 author: Florian Oswald and Software Carpentry
-subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
 date: today
 date-format: "D MMMM, YYYY"
 ---
@@ -98,7 +98,7 @@ A *Command Line Interface* (CLI) allows interaction via (text) commands.
 * CLIs can collect commands somewhere - *reproducible*
 * But one has to learn a *language*.
 * They are great for *long, repetitive tasks*.
-* It's often the **only** way to interact with high-performance computing. --> Show!
+* It's often the **only** way to interact with high-performance computing. 👉 show [DANTE](https://www.ipgp.fr/en/details-du-cluster-dante/)
 
 
 ---
@@ -175,7 +175,7 @@ bash: ks: command not found
 * Just sampled gelatinous marine life in the
 [Great Pacific Garbage Patch](http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
 * From 1520 samples she obtained measures of the relative abundance of 300 proteins.
-* Her supervisor, *Professor Jones*, handed down to hear a program called `goostats.sh`.
+* Her supervisor, *Professor Jones*, handed over to her a program called `goostats.sh`.
 * `goostats.sh` needs to be run on each of the 1520 samples.
 * Paper needs to be ready by the end of the month.
 
@@ -191,7 +191,7 @@ bash: ks: command not found
 * Using a GUI to run `goostats.sh`, Nelle will have to use her mouse to select and open a file 1520 times.
 * If `goostats.sh` takes 30 secs to run, this will take more than 12 hours of Nelle's *active time*.
 * With the help of the shell, Nelle could make her computer go through that list of files instead.
-* **Bonus** : she will have a working pipeline, that can be re-run each time need be.
+* **Bonus** : she will have a working pipeline, that can be re-run each time she wants to add data or reproduce previous output.
 
 ---
 
@@ -223,6 +223,7 @@ And we will be right next to her. 🙂
 -  Programs can be run in Bash by entering commands at the command-line prompt.
 - The shell's main advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines.
 - The shell's main disadvantages are its primarily textual nature and how cryptic its commands and operation can be.
+- ChatGPT can help you write Bash scripts, still it is fundamental to know the basics.
 
 :::
 

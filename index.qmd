@@ -1,7 +1,7 @@
 ---
 title: ScPoProgramming
 author: "[Florian Oswald](https://floswald.github.io)"
-subtitle: "SciencesPo Paris, Ecole Doctorale 2023"
+subtitle: "SciencesPo Paris, Ecole Doctorale 2024"
 ---
 
 # Welcome to *Introduction to Programming*

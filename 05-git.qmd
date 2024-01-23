@@ -5,12 +5,12 @@ format:
     theme: _extensions/metropolis-theme/metropolis.scss
     chalkboard: true
     logo: /images/ScPo-logo.png
-    footer: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
     incremental: false
     code-line-numbers: false
     highlight-style: github
 author: Florian Oswald and The Software Carpentry
-subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
 date: today
 date-format: "D MMMM, YYYY"
 ---
@@ -60,11 +60,13 @@ date-format: "D MMMM, YYYY"
 
 ::: {.column width="50%"}
 
-* Hey, fixed that thing last week.
+> Research team 👇 orders files by YYYYMMDD.
+
+* *Hey, fixed that thing last week.*
 * In `20220629-paper.tex`?
-* Erm. Yes. No. I think `20211203-paper.tex` - messed up the file name.
+* *Erm. Yes. No. I think `20211203-paper.tex` - messed up the file name.*
 * Ok, can you copy it into the latest version?
-* Sure. Damn, can't find it anymore. I'll just write it again. All in my head.  🤯
+* *Sure. Damn, can't find it anymore. I'll just write it again. All in my head.*  🤯
 :::
 
 ::: {.column width="40%"}
@@ -90,6 +92,9 @@ date-format: "D MMMM, YYYY"
 * Well you have to find out what happened.
 * But that was weeks ago - I don't remember! 😢
 ::::
+
+
+
 :::: {.column width="50%"}
 
 
@@ -102,6 +107,9 @@ date-format: "D MMMM, YYYY"
 * 😱 😱 😱 😱 
 
 ::::
+
+
+
 :::::
 
 
@@ -462,13 +470,21 @@ $ git commit -m 'added readme'
 
 ---
 
-## What is this Staging Area
+## What is this Staging Area?
 
-* git is like a foto camera.
-* before you take a picture of your friends, you need to arrange them somehow, so that all fit, and all 😁.
+* `git` is like a fotographic camera.
+* before you take a picture of your friends, you need to arrange them somehow, so that all fit, and so that all 😁.
 * You put them _on stage_. Same for files in your repo.
 
 ![figure from [software carpentry]()](/images/git-staging-area.svg)
+
+
+---
+
+## What is this Staging Area?
+
+
+![I took that picture at CDG airport](/images/git-staging-CDG.jpeg)
 
 
 ---

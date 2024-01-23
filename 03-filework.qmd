@@ -5,12 +5,12 @@ format:
     theme: _extensions/metropolis-theme/metropolis.scss
     chalkboard: true
     logo: /images/ScPo-logo.png
-    footer: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
     incremental: false
     code-line-numbers: false
     highlight-style: github
 author: Florian Oswald and The Software Carpentry
-subtitle: "[SciencesPo Intro To Programming 2023](https://floswald.github.io/ScPoProgramming/)"
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
 date: today
 date-format: "D MMMM, YYYY"
 ---
@@ -72,7 +72,7 @@ $ mkdir -p ../project/data ../project/results
 
 # Bad File Names
 
-1. Don't use spaces. `north pacific gyre` is not a good one. Use `north-pacific-gyre` instead.
+1. Don't use spaces. Spaces don't work well on unix file names. `north pacific gyre` is not a good one. Use `north-pacific-gyre` instead.
 2. Don't begin with `-`.
 3. Stick with letters, numbers, `.`, `-`, and `_`
 
