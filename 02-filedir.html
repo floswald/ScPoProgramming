@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Florian Oswald and The Software Carpentry">
   <title>ScPoProgramming - Navigating Files and Directories</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -96,7 +96,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
 
   <script type="text/javascript">
@@ -233,7 +233,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -416,7 +417,7 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 
-  <p class="date">23 January, 2024</p>
+  <p class="date">25 March, 2024</p>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
@@ -463,7 +464,7 @@ Florian Oswald and The Software Carpentry
 <li>The file system organizes data into files and directories on your computer.</li>
 <li>let’s start finding out where we are by running the <code>pwd</code> command - <em>present working directory</em>.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>with output:</p>
 <pre><code>/Users/nelle</code></pre>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -505,7 +506,7 @@ Florian Oswald and The Software Carpentry
 <li><code>@</code> indicates a link</li>
 <li><code>*</code> indicates an executable</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Applications/ Documents/    Library/      Music/        Public/
 Desktop/      Downloads/    Movies/       Pictures/</code></pre>
 <div class="callout callout-caution callout-titled callout-style-default">
@@ -552,11 +553,11 @@ Desktop/      Downloads/    Movies/       Pictures/</code></pre>
 <ol type="1">
 <li>pass the <code>--help</code> option to a command:</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">--Help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">--Help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Read the manual entry with <code>man</code> (MacOS and Linux only)</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> ls </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> ls </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>Search internet for <code>unix man ls</code></li>
 </ol>
@@ -645,14 +646,14 @@ Show Solution
 <li><code>ls</code> can search other than only the <em>current</em> directories.</li>
 <li>Let’s see what is on our <code>home</code>:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># goes HOME</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># goes HOME</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>shows for Nelle only the data we just downloaded:</p>
 <pre><code>shell-lesson-data/</code></pre>
 <ul>
 <li>We can also look <em>inside</em> that data from where we are:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> shell-less-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> shell-less-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>exercise-data/  north-pacific-gyre/</code></pre>
 <ul>
 <li>looks intriguing 🧐. Let’s try and go there!</li>
@@ -664,8 +665,8 @@ Show Solution
 <li><code>cd</code> is for <em>change directory</em>. Moves the shell to a different location in the file system.</li>
 <li>Let’s go to our data folder:</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd exercise-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd exercise-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that the <code>cd</code> command does not print any output by default.</li>
 <li>Run <code>ls -F</code> again to see what’s in this directory!</li>
@@ -680,8 +681,8 @@ Show Solution
 <li>But <code>cd</code> can only go into <em>its own subdirectories</em>.</li>
 <li>It has a special one: <code>..</code> is its <em>parent</em> directory, so goes one up.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>puts Nelle back into</p>
 <pre><code>/Users/nelle/shell-lesson-data</code></pre>
 <ul>
@@ -906,23 +907,23 @@ Show Solution
 <section id="general-syntax-of-shell-commands" class="slide level2 smaller">
 <h2>General Syntax of Shell Commands</h2>
 <p>Let’s take as example this command:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> /</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> /</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="./images/shell_command_syntax.svg" class="r-stretch quarto-figure-center"><p class="caption">General syntax of a shell command</p><ul>
 <li>The space between <code>ls</code> and whatever options you put is important.</li>
 <li>Capitalization is important. <code>ls -s</code> is not the same as <code>ls -S</code>:</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-s</span> exercise-data  <span class="co"># size</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-S</span> exercise-data  <span class="co"># sort by size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-s</span> exercise-data  <span class="co"># size</span></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-S</span> exercise-data  <span class="co"># sort by size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="nelles-pipeline-and-tab-completion" class="slide level2">
 <h2>Nelle’s Pipeline and Tab Completion</h2>
 <ol type="1">
 <li>Nelle organized the output of the assay machine into <code>north-pacific-gyre/</code>. let’s go there.</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd north-pacific-gyre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/</span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd north-pacific-gyre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Now <code>north-pacific-gyre</code> is a mouthful to write. try instead to type <code>cd n</code> and hit the TAB key.</li>
 <li>hitting TAB twice without any leading character, gives you a list of files in <code>pwd</code>.</li>
@@ -957,9 +958,11 @@ Show Solution
 </div>
 </div>
 
-
-<img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="./images/ScPo-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+</div>
 </div>
 </section>
     </div>
@@ -989,7 +992,6 @@ Show Solution
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1251,10 +1253,9 @@ Show Solution
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1264,8 +1265,17 @@ Show Solution
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

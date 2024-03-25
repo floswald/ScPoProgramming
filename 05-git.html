@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Florian Oswald and The Software Carpentry">
   <title>ScPoProgramming - Version Control with Git</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -96,7 +96,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
 
   <script type="text/javascript">
@@ -233,7 +233,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -416,7 +417,7 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 
-  <p class="date">23 January, 2024</p>
+  <p class="date">25 March, 2024</p>
 </section>
 <section id="version-what" class="slide level2">
 <h2>Version What?</h2>
@@ -489,7 +490,7 @@ Florian Oswald and The Software Carpentry
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="./images/which-version.png"></p>
-<p></p><figcaption>“True Story” by Florian Oswald</figcaption><p></p>
+<figcaption>“True Story” by Florian Oswald</figcaption>
 </figure>
 </div>
 </div>
@@ -528,12 +529,12 @@ Florian Oswald and The Software Carpentry
 <li>We all installed <code>git</code>.</li>
 <li>Let’s setup our name</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"your@mail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"your@mail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Line Endings on Windows:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="creating-a-git-repository" class="slide level2">
 <h2>Creating a Git <strong>Repository</strong></h2>
@@ -574,10 +575,10 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Let’s create a project folder in our home to look at the gas prices from last week.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># going to home dir </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir gasprices  <span class="co"># create directory</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd gasprices </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># going to home dir </span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir gasprices  <span class="co"># create directory</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd gasprices </span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Now the directory <code>~/gasprices</code> is endowed with <code>git</code> version control.</li>
 <li>What does that look like?</li>
@@ -588,8 +589,8 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Remember <em>hidden files</em> and folders?</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./</span>    ../   .git/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span> </span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./</span>    ../   .git/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Git for this repository resides in <code>.git</code></li>
 </ul>
@@ -670,30 +671,30 @@ Florian Oswald and The Software Carpentry
 <ol type="1">
 <li>run to get the raw data again:</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 <span class="at">-O</span> ~/gasprices/carburants.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 <span class="at">-O</span> ~/gasprices/carburants.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="adding-code-and-text-1" class="slide level2">
 <h2>Adding Code and Text</h2>
 <ol start="2" type="1">
 <li>create a script</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> maketable.sh  <span class="co"># open nano</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># type this:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> maketable.sh  <span class="co"># open nano</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># type this:</span></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>(Does it work?)</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .  <span class="co"># check the new file is there</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span>   <span class="co"># run it!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .  <span class="co"># check the new file is there</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span>   <span class="co"># run it!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <ol start="4" type="1">
 <li>No, it doesn’t. 😖</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ./maketable.sh  <span class="co"># add executable mode</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ./maketable.sh  <span class="co"># add executable mode</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="viewing-changes" class="slide level2">
@@ -701,15 +702,15 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Ok, now let’s see what <code>git</code> makes of our additions to this directory.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>floswald@PTL11077 ~/gasprices (main)&gt; git <span class="ot">status</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>On branch main</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>No commits yet</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>Untracked files:</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  (use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        carburants.csv</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>floswald@PTL11077 ~/gasprices (main)&gt; git <span class="ot">status</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>No commits yet</span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>Untracked files:</span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>  (use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed)</span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>        carburants.csv</span>
+<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>        maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>It is actually helpful <strong>not</strong> to use <code>bash</code> as a shell…</li>
 <li>Customizing your shell is an extremely effective procrastination device.</li>
@@ -722,7 +723,7 @@ Florian Oswald and The Software Carpentry
 <li>the command <code>git diff</code> shows you what changed between versions.</li>
 <li>lets see what it shows now:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>It shows nothing, i.e.&nbsp;an <em>empty</em> diff, because <em>there are no commits yet</em> to compare with.</li>
 <li>Ok, let’s change that.</li>
@@ -736,69 +737,69 @@ Florian Oswald and The Software Carpentry
 <ol type="1">
 <li>Move files to <em>staging area</em>:</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add maketable.sh </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add maketable.sh </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that I did <em>not</em> want to track the <code>csv</code> file.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> commits yet</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git rm --cached &lt;file&gt;..."</span> to unstage<span class="kw">)</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">new</span> file:   maketable.sh</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> commits yet</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git rm --cached &lt;file&gt;..."</span> to unstage<span class="kw">)</span></span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">new</span> file:   maketable.sh</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modify-add-commit-2" class="slide level2">
 <h2>Modify-Add-Commit 2</h2>
 <ul>
 <li>Now, let’s <em>record</em> what is in the staging area.</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added the maketable script'</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[main</span> <span class="er">(</span><span class="ex">root-commit</span><span class="kw">)</span> <span class="ex">9956506]</span> added the maketable script</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span> file changed, 2 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added the maketable script'</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[main</span> <span class="er">(</span><span class="ex">root-commit</span><span class="kw">)</span> <span class="ex">9956506]</span> added the maketable script</span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span> file changed, 2 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span></span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check status:</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> added to commit but untracked files present <span class="er">(</span><span class="ex">use</span> <span class="st">"git add"</span> to track<span class="kw">)</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  gasprices git:<span class="er">(</span><span class="ex">main</span><span class="kw">)</span> <span class="ex">✗</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> added to commit but untracked files present <span class="er">(</span><span class="ex">use</span> <span class="st">"git add"</span> to track<span class="kw">)</span></span>
+<span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  gasprices git:<span class="er">(</span><span class="ex">main</span><span class="kw">)</span> <span class="ex">✗</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modify-add-commit-3" class="slide level2">
 <h2>Modify-Add-Commit 3</h2>
 <ul>
 <li>Let’s check what’s in the log.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 9956506dc3159403b87aea3b04654c293e82c680 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Florian Oswald <span class="op">&lt;</span>florian.oswald@gmail.com<span class="op">&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Feb 7 10:50:51 2023 +0100</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">added</span> the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log </span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 9956506dc3159403b87aea3b04654c293e82c680 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Florian Oswald <span class="op">&lt;</span>florian.oswald@gmail.com<span class="op">&gt;</span></span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Feb 7 10:50:51 2023 +0100</span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">added</span> the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modify-add-commit-4" class="slide level2">
 <h2>Modify-Add-Commit 4</h2>
 <ul>
 <li>Now let’s <em>modify</em> the script finally.</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add this line on top </span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> hello user, will make a contigency table now.</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># add this line on top </span></span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> hello user, will make a contigency table now.</span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>now - what’s the difference in the repo?</li>
 </ul>
@@ -808,33 +809,33 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>there are still the same files here:</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">carburants.csv</span>  maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls </span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">carburants.csv</span>  maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>But we can now <em>compare</em> versions:</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/maketable.sh b/maketable.sh</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 7e01058..3b7007e 100644</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/maketable.sh</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/maketable.sh</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1,2</span> +1,3 @@</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">+echo</span> hello user, will make a contigency table now.</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff </span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/maketable.sh b/maketable.sh</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 7e01058..3b7007e 100644</span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/maketable.sh</span>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/maketable.sh</span>
+<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1,2</span> +1,3 @@</span>
+<span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+echo</span> hello user, will make a contigency table now.</span>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commiting-changes-again" class="slide level2">
 <h2>Commiting Changes Again</h2>
 <ul>
 <li>let’s first check everything runs</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>good. commit!</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added message to user'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added message to user'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="adding-a-readme" class="slide level2">
 <h2>Adding a README</h2>
@@ -842,16 +843,16 @@ Florian Oswald and The Software Carpentry
 <li>Good. Now let’s add a <code>README</code> file.</li>
 <li>It’s customary to write this in <a href="https://carpentries-incubator.github.io/markdown-intro/">markdown</a></li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano README.md </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano README.md </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>write this in nano and save when done.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Gas Prices</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>This repo contains code to analyse gas prices at French gas stations.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu"># Gas Prices</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>This repo contains code to analyse gas prices at French gas stations.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>add to staging area, so we can take a snapshot</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add README.md </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added readme'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add README.md </span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added readme'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="what-is-this-staging-area" class="slide level2">
 <h2>What is this Staging Area?</h2>
@@ -909,16 +910,16 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Let’s change the <code>maketable.sh</code> script again:</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> program run successfully</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save exit</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> program run successfully</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save exit</span></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>The most recent version of our repo is called <code>HEAD</code>.</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff <span class="co"># compares entire repo to HEAD </span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD maketable.sh  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff <span class="co"># compares entire repo to HEAD </span></span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD maketable.sh  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="whoops-typo" class="slide level2">
 <h2>Whoops, typo</h2>
@@ -931,8 +932,8 @@ Florian Oswald and The Software Carpentry
 <li>we have not committed this yet!</li>
 <li>we can just get back the version in HEAD, and edit again:</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git restore maketable.sh</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout maketable.sh <span class="co"># also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git restore maketable.sh</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout maketable.sh <span class="co"># also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>edit the script, add and commit.</li>
 </ul>
@@ -945,15 +946,15 @@ Florian Oswald and The Software Carpentry
 <li>like, the first version of <code>maketable.sh</code>?</li>
 <li>look at history:</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--graph</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> a6f023b <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">added</span> readme</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 9956506 added the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> a6f023b <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">added</span> readme</span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 9956506 added the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>The <code>9956506</code> is the unique identifier of that version.</li>
 <li>We can go back to that version:</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout 9956506 maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout 9956506 maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -1011,24 +1012,24 @@ Florian Oswald and The Software Carpentry
 <li>Private-Public key pair. It’s like a lock, and you have the only key.</li>
 <li>Let’s check if you have one already!</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>if error, create one:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>press enter (no passphrase)</p>
 <p>check</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="communicate-with-github-remote" class="slide level2">
 <h2>Communicate with GitHub Remote</h2>
 <ul>
 <li>Let’s ping the remote server at GitHub now.</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>right, of course Github doesn’t have our public key yet (the <em>lock</em> for our key!)</p></li>
 <li><p>copy from your terminal</p></li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub  <span class="co"># or your *.pub </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub  <span class="co"># or your *.pub </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Go to github.com, click top right corner, settings, SSH keys.</li>
 </ul>
@@ -1039,12 +1040,12 @@ Florian Oswald and The Software Carpentry
 <li>Now that we can talk to Github.com, let’s add the remote to our local repo.</li>
 <li>We <code>add</code> a remote by getting the <code>SSH</code> url from the repository (green button) online.</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>origin</code> is the <em>name</em> of the remote server. your choice, but <em>origin</em> is common.</li>
 <li>this should set that remote both for sending and retrieving stuff from the repo. <em>pull</em> and <em>push</em>, in git language:</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">--v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">--v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pushing-it" class="slide level2">
 <h2>Pushing It</h2>
@@ -1053,7 +1054,7 @@ Florian Oswald and The Software Carpentry
 <li>There will be a full copy of what is in <code>.git</code> (i.e., the entire history of the repo) on that remote machine.</li>
 <li>You will be able to use it like a central backup location for your work.</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>the <code>-u</code> flag sets the <em>main</em> branch as default <em>upstream</em> branch to track.</li>
 </ul>
@@ -1066,8 +1067,8 @@ Florian Oswald and The Software Carpentry
 <li>They may converge at some point again, but maybe one of them will turn out a failure and we drop it.</li>
 <li>Branches are hugely useful to organize team work.</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> testing <span class="co"># checkout repo on new branch `testing`</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Switched</span> to a new branch <span class="st">'testing'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> testing <span class="co"># checkout repo on new branch `testing`</span></span>
+<span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Switched</span> to a new branch <span class="st">'testing'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Now can develop stuff on the <code>testing</code> branch.</li>
 <li>Later on, we can <code>merge</code> it back into <code>main</code> if we like it.</li>
@@ -1083,16 +1084,18 @@ Florian Oswald and The Software Carpentry
 <li>Once you created a local branch you can of course copy (<em>push</em>) it to your remote to share with others.</li>
 <li>you would amend the push command:</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure you are on the desired branch </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> testing</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push origin testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># make sure you are on the desired branch </span></span>
+<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch </span>
+<span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
+<span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> testing</span>
+<span id="cb38-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push origin testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-
-<img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="./images/ScPo-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+</div>
 </div>
 </section>
     </div>
@@ -1122,7 +1125,6 @@ Florian Oswald and The Software Carpentry
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1384,10 +1386,9 @@ Florian Oswald and The Software Carpentry
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1397,8 +1398,17 @@ Florian Oswald and The Software Carpentry
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

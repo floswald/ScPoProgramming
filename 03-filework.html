@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Florian Oswald and The Software Carpentry">
   <title>ScPoProgramming - Working with Files and Directories</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -96,7 +96,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
 
   <script type="text/javascript">
@@ -233,7 +233,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -416,7 +417,7 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 
-  <p class="date">23 January, 2024</p>
+  <p class="date">25 March, 2024</p>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
@@ -459,16 +460,16 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Let’s create a directory <code>thesis</code> here:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>this outputs:</p>
 <pre><code>haiku.txt  LittleWomen.txt</code></pre>
 <ul>
 <li>Use <code>mkdir</code> to create:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir thesis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir thesis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>used like this, <code>thesis</code> is created in the current directory. While with the <code>-p</code> flag we created nested subdirectories:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ../project/data ../project/results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ../project/data ../project/results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="good-file-names" class="slide level2">
 <h2>Good File Names</h2>
@@ -495,8 +496,8 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Let’s go into the <code>thesis</code> directory and create a text file called <code>draft.txt</code>.</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd thesis</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano draft.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd thesis</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano draft.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -518,9 +519,9 @@ Florian Oswald and The Software Carpentry
 <li>Go to your home directory: <code>cd</code></li>
 <li>create an <em>empty</em> file with the <code>touch</code> command:</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="co"># this is a comment, by the way </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd  <span class="co"># so, going home.</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch new_doc.pdf  <span class="co"># creating an empty file.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> <span class="co"># this is a comment, by the way </span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd  <span class="co"># so, going home.</span></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch new_doc.pdf  <span class="co"># creating an empty file.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>Open your file browser and double click on <code>new_doc.pdf</code>. What is going to happen?</li>
 </ol>
@@ -531,7 +532,7 @@ Florian Oswald and The Software Carpentry
 <li>Ok, let’s get rid of that file now.</li>
 <li>use the <code>rm</code> command (more later)</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm new_doc.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm new_doc.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Caution: <code>rm</code> is forever gone.</li>
 <li>You can add <code>-i</code> <em>interactive</em> to be safe(r).</li>
@@ -542,15 +543,15 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Let’s go back to the <code>writing</code> directory</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/shell-lesson-data/exercise-data/writing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Let’s <em>rename</em> <code>draft.txt</code> to <code>quotes.txt</code> with <code>mv</code>.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/draft.txt thesis/quotes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/draft.txt thesis/quotes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Now let’s actually <em>move</em> it into the current dir:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/quotes.txt .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv thesis/quotes.txt .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice: <code>mv x y</code> means <code>x</code> is gone afterwards!</li>
 </ul>
@@ -567,13 +568,13 @@ Florian Oswald and The Software Carpentry
 </div>
 <div class="callout-content">
 <p>Jamie placed <code>maltose.dat</code> and <code>sucrose.datfiles</code> in the <code>analyzed</code> folder by mistake. He wants to move those back to the <code>raw</code> folder now:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span>  </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">analyzed/</span> raw/</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> analyzed</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fructose.dat</span> glucose.dat maltose.dat sucrose.dat</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd analyzed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span>  </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">analyzed/</span> raw/</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> analyzed</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">fructose.dat</span> glucose.dat maltose.dat sucrose.dat</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd analyzed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>What has to go in the blanks to achieve this?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ____/____</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ____/____</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -590,7 +591,7 @@ Show Solution
 <p><strong>Solution</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ../raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv sucrose.dat maltose.dat ../raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -601,13 +602,13 @@ Show Solution
 <ul>
 <li><code>cp x y</code> is similar to <code>mv x y</code>, but you keep <code>x</code>.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp quotes.txt thesis/quotations.txt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls quotes.txt thesis/quotations.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp quotes.txt thesis/quotations.txt</span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls quotes.txt thesis/quotations.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>the <code>-r</code> option means <em>recursively</em> and copies entire folders:</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> thesis thesis_backup</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls thesis thesis_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> thesis thesis_backup</span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls thesis thesis_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that <code>rm -r mydir</code> will delete everything inside the <code>mydir</code> folder!</li>
 </ul>
@@ -617,17 +618,17 @@ Show Solution
 <ul>
 <li>the <code>*</code> character is a <em>wildcard</em>, i.e it matches all characters:</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data/exercise-data/</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls proteins/p<span class="pp">*</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">proteins/pentane.pdb</span>    proteins/propane.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd shell-lesson-data/exercise-data/</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls proteins/p<span class="pp">*</span></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">proteins/pentane.pdb</span>    proteins/propane.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reproducing-a-folder-structure" class="slide level2">
 <h2>Reproducing a Folder Structure</h2>
 <p>Suppose we want to create the following structure on our computer:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2016-05-20/</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> data</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> processed</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>   <span class="ex">└──</span> raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">2016-05-20/</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> data</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> processed</span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>   <span class="ex">└──</span> raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -659,7 +660,7 @@ $ mkdir -p 2016-05-20/data/processed</code></pre>
 <li>Oh by the way.</li>
 <li>If you are on MacOS, try to this on the command line</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> open .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> open .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Pretty handy!</li>
 </ul>
@@ -691,9 +692,11 @@ $ mkdir -p 2016-05-20/data/processed</code></pre>
 </div>
 </div>
 
-
-<img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="./images/ScPo-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+</div>
 </div>
 </section>
     </div>
@@ -723,7 +726,6 @@ $ mkdir -p 2016-05-20/data/processed</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -985,10 +987,9 @@ $ mkdir -p 2016-05-20/data/processed</code></pre>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -998,8 +999,17 @@ $ mkdir -p 2016-05-20/data/processed</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

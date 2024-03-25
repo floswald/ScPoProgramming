@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Florian Oswald">
   <title>ScPoProgramming - Building R Packages</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -96,7 +96,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
 
   <script type="text/javascript">
@@ -233,7 +233,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -416,7 +417,7 @@ Florian Oswald
 </div>
 </div>
 
-  <p class="date">23 January, 2024</p>
+  <p class="date">25 March, 2024</p>
 </section>
 <section id="r-and-packages" class="slide level2">
 <h2>R and Packages</h2>
@@ -502,7 +503,7 @@ Florian Oswald
 <li><p>check you have a recent version:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '2.4.5'</code></pre>
 </div>
@@ -513,10 +514,10 @@ Florian Oswald
 </div><div class="column" style="width:45%;">
 <h3 id="lets-do-it">Let’s Do it!</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a package `here`</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">create_package</span>(<span class="st">"~/toypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a package `here`</span></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">create_package</span>(<span class="st">"~/toypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Package: toypackage
 Title: What the Package Does (One Line, Title Case)
@@ -544,8 +545,8 @@ RoxygenNote: 7.2.3</code></pre>
 <li>We use functions from the <code>usethis</code> package. This is loaded by default when attaching the <code>devtools</code> package (<code>use_git</code> is part of <code>usethis</code>…)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Say <code>Yes</code> to everything ✌️</li>
@@ -559,7 +560,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>It’s good practice to organize tests accompanying source files.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">"sayhello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">"sayhello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>• Edit 'R/sayhello.R'
 • Call `use_test()` to create a matching test file</code></pre>
@@ -574,19 +575,19 @@ RoxygenNote: 7.2.3</code></pre>
 <ul>
 <li>Let’s add a function to the file <code>R/sayhello.R</code>:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice I'm using = instead of &lt; - because </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the font of those slides prints it weirdly</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">=</span> <span class="cf">function</span>(who){</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"hello,"</span>,who)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice I'm using = instead of &lt; - because </span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># the font of those slides prints it weirdly</span></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>hello <span class="ot">=</span> <span class="cf">function</span>(who){</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"hello,"</span>,who)</span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Now, if this were a simple <code>R</code> script, we could <code>source</code> the <code>R/sayhello.R</code> file into global space and try this out.</li>
 <li>We <em>don’t</em> want to do that here though. 🤨</li>
 <li>Instead, we want to <em>load</em> the <strong>package</strong>, which <em>contains</em> our function.</li>
 <li>do <code>load_all()</code>:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_all</span>()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ℹ Loading toypackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">load_all</span>()</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>ℹ Loading toypackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="trying-out-code" class="slide level2">
 <h2>Trying out Code</h2>
@@ -610,8 +611,8 @@ RoxygenNote: 7.2.3</code></pre>
 <ul>
 <li>Call the function with your name!</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">"Peter"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"hello, Peter"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">"Peter"</span>)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"hello, Peter"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Great!</li>
 </ul>
@@ -624,7 +625,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Particularly relevant for <em>official</em> packages on <a href="https://cran.r-project.org/">CRAN</a></li>
 <li>Do this here often:</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>This outputs a bunch of things:
 <ol type="1">
@@ -632,7 +633,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>It runs a battery of checks and returns a report:</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">1</span> warning ✖ <span class="sc">|</span> <span class="dv">1</span> note ✖</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">1</span> warning ✖ <span class="sc">|</span> <span class="dv">1</span> note ✖</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="editing-description" class="slide level2">
 <h2>Editing DESCRIPTION</h2>
@@ -645,7 +646,7 @@ RoxygenNote: 7.2.3</code></pre>
 <p><a href="https://blog.codinghorror.com/pick-a-license-any-license/">Use a license, any license (Jeff Atwood)</a></p>
 </blockquote>
 <p>Let’s</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_mit_license</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_mit_license</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="documenting-with-roxygen" class="slide level2">
 <h2>Documenting with Roxygen</h2>
@@ -653,17 +654,17 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Go back to the <code>hello</code> function, place the cursor inside the function body, and do <code>Code &gt; Insert Roxygen Skeleton</code>.</li>
 <li>You’ll see something like this:</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Title</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param who </span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(who){</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">"hello,"</span>,who)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#' Title</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#' @param who </span></span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#' @return</span></span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(who){</span>
+<span id="cb14-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">"hello,"</span>,who)</span>
+<span id="cb14-11"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Each line starting with <code>#'</code> is part of the <strong>docstring</strong>.</li>
 <li>The <code>roxygen</code> package can <em>separate</em> those blocks from our code, and produce valid <code>R</code> documentation for us! 🤯</li>
@@ -676,8 +677,8 @@ RoxygenNote: 7.2.3</code></pre>
 <li>execute the <code>document()</code> function.</li>
 <li>After that, the documentation is visible to us:</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>?hello</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ℹ Rendering development documentation <span class="cf">for</span> <span class="st">"hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>?hello</span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>ℹ Rendering development documentation <span class="cf">for</span> <span class="st">"hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Look in the <em>Help</em> pane in RStudio!</li>
 </ul>
@@ -692,8 +693,8 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Try removing the <code>@export</code> tag, and <code>document()</code> again. Look back at <code>NAMESPACE</code>!</li>
 </ul>
 <h3 id="check-again"><code>check()</code> again!</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">0</span> warnings ✔ <span class="sc">|</span> <span class="dv">0</span> notes ✔</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>()</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">0</span> warnings ✔ <span class="sc">|</span> <span class="dv">0</span> notes ✔</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="time-to-install-the-package" class="slide level2">
 <h2>Time to INSTALL the package</h2>
@@ -703,16 +704,17 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Notice that <code>R</code> installs your packages here:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"</code></pre>
+<pre><code>[1] "/Users/floswald/Library/R/arm64/4.2/library"                         
+[2] "/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"</code></pre>
 </div>
 </div>
 <ul>
 <li>We <em>install</em> our package into that location with <code>install()</code></li>
 <li>Look out for the final message:</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="fu">DONE</span> (toypackage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="fu">DONE</span> (toypackage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>👏</p>
 </section>
 <section id="new-session---try-it-out" class="slide level2">
@@ -721,12 +723,12 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Restart Rstudio</li>
 <li>type into the console</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(toypackage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(toypackage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>and then let’s see our cool 😎 function:</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">"John Spencer Blues Explosion"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"hello, John Spencer Blues Explosion"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">"John Spencer Blues Explosion"</span>)</span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"hello, John Spencer Blues Explosion"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Works! Bingo! 🎉</li>
 </ul>
@@ -787,13 +789,13 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Automatic Unit Testing or <a href="https://en.wikipedia.org/wiki/Continuous_integration"><em>Continuous Integration</em> (CI)</a> is our best response to this.</li>
 <li>We still have to <em>design</em> and <em>write</em> the tests, but we can offload the work to <strong>run</strong> the tasks repeatedly, and automatically, to a helpful infrastructure.</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>then</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">"sayhello"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">'tests/testthat/test-sayhello.R'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">"sayhello"</span>)</span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">'tests/testthat/test-sayhello.R'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="writing-unit-tests" class="slide level2">
 <h2>Writing Unit Tests</h2>
@@ -816,10 +818,10 @@ RoxygenNote: 7.2.3</code></pre>
 <ul>
 <li>Modify <code>'tests/testthat/test-sayhello.R'</code> like so</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"hello function works"</span>, {</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  who <span class="ot">=</span> <span class="st">"James T. Kirk"</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">hello</span>(who), <span class="fu">paste</span>(<span class="st">"hello,"</span>,who))</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"hello function works"</span>, {</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  who <span class="ot">=</span> <span class="st">"James T. Kirk"</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">hello</span>(who), <span class="fu">paste</span>(<span class="st">"hello,"</span>,who))</span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Ready for 🚀 takeoff?</li>
 </ul>
@@ -830,20 +832,20 @@ RoxygenNote: 7.2.3</code></pre>
 <li>You can run each test file separately to try it out (you must do <code>library(testthat)</code> first)</li>
 <li>It’s better practice to test the entire package though:</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">test</span>()</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ℹ Testing toypackage</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘testthat’</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>The following object is masked from ‘package<span class="sc">:</span>devtools’<span class="sc">:</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    test_file</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W S  OK <span class="sc">|</span> Context</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>         <span class="dv">1</span> <span class="sc">|</span> sayhello                                         </span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>══ Results ══════════════════════════════════════════════════════</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">test</span>()</span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>ℹ Testing toypackage</span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>Attaching package<span class="sc">:</span> ‘testthat’</span>
+<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>The following object is masked from ‘package<span class="sc">:</span>devtools’<span class="sc">:</span></span>
+<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>    test_file</span>
+<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W S  OK <span class="sc">|</span> Context</span>
+<span id="cb25-11"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>         <span class="dv">1</span> <span class="sc">|</span> sayhello                                         </span>
+<span id="cb25-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a aria-hidden="true" tabindex="-1"></a>══ Results ══════════════════════════════════════════════════════</span>
+<span id="cb25-14"><a aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Celebrate! 🎉 🥳 🎊</li>
 </ul>
@@ -855,9 +857,9 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Like we could choose the <code>export</code> some of our functions, we now may want to <code>import</code> some functions from elsewhere.</li>
 <li>Suppose we want to use the <code>dplyr</code> package:</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">use_package</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'dplyr'</span> to Imports field <span class="cf">in</span> DESCRIPTION</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>• Refer to functions with <span class="st">`</span><span class="at">dplyr::fun()</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">use_package</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'dplyr'</span> to Imports field <span class="cf">in</span> DESCRIPTION</span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>• Refer to functions with <span class="st">`</span><span class="at">dplyr::fun()</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Let’s check the <code>DESCRIPTION</code> file to see what happened.</li>
 </ul>
@@ -868,7 +870,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>It’s fairly easy to publish our new package to a github repo.</li>
 <li>Let’s <code>use_github()</code></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>answer all the prompts and end up here!</li>
 </ul>
@@ -881,11 +883,11 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Let’s add one here as well!</li>
 <li>the <code>usethis::use_readme_rmd()</code> function is perfect for this:</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>If we want to automatically run our tests on a remote server called <em>github actions</em>, we can call this function as well to set this up:</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_github_actions</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">use_github_actions</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>let’s re-build the package now. (look for rstudio button <code>install</code> in <code>build</code> tab)</li>
 </ul>
@@ -900,7 +902,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>There is an <a href="https://r-pkgs.org/vignettes.html">entire chapter</a> on <code>r-pkgs</code> dedicated to this!</li>
 </ul>
 <h3 id="adding-the-vignettes">Adding the Vignette(s)</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">"vignette-toypackage-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">"vignette-toypackage-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deploy-package-documention-on-a-website" class="slide level2">
 <h2>Deploy package documention on a website</h2>
@@ -923,7 +925,7 @@ RoxygenNote: 7.2.3</code></pre>
 <li>Ready?</li>
 </ul>
 <div class="fragment">
-<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>pkgdown</code> is a package for website and docs building.</li>
 </ul>
@@ -932,13 +934,13 @@ RoxygenNote: 7.2.3</code></pre>
 <ul>
 <li>Let’s build that site!</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pkdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>pkdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <ul>
 <li>Let’s get <code>gh-actions</code> going</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>commit everything and push to github!</li>
 </ul>
@@ -966,9 +968,11 @@ RoxygenNote: 7.2.3</code></pre>
 </div>
 </div>
 
-
-<img src="./images/ScPo-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="./images/ScPo-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -998,7 +1002,6 @@ RoxygenNote: 7.2.3</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1298,10 +1301,9 @@ RoxygenNote: 7.2.3</code></pre>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1311,8 +1313,17 @@ RoxygenNote: 7.2.3</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

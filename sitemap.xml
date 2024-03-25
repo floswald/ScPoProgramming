@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://floswald.github.io/ScPoProgramming/01-shell-intro.html</loc>
-    <lastmod>2024-01-23T16:51:22.322Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/09-R-packages.html</loc>
-    <lastmod>2024-01-23T16:51:24.822Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/03-filework.html</loc>
-    <lastmod>2024-01-23T16:51:25.432Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/index.html</loc>
-    <lastmod>2024-01-23T16:51:26.452Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/about.html</loc>
-    <lastmod>2024-01-23T16:51:26.778Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/05-git.html</loc>
-    <lastmod>2024-01-23T16:51:28.065Z</lastmod>
-  </url>
-  <url>
-    <loc>https://floswald.github.io/ScPoProgramming/10-spatial-R.html</loc>
-    <lastmod>2024-01-23T16:51:37.923Z</lastmod>
+    <loc>https://floswald.github.io/ScPoProgramming/02-filedir.html</loc>
+    <lastmod>2024-01-23T15:46:24.356Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/ScPoProgramming/04-pipes.html</loc>
-    <lastmod>2024-01-23T16:51:38.562Z</lastmod>
+    <lastmod>2024-01-23T15:59:29.502Z</lastmod>
   </url>
   <url>
-    <loc>https://floswald.github.io/ScPoProgramming/02-filedir.html</loc>
-    <lastmod>2024-01-23T16:51:39.552Z</lastmod>
+    <loc>https://floswald.github.io/ScPoProgramming/05-git.html</loc>
+    <lastmod>2024-01-23T16:26:54.299Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/index.html</loc>
+    <lastmod>2024-01-23T15:34:27.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/09-R-packages.html</loc>
+    <lastmod>2024-01-23T16:37:28.819Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/01-shell-intro.html</loc>
+    <lastmod>2024-01-23T15:46:16.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/03-filework.html</loc>
+    <lastmod>2024-01-23T15:53:55.460Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/about.html</loc>
+    <lastmod>2023-01-22T09:25:29.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/10-spatial-R.html</loc>
+    <lastmod>2023-03-27T08:43:59.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/ScPoProgramming/scripts/tidy_tasks.html</loc>
+    <lastmod>2024-03-11T09:53:47.677Z</lastmod>
   </url>
 </urlset>
