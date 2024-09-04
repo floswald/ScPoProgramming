@@ -417,7 +417,7 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 
-  <p class="date">29 April, 2024</p>
+  <p class="date">4 September, 2024</p>
 </section>
 <section id="combining-commands" class="slide level2">
 <h2>Combining Commands</h2>
@@ -686,57 +686,33 @@ Show Solution
 </div>
 </details>
 </section>
-<section id="real-data" class="slide level2">
-<h2>Real Data</h2>
-<ul>
-<li>The shell is very efficient for big data sets.</li>
-<li>You can do stuff <em>very</em> quickly without loading anything into RAM of <code>R</code> or else:</li>
-</ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Prix des carburants en France</strong></p>
-</div>
-<div class="callout-content">
+<section id="house-prices-in-france" class="slide level2">
+<h2>House Prices in France</h2>
+<p>The below dataset contains information on house sales (price, location, type of house etc). We call one record a <em>housing transaction</em>.</p>
 <p>Using the shell:</p>
 <ol type="1">
-<li>Use <code>wget</code> to download data to <a href="https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09">from here</a> to your downloads folder as <code>carburants.csv</code>: <code>wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv</code></li>
+<li>Use <code>wget</code> to download data to <a href="https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt">from here</a> to your downloads folder as <code>carburants.csv</code>: <code>wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt</code></li>
 <li>use <code>wc -l</code> to count how many rows (<em>lines</em>) there are</li>
-<li>use <code>head -n 1</code> to see the first row (the <em>header</em>)</li>
-<li>Use the above solution to build a contingency table that tells us the number of gas stations per <em>ville</em>.</li>
+<li>use <code>head -n 2</code> to see the first two rows (the <em>header</em>)</li>
+<li>Use the above solution to build a contingency table that tells us the number of housing transactions per <em>commune</em>. Show the 10 cities with most housing transactions.</li>
+<li>Compute the average of variable <code>Valeur fonciere</code>. You should use the <code>awk</code> command like this : <code>awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'</code></li>
 </ol>
-</div>
-</div>
-</div>
 </section>
-<section id="real-data-1" class="slide level2">
+<section id="real-data" class="slide level2">
 <h2>Real Data</h2>
 <details>
 <summary>
 Show Solution
 </summary>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Solution</strong></p>
-</div>
-<div class="callout-content">
 <ol type="1">
-<li><code>wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv</code></li>
-<li><code>cd Downloads</code></li>
-<li><code>wc -l carburants.csv</code></li>
-<li><code>cut -d ';' -f 5 carburants.csv | sort | uniq -c | sort</code></li>
-<li><code>cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort</code></li>
+<li><code>wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt</code></li>
+<li><code>wc -l valeursfoncieres-2023.txt</code></li>
+<li><code>head -n 2 valeursfoncieres-2023.txt</code></li>
+<li><code>cut -d '|' -f 18 valeursfoncieres-2023.txt | sort | uniq -c | sort -r | head -n 10</code></li>
+<li><code>cut -d '|' -f 11 valeursfoncieres-2023.txt | cut -d , -f 1 | awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);}'</code></li>
+<li>If you have R installed you can check whether this is the same as reading this column into it (it’s not! odd.)</li>
 </ol>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'x = data.table::fread(cmd = "cut -d \'</span><span class="kw">|</span><span class="ex">\'</span> <span class="at">-f</span> 11 valeursfoncieres-2023.txt <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> , <span class="at">-f</span> 1<span class="st">"); x[, mean(</span><span class="kw">`</span><span class="ex">Valeur</span> fonciere<span class="kw">`</span><span class="st">,na.rm = TRUE)]'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 <div class="quarto-auto-generated-content">

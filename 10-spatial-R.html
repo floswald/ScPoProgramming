@@ -417,7 +417,7 @@ Florian Oswald
 </div>
 </div>
 
-  <p class="date">29 April, 2024</p>
+  <p class="date">4 September, 2024</p>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
@@ -629,26 +629,23 @@ Florian Oswald
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'sf' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
 </div>
 </div>
 <ul>
 <li>I highly recommend the package vignettes!</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="at">package =</span> <span class="st">"sf"</span>) <span class="co"># see which vignettes are available</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"sf1"</span>)          <span class="co"># an introduction to the package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="at">package =</span> <span class="st">"sf"</span>) <span class="co"># see which vignettes are available</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"sf1"</span>)          <span class="co"># an introduction to the package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="working-with-sf-1" class="slide level2">
 <h2>Working with <strong>sf</strong> 1</h2>
 <p>Let’s read a <em>shapefile</em> from the <code>sf</code> package:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">"shape/nc.shp"</span>, <span class="at">package=</span><span class="st">"sf"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">"shape/nc.shp"</span>, <span class="at">package=</span><span class="st">"sf"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `nc' from data source 
-  `/Users/floswald/Library/R/arm64/4.2/library/sf/shape/nc.shp' 
+  `/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/sf/shape/nc.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 100 features and 14 fields
 Geometry type: MULTIPOLYGON
@@ -656,7 +653,7 @@ Dimension:     XY
 Bounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
 Geodetic CRS:  NAD27</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nc[,<span class="fu">c</span>(<span class="st">"AREA"</span>,<span class="st">"NAME"</span>,<span class="st">"FIPS"</span>,<span class="st">"BIR79"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nc[,<span class="fu">c</span>(<span class="st">"AREA"</span>,<span class="st">"NAME"</span>,<span class="st">"FIPS"</span>,<span class="st">"BIR79"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 4 fields
 Geometry type: MULTIPOLYGON
@@ -680,7 +677,7 @@ Geodetic CRS:  NAD27
 <li>This is basically a geo-referenced <code>data.frame</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nc[,<span class="st">"AREA"</span>])  <span class="co"># plot feature "AREA" (i.e. column 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nc[,<span class="st">"AREA"</span>])  <span class="co"># plot feature "AREA" (i.e. column 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="10-spatial-R_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
@@ -690,9 +687,9 @@ Geodetic CRS:  NAD27
 <li>Works also with <code>ggplot2</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="10-spatial-R_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
@@ -702,8 +699,8 @@ Geodetic CRS:  NAD27
 <div class="column" style="width:45%;">
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -715,11 +712,11 @@ Geodetic CRS:  NAD27
 </div>
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>nc <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="st">"+proj=moll"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>) <span class="sc">+</span> </span>
-<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">"Mollweide Projection"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>nc <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="st">"+proj=moll"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA)) <span class="sc">+</span></span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Area"</span>) <span class="sc">+</span> </span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">"Mollweide Projection"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -740,7 +737,7 @@ Geodetic CRS:  NAD27
 <li>For single geometries we can do things like <code>st_area(x)</code>, <code>st_union(x)</code>, <code>st_buffer(x,dist)</code> etc</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">st_area</span>(<span class="fu">st_union</span>(nc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">st_area</span>(<span class="fu">st_union</span>(nc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>127025870730 [m^2]</code></pre>
 </div>
@@ -750,7 +747,7 @@ Geodetic CRS:  NAD27
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">st_area</span>(<span class="fu">st_union</span>(nc)) <span class="sc">%&gt;%</span> units<span class="sc">::</span><span class="fu">set_units</span>(km2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">st_area</span>(<span class="fu">st_union</span>(nc)) <span class="sc">%&gt;%</span> units<span class="sc">::</span><span class="fu">set_units</span>(km2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>127025.9 [km2]</code></pre>
 </div>
@@ -760,16 +757,16 @@ Geodetic CRS:  NAD27
 <section id="geometric-operations-with-sf-2" class="slide level2">
 <h2>Geometric Operations with <strong>sf</strong> 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># copied from https://github.com/uo-ec607/lectures</span></span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>nc_centroid <span class="ot">=</span> <span class="fu">st_centroid</span>(nc)</span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span></span>
-<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc_centroid, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="do">## Notice how easy it is to combine different sf objects</span></span>
-<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counties of North Carolina"</span>,</span>
-<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Centroids in red"</span></span>
-<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># copied from https://github.com/uo-ec607/lectures</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>nc_centroid <span class="ot">=</span> <span class="fu">st_centroid</span>(nc)</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span></span>
+<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc_centroid, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="do">## Notice how easy it is to combine different sf objects</span></span>
+<span id="cb17-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counties of North Carolina"</span>,</span>
+<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Centroids in red"</span></span>
+<span id="cb17-10"><a aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="10-spatial-R_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
@@ -778,34 +775,34 @@ Geodetic CRS:  NAD27
 <div class="{columns}">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># copied from https://github.com/uo-ec607/lectures</span></span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("maps","spData"))</span></span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="do">## Get the data</span></span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>france <span class="ot">=</span> <span class="fu">st_as_sf</span>( </span>
-<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a>    maps<span class="sc">::</span><span class="fu">map</span>(<span class="st">'france'</span>, </span>
-<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">plot =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-8"><a aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb19-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"seine"</span>, </span>
-<span id="cb19-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">package =</span> <span class="st">"spData"</span>)</span>
-<span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a aria-hidden="true" tabindex="-1"></a><span class="do">## Make sure they have the same projection</span></span>
-<span id="cb19-13"><a aria-hidden="true" tabindex="-1"></a>seine <span class="ot">=</span> <span class="fu">st_transform</span>(seine, </span>
-<span id="cb19-14"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">crs =</span> <span class="fu">st_crs</span>(france))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># copied from https://github.com/uo-ec607/lectures</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("maps","spData"))</span></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="do">## Get the data</span></span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>france <span class="ot">=</span> <span class="fu">st_as_sf</span>( </span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>    maps<span class="sc">::</span><span class="fu">map</span>(<span class="st">'france'</span>, </span>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">plot =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"seine"</span>, </span>
+<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">package =</span> <span class="st">"spData"</span>)</span>
+<span id="cb18-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a aria-hidden="true" tabindex="-1"></a><span class="do">## Make sure they have the same projection</span></span>
+<span id="cb18-13"><a aria-hidden="true" tabindex="-1"></a>seine <span class="ot">=</span> <span class="fu">st_transform</span>(seine, </span>
+<span id="cb18-14"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">crs =</span> <span class="fu">st_crs</span>(france))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># now, make a base plot:</span></span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>pseine <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> france, </span>
-<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.8</span>, </span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"black"</span>, </span>
-<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"gray50"</span>) <span class="sc">+</span> </span>
-<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Administrative regions of France"</span></span>
-<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pseine, </span>
-<span id="cb20-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine.png"</span>, </span>
-<span id="cb20-12"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># now, make a base plot:</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>pseine <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> france, </span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.8</span>, </span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"black"</span>, </span>
+<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"gray50"</span>) <span class="sc">+</span> </span>
+<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Administrative regions of France"</span></span>
+<span id="cb19-9"><a aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pseine, </span>
+<span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine.png"</span>, </span>
+<span id="cb19-12"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -815,16 +812,16 @@ Geodetic CRS:  NAD27
 <div class="{columns}">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># let's add the seine!</span></span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>pseine2 <span class="ot">=</span> pseine <span class="sc">+</span></span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Administrative regions of France"</span>,</span>
-<span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Also showing the Seine, Marne and Yonne rivers"</span></span>
-<span id="cb21-7"><a aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb21-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pseine2, </span>
-<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine2.png"</span>, </span>
-<span id="cb21-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># let's add the seine!</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>pseine2 <span class="ot">=</span> pseine <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Administrative regions of France"</span>,</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Also showing the Seine, Marne and Yonne rivers"</span></span>
+<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pseine2, </span>
+<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine2.png"</span>, </span>
+<span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -834,10 +831,10 @@ Geodetic CRS:  NAD27
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>seine <span class="ot">=</span> <span class="fu">st_transform</span>(seine, <span class="at">crs =</span> <span class="fu">st_crs</span>(france))</span>
-<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sf_use_s2</span>(<span class="cn">FALSE</span>)  <span class="co"># need to turn off because of invalid geometry</span></span>
-<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>france_intersected <span class="ot">=</span> <span class="fu">st_intersection</span>(france, seine)</span>
-<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(france_intersected,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>seine <span class="ot">=</span> <span class="fu">st_transform</span>(seine, <span class="at">crs =</span> <span class="fu">st_crs</span>(france))</span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sf_use_s2</span>(<span class="cn">FALSE</span>)  <span class="co"># need to turn off because of invalid geometry</span></span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>france_intersected <span class="ot">=</span> <span class="fu">st_intersection</span>(france, seine)</span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(france_intersected,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 2 features and 2 fields
 Geometry type: LINESTRING
@@ -850,16 +847,16 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>pl3 <span class="ot">=</span> france_intersected <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="fu">aes</span>(<span class="at">fill =</span> ID, <span class="at">col =</span> ID)) <span class="sc">+</span> </span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Seine, Marne and Yonne rivers"</span>,</span>
-<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Colours depict French administrative regions"</span></span>
-<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span>
-<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl3,<span class="st">"images/seine3.png"</span>, </span>
-<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>pl3 <span class="ot">=</span> france_intersected <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="fu">aes</span>(<span class="at">fill =</span> ID, <span class="at">col =</span> ID)) <span class="sc">+</span> </span>
+<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Seine, Marne and Yonne rivers"</span>,</span>
+<span id="cb23-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Colours depict French administrative regions"</span></span>
+<span id="cb23-7"><a aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb23-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb23-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl3,<span class="st">"images/seine3.png"</span>, </span>
+<span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -869,23 +866,23 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>pl4 <span class="ot">=</span> <span class="fu">st_join</span>(france, seine) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Get rid of regions with no overlap</span></span>
-<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(name)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Some regions are duplicated b/c two </span></span>
-<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## branches of the river network flow through them </span></span>
-<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(ID, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## pipe into ggplot</span></span>
-<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"#01731f"</span>,</span>
-<span id="cb25-11"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"#fcb4b3"</span>,  <span class="co"># of borders</span></span>
-<span id="cb25-12"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># of borders</span></span>
-<span id="cb25-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb25-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Intersected regions only"</span>) <span class="sc">+</span></span>
-<span id="cb25-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb25-16"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl4,<span class="st">"images/seine4.png"</span>, </span>
-<span id="cb25-17"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>pl4 <span class="ot">=</span> <span class="fu">st_join</span>(france, seine) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Get rid of regions with no overlap</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(name)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Some regions are duplicated b/c two </span></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## branches of the river network flow through them </span></span>
+<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(ID, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## pipe into ggplot</span></span>
+<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"#01731f"</span>,</span>
+<span id="cb24-11"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"#fcb4b3"</span>,  <span class="co"># of borders</span></span>
+<span id="cb24-12"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># of borders</span></span>
+<span id="cb24-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb24-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Intersected regions only"</span>) <span class="sc">+</span></span>
+<span id="cb24-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb24-16"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl4,<span class="st">"images/seine4.png"</span>, </span>
+<span id="cb24-17"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -908,27 +905,27 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <section id="joining-task-solution" class="slide level2">
 <h2>Joining Task Solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>d5 <span class="ot">=</span> <span class="fu">st_join</span>(france, seine) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Get rid of regions with no overlap</span></span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(name)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Some regions are duplicated b/c two </span></span>
-<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## branches of the river network flow through them </span></span>
-<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(ID, <span class="at">.keep_all =</span> T)</span>
-<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a aria-hidden="true" tabindex="-1"></a>my_colors <span class="ot">=</span> <span class="fu">palette.colors</span>(<span class="fu">nrow</span>(d5), <span class="at">palette =</span> <span class="st">"Alphabet"</span>)</span>
-<span id="cb26-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_colors) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb26-10"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## pipe into ggplot</span></span>
-<span id="cb26-12"><a aria-hidden="true" tabindex="-1"></a>pl5 <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d5) <span class="sc">+</span> </span>
-<span id="cb26-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ID),</span>
-<span id="cb26-14"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"#fcb4b3"</span>,  <span class="co"># of borders</span></span>
-<span id="cb26-15"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># of borders</span></span>
-<span id="cb26-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
-<span id="cb26-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Intersected regions only"</span>, <span class="at">fill =</span> <span class="st">"Departement"</span>) <span class="sc">+</span></span>
-<span id="cb26-18"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb26-19"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colors)</span>
-<span id="cb26-20"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl5,<span class="st">"images/seine5.png"</span>, </span>
-<span id="cb26-21"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>d5 <span class="ot">=</span> <span class="fu">st_join</span>(france, seine) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Get rid of regions with no overlap</span></span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(name)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## Some regions are duplicated b/c two </span></span>
+<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## branches of the river network flow through them </span></span>
+<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(ID, <span class="at">.keep_all =</span> T)</span>
+<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>my_colors <span class="ot">=</span> <span class="fu">palette.colors</span>(<span class="fu">nrow</span>(d5), <span class="at">palette =</span> <span class="st">"Alphabet"</span>)</span>
+<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_colors) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="do">## pipe into ggplot</span></span>
+<span id="cb25-12"><a aria-hidden="true" tabindex="-1"></a>pl5 <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d5) <span class="sc">+</span> </span>
+<span id="cb25-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ID),</span>
+<span id="cb25-14"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">"#fcb4b3"</span>,  <span class="co"># of borders</span></span>
+<span id="cb25-15"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># of borders</span></span>
+<span id="cb25-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> seine, <span class="at">col =</span> <span class="st">"#05E9FF"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb25-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Intersected regions only"</span>, <span class="at">fill =</span> <span class="st">"Departement"</span>) <span class="sc">+</span></span>
+<span id="cb25-18"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb25-19"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colors)</span>
+<span id="cb25-20"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl5,<span class="st">"images/seine5.png"</span>, </span>
+<span id="cb25-21"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="distances" class="slide level2">
@@ -955,8 +952,8 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <section id="task-desired-result-distances" class="slide level2 inverse">
 <h2>Task Desired Result: Distances</h2>
 <p><strong>Hint:</strong></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># start from here</span></span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># start from here</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -986,27 +983,27 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <section id="task-solution" class="slide level2">
 <h2>Task Solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>cvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(<span class="fu">unique</span>(d5<span class="sc">$</span>ID)))</span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cvec) <span class="ot">&lt;-</span> <span class="fu">unique</span>(d5<span class="sc">$</span>ID)</span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Seine-Maritime"</span>] <span class="ot">&lt;-</span> <span class="st">"purple"</span></span>
-<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Nievre"</span>] <span class="ot">&lt;-</span> <span class="st">"brown"</span></span>
-<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span>
-<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ID))</span>
-<span id="cb28-8"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cvec, <span class="at">limits=</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
-<span id="cb28-9"><a aria-hidden="true" tabindex="-1"></a>subdeps <span class="ot">=</span> d5 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
-<span id="cb28-10"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_centroid</span>(subdeps))</span>
-<span id="cb28-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p6, <span class="st">"images/distance1.png"</span>, <span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span>
-<span id="cb28-12"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a aria-hidden="true" tabindex="-1"></a>dists <span class="ot">=</span> <span class="fu">st_distance</span>(subdeps) <span class="sc">%&gt;%</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="st">"km"</span>)</span>
-<span id="cb28-14"><a aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">st_centroid</span>(subdeps) <span class="sc">%&gt;%</span> <span class="fu">st_coordinates</span>() </span>
-<span id="cb28-15"><a aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">lon =</span> coords[<span class="dv">1</span>,<span class="st">"X"</span>],</span>
-<span id="cb28-16"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat =</span> coords[<span class="dv">1</span>,<span class="st">"Y"</span>], </span>
-<span id="cb28-17"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lon_end =</span> coords[<span class="dv">2</span>,<span class="st">"X"</span>],</span>
-<span id="cb28-18"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat_end =</span> coords[<span class="dv">2</span>,<span class="st">"Y"</span>])</span>
-<span id="cb28-19"><a aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">data =</span> coords, <span class="fu">aes</span>(lon, lat, <span class="at">xend =</span> lon_end, <span class="at">yend =</span> lat_end))</span>
-<span id="cb28-20"><a aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p7 <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Distance between Centroids:"</span>,<span class="fu">round</span>(dists[<span class="dv">1</span>,<span class="dv">2</span>],<span class="dv">0</span>), <span class="st">"km"</span>))</span>
-<span id="cb28-21"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p7, <span class="st">"images/distance2.png"</span>,<span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>cvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(<span class="fu">unique</span>(d5<span class="sc">$</span>ID)))</span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cvec) <span class="ot">&lt;-</span> <span class="fu">unique</span>(d5<span class="sc">$</span>ID)</span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Seine-Maritime"</span>] <span class="ot">&lt;-</span> <span class="st">"purple"</span></span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>cvec[<span class="st">"Nievre"</span>] <span class="ot">&lt;-</span> <span class="st">"brown"</span></span>
+<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span>
+<span id="cb27-7"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ID))</span>
+<span id="cb27-8"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cvec, <span class="at">limits=</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
+<span id="cb27-9"><a aria-hidden="true" tabindex="-1"></a>subdeps <span class="ot">=</span> d5 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(ID <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Seine-Maritime"</span>,<span class="st">"Nievre"</span>))</span>
+<span id="cb27-10"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_centroid</span>(subdeps))</span>
+<span id="cb27-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p6, <span class="st">"images/distance1.png"</span>, <span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span>
+<span id="cb27-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a aria-hidden="true" tabindex="-1"></a>dists <span class="ot">=</span> <span class="fu">st_distance</span>(subdeps) <span class="sc">%&gt;%</span> units<span class="sc">::</span><span class="fu">set_units</span>(<span class="st">"km"</span>)</span>
+<span id="cb27-14"><a aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">st_centroid</span>(subdeps) <span class="sc">%&gt;%</span> <span class="fu">st_coordinates</span>() </span>
+<span id="cb27-15"><a aria-hidden="true" tabindex="-1"></a>coords <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">lon =</span> coords[<span class="dv">1</span>,<span class="st">"X"</span>],</span>
+<span id="cb27-16"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat =</span> coords[<span class="dv">1</span>,<span class="st">"Y"</span>], </span>
+<span id="cb27-17"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lon_end =</span> coords[<span class="dv">2</span>,<span class="st">"X"</span>],</span>
+<span id="cb27-18"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">lat_end =</span> coords[<span class="dv">2</span>,<span class="st">"Y"</span>])</span>
+<span id="cb27-19"><a aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p6 <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="at">data =</span> coords, <span class="fu">aes</span>(lon, lat, <span class="at">xend =</span> lon_end, <span class="at">yend =</span> lat_end))</span>
+<span id="cb27-20"><a aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">=</span> p7 <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Distance between Centroids:"</span>,<span class="fu">round</span>(dists[<span class="dv">1</span>,<span class="dv">2</span>],<span class="dv">0</span>), <span class="st">"km"</span>))</span>
+<span id="cb27-21"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p7, <span class="st">"images/distance2.png"</span>,<span class="at">width =</span> <span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
