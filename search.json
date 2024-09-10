@@ -292,7 +292,7 @@
     "href": "10-spatial-R.html#one-standard-crs-wgs84",
     "title": "Spatial Data With R",
     "section": "One Standard CRS: WGS84",
-    "text": "One Standard CRS: WGS84\n\n\n\n\n\n\nThe dashed lines are the WGS84 elipsoid coordinate frame\nThe blue circle is the origin at \\((0,0)\\) :\n\n0 degrees longitude (x-direction): Prime Meridian through Greenwhich, London.\n0 degrees latitude (y-direction): Equator.",
+    "text": "One Standard CRS: WGS84\n\n\n\n\n\nThe dashed lines are the WGS84 elipsoid coordinate frame\nThe blue circle is the origin at \\((0,0)\\) :\n\n0 degrees longitude (x-direction): Prime Meridian through Greenwhich, London.\n0 degrees latitude (y-direction): Equator.",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -304,7 +304,7 @@
     "href": "10-spatial-R.html#paris-in-different-crs",
     "title": "Spatial Data With R",
     "section": "Paris in Different CRS",
-    "text": "Paris in Different CRS\n\n\n\n\n\nParis at c(2.34,48.85) in WGS64\n\n\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France",
+    "text": "Paris in Different CRS\n\n\n\n\n\nParis at c(2.34,48.85) in WGS64\n\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -316,7 +316,7 @@
     "href": "10-spatial-R.html#paris-where",
     "title": "Spatial Data With R",
     "section": "Paris Where?",
-    "text": "Paris Where?\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France\n\n\n\n\n  \nTask\n\nSearch for NTF Lambert North France\nWhat does c(600256.4, 127726.4) actually mean?",
+    "text": "Paris Where?\n\n\n\n\n\nParis at c(600256.4, 127726.4) in NTF Lambert North France\n\n\n\n  \nTask\n\nSearch for NTF Lambert North France\nWhat does c(600256.4, 127726.4) actually mean?",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -388,7 +388,7 @@
     "href": "10-spatial-R.html#working-with-sf-4-crs-transform",
     "title": "Spatial Data With R",
     "section": "Working with sf 4: CRS Transform",
-    "text": "Working with sf 4: CRS Transform\n\n\n\n\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")\n\n\n\n\n\n\n\n\n\n\n\nnc %&gt;% \n    st_transform(\"+proj=moll\") %&gt;%\n    ggplot() + geom_sf(aes(fill = AREA)) +\n        scale_fill_viridis_c(name = \"Area\") + \n        ggtitle(\"Mollweide Projection\")",
+    "text": "Working with sf 4: CRS Transform\n\n\n\n\nggplot(nc) + geom_sf(aes(fill = AREA)) +\n    scale_fill_viridis_c(name = \"Area\")\n\n\n\n\n\n\n\n\n\n\nnc %&gt;% \n    st_transform(\"+proj=moll\") %&gt;%\n    ggplot() + geom_sf(aes(fill = AREA)) +\n        scale_fill_viridis_c(name = \"Area\") + \n        ggtitle(\"Mollweide Projection\")",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -520,7 +520,7 @@
     "href": "10-spatial-R.html#task-desired-result-distances",
     "title": "Spatial Data With R",
     "section": "Task Desired Result: Distances",
-    "text": "Task Desired Result: Distances\nHint:\n# start from here\np6 = ggplot(d5) + geom_sf()\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\nDesired Outputs",
+    "text": "Task Desired Result: Distances\nHint:\n# start from here\np6 = ggplot(d5) + geom_sf()\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\nDesired Outputs",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -892,7 +892,7 @@
     "href": "01-shell-intro.html#bad.",
     "title": "The Unix Shell",
     "section": "Bad.",
-    "text": "Bad.\n\n\n\n\n\n\n\n\nNo More than 65,536 Rows\n\n\n\nPublic Health England missed 14.000 covid cases\nThey used .xls document to collect data.\n\n\n\n\n\n\n\n\n\n\n\nNo Growth with High Debt?\n\n\n\nReinhardt and Rogoff controversy.1\nInadvertently did not select all relevant countries on spreadsheet.\n\n\n\n\n\n\nBoth are eminent researchers and we do not imply misconduct.",
+    "text": "Bad.\n\n\n\n\n\n\n\n\nNo More than 65,536 Rows\n\n\n\nPublic Health England missed 14.000 covid cases\nThey used .xls document to collect data.\n\n\n\n\n\n\n\n\n\n\n\nNo Growth with High Debt?\n\n\n\nReinhardt and Rogoff controversy.1\nInadvertently did not select all relevant countries on spreadsheet.\n\n\n\n\n\nBoth are eminent researchers and we do not imply misconduct.",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1946,6 +1946,18 @@
     "title": "Pipes and Filters",
     "section": "House Prices in France",
     "text": "House Prices in France\nThe below dataset contains information on house sales (price, location, type of house etc). We call one record a housing transaction.\nUsing the shell:\n\nUse wget to download data to from here to your downloads folder as carburants.csv: wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt\nuse wc -l to count how many rows (lines) there are\nuse head -n 2 to see the first two rows (the header)\nUse the above solution to build a contingency table that tells us the number of housing transactions per commune. Show the 10 cities with most housing transactions.\nCompute the average of variable Valeur fonciere. You should use the awk command like this : awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'",
+    "crumbs": [
+      "Home",
+      "Lessons:",
+      "4. Filters and Pipes"
+    ]
+  },
+  {
+    "objectID": "04-pipes.html#house-prices-in-france-1",
+    "href": "04-pipes.html#house-prices-in-france-1",
+    "title": "Pipes and Filters",
+    "section": "House Prices in France",
+    "text": "House Prices in France\nThe below dataset contains information on house sales (price, location, type of house etc). We call one record a housing transaction.\nUsing the shell:\n\nCompute the average of variable Valeur fonciere. You should use the awk command like this : awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'",
     "crumbs": [
       "Home",
       "Lessons:",

@@ -9,10 +9,10 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.550">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Florian Oswald">
-  <title>ScPoProgramming - Spatial Data With R</title>
+  <title>ScPoProgramming – Spatial Data With R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -397,7 +397,7 @@
       margin-right: 0; 
     }
   </style>
-<meta name="twitter:title" content="ScPoProgramming - Spatial Data With R">
+<meta name="twitter:title" content="Spatial Data With R – ScPoProgramming">
 <meta name="twitter:description" content="SciencesPo Intro To Programming 2023">
 <meta name="twitter:card" content="summary">
 </head>
@@ -417,7 +417,7 @@ Florian Oswald
 </div>
 </div>
 
-  <p class="date">4 September, 2024</p>
+  <p class="date">10 September, 2024</p>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
@@ -550,8 +550,7 @@ Florian Oswald
 <div class="{columns}">
 <div class="column" style="width:50%;">
 <p><img data-src="./images/vector_lonlatglobe.png"></p>
-</div>
-<div class="column" style="width:40%;">
+</div><div class="column" style="width:40%;">
 <ul>
 <li>The dashed lines are the WGS84 elipsoid coordinate frame</li>
 <li>The blue circle is <em>the origin</em> at <span class="math inline">\((0,0)\)</span> :
@@ -560,8 +559,7 @@ Florian Oswald
 <li>0 degrees latitude (y-direction): Equator.</li>
 </ol></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="paris-in-different-crs" class="slide level2">
 <h2>Paris in Different CRS</h2>
@@ -573,16 +571,14 @@ Florian Oswald
 <figcaption><em>Paris</em> at <code>c(2.34,48.85)</code> in WGS64</figcaption>
 </figure>
 </div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="./images/vector_projectedparis.png"></p>
 <figcaption><em>Paris</em> at <code>c(600256.4, 127726.4)</code> in NTF Lambert North France</figcaption>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="paris-where" class="slide level2 inverse">
 <h2>Paris Where?</h2>
@@ -594,16 +590,14 @@ Florian Oswald
 <figcaption><em>Paris</em> at <code>c(600256.4, 127726.4)</code> in NTF Lambert North France</figcaption>
 </figure>
 </div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <p><br> <br> <br></p>
 <h3 id="task">Task</h3>
 <ol type="1">
 <li>Search for <em>NTF Lambert North France</em></li>
 <li>What does <code>c(600256.4, 127726.4)</code> actually mean?</li>
 </ol>
-</div>
-</div>
+</div></div>
 </section>
 <section id="geocentric-vs-local-datum" class="slide level2">
 <h2>Geocentric vs Local Datum</h2>
@@ -709,8 +703,7 @@ Geodetic CRS:  NAD27
 </div>
 </div>
 </div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>nc <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="st">"+proj=moll"</span>) <span class="sc">%&gt;%</span></span>
@@ -725,8 +718,7 @@ Geodetic CRS:  NAD27
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="geometric-operations-with-sf-1" class="slide level2">
 <h2>Geometric Operations with <strong>sf</strong> 1</h2>
@@ -804,8 +796,7 @@ Geodetic CRS:  NAD27
 <span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine.png"</span>, </span>
 <span id="cb19-12"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="mapping-the-seine-2" class="slide level2" data-background-image="./images/seine2.png" data-background-position="75% 70%" data-background-size="40%">
 <h2>Mapping the Seine 2</h2>
@@ -823,8 +814,7 @@ Geodetic CRS:  NAD27
 <span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/seine2.png"</span>, </span>
 <span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="intersect-two-sf-objects" class="slide level2" data-background-image="./images/seine3.png" data-background-position="95% 70%" data-background-size="45%">
 <h2>Intersect two <strong>sf</strong> objects</h2>
@@ -858,8 +848,7 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <span id="cb23-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl3,<span class="st">"images/seine3.png"</span>, </span>
 <span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="join-two-sf-objects" class="slide level2" data-background-image="./images/seine4.png" data-background-position="85% 45%" data-background-size="45%">
 <h2>Join two <strong>sf</strong> objects</h2>
@@ -884,8 +873,7 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <span id="cb24-16"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> pl4,<span class="st">"images/seine4.png"</span>, </span>
 <span id="cb24-17"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width=</span><span class="dv">7</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="joining-task" class="slide level2 inverse">
 <h2>Joining Task</h2>
@@ -896,11 +884,9 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <li>We want to have different colors for the shown departements, instead of all “#01731f”.</li>
 <li>I.e. make this for me 👉</li>
 </ul>
-</div>
-<div class="column" style="width:55%;">
+</div><div class="column" style="width:55%;">
 <p><img data-src="images/seine5.png"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="joining-task-solution" class="slide level2">
 <h2>Joining Task Solution</h2>
@@ -954,6 +940,9 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
 <p><strong>Hint:</strong></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># start from here</span></span>
 <span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">ggplot</span>(d5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1332,18 +1321,7 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1375,7 +1353,47 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/floswald\.github\.io\/ScPoProgramming\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1412,7 +1430,11 @@ Marne Marne Marne LINESTRING (4.872966 48.637...</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
