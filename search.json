@@ -1341,13 +1341,6 @@
     "text": "Windows and Mac Specific Instructions\nThere are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.\n\nWindows\nWe need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install\n\nGitForWindows\n\nSpecifics:\n\nDuring the installation process, choose all default settings.\nAt one point, you are offered a choice for a default editor being used for git. If you know vim already, why not (I use vim), otherwise I recommend nano, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don’t choose notepad and other standalone editors).\n\n\n\nMac\nYou should be all set. To make sure we have really everything we need, open Terminal.app (in Applications &gt; Utilities or do Cmd + Space to get spotlight search and type terminal). Then paste this code and hit enter:\nxcode-select --install\nclick on install (don’t click on get Xcode)\n\n\nUnix\nSame, all set. Maybe open a terminal and type\ngit --version\nif that throws an error, install it with your package manager, e.g.\nsudo apt install git-all"
   },
   {
-    "objectID": "index.html#code-of-conduct",
-    "href": "index.html#code-of-conduct",
-    "title": "ScPoProgramming",
-    "section": "Code of Conduct",
-    "text": "Code of Conduct\nIf you decide to participate in this course, I expect you to abide by the following minimal code of conduct.\n\nBe polite to the other class participants.\nWhile in class, do not spend time on messaging apps, chat rooms, computer games, or similar content.\n\nYou can expect your instructor to abide by the same code of conduct, so this is a matter of mutual respect. If you are found in breach of the above you will be given a single warning, and I will ask you to no longer join the course after a second time. Your grade will be “fail”."
-  },
-  {
     "objectID": "05-git.html#version-what",
     "href": "05-git.html#version-what",
     "title": "Version Control with Git",
