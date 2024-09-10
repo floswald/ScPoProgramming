@@ -287,23 +287,27 @@ $ cut -d , -f 2 animals.csv
 
 ---
 
-## Real Data
+## House Prices in France
 
-* The shell is very efficient for big data sets.
-* You can do stuff *very* quickly without loading anything into RAM of `R` or else:
-
-::: {.callout-tip}
-
-# Prix des carburants en France
+The below dataset contains information on house sales (price, location, type of house etc). We call one record a _housing transaction_.
 
 Using the shell:
 
-1. Use `wget` to download data to [from here](https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09) to your downloads folder as `carburants.csv`: `wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv`
+1. Use `wget` to download data to [from here](https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt) to your downloads folder as `carburants.csv`: `wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt`
 2. use `wc -l` to count how many rows (*lines*) there are
-3. use `head -n 1` to see the first row (the *header*)
-4. Use the above solution to build a contingency table that tells us the number of gas stations per *ville*.
+3. use `head -n 2` to see the first two rows (the *header*)
+4. Use the above solution to build a contingency table that tells us the number of housing transactions per *commune*. Show the 10 cities with most housing transactions.
+5. Compute the average of variable `Valeur fonciere`. You should use the `awk` command like this : `awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'`
 
-:::
+---
+
+## House Prices in France
+
+The below dataset contains information on house sales (price, location, type of house etc). We call one record a _housing transaction_.
+
+Using the shell:
+
+5. Compute the average of variable `Valeur fonciere`. You should use the `awk` command like this : `awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'`
 
 ---
 
@@ -312,14 +316,17 @@ Using the shell:
 <details>
 <summary>Show Solution</summary>
 
-::: {.callout-note}
-# Solution
-1. `wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/Downloads/carburants.csv`
-1. `cd Downloads`
-1. `wc -l carburants.csv`
-1. `cut -d ';' -f 5 carburants.csv | sort | uniq -c | sort`
-1. `cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort`
-:::
+1. `wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt`
+2. `wc -l valeursfoncieres-2023.txt`
+3. `head -n 2 valeursfoncieres-2023.txt`
+4. `cut -d '|' -f 18 valeursfoncieres-2023.txt | sort | uniq -c | sort -r | head -n 10 `
+5. `cut -d '|' -f 11 valeursfoncieres-2023.txt | cut -d , -f 1 | awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);}' `
+6. If you have R installed you can check whether this is the same as reading this column into it (it's not! odd.)
+
+```bash
+Rscript -e 'x = data.table::fread(cmd = "cut -d \'|\' -f 11 valeursfoncieres-2023.txt | cut -d , -f 1"); x[, mean(`Valeur fonciere`,na.rm = TRUE)]'
+```
+
 </details>
 
 

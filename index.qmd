@@ -36,6 +36,7 @@ subtitle: "SciencesPo Paris, Ecole Doctorale 2024"
 | 10            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
 | 11            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
 | 12            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
+| 13            | [Quick Intro to NLP with R](11-NLP-R.qmd) |  Florian Oswald|
 
 
 # Setup Instructions
