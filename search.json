@@ -1425,11 +1425,11 @@
     ]
   },
   {
-    "objectID": "05-git.html#gas-prices-project",
-    "href": "05-git.html#gas-prices-project",
+    "objectID": "05-git.html#house-prices-project",
+    "href": "05-git.html#house-prices-project",
     "title": "Version Control with Git",
-    "section": "Gas Prices Project",
-    "text": "Gas Prices Project\n\nLet’s create a project folder in our home to look at the gas prices from last week.\n\n$ cd    # going to home dir \n$ mkdir gasprices  # create directory\n$ cd gasprices \n$ git init\n\nNow the directory ~/gasprices is endowed with git version control.\nWhat does that look like?",
+    "section": "House Prices Project",
+    "text": "House Prices Project\n\nLet’s create a project folder in our home to look at the house prices from last week.\n\n$ cd    # going to home dir \n$ mkdir houseprices  # create directory\n$ cd houseprices \n$ git init\n\nNow the directory ~/houseprices is endowed with git version control.\nWhat does that look like?",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1465,7 +1465,7 @@
     "href": "05-git.html#adding-code-and-text",
     "title": "Version Control with Git",
     "section": "Adding Code and Text",
-    "text": "Adding Code and Text\n\n\n\n\n\n\nNote\n\n\n\nNotice: The code we produce is text.\nRemember what we learned about file endings.\n\n\n\n\n\nLet’s add a shell script where we add our pipeline from last week.\n\n\nrun to get the raw data again:\n\nwget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/gasprices/carburants.csv",
+    "text": "Adding Code and Text\n\n\n\n\n\n\nNote\n\n\n\nNotice: The code we produce is text.\nRemember what we learned about file endings.\n\n\n\n\n\nLet’s add a shell script where we add our pipeline from last week.\n\n\nrun to get the raw data again:\n\nwget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1477,7 +1477,7 @@
     "href": "05-git.html#adding-code-and-text-1",
     "title": "Version Control with Git",
     "section": "Adding Code and Text",
-    "text": "Adding Code and Text\n\ncreate a script\n\nnano maketable.sh  # open nano\n# type this:\ncd ~/gasprices   # make sure we are in the right place\ncut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort\n# save and exit \n\n(Does it work?)\n\nls .  # check the new file is there\n./maketable.sh   # run it!\n\n\nNo, it doesn’t. 😖\n\nchmod +x ./maketable.sh  # add executable mode\nls -a\n./maketable.sh",
+    "text": "Adding Code and Text\n\ncreate a script\n\nnano maketable.sh  # open nano\n# type this:\ncd ~/houseprices   # make sure we are in the right place\ncut -d '|' -f 18 valeursfoncieres-2023.txt | sort | uniq -c | sort -r | head -n 10\n# save and exit \n\n(Does it work?)\n\nls .  # check the new file is there\n./maketable.sh   # run it!\n\n\nNo, it doesn’t. 😖\n\nchmod +x ./maketable.sh  # add executable mode\nls -a\n./maketable.sh",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1489,7 +1489,7 @@
     "href": "05-git.html#viewing-changes",
     "title": "Version Control with Git",
     "section": "Viewing Changes",
-    "text": "Viewing Changes\n\nOk, now let’s see what git makes of our additions to this directory.\n\nfloswald@PTL11077 ~/gasprices (main)&gt; git status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv\n        maketable.sh\n\nIt is actually helpful not to use bash as a shell…\nCustomizing your shell is an extremely effective procrastination device.\nYou must know what shaving a Yak means before you walk out of my class.",
+    "text": "Viewing Changes\n\nOk, now let’s see what git makes of our additions to this directory.\n\nfloswald@PTL11077 ~/houseprices (main)&gt; git status\nOn branch main\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        valeursfoncieres-2023.txt\n        maketable.sh\n\nIt is actually helpful not to use bash as a shell…\nCustomizing your shell is an extremely effective procrastination device.\nYou must know what shaving a Yak means before you walk out of my class.",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1513,7 +1513,7 @@
     "href": "05-git.html#modify-add-commit-1",
     "title": "Version Control with Git",
     "section": "Modify-Add-Commit 1",
-    "text": "Modify-Add-Commit 1\n\ngit reports about untracked files. We need to decide what to track.\n\n\nMove files to staging area:\n\ngit add maketable.sh \ngit status\n\nNotice that I did not want to track the csv file.\n\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   maketable.sh\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv",
+    "text": "Modify-Add-Commit 1\n\ngit reports about untracked files. We need to decide what to track.\n\n\nMove files to staging area:\n\ngit add maketable.sh \ngit status\n\nNotice that I did not want to track the csv file.\n\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   maketable.sh\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        valeursfoncieres-2023.txt",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1525,7 +1525,7 @@
     "href": "05-git.html#modify-add-commit-2",
     "title": "Version Control with Git",
     "section": "Modify-Add-Commit 2",
-    "text": "Modify-Add-Commit 2\n\nNow, let’s record what is in the staging area.\n\n$ git commit -m 'added the maketable script'\n\n[main (root-commit) 9956506] added the maketable script\n 1 file changed, 2 insertions(+)\n create mode 100644 maketable.sh\n\ncheck status:\n\n$ git status\n\nOn branch main\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        carburants.csv\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n➜  gasprices git:(main) ✗",
+    "text": "Modify-Add-Commit 2\n\nNow, let’s record what is in the staging area.\n\n$ git commit -m 'added the maketable script'\n\n[main (root-commit) 9956506] added the maketable script\n 1 file changed, 2 insertions(+)\n create mode 100644 maketable.sh\n\ncheck status:\n\n$ git status\n\nOn branch main\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        valeursfoncieres-2023.txt\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n➜  gasprices git:(main) ✗",
     "crumbs": [
       "Home",
       "Lessons:",
@@ -1561,7 +1561,7 @@
     "href": "05-git.html#diffing",
     "title": "Version Control with Git",
     "section": "Diffing",
-    "text": "Diffing\n\nthere are still the same files here:\n\n$ ls \ncarburants.csv  maketable.sh\n\nBut we can now compare versions:\n\n$ git diff \n\ndiff --git a/maketable.sh b/maketable.sh\nindex 7e01058..3b7007e 100644\n--- a/maketable.sh\n+++ b/maketable.sh\n@@ -1,2 +1,3 @@\n+echo hello user, will make a contigency table now.\n cd ~/gasprices   # make sure we are in the right place\n cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort",
+    "text": "Diffing\n\nthere are still the same files here:\n\n$ ls \nvaleursfoncieres-2023.txt  maketable.sh\n\nBut we can now compare versions:\n\n$ git diff \n\ndiff --git a/maketable.sh b/maketable.sh\nindex 7e01058..3b7007e 100644\n--- a/maketable.sh\n+++ b/maketable.sh\n@@ -1,2 +1,3 @@\n+echo hello user, will make a contigency table now.\n cd ~/valeursfoncieres-2023.txt   # make sure we are in the right place\n cut -d ';' -f 5 valeursfoncieres-2023.txt | tr [:lower:] [:upper:] | sort | uniq -c | sort",
     "crumbs": [
       "Home",
       "Lessons:",

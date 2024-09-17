@@ -417,7 +417,7 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 
-  <p class="date">10 September, 2024</p>
+  <p class="date">17 September, 2024</p>
 </section>
 <section id="version-what" class="slide level2">
 <h2>Version What?</h2>
@@ -568,17 +568,17 @@ Florian Oswald and The Software Carpentry
 </div>
 </div>
 </section>
-<section id="gas-prices-project" class="slide level2">
-<h2>Gas Prices Project</h2>
+<section id="house-prices-project" class="slide level2">
+<h2>House Prices Project</h2>
 <ul>
-<li>Let’s create a project folder in our home to look at the gas prices from last week.</li>
+<li>Let’s create a project folder in our home to look at the house prices from last week.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># going to home dir </span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir gasprices  <span class="co"># create directory</span></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd gasprices </span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir houseprices  <span class="co"># create directory</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd houseprices </span>
 <span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Now the directory <code>~/gasprices</code> is endowed with <code>git</code> version control.</li>
+<li>Now the directory <code>~/houseprices</code> is endowed with <code>git</code> version control.</li>
 <li>What does that look like?</li>
 </ul>
 </section>
@@ -669,7 +669,7 @@ Florian Oswald and The Software Carpentry
 <ol type="1">
 <li>run to get the raw data again:</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 <span class="at">-O</span> ~/gasprices/carburants.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="adding-code-and-text-1" class="slide level2">
 <h2>Adding Code and Text</h2>
@@ -678,8 +678,8 @@ Florian Oswald and The Software Carpentry
 </ol>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> maketable.sh  <span class="co"># open nano</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># type this:</span></span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
-<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/houseprices   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">'|'</span> <span class="at">-f</span> 18 valeursfoncieres-2023.txt <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-r</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 10</span>
 <span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>(Does it work?)</li>
@@ -700,14 +700,14 @@ Florian Oswald and The Software Carpentry
 <ul>
 <li>Ok, now let’s see what <code>git</code> makes of our additions to this directory.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>floswald@PTL11077 ~/gasprices (main)&gt; git <span class="ot">status</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>floswald@PTL11077 ~/houseprices (main)&gt; git <span class="ot">status</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>On branch main</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>No commits yet</span>
 <span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>Untracked files:</span>
 <span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>  (use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed)</span>
-<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>        carburants.csv</span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>        valeursfoncieres<span class="fl">-2023.</span>txt</span>
 <span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>        maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>It is actually helpful <strong>not</strong> to use <code>bash</code> as a shell…</li>
@@ -750,7 +750,7 @@ Florian Oswald and The Software Carpentry
 <span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
 <span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
-<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">valeursfoncieres-2023.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modify-add-commit-2" class="slide level2">
 <h2>Modify-Add-Commit 2</h2>
@@ -770,7 +770,7 @@ Florian Oswald and The Software Carpentry
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
 <span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
-<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">carburants.csv</span></span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">valeursfoncieres-2023.txt</span></span>
 <span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> added to commit but untracked files present <span class="er">(</span><span class="ex">use</span> <span class="st">"git add"</span> to track<span class="kw">)</span></span>
 <span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  gasprices git:<span class="er">(</span><span class="ex">main</span><span class="kw">)</span> <span class="ex">✗</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -808,7 +808,7 @@ Florian Oswald and The Software Carpentry
 <li>there are still the same files here:</li>
 </ul>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls </span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">carburants.csv</span>  maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">valeursfoncieres-2023.txt</span>  maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>But we can now <em>compare</em> versions:</li>
 </ul>
@@ -820,8 +820,8 @@ Florian Oswald and The Software Carpentry
 <span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/maketable.sh</span>
 <span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1,2</span> +1,3 @@</span>
 <span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+echo</span> hello user, will make a contigency table now.</span>
-<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> ~/gasprices   <span class="co"># make sure we are in the right place</span></span>
-<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 carburants.csv <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> ~/valeursfoncieres-2023.txt   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 valeursfoncieres-2023.txt <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commiting-changes-again" class="slide level2">
 <h2>Commiting Changes Again</h2>
