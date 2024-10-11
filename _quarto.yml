@@ -26,16 +26,18 @@ website:
             text: 6. `R` intro
           - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html
             text: 7. `R Tidyverse`
+          - href: 06-concepts.qmd
+            text: 8. `R` and `python` generics
           - href: https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html
-            text: 8. `R data.table`
+            text: 9. `R data.table`
           - href: 09-R-packages.qmd
-            text: 9. Building `R` packages
+            text: 10. Building `R` packages
           - href: 10-spatial-R.qmd
-            text: 10. Spatial Data with `R`
+            text: 11. Spatial Data with `R`
           - href: https://floswald.github.io/julia-bootcamp/01-variables.html
             text: 11. `julia` intro 1
           - href: https://floswald.github.io/julia-bootcamp/02-functions.html
-            text: 12. `julia` intro 2
+            text: 13. `julia` intro 2
 
   navbar:
     left:

@@ -1,0 +1,329 @@
+---
+title: Quick Intro to NLP with `R`
+format: 
+  revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+    slide-number: true
+author: Florian Oswald
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
+date: today
+date-format: "D MMMM, YYYY"
+execute:
+    echo: true
+    cache: true
+---
+
+## Intro
+
+
+In this lecture we will introduce the most basic language models with R.
+
+This is based on a nice [introduction](https://datascienceplus.com/an-introduction-to-k-gram-language-models-in-r/) by Valerio Gherardi, author of the `kgrams` package for R.
+
+---
+
+## Natuarl Language Processing (NLP) basics
+
+* We are all familiar with *large* language models (LLMs for short) by now. 
+* ChatGPT (short for _Chat Generative Pretrained Transformer_) is a proprietary solution, there are by now many open source alternatives. 
+* We will not be able to go into the details of those, but see some simpler cousins.
+
+
+## $k$-gram language models
+
+* Let $w_i$ be the $i$-th word in a sentence, i.e. $s = w_1 w_2 \dots w_n$
+* An NLP model gives the probability of observing this sentence, i.e. $\Pr(s)$.
+* As usual, we can *sample* from $\Pr(s)$ to obtain *random* sentences.
+* In general all the $s$ at our disposal come from a certain _corpus_, i.e. a collection of sentences/words.
+
+## Continuation Probabilities
+
+* Define a sequence of words as _context_: $w_1 w_2 \dots w_m$
+* We can _predict_ the next word in the sequence by computing $\Pr(w|c)$, i.e. $\Pr(w|c)$ is the probability that the next word is $w$, given context $c$.
+* That is in a nutshell what ChatGPT computes for you.
+
+## Dictionaries
+
+* The list of known words in an NLP model is called the _dictionary_. 
+* This also tells us how to deal with _unknown_ words - those are mapped to the `UNK` (unknown word token).
+* It also tells us how to deal with the end of sentences, by introducing an `EOS` (end of sentence) token.
+* `kgram` models (below) also include a `BOS` (beginning of sentence) token. Each sentence is left-padded with $N-1$ `BOS` tokens ($N$ the order of the model). This helps predicting _the first workd of the next sentence_ from the preceding $N-1$ tokens.
+
+## $k$-gram Models
+
+* A $k$-gram model makes a _markovian_ assumption on continuation probabilites.
+* We assume that the next word depends only on the last $N-1$ words, where $N$ is the _order_ of the model.
+* We have
+
+$$\begin{align}
+\Pr(w|c) &= \Pr(w|w_1 w_2 \cdots w_{N-1})\\
+c &= \cdots w_{-1} w_0 w_1 w_2 \cdots w_{N-1}
+\end{align}$$
+
+* We call the $k$ tuples of words $(w_1, w_2,\dots, w_k)$ _k-grams_.
+* You can see that we can only capture relatively short range dependencies.
+* As $N$ becomes too large, memory requirements explode.
+
+## Estimating Continuation Probabilities
+
+* We can make a table from our corpus, counting how many times each $k$ gram occurs.
+* While this is simple, we need a _smoothing_ technique to account for the fact that many potentially sensible sentences are never observed in our Corpus.
+* The smoothing will take some probability from the very frequently observed sequences and give some to the rarer ones, simply speaking. 
+
+$$\hat{\Pr}_{MLE}(w|c) = \frac{C(w_1 w_2 \cdots w_{k} w)}{C(w_1 w_2 \cdots w_{k})}$$
+
+* Our data is sparse: many sequences are not in our corpus, hence the above estimator incorrectly assigns zero probability to them.
+* If context $w_1 w_2 \cdots w_{k}$ not in data, estimator is not defined.
+
+## Training and Testing NLP Models
+
+* We need an evaluation metric: how good is this model.
+* Widely used is [perplexity](https://en.wikipedia.org/wiki/Perplexity): The larger _perplexity_ of a discrete probability distribution, the less likely it will be that an observer could guess the next value to be drawn from it.
+* We will evaluate $H=-\frac{1}{W} \sum_s \ln \Pr(s)$ where $W$ is the total number of words in our corpus.
+
+## Training a k-gram model in R 
+
+```{r}
+#| echo: true
+library(kgrams)
+```
+We can get the spoken text from the following Shakespear plays:
+
+```{r}
+#| echo: true
+
+playcodes <- c(
+        "All's Well That Ends Well" = "AWW",
+        "Antony and Cleopatra" = "Ant",
+        "As You Like It" = "AYL",
+        "The Comedy of Errors" = "Err",
+        "Coriolanus" = "Cor",
+        "Cymbeline" = "Cym",
+        "Hamlet" = "Ham",
+        "Henry IV, Part 1" = "1H4",
+        "Henry IV, Part 2" = "2H4",
+        "Henry V" = "H5",
+        "Henry VI, Part 1" = "1H6",
+        "Henry VI, Part 2" = "2H6",
+        "Henry VI, Part 3" = "3H6",
+        "Henry VIII" = "H8",
+        "Julius Caesar" = "JC",
+        "King John" = "Jn",
+        "King Lear" = "Lr",
+        "Love's Labor's Lost" = "LLL",
+        "Macbeth" = "Mac",
+        "Measure for Measure" = "MM",
+        "The Merchant of Venice" = "MV",
+        "The Merry Wives of Windsor" = "Wiv",
+        "A Midsummer Night's Dream" = "MND",
+        "Much Ado About Nothing" = "Ado",
+        "Othello" = "Oth",
+        "Pericles" = "Per",
+        "Richard II" = "R2",
+        "Richard III" = "R3",
+        "Romeo and Juliet" = "Rom",
+        "The Taming of the Shrew" = "Shr",
+        "The Tempest" = "Tmp",
+        "Timon of Athens" = "Tim",
+        "Titus Andronicus" = "Tit",
+        "Troilus and Cressida" = "Tro",
+        "Twelfth Night" = "TN",
+        "Two Gentlemen of Verona" = "TGV",
+        "Two Noble Kinsmen" = "TNK",
+        "The Winter's Tale" = "WT"
+        )
+```
+
+## Estimating 2
+
+We could get the text from "Much Ado about Nothing" as follows:
+
+```{r}
+#| echo: true
+get_url_con <- function(playcode) {
+        stopifnot(playcode %in% playcodes)
+        url <- paste0("https://www.folgerdigitaltexts.org/", playcode, "/text")
+        con <- url(url)
+}
+
+con <- get_url_con("Ado")
+open(con)
+readLines(con, 10)
+```
+
+```{r}
+#| echo: true
+close(con)
+```
+
+## Defining Training and Testing Data
+
+We will use all plays but "Hamlet" as training data, and reserve this last one for testing our model.
+
+```{r}
+train_playcodes <- playcodes[names(playcodes) != c("Hamlet")]
+test_playcodes <- playcodes[names(playcodes) == c("Hamlet")]
+```
+
+We want to pre-process the text data. Here we want to remove some html tags and make everything lower-case. 
+
+```{r}
+.preprocess <- function(x) {
+        # Remove html tags
+        x <- gsub("<[^>]+>", "", x)
+        # Lower-case and remove characters not alphanumeric or punctuation
+        x <- kgrams::preprocess(x)
+        return(x)
+}
+```
+
+## Preprocessing Text
+
+* We need to split sentences at sensible punctuation marks `.!?:;` and insert `EOS` and `BOS` tokens into the data.
+* This will treat `.!?:;` as regular _words_, hence the model will be able to *predict* those.
+
+```{r}
+.tknz_sent <- function(x) {
+        # Collapse everything to a single string
+        x <- paste(x, collapse = " ")
+        # Tokenize sentences
+        x <- kgrams::tknz_sent(x, keep_first = TRUE)
+        # Remove empty sentences
+        x <- x[x != ""]
+        return(x)
+}
+```
+
+## Making $k$-gram frequency counts
+
+* Let us now make a table of occurences of all $k$-grams in our corpus.
+* We set an _order_:
+
+```{r}
+N = 5
+freqs = kgram_freqs(N, .preprocess = .preprocess, .tknz_sent = .tknz_sent)
+summary(freqs)
+```
+
+* So, for now this is an empty model as you can see. Let's train it on our corpus!
+
+## Training the NLP model
+
+```{r}
+lapply(train_playcodes,
+       function(playcode) {
+               con <- get_url_con(playcode)
+               process_sentences(text = con, freqs = freqs, verbose = FALSE)
+       })
+```
+
+## Checking the Frequency tables
+
+* the `freqs` object was modified during the previous call.
+* Let's check it quickly:
+
+```{r}
+query(freqs, c("leonato", "pound of flesh", "smartphones"))
+```
+
+* Last thing to do: choose a smoother. 
+```{r}
+
+smoothers()
+```
+
+Let's choose the _modified Kneser-Ney_ smoother and set some default parameters:
+
+```{r}
+info("mkn")
+```
+
+## Building the model
+
+```{r}
+model <- language_model(freqs, smoother = "mkn", D1 = 0.5, D2 = 0.5, D3 = 0.5)
+summary(model)
+```
+
+## Making Predictions with the model
+
+* Now we can compute probabilities for given sentences:
+
+```{r}
+sentences <- c(
+        "I have a letter from monsieur Berowne to one lady Rosaline.",
+        "I have an email from monsieur Valerio to one lady Judit."
+)
+probability(sentences, model)
+```
+
+or we can get the _continuation probability_ for a context:
+
+```{r}
+context <- "pound of"
+words <- c("flesh", "bananas")
+probability(words %|% context, model)
+```
+
+## Tuning our models
+
+* Remember we held out "Hamlet" from our training data. Let's use it to test performance now!
+
+```{r}
+con <- get_url_con(test_playcodes)
+perplexity(text = con, model = model)
+```
+
+This applies the same transformations and tokenization to test data than it does to training data (which is important).
+
+## Tuning More
+
+* We could now create a grid over the parameters of the model (`D1`, `D2` etc) as well as the order of the models
+* We would then choose those parameters for whcih the perplexity is smallest.
+* Suppose we find that the $k=4$ models works best.
+* Let's use it to create some random sentences!
+
+```{r}
+param(model, "N") <- 4
+```
+
+## Random Text generation
+
+```{r}
+set.seed(840)
+sample_sentences(model, 10, max_length = 20)
+```
+
+## Temperature
+
+* The temperature parameter makes the pdf smoother and rougher. Smaller values mean the model will not deviate much from it's implied distribution, higher values means there will be much more randomness in output.
+
+```{r}
+set.seed(841)
+sample_sentences(model, 10, max_length = 20) # Normal temperature
+```
+
+## High temperature
+
+```{r}
+set.seed(841)
+sample_sentences(model, 10, max_length = 20, t = 10) 
+```
+
+
+## Low temperature
+
+```{r}
+set.seed(841)
+sample_sentences(model, 10, max_length = 20, t = 0.1) 
+```
+
+
+
+# End

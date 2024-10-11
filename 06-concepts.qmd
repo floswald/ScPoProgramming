@@ -1,0 +1,310 @@
+---
+title: "Intro to Generic Programming"
+---
+
+
+```{r reticulate_config}
+#| cache: false
+#| include: false
+library(reticulate)
+use_condaenv("introprog")
+```
+
+In this short lecture we introduce a few core concepts used in programming. We will be using both `R` and `python` as  examples, however, the concepts are transversal across all/most languages. The implementation details - i.e. how do you _invoke_ a certain concept - will differ across languages.
+
+[How to install python](https://realpython.com/installing-python/).  
+[Here](https://swcarpentry.github.io/python-novice-inflammation/) is a nice introduction for Python novices.
+
+
+## Setup
+
+Ideally you would try to run all commands in the below for both languages. I recommend that you open two terminal windows, one running `R` and one running `python`. For python we need the `numpy` package to demonstrate array support. Depending on how you installed python, there are different options. 
+
+* Anaconda installation: `conda install numpy`
+* Homebrew or download from python.org : `pip install numpy`
+
+
+Check whether the installation worked by doing
+
+```{python}
+import numpy as np  
+# loads the numpy library and gives it
+# short name `np`
+```
+
+
+## Variables
+
+Variables are labels for objects. This can be simple numbers, or strings, but often also any other sort of object you could think of: a plot, a table, a matrix, a vector, a list, ...
+
+What is curious to know about variables is their _scoping_ behaviour: where in our programs we can we see which variable? This differs quite importantly across languages and is something that requires some thought. 
+
+First, let's create a variable `x` which holds the value `12.3`:
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python pvars}
+#| cache: false
+x = 12.3
+x + 5
+```
+
+### R
+
+```{r rvars}
+#| cache: false
+x <- 12.3  # = works also
+x + 5
+```
+
+:::
+
+Next, a *function* which will use the variables - here we do not provide `x` as an argument to the function, so which value will it use in each case?
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python pf}
+#| cache: false
+def myfun(y):  
+    return x + y  # must use `return`
+# note the indentation!
+# function definition finishes after last line of indented block.
+
+myfun(8)
+```
+
+### R
+
+```{r rf}
+#| cache: false
+myfun <- function(y){
+    x + y  # can use `return()`
+}
+myfun(8)
+```
+
+:::
+
+we see that in both cases, the function looked for the variable `x` in it's _calling scope_, i.e. the environment where it was called from. This only worked because we had defined `x` before. This may or may not work in other languages. In general this is called [*lexical scoping*](https://www.gnu.org/software/guile/manual/html_node/Lexical-Scope.html).
+
+## Loops
+
+If we have a repetitive task, it's useful to be able to _iterate_, i.e. do the same thing to a potentially changing input. Consider that we had 4 numbers `2,3,4,5` and we wanted to print them to screen. We could do of course write 4 identical `print` statements, each with a different input:
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python ploop0}
+#| cache: false
+#| eval: false
+print("this is number",2)
+print("this is number",3)
+print("this is number",4)
+print("this is number",5)
+```
+
+### R
+
+```{r rloop0}
+#| cache: false
+#| eval: false
+print(paste("this is number",2))
+print(paste("this is number",3))
+print(paste("this is number",4))
+print(paste("this is number",5))
+```
+
+:::
+
+but you can see that this a lot of repetitive code, which we want to avoid. Also, adding an additional number would mean a lot of extra work. So, loops are better here:
+
+
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python ploop}
+#| cache: false
+for i in range(2,5) :
+    print(f"this is number",i) # note the indentation!
+```
+
+### R
+
+```{r rloop}
+#| cache: false
+for (i in 2:4){
+    print(paste("this is number",i))
+}
+```
+
+:::
+
+## Useful Datastructures
+
+* python docs on [data structures](https://docs.python.org/3/tutorial/datastructures.html)
+* Article about [R datastructures](http://adv-r.had.co.nz/Data-structures.html)
+
+concept | Python | R 
+-----| -------|-----
+1d list | `[1,2]` | `c(1,2)`
+1d vector | `np.array([1,2])` | `c(1,2)`
+matrix | `np.array([row, col])` | `matrix(data,rows,cols)`
+n-d array | `np.array`  | `array`
+Dictionary | `dict` | `list`
+DataFrame | `pandas.df` | `data.frame`
+
+### 1-D list/vector
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python plist}
+#| cache: false
+li = [1,3]
+li + li  # not well defined vector space with `+` and `*`
+```
+
+### R
+
+```{r rlist}
+#| cache: false
+li = c(1,3)
+li * li # element-by-element
+li + li
+```
+
+:::
+
+in python we use the `numpy` package for linear algebra:
+
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python pnp}
+#| cache: false
+import numpy as np
+li = np.array([1,3])
+li * li  
+li + li  
+```
+
+### R
+
+```{r}
+#| cache: false
+li = c(1,3)
+li * li # element-by-element
+li + li
+```
+
+:::
+
+### Matrices
+
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python}
+#| cache: false
+import numpy as np
+ma = np.array([[1,3], [2,4]])
+ma * ma
+ma + ma 
+```
+
+### R
+
+```{r}
+#| cache: false
+ma = matrix(c(1,2,3,4),nrow = 2, ncol = 2)
+ma * ma # element-by-element
+ma + ma
+```
+
+:::
+
+### N-D arrays
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python}
+#| cache: false
+a = np.arange(1,9)
+np.reshape(a, (2,2,2))
+```
+
+### R
+
+```{r}
+#| cache: false
+array(1:8,dim = c(2,2,2))
+```
+
+:::
+
+
+### Dictionaries
+
+`Dict`s are lists with a *key -> value* structure. Like a telephone book:
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python}
+#| cache: false
+di = {'peter' : 1225, 'alice' : 4333}
+di
+```
+
+### R
+
+```{r}
+#| cache: false
+di = list(peter = 1225, alice = 4333)
+di
+```
+
+:::
+
+### DataFrames
+
+In python, we use the `pandas` package for dataframe support. In R they are built-in as we know. There are many ways to create a `pandas` dataframe.
+
+* Here is the official pandas [documentation](https://pandas.pydata.org/pandas-docs/stable/index.html).
+* in `R`, type `?data.frame` for the help entry.
+
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+```{python}
+#| cache: false
+import pandas as pd
+d = {"one": [1.0, 2.0, 3.0, 4.0], "two": [4.0, 3.0, 2.0, 1.0]}
+pd.DataFrame(d)
+```
+
+### R
+
+```{r}
+#| cache: false
+data.frame(one = c(1,2,3,4.0), two = c(4,3,2,1.0))
+```
+
+:::

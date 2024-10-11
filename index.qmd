@@ -31,12 +31,13 @@ subtitle: "SciencesPo Paris, Ecole Doctorale 2024"
 |            | [Homework 1](https://github.com/floswald/scpoproghw1): complete and run a bash script on gh-actions |  Florian Oswald |
 | 6            | [`R` Intro](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html) |  Florian Oswald|
 | 7            | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
-| 8            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
-| 9            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
-| 10            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
-| 11            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
-| 12            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
-| 13            | [Quick Intro to NLP with R](11-NLP-R.qmd) |  Florian Oswald|
+| 8            | [`R` and `python` generics](06-concepts.qmd) | Florian Oswald|
+| 9            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
+| 10            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
+| 11            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
+| 12            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
+| 13            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
+| 14            | [Quick Intro to NLP with R](11-NLP-R.qmd) |  Florian Oswald|
 
 
 # Setup Instructions
@@ -88,7 +89,8 @@ if that throws an error, install it with your package manager, e.g.
 sudo apt install git-all
 ```
 
-## Code of Conduct
+
+# Code of Conduct
 
 If you decide to participate in this course, I expect you to abide by the following minimal code of conduct.
 

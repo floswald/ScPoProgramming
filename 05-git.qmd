@@ -160,18 +160,18 @@ git config --global core.autocrlf false
 
 ---
 
-## Gas Prices Project
+## House Prices Project
 
-* Let's create a project folder in our home to look at the gas prices from last week.
+* Let's create a project folder in our home to look at the house prices from last week.
 
 ```bash
 $ cd    # going to home dir 
-$ mkdir gasprices  # create directory
-$ cd gasprices 
+$ mkdir houseprices  # create directory
+$ cd houseprices 
 $ git init
 ```
 
-* Now the directory `~/gasprices` is endowed with `git` version control. 
+* Now the directory `~/houseprices` is endowed with `git` version control. 
 * What does that look like?
 
 
@@ -237,7 +237,7 @@ $ ls -a
 
 1. run to get the raw data again:
 ```bash
-wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09 -O ~/gasprices/carburants.csv
+wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt
 ```
 
 ---
@@ -250,8 +250,8 @@ wget https://www.data.gouv.fr/fr/datasets/r/64e02cff-9e53-4cb2-adfd-5fcc88b2dc09
 ```bash
 nano maketable.sh  # open nano
 # type this:
-cd ~/gasprices   # make sure we are in the right place
-cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort
+cd ~/houseprices   # make sure we are in the right place
+cut -d '|' -f 18 valeursfoncieres-2023.txt | sort | uniq -c | sort -r | head -n 10
 # save and exit 
 ```
 
@@ -279,14 +279,14 @@ ls -a
 * Ok, now let's see what `git` makes of our additions to this directory.
 
 ```tcl
-floswald@PTL11077 ~/gasprices (main)> git status
+floswald@PTL11077 ~/houseprices (main)> git status
 On branch main
 
 No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        carburants.csv
+        valeursfoncieres-2023.txt
         maketable.sh
 ```
 
@@ -335,7 +335,7 @@ Changes to be committed:
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        carburants.csv
+        valeursfoncieres-2023.txt
 ```
 
 
@@ -361,7 +361,7 @@ $ git status
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        carburants.csv
+        valeursfoncieres-2023.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ➜  gasprices git:(main) ✗ 
@@ -407,7 +407,7 @@ echo hello user, will make a contigency table now.
 
 ```bash
 $ ls 
-carburants.csv  maketable.sh
+valeursfoncieres-2023.txt  maketable.sh
 ```
 
 * But we can now _compare_ versions:
@@ -421,8 +421,8 @@ index 7e01058..3b7007e 100644
 +++ b/maketable.sh
 @@ -1,2 +1,3 @@
 +echo hello user, will make a contigency table now.
- cd ~/gasprices   # make sure we are in the right place
- cut -d ';' -f 5 carburants.csv | tr [:lower:] [:upper:] | sort | uniq -c | sort
+ cd ~/valeursfoncieres-2023.txt   # make sure we are in the right place
+ cut -d ';' -f 5 valeursfoncieres-2023.txt | tr [:lower:] [:upper:] | sort | uniq -c | sort
 ```
 
 
